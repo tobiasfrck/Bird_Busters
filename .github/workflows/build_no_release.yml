@@ -1,0 +1,23 @@
+name: Build Desktop App and provide extra compressed output
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build Desktop App
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup .NET 6 SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+      - name: Build project
+        run: dotnet build --configuration Release --output ./build_output
+      - name: Zip project
+        run: Compress-Archive -Path ./build_output/* -DestinationPath ./output.zip
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: output
+          path: ./output.zip

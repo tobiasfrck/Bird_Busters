@@ -1,0 +1,41 @@
+name: Build Desktop App and create release manually
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number'
+        required: true
+jobs:
+  build:
+    name: Build Desktop App
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup .NET 6 SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+      - name: Build project
+        run: dotnet build --configuration Release --output ./output
+      - name: Zip project
+        run: Compress-Archive -Path ./output/* -DestinationPath ./output.zip
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.Release_Token }}
+        with:
+          tag_name: ${{ github.event.inputs.version }} # Set the tag name for the release as the user-inputted version number
+          release_name: Release ${{ github.event.inputs.version }} # Set the release name as the user-inputted version number
+          draft: false # Set to false to publish the release immediately after creation
+          prerelease: false # Set to true to mark the release as a pre-release
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.Release_Token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # Get the upload URL for the release from the Create Release step
+          asset_path: ./output.zip # Path to the asset file
+          asset_name: output-${{ github.event.inputs.version }}.zip # Name of the asset file with the user-inputted version number
+          asset_content_type: application/zip # Content type of the asset file

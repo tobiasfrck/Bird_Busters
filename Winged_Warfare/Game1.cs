@@ -4,6 +4,8 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Winged_Warfare
 {
+    //Switches between game states:
+    //States: in menu, in settings, in game, game ended
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;

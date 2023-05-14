@@ -23,3 +23,6 @@ D:\Projektdateien\Spiel-Projekte\Winged_Warfare\Winged_Warfare\obj\Debug\net6.0\
 D:\Projektdateien\Spiel-Projekte\Winged_Warfare\Winged_Warfare\obj\Debug\net6.0\Winged_Warfare.pdb
 D:\Projektdateien\Spiel-Projekte\Winged_Warfare\Winged_Warfare\obj\Debug\net6.0\Winged_Warfare.genruntimeconfig.cache
 D:\Projektdateien\Spiel-Projekte\Winged_Warfare\Winged_Warfare\obj\Debug\net6.0\ref\Winged_Warfare.dll
+D:\Projektdateien\Spiel-Projekte\Winged_Warfare\Winged_Warfare\bin\Debug\net6.0\Content\testContent\cubeTexture.xnb
+D:\Projektdateien\Spiel-Projekte\Winged_Warfare\Winged_Warfare\bin\Debug\net6.0\Content\testContent\cubeTexture_0.xnb
+D:\Projektdateien\Spiel-Projekte\Winged_Warfare\Winged_Warfare\bin\Debug\net6.0\Content\testContent\testCube.xnb

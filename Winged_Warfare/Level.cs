@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace Winged_Warfare
+﻿namespace Winged_Warfare
 {
     //Does everything concerning the current run and level
     //Loads level, spawns animals, has timer, checks end conditions, ends game.
@@ -9,8 +7,11 @@ namespace Winged_Warfare
         //Has drawable object list.
         //Has spawnpoint list.
         //Has lights list.
-        public Level() { 
-        
+
+        public Player player1;
+        public Level()
+        {
+            player1 = new Player();
         }
 
         public void DrawModels()

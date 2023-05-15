@@ -16,7 +16,7 @@ namespace Winged_Warfare
         private Model _testCube;
         private int _cubePos=-100;
         //---------------------------
-
+ 
 
 
         //Level
@@ -26,7 +26,7 @@ namespace Winged_Warfare
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;
+            IsMouseVisible = false;
         }
 
         protected override void Initialize()
@@ -34,7 +34,7 @@ namespace Winged_Warfare
             // TODO: Add your initialization logic here
             // Initialize camera in Game1.cs because of "No Graphics Device Service" problem.
             Player.CamPosition = new Vector3(0f, 2f, -100f);
-            Player.CamTarget = new Vector3(0f, 2f, -99f);
+            Player.CamTarget = new Vector3(Player.CamPosition.X, Player.CamPosition.Y, Player.CamPosition.Z +1);
             Player.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), GraphicsDevice.DisplayMode.AspectRatio, 1f, 1000f);
             Player.ViewMatrix = Matrix.CreateLookAt(Player.CamPosition, Player.CamTarget, Vector3.Up);
             Debug.WriteLine("Camera initialized in Camera.cs.");
@@ -43,6 +43,7 @@ namespace Winged_Warfare
             _level = new Level();
 
             Debug.WriteLine("Game initialized in Game1.cs.");
+            MouseMovement.Init();
             base.Initialize();
         }
 
@@ -58,11 +59,11 @@ namespace Winged_Warfare
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-
             // TODO: Add your update logic here
 
 
             Player.Update();
+            MouseMovement.Update();
             base.Update(gameTime);
         }
 

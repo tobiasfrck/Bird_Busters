@@ -22,7 +22,7 @@ namespace Winged_Warfare
 
         public static void Update()
         {
-            Player.ViewMatrix = Matrix.CreateLookAt(Player.CamPosition, Player.CamTarget, Vector3.Up);
+            ViewMatrix = Matrix.CreateLookAt(CamPosition, CamTarget, Vector3.Up);
         }
 
         // Camera related methods

@@ -20,6 +20,11 @@ namespace Winged_Warfare
             
         }
 
+        public static void Update()
+        {
+            Player.ViewMatrix = Matrix.CreateLookAt(Player.CamPosition, Player.CamTarget, Vector3.Up);
+        }
+
         // Camera related methods
         public static Vector3 GetCamPosition() => Player.CamPosition;
         public static Vector3 GetCamTarget() => Player.CamTarget;

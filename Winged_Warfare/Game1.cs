@@ -57,9 +57,12 @@ namespace Winged_Warfare
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            Debug.WriteLine(Keyboard.GetState().IsKeyDown(Keys.Escape));
 
             // TODO: Add your update logic here
 
+
+            Player.Update();
             base.Update(gameTime);
         }
 
@@ -70,13 +73,11 @@ namespace Winged_Warfare
             rasterizerState.CullMode = CullMode.None;
             GraphicsDevice.RasterizerState = rasterizerState;
 
-
             // TODO: Delete testing code
             _testCube.Draw(Matrix.CreateTranslation(new Vector3(0,2,_cubePos)),Player.ViewMatrix,Player.ProjectionMatrix);
             _cubePos += 1;
-            Debug.WriteLineIf(_cubePos>150,_cubePos);
+            //Debug.WriteLineIf(_cubePos>150,_cubePos);
 
-            Debug.WriteLine("Test");
 
             base.Draw(gameTime);
         }

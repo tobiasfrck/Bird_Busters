@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projektdateien\\Spiel-Projekte\\Winged_Warfare\\Winged_Warfare\\Winged_Warfare.csproj": {}
+    "/Users/jannikkeddy/Documents/GitHub/Winged_Warfare/Winged_Warfare/Winged_Warfare.csproj": {}
   },
   "projects": {
-    "D:\\Projektdateien\\Spiel-Projekte\\Winged_Warfare\\Winged_Warfare\\Winged_Warfare.csproj": {
+    "/Users/jannikkeddy/Documents/GitHub/Winged_Warfare/Winged_Warfare/Winged_Warfare.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projektdateien\\Spiel-Projekte\\Winged_Warfare\\Winged_Warfare\\Winged_Warfare.csproj",
+        "projectUniqueName": "/Users/jannikkeddy/Documents/GitHub/Winged_Warfare/Winged_Warfare/Winged_Warfare.csproj",
         "projectName": "Winged_Warfare",
-        "projectPath": "D:\\Projektdateien\\Spiel-Projekte\\Winged_Warfare\\Winged_Warfare\\Winged_Warfare.csproj",
-        "packagesPath": "C:\\Users\\tobia\\.nuget\\packages\\",
-        "outputPath": "D:\\Projektdateien\\Spiel-Projekte\\Winged_Warfare\\Winged_Warfare\\obj\\",
+        "projectPath": "/Users/jannikkeddy/Documents/GitHub/Winged_Warfare/Winged_Warfare/Winged_Warfare.csproj",
+        "packagesPath": "/Users/jannikkeddy/.nuget/packages/",
+        "outputPath": "/Users/jannikkeddy/Documents/GitHub/Winged_Warfare/Winged_Warfare/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\tobia\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/jannikkeddy/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -70,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
         }
       }
     }

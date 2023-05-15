@@ -75,7 +75,6 @@ namespace Winged_Warfare
             _testCube.Draw(Matrix.CreateTranslation(new Vector3(0,2,_cubePos)),Player.ViewMatrix,Player.ProjectionMatrix);
             _cubePos += 1;
             Debug.WriteLineIf(_cubePos>150,_cubePos);
-            Debug.WriteLineIf(_cubePos > 150, _cubePos);
 
 
 

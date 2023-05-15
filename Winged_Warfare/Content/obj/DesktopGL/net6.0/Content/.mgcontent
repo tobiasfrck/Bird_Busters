@@ -4,8 +4,8 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>/Users/jannikkeddy/Documents/GitHub/Winged_Warfare/Winged_Warfare/Content/testContent/cubeTexture.png</File>
-    <File>/Users/jannikkeddy/Documents/GitHub/Winged_Warfare/Winged_Warfare/Content/testContent/testCube.fbx</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/cubeTexture.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testCube.fbx</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

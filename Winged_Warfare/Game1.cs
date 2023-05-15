@@ -76,7 +76,7 @@ namespace Winged_Warfare
             _cubePos += 1;
             Debug.WriteLineIf(_cubePos>150,_cubePos);
 
-
+            Debug.WriteLine("Test");
 
             base.Draw(gameTime);
         }

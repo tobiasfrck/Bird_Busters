@@ -34,7 +34,7 @@ namespace Winged_Warfare
             // TODO: Add your initialization logic here
             // Initialize camera in Game1.cs because of "No Graphics Device Service" problem.
             Player.CamPosition = new Vector3(0f, 2f, -100f);
-            Player.CamTarget = new Vector3(0f, 0f, 0f);
+            Player.CamTarget = new Vector3(0f, 2f, -99f);
             Player.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), GraphicsDevice.DisplayMode.AspectRatio, 1f, 1000f);
             Player.ViewMatrix = Matrix.CreateLookAt(Player.CamPosition, Player.CamTarget, Vector3.Up);
             Debug.WriteLine("Camera initialized in Camera.cs.");
@@ -57,7 +57,7 @@ namespace Winged_Warfare
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            Debug.WriteLine(Keyboard.GetState().IsKeyDown(Keys.Escape));
+
 
             // TODO: Add your update logic here
 
@@ -74,8 +74,8 @@ namespace Winged_Warfare
             GraphicsDevice.RasterizerState = rasterizerState;
 
             // TODO: Delete testing code
-            _testCube.Draw(Matrix.CreateTranslation(new Vector3(0,2,_cubePos)),Player.ViewMatrix,Player.ProjectionMatrix);
-            _cubePos += 1;
+            _testCube.Draw(Matrix.CreateTranslation(new Vector3(0,2,-90)),Player.ViewMatrix,Player.ProjectionMatrix);
+            //_cubePos += 1;
             //Debug.WriteLineIf(_cubePos>150,_cubePos);
 
 

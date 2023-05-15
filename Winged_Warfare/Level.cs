@@ -1,4 +1,8 @@
-﻿namespace Winged_Warfare
+﻿using System.Diagnostics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+namespace Winged_Warfare
 {
     //Does everything concerning the current run and level
     //Loads level, spawns animals, has timer, checks end conditions, ends game.

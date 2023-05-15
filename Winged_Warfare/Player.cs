@@ -1,11 +1,13 @@
-﻿using Microsoft.Xna.Framework;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Winged_Warfare
 {
     //Does most of the stuff the player does. So:
     //Movement, has camera, has position, has bounding-box, has powerUps, has life.
-    public class Player : Game
+    public class Player
     {
         //Camera
         public static Vector3 CamTarget;

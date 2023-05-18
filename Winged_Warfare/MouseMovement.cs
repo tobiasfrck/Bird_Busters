@@ -27,8 +27,8 @@ namespace Winged_Warfare
         { 
             //Graphik Einstellungen automatisch Hinzufügen
             mouse = Mouse.GetState();
-            Player.setX((float)(mouse.X-width/2)/1000);
-            Player.setY((float)(mouse.Y-hight/2)/1000);
+            PlayerMovement.setX((float)(mouse.X-width/2)/1000);
+            PlayerMovement.setY((float)(mouse.Y-hight/2)/1000);
 
 
             if (!Keyboard.GetState().IsKeyDown(Keys.L))

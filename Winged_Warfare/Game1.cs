@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,11 +15,17 @@ namespace Winged_Warfare
         private SpriteBatch _spriteBatch;
 
         //TODO: Delete testing variables
-        private Model _testCube;
+        public Model TestCube;
         private int _cubePos=-100;
         //---------------------------
- 
 
+        //dictionary to look up models by name
+        public static Dictionary<string, Model> Models = new();
+        
+        //contains all model names
+        private static readonly string[] _modelNames = {
+            "testContent/testCube"
+        };
 
         //Level
         private Level _level;
@@ -27,6 +35,15 @@ namespace Winged_Warfare
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = false;
+ 
+        }
+
+        private void LoadModels()
+        {
+            foreach (var modelName in _modelNames)
+            {
+                Models.Add(modelName, Content.Load<Model>(modelName));
+            }
         }
 
         protected override void Initialize()
@@ -40,7 +57,6 @@ namespace Winged_Warfare
             Debug.WriteLine("Camera initialized in Camera.cs.");
             // Initialize camera end
 
-            _level = new Level();
 
             Debug.WriteLine("Game initialized in Game1.cs.");
             MouseMovement.Init();
@@ -51,7 +67,10 @@ namespace Winged_Warfare
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: use this.Content to load your game content here
-            _testCube = Content.Load<Model>("testContent/testCube");
+            TestCube = Content.Load<Model>("testContent/testCube");
+            LoadModels();
+            _level = new Level();
+            _level.LoadLevel("Levels/sampleLevel.txt");
         }
 
         protected override void Update(GameTime gameTime)
@@ -75,11 +94,14 @@ namespace Winged_Warfare
             GraphicsDevice.RasterizerState = rasterizerState;
 
             // TODO: Delete testing code
-            _testCube.Draw(Matrix.CreateTranslation(new Vector3(0,2,-90)),Player.ViewMatrix,Player.ProjectionMatrix);
+             Matrix world = Matrix.CreateScale(0.1f);
+             world *= Matrix.CreateRotationX(MathHelper.ToRadians(90));
+             world *= Matrix.CreateTranslation(new Vector3(0, 2, -90));
+            TestCube.Draw(world,Player.ViewMatrix,Player.ProjectionMatrix);
             //_cubePos += 1;
             //Debug.WriteLineIf(_cubePos>150,_cubePos);
 
-
+            _level.DrawModels();
             base.Draw(gameTime);
         }
 

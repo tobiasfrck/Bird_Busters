@@ -1,0 +1,2 @@
+model,-2,0,-90,0,0,0,0.5,0.5,0.5,testContent/testCube
+spawn,0,0,0,0,0,0,1,1,1,[WEITERE EIGENSCHAFTEN VON SPAWNPOINTS]

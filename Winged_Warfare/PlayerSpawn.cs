@@ -20,7 +20,7 @@ namespace Winged_Warfare
 
         public override void Draw()
         {
-            Debug.WriteLine("This is the player spawn. No drawing needed.");
+            //Debug.WriteLine("This is the player spawn. No drawing needed.");
         }
 
         public override void Update()

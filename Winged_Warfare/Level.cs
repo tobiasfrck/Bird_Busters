@@ -24,7 +24,6 @@ namespace Winged_Warfare
         public Level()
         {
             Player1 = new Player();
-            CreateObjects();
         }
 
         public void UpdateObjects()
@@ -47,8 +46,7 @@ namespace Winged_Warfare
         public void LoadLevel(string levelPath)
         {
             //Read content of specified level file.
-            //Return 2D string array with objects and their properties.
-
+            //add objects to list.
             string[] lines;
             try
             {
@@ -118,11 +116,6 @@ namespace Winged_Warfare
             CultureInfo culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
             culture.NumberFormat.NumberDecimalSeparator = ".";
             return new Vector3(float.Parse(vectorAttributes[startIndex],NumberStyles.Any,culture), float.Parse(vectorAttributes[startIndex+1], NumberStyles.Any, culture), float.Parse(vectorAttributes[startIndex+2], NumberStyles.Any, culture));
-        }
-        public void CreateObjects()
-        {
-            //Take 2D string array and create each object and sort them into lists.
-
         }
     }
 }

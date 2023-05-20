@@ -22,8 +22,8 @@ namespace Winged_Warfare
         {
         }
 
-        // Think of methods to spawn enemies
-        // Where do we draw the enemies? Here?
+        // TODO: Think of methods to spawn enemies
+        // Where do we draw the birds? Here?
 
     }
 }

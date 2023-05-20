@@ -31,7 +31,7 @@ namespace Winged_Warfare
          
         public override void Draw()
         {
-            Debug.WriteLine("DrawModel");
+            //Debug.WriteLine("DrawModel");
             UpdateWorldMatrix();
             if (Model != null)
                 _model.Draw(WorldMatrix, Player.ViewMatrix, Player.ProjectionMatrix);

@@ -40,6 +40,7 @@ namespace Winged_Warfare
 
         private void LoadModels()
         {
+            //create dictionary with all models
             foreach (var modelName in _modelNames)
             {
                 Models.Add(modelName, Content.Load<Model>(modelName));
@@ -68,6 +69,7 @@ namespace Winged_Warfare
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: use this.Content to load your game content here
             TestCube = Content.Load<Model>("testContent/testCube");
+
             LoadModels();
             _level = new Level();
             _level.LoadLevel("Levels/sampleLevel.txt");
@@ -80,7 +82,7 @@ namespace Winged_Warfare
 
             // TODO: Add your update logic here
 
-
+            _level.UpdateObjects();
             Player.Update();
             MouseMovement.Update();
             base.Update(gameTime);

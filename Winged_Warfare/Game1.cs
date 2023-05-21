@@ -30,6 +30,9 @@ namespace Winged_Warfare
         //Level
         private Level _level;
 
+        //Menu
+        private MenuManager _menuManager;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -64,7 +67,11 @@ namespace Winged_Warfare
 
 
             Debug.WriteLine("Game initialized in Game1.cs.");
+
             MouseMovement.Init();
+
+            //TODO: Replace textures with actual textures
+            _menuManager = new MenuManager(_spriteBatch, Content.Load<Texture2D>("testContent/testCube"), Content.Load<Texture2D>("testContent/testCube"), Content.Load<Texture2D>("testContent/testCube"), Content.Load<Texture2D>("testContent/testCube"));
             base.Initialize();
         }
 
@@ -73,6 +80,8 @@ namespace Winged_Warfare
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: use this.Content to load your game content here
             TestCube = Content.Load<Model>("testContent/testCube");
+
+            //TODO: Load textures for _menuManager
 
             LoadModels();
             _level = new Level();
@@ -86,6 +95,7 @@ namespace Winged_Warfare
 
             // TODO: Add your update logic here
 
+            _menuManager.Update();
             _level.UpdateObjects();
             Player.Update();
             MouseMovement.Update();
@@ -109,6 +119,7 @@ namespace Winged_Warfare
             
             //Debug.WriteLine("FPS: " + 1000/gameTime.ElapsedGameTime.TotalMilliseconds); //Outputs FPS to console
             _level.DrawModels();
+            _menuManager.Draw();
             base.Draw(gameTime);
         }
 

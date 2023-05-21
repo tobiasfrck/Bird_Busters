@@ -1,18 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Winged_Warfare
 {
     internal class Button
     {
+        // To avoid overlapping buttons
+        private static int _activeButtons = 0;
+        private bool _interacted = false;
+        // ------------------------------
+
         private static int _buttonCount = 0;
         private int _buttonID = 0;
+
+
         private Texture2D _texture;
         private Texture2D _hoverTexture;
         private Texture2D _pressedTexture;
@@ -24,7 +33,18 @@ namespace Winged_Warfare
         private Color _textPressedColor;
         private Vector2 _textDimension;
 
-        public Button(Vector2 position, Texture2D texture, Texture2D hoverTexture, Texture2D pressedTexture,
+        //Anchor Point of button:
+        //_________
+        //|   x   |
+        //|       |
+        //|       | 
+        //|_______|
+        //x = Anchor Point -> Center of the top of the button
+        
+
+
+
+        public Button(Vector2 position, Vector2 textureDim, Texture2D texture, Texture2D hoverTexture, Texture2D pressedTexture,
             string text, SpriteFont font, Color textColor, Color textHoverColor, Color textPressedColor)
         {
             _texture = texture;
@@ -35,7 +55,7 @@ namespace Winged_Warfare
             _textColor = textColor;
             _textHoverColor = textHoverColor;
             _textPressedColor = textPressedColor;
-            _rectangle = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
+            _rectangle = new Rectangle((int)position.X-((int)textureDim.X/2), (int)position.Y, (int)textureDim.X, (int)textureDim.Y);
             _textDimension = _font.MeasureString(_text);
             _buttonCount++;
             _buttonID = _buttonCount;
@@ -49,7 +69,25 @@ namespace Winged_Warfare
         /// <returns></returns>
         public bool IsHovering(Vector2 mousePosition)
         {
-            return _rectangle.Contains(mousePosition);
+            if (_rectangle.Contains(mousePosition))
+            {
+                if (!_interacted)
+                {
+                    _interacted = true;
+                    _activeButtons++;
+                }
+                return true;
+            }
+            else
+            {
+                if (_interacted)
+                {
+                    _interacted = false;
+                    _activeButtons--;
+                }
+                return false;
+            }
+
         }
 
         /// <summary>
@@ -73,6 +111,17 @@ namespace Winged_Warfare
         public bool IsClicked(Vector2 currentMousePosition, bool wasLeftButtonPressed, bool isLeftButtonReleased)
         {
             return _rectangle.Contains(currentMousePosition) && wasLeftButtonPressed && isLeftButtonReleased;
+        }
+
+        public void Update(Vector2 mousePosition, bool wasLeftButtonPressed, bool isLeftButtonReleased)
+        {
+            //Print button state with id
+            //Debug.WriteLine("Button " + _buttonID + " is hovering: " + IsHovering(mousePosition) + " and pressed: " + IsPressed(mousePosition, isLeftButtonPressed));
+            //Debug.WriteLine("Active buttons: " + _activeButtons);
+            if (IsClicked(mousePosition,wasLeftButtonPressed, isLeftButtonReleased))
+            {
+                Debug.WriteLine("Button " + _buttonID + " was clicked.");
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 mousePosition, bool isLeftButtonPressed)
@@ -101,7 +150,12 @@ namespace Winged_Warfare
 
         public string GetTextAndId()
         {
-            return _text+ _buttonID;
+            return _text + _buttonID;
+        }
+
+        public static bool IsButtonConflict()
+        {
+            return _activeButtons > 1;
         }
     }
 }

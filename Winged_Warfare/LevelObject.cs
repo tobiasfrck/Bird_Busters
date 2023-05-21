@@ -26,6 +26,9 @@ namespace Winged_Warfare
             _line = line;
         }
 
+        /// <summary>
+        /// Call this method after changing the position, rotation or scale of the object, to update the world matrix.
+        /// </summary>
         public void UpdateWorldMatrix()
         {
             _worldMatrix = Matrix.CreateScale(Scale) * Matrix.CreateRotationX(MathHelper.ToRadians(Rotation.X)) * Matrix.CreateRotationY(MathHelper.ToRadians(Rotation.Y)) * Matrix.CreateRotationZ(MathHelper.ToRadians(Rotation.Z)) * Matrix.CreateTranslation(Position);

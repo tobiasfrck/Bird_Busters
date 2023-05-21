@@ -34,8 +34,12 @@ namespace Winged_Warfare
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            //IsFixedTimeStep = false; // relevant for frameRate; maybe later
             IsMouseVisible = false;
- 
+            _graphics.IsFullScreen = false;
+            _graphics.PreferredBackBufferWidth = 1920; // you can change this if its too big or too small for your screen
+            _graphics.PreferredBackBufferHeight = 1080; // you can change this if its too big or too small for your screen
+            //_graphics.ApplyChanges(); // apply changes to the graphics device manager; not needed here but if you change the screen size during runtime you need this
         }
 
         private void LoadModels()
@@ -102,7 +106,8 @@ namespace Winged_Warfare
             TestCube.Draw(world,Player.ViewMatrix,Player.ProjectionMatrix);
             //_cubePos += 1;
             //Debug.WriteLineIf(_cubePos>150,_cubePos);
-
+            
+            //Debug.WriteLine("FPS: " + 1000/gameTime.ElapsedGameTime.TotalMilliseconds); //Outputs FPS to console
             _level.DrawModels();
             base.Draw(gameTime);
         }

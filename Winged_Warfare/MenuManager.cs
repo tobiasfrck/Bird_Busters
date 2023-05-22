@@ -38,7 +38,26 @@ namespace Winged_Warfare
             _gameEndedBackground = gameEndedBackground;
 
             // Do NOT change the order of the buttons; This WILL break the code. lol
-            createMainMenu(); 
+            createMainMenu();
+            _menuButtons[0].setClick(SwitchToGame); //action for button 0
+            _menuButtons[2].setClick(CloseGame); //action for button 1
+
+            foreach (Button button in _menuButtons)
+            {
+                Debug.WriteLine(button.GetTextAndId());
+            }
+            foreach (Button button in _settingsButtons)
+            {
+                Debug.WriteLine(button.GetTextAndId());
+            }
+            foreach(Button button in _gameButtons)
+            {
+                Debug.WriteLine(button.GetTextAndId());
+            }
+            foreach(Button button in _gameEndedButtons)
+            {
+                Debug.WriteLine(button.GetTextAndId());
+            }
         }
 
         public void Update()
@@ -100,6 +119,16 @@ namespace Winged_Warfare
             _menuButtons.Add(new Button(new Vector2(Game1.Width/2f, 25), new Vector2(640,360),Game1.ButtonPlaceholder, Game1.ButtonHoverPlaceholder, Game1.ButtonPressedPlaceholder, "Start Game", Game1.TestFont, Color.Black, Color.Black, Color.Black));
             _menuButtons.Add(new Button(new Vector2(Game1.Width / 2f, 400), new Vector2(640, 360),Game1.ButtonPlaceholder, Game1.ButtonHoverPlaceholder, Game1.ButtonPressedPlaceholder, "Settings", Game1.TestFont, Color.Black, Color.Black, Color.Black));
             _menuButtons.Add(new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360),Game1.ButtonPlaceholder, Game1.ButtonHoverPlaceholder, Game1.ButtonPressedPlaceholder, "Exit", Game1.TestFont, Color.Black, Color.Black, Color.Black));
+        }
+
+        public void SwitchToGame()
+        {
+            _state = 2;
+        }
+
+        public void CloseGame()
+        {
+            Game1.exit = true;
         }
 
         public int GetState() => _state;

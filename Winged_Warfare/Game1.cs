@@ -11,6 +11,7 @@ namespace Winged_Warfare
     //States: in menu, in settings, in game, game ended
     public class Game1 : Game
     {
+        public static bool exit = false;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         public static int Width  = 1920;
@@ -135,6 +136,12 @@ namespace Winged_Warfare
                     Debug.WriteLine("Error: Menu state not found.");
                     break;
             }
+
+            if(exit)
+            {
+                Exit();
+            }
+
             base.Update(gameTime);
         }
 
@@ -169,6 +176,7 @@ namespace Winged_Warfare
             base.Draw(gameTime);
         }
 
+        
 
     }
 }

@@ -19,6 +19,7 @@ namespace Winged_Warfare
 
         //TODO: Delete testing variables
         public Model TestCube;
+        public Model planeModel;
         private int _cubePos = -100;
         //---------------------------
 
@@ -29,7 +30,8 @@ namespace Winged_Warfare
 
         //contains all model names
         private static readonly string[] _modelNames = {
-            "testContent/testCube"
+            "testContent/testCube",
+            "testContent/planeTest"
         };
         public static SpriteFont TestFont;
         public static Texture2D ButtonPlaceholder;
@@ -158,6 +160,8 @@ namespace Winged_Warfare
                 world *= Matrix.CreateRotationX(MathHelper.ToRadians(90));
                 world *= Matrix.CreateTranslation(new Vector3(0, 2, -90));
                 TestCube.Draw(world, Player.ViewMatrix, Player.ProjectionMatrix);
+                planeModel = Models["testContent/planeTest"];
+                planeModel.Draw(Matrix.CreateTranslation(new Vector3(0,-5,0)), Player.ViewMatrix, Player.ProjectionMatrix);
                 _level.DrawModels();
             }
             else //everything that should be drawn in menu state

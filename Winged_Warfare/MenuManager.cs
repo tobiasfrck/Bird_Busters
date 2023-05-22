@@ -26,12 +26,12 @@ namespace Winged_Warfare
         private List<Button> _gameEndedButtons = new();
         private int _state = 0; // 0 = menu, 1 = settings, 2 = game, 3 = game ended
 
-        private float _horizontalCenter=0;
+        private float _horizontalCenter = 0;
 
         private MouseState _currentMouseState;
         private MouseState _previousMouseState;
 
-        public MenuManager(SpriteBatch spriteBatch,Texture2D menuBackground, Texture2D settingsBackground, Texture2D gameBackground, Texture2D gameEndedBackground)
+        public MenuManager(SpriteBatch spriteBatch, Texture2D menuBackground, Texture2D settingsBackground, Texture2D gameBackground, Texture2D gameEndedBackground)
         {
             _spriteBatch = spriteBatch;
             _menuBackground = menuBackground;
@@ -51,11 +51,11 @@ namespace Winged_Warfare
             {
                 Debug.WriteLine(button.GetTextAndId());
             }
-            foreach(Button button in _gameButtons)
+            foreach (Button button in _gameButtons)
             {
                 Debug.WriteLine(button.GetTextAndId());
             }
-            foreach(Button button in _gameEndedButtons)
+            foreach (Button button in _gameEndedButtons)
             {
                 Debug.WriteLine(button.GetTextAndId());
             }
@@ -72,8 +72,28 @@ namespace Winged_Warfare
                 case 0:
                     foreach (Button btn in _menuButtons)
                     {
-                        btn.Update(mousePosition,_previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
+                        btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
                     }
+                    break;
+                case 1:
+                    foreach (Button btn in _settingsButtons)
+                    {
+                        btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
+                    }
+                    break;
+                case 2:
+                    foreach (Button btn in _gameButtons)
+                    {
+                        btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
+                    }
+                    break;
+                case 3:
+                    foreach (Button btn in _gameEndedButtons)
+                    {
+                        btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
+                    }
+                    break;
+                default:
                     break;
             }
 
@@ -91,7 +111,7 @@ namespace Winged_Warfare
                 case 0:
                     foreach (Button btn in _menuButtons)
                     {
-                        btn.Draw(_spriteBatch,_currentMouseState.Position.ToVector2(),_currentMouseState.LeftButton == ButtonState.Pressed);
+                        btn.Draw(_spriteBatch, _currentMouseState.Position.ToVector2(), _currentMouseState.LeftButton == ButtonState.Pressed);
                     }
                     break;
                 case 1:
@@ -132,7 +152,7 @@ namespace Winged_Warfare
 
         public void CreateSettingsMenu()
         {
-            Button ToMenu = new Button(new Vector2(Game1.Width/2f, 785), new Vector2(640, 360), Game1.ButtonPlaceholder, Game1.ButtonHoverPlaceholder, Game1.ButtonPressedPlaceholder, "Back", Game1.TestFont, Color.Black, Color.Green,Color.Red);
+            Button ToMenu = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360), Game1.ButtonPlaceholder, Game1.ButtonHoverPlaceholder, Game1.ButtonPressedPlaceholder, "Back", Game1.TestFont, Color.Black, Color.Green, Color.Red);
             _settingsButtons.Add(ToMenu);
             ToMenu.setClick(SwitchToMenu);
         }
@@ -144,21 +164,26 @@ namespace Winged_Warfare
         //All actions for the buttons
         public void SwitchToMenu()
         {
+            Button.ResetConflicts();
             SetState(0);
         }
 
         public void SwitchToSettings()
         {
+            Button.ResetConflicts();
             SetState(1);
         }
 
         public void SwitchToGame()
         {
+            //Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
+            Button.ResetConflicts();
             SetState(2);
         }
 
         public void SwitchToEndscreen()
         {
+            Button.ResetConflicts();
             SetState(3);
         }
 

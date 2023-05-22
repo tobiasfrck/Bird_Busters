@@ -160,6 +160,11 @@ namespace Winged_Warfare
             click = del;
         }
 
+        public static void ResetConflicts()
+        {
+            _activeButtons = 0;
+        }
+
         public static bool IsButtonConflict()
         {
             return _activeButtons > 1;

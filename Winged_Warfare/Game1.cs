@@ -161,6 +161,7 @@ namespace Winged_Warfare
 
             if (_menuManager.GetState() == 2) //everything that should be drawn in game state
             {
+                GraphicsDevice.DepthStencilState = DepthStencilState.Default; //This fixed broken Models with SpriteBatch and 3D Models
                 Matrix world = Matrix.CreateScale(0.1f);
                 world *= Matrix.CreateRotationX(MathHelper.ToRadians(90));
                 world *= Matrix.CreateTranslation(new Vector3(0, 2, -90));

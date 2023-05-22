@@ -24,12 +24,14 @@ namespace Winged_Warfare
         private List<Button> _settingsButtons = new();
         private List<Button> _gameButtons = new();
         private List<Button> _gameEndedButtons = new();
-        private int _state = 2; // 0 = menu, 1 = settings, 2 = game, 3 = game ended
+        private int _state = 0; // 0 = menu, 1 = settings, 2 = game, 3 = game ended
+
+        private float _horizontalCenter = 0;
 
         private MouseState _currentMouseState;
         private MouseState _previousMouseState;
 
-        public MenuManager(SpriteBatch spriteBatch,Texture2D menuBackground, Texture2D settingsBackground, Texture2D gameBackground, Texture2D gameEndedBackground)
+        public MenuManager(SpriteBatch spriteBatch, Texture2D menuBackground, Texture2D settingsBackground, Texture2D gameBackground, Texture2D gameEndedBackground)
         {
             _spriteBatch = spriteBatch;
             _menuBackground = menuBackground;
@@ -38,7 +40,26 @@ namespace Winged_Warfare
             _gameEndedBackground = gameEndedBackground;
 
             // Do NOT change the order of the buttons; This WILL break the code. lol
-            createMainMenu(); 
+            CreateMainMenu();
+            CreateSettingsMenu();
+
+            foreach (Button button in _menuButtons)
+            {
+                Debug.WriteLine(button.GetTextAndId());
+            }
+            foreach (Button button in _settingsButtons)
+            {
+                Debug.WriteLine(button.GetTextAndId());
+            }
+            foreach (Button button in _gameButtons)
+            {
+                Debug.WriteLine(button.GetTextAndId());
+            }
+            foreach (Button button in _gameEndedButtons)
+            {
+                Debug.WriteLine(button.GetTextAndId());
+            }
+            _horizontalCenter = Game1.Width / 2f;
         }
 
         public void Update()
@@ -51,8 +72,28 @@ namespace Winged_Warfare
                 case 0:
                     foreach (Button btn in _menuButtons)
                     {
-                        btn.Update(mousePosition,_previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
+                        btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
                     }
+                    break;
+                case 1:
+                    foreach (Button btn in _settingsButtons)
+                    {
+                        btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
+                    }
+                    break;
+                case 2:
+                    foreach (Button btn in _gameButtons)
+                    {
+                        btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
+                    }
+                    break;
+                case 3:
+                    foreach (Button btn in _gameEndedButtons)
+                    {
+                        btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
+                    }
+                    break;
+                default:
                     break;
             }
 
@@ -60,6 +101,7 @@ namespace Winged_Warfare
             {
                 Debug.WriteLine("Button Conflict.");
             }
+            _horizontalCenter = Game1.Width / 2f;
         }
 
         public void Draw()
@@ -69,7 +111,7 @@ namespace Winged_Warfare
                 case 0:
                     foreach (Button btn in _menuButtons)
                     {
-                        btn.Draw(_spriteBatch,_currentMouseState.Position.ToVector2(),_currentMouseState.LeftButton == ButtonState.Pressed);
+                        btn.Draw(_spriteBatch, _currentMouseState.Position.ToVector2(), _currentMouseState.LeftButton == ButtonState.Pressed);
                     }
                     break;
                 case 1:
@@ -95,14 +137,59 @@ namespace Winged_Warfare
             }
         }
 
-        public void createMainMenu()
+        public void CreateMainMenu()
         {
-            _menuButtons.Add(new Button(new Vector2(Game1.Width/2f, 25), new Vector2(640,360),Game1.ButtonPlaceholder, Game1.ButtonHoverPlaceholder, Game1.ButtonPressedPlaceholder, "Start Game", Game1.TestFont, Color.Black, Color.Black, Color.Black));
-            _menuButtons.Add(new Button(new Vector2(Game1.Width / 2f, 400), new Vector2(640, 360),Game1.ButtonPlaceholder, Game1.ButtonHoverPlaceholder, Game1.ButtonPressedPlaceholder, "Settings", Game1.TestFont, Color.Black, Color.Black, Color.Black));
-            _menuButtons.Add(new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360),Game1.ButtonPlaceholder, Game1.ButtonHoverPlaceholder, Game1.ButtonPressedPlaceholder, "Exit", Game1.TestFont, Color.Black, Color.Black, Color.Black));
+            Button StartGame = new Button(new Vector2(Game1.Width / 2f, 25), new Vector2(640, 360), Game1.ButtonPlaceholder, Game1.ButtonHoverPlaceholder, Game1.ButtonPressedPlaceholder, "Start Game", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button Settings = new Button(new Vector2(Game1.Width / 2f, 400), new Vector2(640, 360), Game1.ButtonPlaceholder, Game1.ButtonHoverPlaceholder, Game1.ButtonPressedPlaceholder, "Settings", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button ExitGame = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360), Game1.ButtonPlaceholder, Game1.ButtonHoverPlaceholder, Game1.ButtonPressedPlaceholder, "Exit", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            _menuButtons.Add(StartGame);
+            _menuButtons.Add(Settings);
+            _menuButtons.Add(ExitGame);
+            StartGame.setClick(SwitchToGame); //action for button 0
+            Settings.setClick(SwitchToSettings); //action for button 1
+            ExitGame.setClick(CloseGame);
+        }
+
+        public void CreateSettingsMenu()
+        {
+            Button ToMenu = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360), Game1.ButtonPlaceholder, Game1.ButtonHoverPlaceholder, Game1.ButtonPressedPlaceholder, "Back", Game1.TestFont, Color.Black, Color.Green, Color.Red);
+            _settingsButtons.Add(ToMenu);
+            ToMenu.setClick(SwitchToMenu);
         }
 
         public int GetState() => _state;
         public void SetState(int state) => _state = state;
+
+        //---------------------------
+        //All actions for the buttons
+        public void SwitchToMenu()
+        {
+            Button.ResetConflicts();
+            SetState(0);
+        }
+
+        public void SwitchToSettings()
+        {
+            Button.ResetConflicts();
+            SetState(1);
+        }
+
+        public void SwitchToGame()
+        {
+            //Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
+            Button.ResetConflicts();
+            SetState(2);
+        }
+
+        public void SwitchToEndscreen()
+        {
+            Button.ResetConflicts();
+            SetState(3);
+        }
+
+        public void CloseGame()
+        {
+            Game1.exit = true;
+        }
     }
 }

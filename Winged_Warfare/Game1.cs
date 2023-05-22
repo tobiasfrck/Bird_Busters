@@ -11,6 +11,7 @@ namespace Winged_Warfare
     //States: in menu, in settings, in game, game ended
     public class Game1 : Game
     {
+        public static bool exit = false;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         public static int Width  = 1920;
@@ -137,6 +138,12 @@ namespace Winged_Warfare
                     Debug.WriteLine("Error: Menu state not found.");
                     break;
             }
+
+            if(exit)
+            {
+                Exit();
+            }
+
             base.Update(gameTime);
         }
 
@@ -156,6 +163,7 @@ namespace Winged_Warfare
 
             if (_menuManager.GetState() == 2) //everything that should be drawn in game state
             {
+                GraphicsDevice.DepthStencilState = DepthStencilState.Default; //This fixed broken Models with SpriteBatch and 3D Models
                 Matrix world = Matrix.CreateScale(0.1f);
                 world *= Matrix.CreateRotationX(MathHelper.ToRadians(90));
                 world *= Matrix.CreateTranslation(new Vector3(0, 2, -90));
@@ -173,6 +181,7 @@ namespace Winged_Warfare
             base.Draw(gameTime);
         }
 
+        
 
     }
 }

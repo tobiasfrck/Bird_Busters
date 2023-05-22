@@ -21,6 +21,7 @@ namespace Winged_Warfare
         private static int _buttonCount = 0;
         private int _buttonID = 0;
 
+        private Delegate click;
 
         private Texture2D _texture;
         private Texture2D _hoverTexture;
@@ -57,8 +58,8 @@ namespace Winged_Warfare
             _textPressedColor = textPressedColor;
             _rectangle = new Rectangle((int)position.X-((int)textureDim.X/2), (int)position.Y, (int)textureDim.X, (int)textureDim.Y);
             _textDimension = _font.MeasureString(_text);
-            _buttonCount++;
             _buttonID = _buttonCount;
+            _buttonCount++;
         }
 
         /// <summary>
@@ -121,6 +122,7 @@ namespace Winged_Warfare
             if (IsClicked(mousePosition,wasLeftButtonPressed, isLeftButtonReleased))
             {
                 Debug.WriteLine("Button " + _buttonID + " was clicked.");
+                click?.DynamicInvoke(); // execute click action if click is not null
             }
         }
 
@@ -150,12 +152,24 @@ namespace Winged_Warfare
 
         public string GetTextAndId()
         {
-            return _text + _buttonID;
+            return _text + " | " + _buttonID;
+        }
+
+        public void setClick(Delegate del)
+        {
+            click = del;
+        }
+
+        public static void ResetConflicts()
+        {
+            _activeButtons = 0;
         }
 
         public static bool IsButtonConflict()
         {
             return _activeButtons > 1;
         }
+
+        
     }
 }

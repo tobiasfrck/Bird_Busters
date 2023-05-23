@@ -31,29 +31,29 @@ namespace Winged_Warfare
 
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
-                change.Z += (Position.X - target.X) * speed;
-                change.X += -(Position.Z - target.Z) * speed;
+                change.Z += (Position.X - target.X);
+                change.X += -(Position.Z - target.Z);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
-                change.Z += -(Position.X - target.X) * speed;
-                change.X += (Position.Z - target.Z) * speed;
+                change.Z += -(Position.X - target.X);
+                change.X += (Position.Z - target.Z);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
-                change.Z += -(Position.Z - target.Z) * speed;
-                change.Y += -(Position.Y - target.Y) * speed;
-                change.X += -(Position.X - target.X) * speed;
+                change.Z += -(Position.Z - target.Z);
+                change.Y += -(Position.Y - target.Y);
+                change.X += -(Position.X - target.X);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
-                change.Z += (Position.Z - target.Z) * speed;
-                change.Y += (Position.Y - target.Y) * speed;
-                change.X += (Position.X - target.X) * speed;
+                change.Z += (Position.Z - target.Z);
+                change.Y += (Position.Y - target.Y);
+                change.X += (Position.X - target.X);
             }
 
-            Player.SetCamPosition(Position + change);
-            Player.SetCamTarget(target + change);
+            Player.SetCamPosition(Position + (change*speed));
+            Player.SetCamTarget(target + (change*speed));
 
             if (Keyboard.GetState().IsKeyDown(Keys.Space))
             {

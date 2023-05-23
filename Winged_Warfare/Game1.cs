@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Numerics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Vector3 = Microsoft.Xna.Framework.Vector3;
 
 namespace Winged_Warfare
 {
@@ -22,6 +24,11 @@ namespace Winged_Warfare
         public Model TestCube;
         public Model planeModel;
         private int _cubePos = -100;
+        Matrix rotationmatrix;
+        Vector3 rotatedVector;
+        float angle = 0;
+
+        private float radius = 10;
         //---------------------------
 
 
@@ -144,6 +151,15 @@ namespace Winged_Warfare
                 Exit();
             }
 
+            //test
+            Vector3 save = new Vector3(Player.CamTarget.X, Player.CamTarget.Y, Player.CamTarget.Z);
+            save.Normalize();
+            rotationmatrix = Matrix.CreateRotationY(MathHelper.ToRadians(1f));
+            rotatedVector = Vector3.Transform(Player.CamPosition, rotationmatrix);
+            angle += 1f;
+            float x = (float)Math.Sin(MathHelper.ToRadians(angle)) * radius;
+            float z = (float)Math.Cos(MathHelper.ToRadians(angle)) * radius;
+            rotatedVector = Player.CamPosition + new Vector3(x, 0, z);
             base.Update(gameTime);
         }
 
@@ -171,6 +187,8 @@ namespace Winged_Warfare
                 planeModel = Models["testContent/planeTest"];
                 planeModel.Draw(Matrix.CreateTranslation(new Vector3(0,-5,0)), Player.ViewMatrix, Player.ProjectionMatrix);
                 _level.DrawModels();
+                
+                TestCube.Draw( Matrix.CreateTranslation(rotatedVector), Player.ViewMatrix, Player.ProjectionMatrix);
             }
             else //everything that should be drawn in menu state
             {

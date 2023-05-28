@@ -176,7 +176,7 @@ namespace Winged_Warfare
 
         public void SwitchToGame()
         {
-            //Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
+            Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();
             SetState(2);
         }

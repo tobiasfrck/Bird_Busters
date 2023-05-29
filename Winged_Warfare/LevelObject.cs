@@ -36,12 +36,12 @@ namespace Winged_Warfare
 
         public virtual void Draw()
         {
-            Debug.WriteLine("No Draw() method found for object in line: " + Line);
+            //Debug.WriteLine("No Draw() method found for object in line: " + Line);
         }
 
         public virtual void Update()
         {
-            Debug.WriteLine("No Update() method found for object in line: " + Line);
+            //Debug.WriteLine("No Update() method found for object in line: " + Line);
         }
 
         public int Line

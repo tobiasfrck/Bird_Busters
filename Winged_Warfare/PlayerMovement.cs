@@ -87,7 +87,8 @@ namespace Winged_Warfare
             //Soll verhindern, dass man sich um 180° über / unter dem Körper dreht (Im Moment eh sinnlos da das nicht möglich ist)
             if (y >= 3) y = 2.99f;
             if (y <= -3) y = -2.99f;
-            Debug.WriteLine("Last Y= " + y);
+            //TODO: uncomment this for debug
+            //Debug.WriteLine("Last Y= " + y);
         }
 
 

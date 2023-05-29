@@ -16,7 +16,7 @@ namespace Winged_Warfare
         public static bool exit = false;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        public static int Width  = 1920;
+        public static int Width = 1920;
         public static int Height = 1080;
 
 
@@ -146,7 +146,7 @@ namespace Winged_Warfare
                     break;
             }
 
-            if(exit)
+            if (exit)
             {
                 Exit();
             }
@@ -171,7 +171,7 @@ namespace Winged_Warfare
             GraphicsDevice.RasterizerState = rasterizerState;
 
             // TODO: Delete testing code
-            
+
             //_cubePos += 1;
             //Debug.WriteLineIf(_cubePos>150,_cubePos);
 
@@ -185,21 +185,20 @@ namespace Winged_Warfare
                 world *= Matrix.CreateTranslation(new Vector3(0, 2, -90));
                 TestCube.Draw(world, Player.ViewMatrix, Player.ProjectionMatrix);
                 planeModel = Models["testContent/planeTest"];
-                planeModel.Draw(Matrix.CreateTranslation(new Vector3(0,-5,0)), Player.ViewMatrix, Player.ProjectionMatrix);
+                planeModel.Draw(Matrix.CreateTranslation(new Vector3(0, -5, 0)), Player.ViewMatrix, Player.ProjectionMatrix);
                 _level.DrawModels();
-                
-                TestCube.Draw( Matrix.CreateTranslation(rotatedVector), Player.ViewMatrix, Player.ProjectionMatrix);
+
+                TestCube.Draw(Matrix.CreateTranslation(rotatedVector), Player.ViewMatrix, Player.ProjectionMatrix);
             }
-            else //everything that should be drawn in menu state
-            {
-                _spriteBatch.Begin();
-                _menuManager.Draw();
-                _spriteBatch.End();
-            }
+
+            _spriteBatch.Begin();
+            _menuManager.Draw();
+            _spriteBatch.End();
+
             base.Draw(gameTime);
         }
 
-        
+
 
     }
 }

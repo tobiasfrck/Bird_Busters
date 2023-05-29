@@ -121,6 +121,11 @@ namespace Winged_Warfare
                     }
                     break;
                 case 2:
+                    if (Level.getDebugMode())
+                    {
+                        Vector2 textdim = Game1.TestFont.MeasureString(Level.getDebugText());
+                        _spriteBatch.DrawString(Game1.TestFont, Level.getDebugText(), new Vector2((Game1.Width / 2f) - (textdim.X / 2f), 1000), Color.White);
+                    }
                     foreach (Button btn in _gameButtons)
                     {
                         btn.Draw(_spriteBatch, _currentMouseState.Position.ToVector2(), _currentMouseState.LeftButton == ButtonState.Pressed);

@@ -44,6 +44,31 @@ namespace Winged_Warfare
             //Debug.WriteLine("No Update() method found for object in line: " + Line);
         }
 
+
+        //Generates a new line for the level file, based on the current position, rotation and scale.
+        public virtual string RegenerateLine()
+        {
+            return "No RegenerateLine() method found for object in line: " + Line;
+        }
+
+        public void Move(Vector3 moveVector)
+        {
+            Position += moveVector;
+            UpdateWorldMatrix();
+        }
+
+        public void Rotate(Vector3 rotateVector)
+        {
+            Rotation += rotateVector;
+            UpdateWorldMatrix();
+        }
+
+        public void ScaleObject(Vector3 scaleVector)
+        {
+            Scale += scaleVector;
+            UpdateWorldMatrix();
+        }
+
         public int Line
         {
             get => _line;

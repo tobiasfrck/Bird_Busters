@@ -237,14 +237,15 @@ namespace Winged_Warfare
             // save changes to selected object to level file
             if (IsPressed(Keys.RightControl))
             {
+                _levelContent[_selectedObject] = _levelObjects[_selectedObject].RegenerateLine();
                 SaveLevel();
             }
 
             // reloads selected object with original values
             if (IsPressed(Keys.OemMinus))
             {
-                LevelObject toAdd = LineToLevelObject(_levelContent[_selectedObject], _selectedObject);
-                if (toAdd != null) { _levelObjects.Add(toAdd); }
+                LevelObject toReplace = LineToLevelObject(_levelContent[_selectedObject], _selectedObject);
+                if (toReplace != null) { _levelObjects[_selectedObject]=toReplace;}
             }
 
            
@@ -289,7 +290,6 @@ namespace Winged_Warfare
                     Debug.WriteLine("Error in debug tool.");
                     break;
             }
-            _levelContent[_selectedObject] = _levelObjects[_selectedObject].RegenerateLine();
         }
 
 

@@ -34,7 +34,8 @@ namespace Winged_Warfare
             change = new Vector3(0, 0, 0);
 
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space)&&isGrounded==true) { 
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && isGrounded == true)
+            {
                 velocity = 0.15f;
                 isGrounded = false;
             }
@@ -53,23 +54,23 @@ namespace Winged_Warfare
             if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
                 change.Z += -(Position.Z - target.Z);
-//                change.Y += -(Position.Y - target.Y);
+                //change.Y += -(Position.Y - target.Y);
                 change.X += -(Position.X - target.X);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
                 change.Z += (Position.Z - target.Z);
-//                change.Y += (Position.Y - target.Y);
+                //change.Y += (Position.Y - target.Y);
                 change.X += (Position.X - target.X);
             }
 
 
 
-//            if (Keyboard.GetState().IsKeyDown(Keys.Space))
-//            {
-//                Player.SetCamPosition(Player.GetCamPosition() + new Vector3(0, speed, 0));
-//                Player.SetCamTarget(Player.GetCamTarget() + new Vector3(0, speed, 0));
-//            }
+            //            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            //            {
+            //                Player.SetCamPosition(Player.GetCamPosition() + new Vector3(0, speed, 0));
+            //                Player.SetCamTarget(Player.GetCamTarget() + new Vector3(0, speed, 0));
+            //            }
             if (Keyboard.GetState().IsKeyDown(Keys.LeftControl))
             {
                 Player.SetCamPosition(Player.GetCamPosition() - new Vector3(0, speed, 0));
@@ -86,8 +87,6 @@ namespace Winged_Warfare
             }
 
 
-
-
             Position.Y = Position.Y + velocity;
             velocity += gravity;
 
@@ -101,7 +100,7 @@ namespace Winged_Warfare
             Player.SetCamTarget(target + (change * speed));
 
 
-            //Dehen um Y-Achse
+            //Drehen um Y-Achse
             target = new Vector3((float)Math.Cos(x), 0, (float)Math.Sin(x));
             Player.SetCamTarget(Player.GetCamPosition() + target);
 
@@ -111,11 +110,12 @@ namespace Winged_Warfare
             Player.SetCamTarget(Player.GetCamTarget() - target);
         }
 
-        public static void setX(float n)
+        public static void SetX(float n)
         {
             x += n;
         }
-        public static void setY(float n)
+
+        public static void SetY(float n)
         {
 
             y += n;

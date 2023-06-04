@@ -150,16 +150,16 @@ namespace Winged_Warfare
             _menuButtons.Add(StartGame);
             _menuButtons.Add(Settings);
             _menuButtons.Add(ExitGame);
-            StartGame.setClick(SwitchToGame); //action for button 0
-            Settings.setClick(SwitchToSettings); //action for button 1
-            ExitGame.setClick(CloseGame);
+            StartGame.SetClick(SwitchToGame); //action for button 0
+            Settings.SetClick(SwitchToSettings); //action for button 1
+            ExitGame.SetClick(CloseGame);
         }
 
         public void CreateSettingsMenu()
         {
             Button ToMenu = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360), Game1.ButtonPlaceholder, Game1.ButtonHoverPlaceholder, Game1.ButtonPressedPlaceholder, "Back", Game1.TestFont, Color.Black, Color.Green, Color.Red);
             _settingsButtons.Add(ToMenu);
-            ToMenu.setClick(SwitchToMenu);
+            ToMenu.SetClick(SwitchToMenu);
         }
 
         public int GetState() => _state;

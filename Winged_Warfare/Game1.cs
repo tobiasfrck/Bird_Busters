@@ -171,9 +171,9 @@ namespace Winged_Warfare
 
             if (Keyboard.GetState().IsKeyDown(Keys.Y))
             {
-                testNet.spawn(pos,tar);
+                testNet.Spawn(pos,tar);
             }
-            testNet.update();
+            testNet.Update();
             
 
             base.Update(gameTime);
@@ -181,15 +181,13 @@ namespace Winged_Warfare
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-            RasterizerState rasterizerState = new RasterizerState();
-            rasterizerState.CullMode = CullMode.None;
-            GraphicsDevice.RasterizerState = rasterizerState;
-
             // TODO: Delete testing code
+            GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            //_cubePos += 1;
-            //Debug.WriteLineIf(_cubePos>150,_cubePos);
+            //Uncomment to draw invisible faces of a model. Useful for debugging.
+            //RasterizerState rasterizerState = new RasterizerState();
+            //rasterizerState.CullMode = CullMode.None;
+            //GraphicsDevice.RasterizerState = rasterizerState;
 
             //Debug.WriteLine("FPS: " + 1000/gameTime.ElapsedGameTime.TotalMilliseconds); //Outputs FPS to console
 
@@ -200,12 +198,11 @@ namespace Winged_Warfare
                 world *= Matrix.CreateRotationX(MathHelper.ToRadians(90));
                 world *= Matrix.CreateTranslation(new Vector3(0, 2, 0));
                 TestCube.Draw(world, Player.ViewMatrix, Player.ProjectionMatrix);
-                planeModel = Models["testContent/planeTest"];
-                planeModel.Draw(Matrix.CreateTranslation(new Vector3(0, -5, 0)), Player.ViewMatrix, Player.ProjectionMatrix);
-                _level.DrawModels();
-
                 TestCube.Draw(Matrix.CreateTranslation(rotatedVector), Player.ViewMatrix, Player.ProjectionMatrix);
+
+                _level.DrawModels();
             }            
+            testNet.Draw();
             _spriteBatch.Begin();
             _menuManager.Draw();
             _spriteBatch.End();

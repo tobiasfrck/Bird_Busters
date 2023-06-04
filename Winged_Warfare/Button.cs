@@ -155,7 +155,7 @@ namespace Winged_Warfare
             return _text + " | " + _buttonID;
         }
 
-        public void setClick(Delegate del)
+        public void SetClick(Delegate del)
         {
             click = del;
         }

@@ -4,16 +4,16 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>F:/Visual Studio Projects/Winged_Warfare_Self/Winged_Warfare/Content/bld1.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare_Self/Winged_Warfare/Content/Level_Concept.dae</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare_Self/Winged_Warfare/Content/testContent/cubeTexture.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare_Self/Winged_Warfare/Content/testContent/placeholder1_hover.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare_Self/Winged_Warfare/Content/testContent/placeholder1_pressed.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare_Self/Winged_Warfare/Content/testContent/placeholder1.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare_Self/Winged_Warfare/Content/testContent/planeTest.fbx</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare_Self/Winged_Warfare/Content/testContent/planeTexture.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare_Self/Winged_Warfare/Content/testContent/testCube.fbx</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare_Self/Winged_Warfare/Content/testContent/testFont.spritefont</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bld1.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Level_Concept.dae</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/cubeTexture.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1_hover.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1_pressed.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/planeTest.fbx</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/planeTexture.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testCube.fbx</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

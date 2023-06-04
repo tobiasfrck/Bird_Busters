@@ -23,15 +23,15 @@ namespace Winged_Warfare
         {
             _drawableObject = new DrawableObject(position, new Vector3(0, 0, 0), new Vector3(1, 1, 1), "testContent/testCube", 50);
             this.position = spawnPosition;
-            this.target = spawnTarget;
+            this.target = position-spawnTarget;
         }
 
         public void Update()
         {
-            this.position = this.position + (this.target/10);
+            this.position = this.position - (this.target/2);
             _drawableObject.Position = this.position;
             _drawableObject.Update();
-            Debug.WriteLine(this.position.X + "-"+this.position.Y + "-" + this.position.Z);
+      //      Debug.WriteLine(this.position.X + "-"+this.position.Y + "-" + this.position.Z);
         }
 
         public void Draw()

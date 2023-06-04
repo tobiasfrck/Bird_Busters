@@ -169,14 +169,11 @@ namespace Winged_Warfare
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            RasterizerState rasterizerState = new RasterizerState();
-            rasterizerState.CullMode = CullMode.None;
-            GraphicsDevice.RasterizerState = rasterizerState;
 
-            // TODO: Delete testing code
-
-            //_cubePos += 1;
-            //Debug.WriteLineIf(_cubePos>150,_cubePos);
+            //Uncomment to draw invisible faces of a model. Useful for debugging.
+            //RasterizerState rasterizerState = new RasterizerState();
+            //rasterizerState.CullMode = CullMode.None;
+            //GraphicsDevice.RasterizerState = rasterizerState;
 
             //Debug.WriteLine("FPS: " + 1000/gameTime.ElapsedGameTime.TotalMilliseconds); //Outputs FPS to console
 
@@ -187,10 +184,8 @@ namespace Winged_Warfare
                 world *= Matrix.CreateRotationX(MathHelper.ToRadians(90));
                 world *= Matrix.CreateTranslation(new Vector3(0, 2, 0));
                 TestCube.Draw(world, Player.ViewMatrix, Player.ProjectionMatrix);
-                planeModel = Models["testContent/planeTest"];
-                planeModel.Draw(Matrix.CreateTranslation(new Vector3(0, -5, 0)), Player.ViewMatrix, Player.ProjectionMatrix);
-                _level.DrawModels();
 
+                _level.DrawModels();
                 TestCube.Draw(Matrix.CreateTranslation(rotatedVector), Player.ViewMatrix, Player.ProjectionMatrix);
             }
 

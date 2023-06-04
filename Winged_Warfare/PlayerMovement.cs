@@ -42,13 +42,13 @@ namespace Winged_Warfare
             if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
                 change.Z += -(Position.Z - target.Z);
-                change.Y += -(Position.Y - target.Y);
+                //change.Y += -(Position.Y - target.Y);
                 change.X += -(Position.X - target.X);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
                 change.Z += (Position.Z - target.Z);
-                change.Y += (Position.Y - target.Y);
+                //change.Y += (Position.Y - target.Y);
                 change.X += (Position.X - target.X);
             }
 

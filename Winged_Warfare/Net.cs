@@ -9,7 +9,8 @@ namespace Winged_Warfare
 {
     public class Net
     {
-        public float gravity = 0.1f;
+        public float gravity = 0.005f;
+        public float velocity = 0f;
         public Vector3 position;
         public Vector3 target;
         private DrawableObject _drawableObject;
@@ -24,11 +25,14 @@ namespace Winged_Warfare
             _drawableObject = new DrawableObject(position, new Vector3(0, 0, 0), new Vector3(1, 1, 1), "testContent/testCube", 50);
             this.position = spawnPosition;
             this.target = position-spawnTarget;
+            this.velocity = 0f;
         }
 
         public void Update()
         {
             this.position = this.position - (this.target/2);
+            this.position.Y = this.position.Y + this.velocity;
+            velocity -= gravity;
             _drawableObject.Position = this.position;
             _drawableObject.Update();
       //      Debug.WriteLine(this.position.X + "-"+this.position.Y + "-" + this.position.Z);

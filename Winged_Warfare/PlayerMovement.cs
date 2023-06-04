@@ -105,7 +105,6 @@ namespace Winged_Warfare
             Player.SetCamTarget(Player.GetCamPosition() + target);
 
             //Drehen um X/Z-Achse - WIP
-
             target = new Vector3((float)0, (float)y, (float)0);
             Player.SetCamTarget(Player.GetCamTarget() - target);
         }

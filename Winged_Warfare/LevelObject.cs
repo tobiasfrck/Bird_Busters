@@ -26,6 +26,13 @@ namespace Winged_Warfare
             _line = line;
         }
 
+        public LevelObject(Vector3 position, Vector3 rotation, Vector3 scale)
+        {
+            Position = position;
+            Rotation = rotation;
+            Scale = scale;
+        }
+
         /// <summary>
         /// Call this method after changing the position, rotation or scale of the object, to update the world matrix.
         /// </summary>
@@ -78,19 +85,31 @@ namespace Winged_Warfare
         public Vector3 Position
         {
             get => _position;
-            set => _position = value;
+            set
+            {
+                _position = value;
+                UpdateWorldMatrix();
+            }
         }
 
         public Vector3 Rotation
         {
             get => _rotation;
-            set => _rotation = value;
+            set
+            {
+                _rotation = value;
+                UpdateWorldMatrix();
+            } 
         }
 
         public Vector3 Scale
         {
             get => _scale;
-            set => _scale = value;
+            set
+            {
+                _scale = value;
+                UpdateWorldMatrix();
+            } 
         }
 
         public Matrix WorldMatrix

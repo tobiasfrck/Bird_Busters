@@ -29,9 +29,11 @@ namespace Winged_Warfare
         Matrix rotationmatrix;
         Vector3 rotatedVector;
         float angle = 0;
-
         private float radius = 10;
         //---------------------------
+
+        //Testing for bird
+        private Bird _bird;
 
 
         //Assets
@@ -86,7 +88,6 @@ namespace Winged_Warfare
             Debug.WriteLine("Game initialized in Game1.cs.");
 
             MouseMovement.Init();
-
             
 
             //TODO: Replace textures with actual textures
@@ -168,6 +169,7 @@ namespace Winged_Warfare
 
             Vector3 pos = Player.CamPosition;
             Vector3 tar = Player.CamTarget;
+            Debug.WriteLine("CamTarget: " + tar);
 
             if (Keyboard.GetState().IsKeyDown(Keys.Y))
             {
@@ -175,6 +177,9 @@ namespace Winged_Warfare
             }
             testNet.Update();
             
+
+            //Tests related to birds
+
 
             base.Update(gameTime);
         }

@@ -30,7 +30,6 @@ namespace Winged_Warfare
         {
             this.position = this.position + (this.target/10);
             _drawableObject.Position = this.position;
-            _drawableObject.UpdateWorldMatrix();
             _drawableObject.Update();
             Debug.WriteLine(this.position.X + "-"+this.position.Y + "-" + this.position.Z);
         }

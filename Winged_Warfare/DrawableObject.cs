@@ -22,6 +22,16 @@ namespace Winged_Warfare
             
         }
 
+        public DrawableObject(Vector3 position, Vector3 rotation, Vector3 scale, String model) : base(position, rotation,
+            scale)
+        {
+            if (!Game1.Models.TryGetValue(model, out _model))
+            {
+                Debug.WriteLine("Model not found");
+            }
+            _modelName = model;
+        }
+
         public DrawableObject(Vector3 position, Vector3 rotation, Vector3 scale, String model, int line) : base(position, rotation,
             scale, line)
         {

@@ -22,12 +22,23 @@ namespace Winged_Warfare
         private static Vector3 change = new Vector3(0, 0, 0);
 
         public static float speed = 0.1f;
+        public static float gravity = -0.01f;
+        public static float velocity = 0f;
+        public static bool isGrounded = false;
 
         public static void movement()
         {
+
             target = Player.GetCamTarget();
             Position = Player.GetCamPosition();
             change = new Vector3(0, 0, 0);
+
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Space)&&isGrounded==true) { 
+                velocity = 0.15f;
+                isGrounded = false;
+            }
+
 
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
@@ -42,24 +53,23 @@ namespace Winged_Warfare
             if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
                 change.Z += -(Position.Z - target.Z);
-                //change.Y += -(Position.Y - target.Y);
+//                change.Y += -(Position.Y - target.Y);
                 change.X += -(Position.X - target.X);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
                 change.Z += (Position.Z - target.Z);
-                //change.Y += (Position.Y - target.Y);
+//                change.Y += (Position.Y - target.Y);
                 change.X += (Position.X - target.X);
             }
 
-            Player.SetCamPosition(Position + (change*speed));
-            Player.SetCamTarget(target + (change*speed));
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
-            {
-                Player.SetCamPosition(Player.GetCamPosition() + new Vector3(0, speed, 0));
-                Player.SetCamTarget(Player.GetCamTarget() + new Vector3(0, speed, 0));
-            }
+
+//            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+//            {
+//                Player.SetCamPosition(Player.GetCamPosition() + new Vector3(0, speed, 0));
+//                Player.SetCamTarget(Player.GetCamTarget() + new Vector3(0, speed, 0));
+//            }
             if (Keyboard.GetState().IsKeyDown(Keys.LeftControl))
             {
                 Player.SetCamPosition(Player.GetCamPosition() - new Vector3(0, speed, 0));
@@ -74,6 +84,22 @@ namespace Winged_Warfare
             {
                 speed = 0.1f;
             }
+
+
+
+
+            Position.Y = Position.Y + velocity;
+            velocity += gravity;
+
+            if (Position.Y <= 1)
+            {
+                Position.Y = 1;
+                isGrounded = true;
+            }
+
+            Player.SetCamPosition(Position + (change * speed));
+            Player.SetCamTarget(target + (change * speed));
+
 
             //Dehen um Y-Achse
             target = new Vector3((float)Math.Cos(x), 0, (float)Math.Sin(x));

@@ -18,6 +18,8 @@ namespace Winged_Warfare
         private SpriteBatch _spriteBatch;
         public static int Width = 1920;
         public static int Height = 1080;
+        public Net testNet = new Net();
+
 
 
         //TODO: Delete testing variables
@@ -163,17 +165,31 @@ namespace Winged_Warfare
             float x = (float)Math.Sin(MathHelper.ToRadians(angle)) * radius;
             float z = (float)Math.Cos(MathHelper.ToRadians(angle)) * radius;
             rotatedVector = Player.CamPosition + new Vector3(x, 0, z);
+
+            Vector3 pos = Player.CamPosition;
+            Vector3 tar = Player.CamTarget;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Y))
+            {
+                testNet.spawn(pos,tar);
+            }
+            testNet.update();
+            
+
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            RasterizerState rasterizerState = new RasterizerState();
+            rasterizerState.CullMode = CullMode.None;
+            GraphicsDevice.RasterizerState = rasterizerState;
 
-            //Uncomment to draw invisible faces of a model. Useful for debugging.
-            //RasterizerState rasterizerState = new RasterizerState();
-            //rasterizerState.CullMode = CullMode.None;
-            //GraphicsDevice.RasterizerState = rasterizerState;
+            // TODO: Delete testing code
+
+            //_cubePos += 1;
+            //Debug.WriteLineIf(_cubePos>150,_cubePos);
 
             //Debug.WriteLine("FPS: " + 1000/gameTime.ElapsedGameTime.TotalMilliseconds); //Outputs FPS to console
 
@@ -184,11 +200,12 @@ namespace Winged_Warfare
                 world *= Matrix.CreateRotationX(MathHelper.ToRadians(90));
                 world *= Matrix.CreateTranslation(new Vector3(0, 2, 0));
                 TestCube.Draw(world, Player.ViewMatrix, Player.ProjectionMatrix);
-
+                planeModel = Models["testContent/planeTest"];
+                planeModel.Draw(Matrix.CreateTranslation(new Vector3(0, -5, 0)), Player.ViewMatrix, Player.ProjectionMatrix);
                 _level.DrawModels();
-                TestCube.Draw(Matrix.CreateTranslation(rotatedVector), Player.ViewMatrix, Player.ProjectionMatrix);
-            }
 
+                TestCube.Draw(Matrix.CreateTranslation(rotatedVector), Player.ViewMatrix, Player.ProjectionMatrix);
+            }            
             _spriteBatch.Begin();
             _menuManager.Draw();
             _spriteBatch.End();

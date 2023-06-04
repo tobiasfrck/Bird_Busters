@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Level_Concept.dae</SourceFile>
-  <SourceTime>2023-06-04T09:36:16.4539564+02:00</SourceTime>
-  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/Level_Concept.xnb</DestFile>
-  <DestTime>2023-06-04T09:39:15.5206986+02:00</DestTime>
+  <SourceFile>F:/Visual Studio Projects/Winged_Warfare_Self/Winged_Warfare/Content/Level_Concept.dae</SourceFile>
+  <SourceTime>2023-06-04T13:08:07.4810945+02:00</SourceTime>
+  <DestFile>F:/Visual Studio Projects/Winged_Warfare_Self/Winged_Warfare/Content/bin/DesktopGL/Content/Level_Concept.xnb</DestFile>
+  <DestTime>2023-06-04T13:10:56.8503705+02:00</DestTime>
   <Importer>FbxImporter</Importer>
-  <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
+  <ImporterTime>2022-07-26T11:44:56+02:00</ImporterTime>
   <Processor>ModelProcessor</Processor>
-  <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
+  <ProcessorTime>2022-07-26T11:44:56+02:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>0,0,0,0</Value>
@@ -66,7 +66,7 @@
   </Parameters>
   <Dependencies />
   <BuildAsset>
-    <string>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/bld1_0.xnb</string>
+    <string>F:/Visual Studio Projects/Winged_Warfare_Self/Winged_Warfare/Content/bin/DesktopGL/Content/bld1_0.xnb</string>
   </BuildAsset>
   <BuildOutput />
 </PipelineBuildEvent>

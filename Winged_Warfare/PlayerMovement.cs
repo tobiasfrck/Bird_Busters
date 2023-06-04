@@ -66,6 +66,15 @@ namespace Winged_Warfare
                 Player.SetCamTarget(Player.GetCamTarget() - new Vector3(0, speed, 0));
             }
 
+            if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
+            {
+                speed = 0.2f;
+            }
+            else
+            {
+                speed = 0.1f;
+            }
+
             //Dehen um Y-Achse
             target = new Vector3((float)Math.Cos(x), 0, (float)Math.Sin(x));
             Player.SetCamTarget(Player.GetCamPosition() + target);

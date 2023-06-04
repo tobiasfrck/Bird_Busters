@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -37,7 +38,28 @@ namespace Winged_Warfare
             //Debug.WriteLine("DrawModel");
             UpdateWorldMatrix();
             if (Model != null)
-                _model.Draw(WorldMatrix, Player.ViewMatrix, Player.ProjectionMatrix);
+            {
+                int count = _model.Bones.Count;
+                Matrix[] transforms = new Matrix[_model.Bones.Count];
+                //if (_model.sharedDrawBoneMatrices == null || _model.sharedDrawBoneMatrices.Length < count)
+                //    _model.sharedDrawBoneMatrices = new Matrix[count];
+                _model.CopyAbsoluteBoneTransformsTo(transforms);
+                foreach (ModelMesh mesh in _model.Meshes)
+                {
+                    foreach (Effect effect in mesh.Effects)
+                    {
+                        if (!(effect is IEffectMatrices effectMatrices))
+                            throw new InvalidOperationException();
+                        effectMatrices.World = transforms[mesh.ParentBone.Index] * WorldMatrix;
+                        effectMatrices.View = Player.ViewMatrix;
+                        effectMatrices.Projection = Player.ProjectionMatrix;
+                        BasicEffect basicEffect = effect as BasicEffect;
+                        basicEffect.EnableDefaultLighting();
+                    }
+                    mesh.Draw();
+                }
+            }
+                //_model.Draw(WorldMatrix, Player.ViewMatrix, Player.ProjectionMatrix);
         }
 
         //Generates a new line for the level file, based on the current position, rotation and scale.

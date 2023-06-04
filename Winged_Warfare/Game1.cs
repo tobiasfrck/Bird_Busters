@@ -39,7 +39,8 @@ namespace Winged_Warfare
         //contains all model names
         private static readonly string[] _modelNames = {
             "testContent/testCube",
-            "testContent/planeTest"
+            "testContent/planeTest",
+            "Level_Concept"
         };
         public static SpriteFont TestFont;
         public static Texture2D ButtonPlaceholder;
@@ -72,7 +73,7 @@ namespace Winged_Warfare
             base.Initialize();
             // TODO: Add your initialization logic here
             // Initialize camera in Game1.cs because of "No Graphics Device Service" problem.
-            Player.CamPosition = new Vector3(0f, 2f, -100f);
+            Player.CamPosition = new Vector3(0f, 2f, 0f);
             Player.CamTarget = new Vector3(Player.CamPosition.X, Player.CamPosition.Y, Player.CamPosition.Z + 1);
             Player.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), GraphicsDevice.DisplayMode.AspectRatio, 1f, 1000f);
             Player.ViewMatrix = Matrix.CreateLookAt(Player.CamPosition, Player.CamTarget, Vector3.Up);
@@ -83,6 +84,8 @@ namespace Winged_Warfare
             Debug.WriteLine("Game initialized in Game1.cs.");
 
             MouseMovement.Init();
+
+            
 
             //TODO: Replace textures with actual textures
             _menuManager = new MenuManager(_spriteBatch, Content.Load<Texture2D>("testContent/placeholder1"), Content.Load<Texture2D>("testContent/placeholder1"), Content.Load<Texture2D>("testContent/placeholder1"), Content.Load<Texture2D>("testContent/placeholder1"));
@@ -182,7 +185,7 @@ namespace Winged_Warfare
                 GraphicsDevice.DepthStencilState = DepthStencilState.Default; //This fixed broken Models with SpriteBatch and 3D Models
                 Matrix world = Matrix.CreateScale(0.1f);
                 world *= Matrix.CreateRotationX(MathHelper.ToRadians(90));
-                world *= Matrix.CreateTranslation(new Vector3(0, 2, -90));
+                world *= Matrix.CreateTranslation(new Vector3(0, 2, 0));
                 TestCube.Draw(world, Player.ViewMatrix, Player.ProjectionMatrix);
                 planeModel = Models["testContent/planeTest"];
                 planeModel.Draw(Matrix.CreateTranslation(new Vector3(0, -5, 0)), Player.ViewMatrix, Player.ProjectionMatrix);

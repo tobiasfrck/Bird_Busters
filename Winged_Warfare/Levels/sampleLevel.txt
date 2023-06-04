@@ -1,2 +1,3 @@
-model,-2,0,-90,0,0,0,0.5,0.5,0.5,testContent/testCube
+model,-2,0,0,0,0,0,0.5,0.5,0.5,testContent/testCube
+model,0,0,0,0,0,0,1,1,1,Level_Concept
 spawn,0,0,0,0,0,0,1,1,1,[WEITERE EIGENSCHAFTEN VON SPAWNPOINTS]

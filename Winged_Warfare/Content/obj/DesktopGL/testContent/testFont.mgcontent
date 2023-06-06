@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testFont.spritefont</SourceFile>
-  <SourceTime>2023-05-22T18:17:41.3132659+02:00</SourceTime>
-  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/testFont.xnb</DestFile>
-  <DestTime>2023-06-04T09:39:12.450922+02:00</DestTime>
+  <SourceFile>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/testFont.spritefont</SourceFile>
+  <SourceTime>2023-06-06T21:00:27.8557756+02:00</SourceTime>
+  <DestFile>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/testFont.xnb</DestFile>
+  <DestTime>2023-06-06T21:03:39.1758565+02:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

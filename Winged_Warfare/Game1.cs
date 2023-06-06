@@ -47,9 +47,9 @@ namespace Winged_Warfare
             "Level_Concept"
         };
         public static SpriteFont TestFont;
-        public static Texture2D ButtonPlaceholder;
-        public static Texture2D ButtonHoverPlaceholder;
-        public static Texture2D ButtonPressedPlaceholder;
+        public static Texture2D Button;
+        public static Texture2D ButtonHover;
+        public static Texture2D ButtonPressed;
         //Assets end
 
         //Level
@@ -91,7 +91,7 @@ namespace Winged_Warfare
             
 
             //TODO: Replace textures with actual textures
-            _menuManager = new MenuManager(_spriteBatch, Content.Load<Texture2D>("testContent/placeholder1"), Content.Load<Texture2D>("testContent/placeholder1"), Content.Load<Texture2D>("testContent/placeholder1"), Content.Load<Texture2D>("testContent/placeholder1"));
+            _menuManager = new MenuManager(_spriteBatch, Content.Load<Texture2D>("testContent/button"), Content.Load<Texture2D>("testContent/button"), Content.Load<Texture2D>("testContent/button"), Content.Load<Texture2D>("testContent/button"));
         }
 
         protected override void LoadContent()
@@ -101,9 +101,9 @@ namespace Winged_Warfare
             TestCube = Content.Load<Model>("testContent/testCube");
 
             TestFont = Content.Load<SpriteFont>("testContent/testFont");
-            ButtonPlaceholder = Content.Load<Texture2D>("testContent/placeholder1");
-            ButtonHoverPlaceholder = Content.Load<Texture2D>("testContent/placeholder1_hover");
-            ButtonPressedPlaceholder = Content.Load<Texture2D>("testContent/placeholder1_pressed");
+            Button = Content.Load<Texture2D>("testContent/button");
+            ButtonHover = Content.Load<Texture2D>("testContent/button_hover");
+            ButtonPressed = Content.Load<Texture2D>("testContent/button_pressed");
 
             //TODO: Load textures for _menuManager
 

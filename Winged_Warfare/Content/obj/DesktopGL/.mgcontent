@@ -4,18 +4,26 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bld1.png</File>
-    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Level_Concept.dae</File>
-    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/cubeTexture.png</File>
-    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1_hover.png</File>
-    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1_pressed.png</File>
-    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1.png</File>
-    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/planeTest.fbx</File>
-    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/planeTexture.png</File>
-    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testCube.fbx</File>
-    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testFont.spritefont</File>
+    <File>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/bld1.png</File>
+    <File>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/Level_Concept.dae</File>
+    <File>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/button_hover.png</File>
+    <File>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/button_pressed.png</File>
+    <File>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/button.png</File>
+    <File>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/cubeTexture.png</File>
+    <File>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/net_ammo.png</File>
+    <File>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1_hover.png</File>
+    <File>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1_pressed.png</File>
+    <File>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1.png</File>
+    <File>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/planeTest.fbx</File>
+    <File>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/planeTexture.png</File>
+    <File>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/testCube.fbx</File>
+    <File>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/testFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

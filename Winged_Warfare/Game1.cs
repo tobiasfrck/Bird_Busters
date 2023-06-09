@@ -22,6 +22,7 @@ namespace Winged_Warfare
         //TODO: Delete testing variables
         public Model TestCube;
         public Model planeModel;
+        public Model NetModel;
         private int _cubePos = -100;
         Matrix rotationmatrix;
         Vector3 rotatedVector;
@@ -41,6 +42,7 @@ namespace Winged_Warfare
         private static readonly string[] _modelNames = {
             "testContent/testCube",
             "testContent/planeTest",
+            "testContent/Net",
             "Level_Concept"
         };
         public static SpriteFont TestFont;
@@ -96,7 +98,7 @@ namespace Winged_Warfare
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: use this.Content to load your game content here
             TestCube = Content.Load<Model>("testContent/testCube");
-
+            NetModel = Content.Load<Model>("testContent/Net");
             TestFont = Content.Load<SpriteFont>("testContent/testFont");
             Button = Content.Load<Texture2D>("testContent/button");
             ButtonHover = Content.Load<Texture2D>("testContent/button_hover");
@@ -139,6 +141,7 @@ namespace Winged_Warfare
                     _level.UpdateObjects();
                     Player.Update();
                     MouseMovement.Update();
+                    BulletHandler.update();
                     break;
                 case 3: //game ended state
                     IsMouseVisible = true;
@@ -164,7 +167,7 @@ namespace Winged_Warfare
             float z = (float)Math.Cos(MathHelper.ToRadians(angle)) * radius;
             rotatedVector = Player.CamPosition + new Vector3(x, 0, z);
 
-            BulletHandler.update();
+
             
 
             //Tests related to birds

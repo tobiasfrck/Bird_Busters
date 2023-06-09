@@ -14,12 +14,21 @@ namespace Winged_Warfare
     {
 
         public static List<Net> bullets = new List<Net>();
-        public static int reloadTimerShot = 25;
-        public static int reloadTimerMagazin = 200;
-        public static int reloadTimer = 0;
-        public static int MagazinSize = 5;
-        public static int Magazin = MagazinSize;
-        public static bool canShoot = true;
+        //Delay-Zeit zwischen Jedem Schuss
+        private static int reloadTimerShot = 25;
+        //Delay-Zeit beim Nachladen
+        private static int reloadTimerMagazin = 200;
+        //Timer der die Zeit runterechnent
+        private static int reloadTimer = 0;
+        //Magazin Größe
+        private static int MagazinSize = 5;
+        //Muinition im Magazin
+        private static int Magazin = MagazinSize;
+       
+        
+        private static bool canShoot = true;
+        //Ob ein Magazin benutzt werden soll (Wenn nein/false, ist reloadTimerMagazin = reloadTimerShot)
+        private static bool useMagazin = true;
 
 
         public static void update()
@@ -38,10 +47,10 @@ namespace Winged_Warfare
             }
 
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Y) && canShoot)
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed && canShoot)
             {
                 bullets.Add(new Net(pos, tar));
-                if (Magazin == 1)
+                if (Magazin == 1 && useMagazin)
                 {
                     reload(reloadTimerMagazin, MagazinSize);
                 }
@@ -86,8 +95,6 @@ namespace Winged_Warfare
             reloadTimer = reloadTimerShot;
             Magazin -= 1;
         }
-
-
 
     }
 }

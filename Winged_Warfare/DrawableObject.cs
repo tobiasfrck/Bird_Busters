@@ -86,5 +86,6 @@ namespace Winged_Warfare
             get => _model;
             set => _model = value;
         }
+
     }
 }

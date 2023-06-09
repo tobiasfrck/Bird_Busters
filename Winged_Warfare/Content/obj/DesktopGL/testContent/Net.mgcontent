@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Level_Concept.dae</SourceFile>
-  <SourceTime>2023-06-04T15:24:31+02:00</SourceTime>
-  <DestFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Level_Concept.xnb</DestFile>
-  <DestTime>2023-06-09T12:06:29.2173465+02:00</DestTime>
+  <SourceFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/Net.fbx</SourceFile>
+  <SourceTime>2023-06-09T12:07:00.3501294+02:00</SourceTime>
+  <DestFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/Net.xnb</DestFile>
+  <DestTime>2023-06-09T12:21:27.9928992+02:00</DestTime>
   <Importer>FbxImporter</Importer>
   <ImporterTime>2022-07-26T11:44:56+02:00</ImporterTime>
   <Processor>ModelProcessor</Processor>
@@ -38,7 +38,7 @@
   </Parameters>
   <Parameters>
     <Key>ResizeTexturesToPowerOfTwo</Key>
-    <Value>False</Value>
+    <Value>True</Value>
   </Parameters>
   <Parameters>
     <Key>RotationX</Key>
@@ -54,7 +54,7 @@
   </Parameters>
   <Parameters>
     <Key>Scale</Key>
-    <Value>1</Value>
+    <Value>0.01</Value>
   </Parameters>
   <Parameters>
     <Key>SwapWindingOrder</Key>
@@ -62,11 +62,11 @@
   </Parameters>
   <Parameters>
     <Key>TextureFormat</Key>
-    <Value>Compressed</Value>
+    <Value>Color</Value>
   </Parameters>
   <Dependencies />
   <BuildAsset>
-    <string>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/bld1_0.xnb</string>
+    <string>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/NetTexture_0.xnb</string>
   </BuildAsset>
   <BuildOutput />
 </PipelineBuildEvent>

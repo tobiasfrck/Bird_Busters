@@ -18,10 +18,10 @@ namespace Winged_Warfare
 
         public Net(Vector3 spawnPosition, Vector3 spawnTarget)
         {
-            _drawableObject = new DrawableObject(position, new Vector3(0, 0, 0), new Vector3(1, 1, 1), "testContent/testCube", 50);
+            _drawableObject = new DrawableObject(position, this.target, new Vector3(1, 1, 1), "testContent/Net", 50);
             this.position = spawnPosition;
             this.target = position - spawnTarget;
-            this.target.Y += -0.17f;
+            this.target.Y += -0.09f;
             this.velocity = 0f;
         }
 
@@ -32,6 +32,7 @@ namespace Winged_Warfare
             this.position.Y = this.position.Y + this.velocity;
             velocity -= gravity;
             _drawableObject.Position = this.position;
+            _drawableObject.Rotation = this.target;
             _drawableObject.Update();
       //      Debug.WriteLine(this.position.X + "-"+this.position.Y + "-" + this.position.Z);
         }

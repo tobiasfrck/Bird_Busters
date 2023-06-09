@@ -11,26 +11,24 @@ namespace Winged_Warfare
     {
         public float gravity = 0.005f;
         public float velocity = 0f;
+        public float speed = 1.5f;
         public Vector3 position;
         public Vector3 target;
         private DrawableObject _drawableObject;
 
-        public Net()
-        {
-            _drawableObject = new DrawableObject(position, new Vector3(0, 0, 0), new Vector3(1, 1, 1), "testContent/testCube", 50);
-
-        }
-        public void Spawn(Vector3 spawnPosition, Vector3 spawnTarget)
+        public Net(Vector3 spawnPosition, Vector3 spawnTarget)
         {
             _drawableObject = new DrawableObject(position, new Vector3(0, 0, 0), new Vector3(1, 1, 1), "testContent/testCube", 50);
             this.position = spawnPosition;
-            this.target = position-spawnTarget;
+            this.target = position - spawnTarget;
+            this.target.Y += -0.17f;
             this.velocity = 0f;
         }
 
+
         public void Update()
         {
-            this.position = this.position - (this.target/2);
+            this.position = this.position - ((this.target/2)*speed);
             this.position.Y = this.position.Y + this.velocity;
             velocity -= gravity;
             _drawableObject.Position = this.position;

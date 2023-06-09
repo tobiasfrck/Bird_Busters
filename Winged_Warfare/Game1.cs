@@ -18,9 +18,6 @@ namespace Winged_Warfare
         private SpriteBatch _spriteBatch;
         public static int Width = 1920;
         public static int Height = 1080;
-        public Net testNet = new Net();
-
-
 
         //TODO: Delete testing variables
         public Model TestCube;
@@ -167,15 +164,7 @@ namespace Winged_Warfare
             float z = (float)Math.Cos(MathHelper.ToRadians(angle)) * radius;
             rotatedVector = Player.CamPosition + new Vector3(x, 0, z);
 
-            Vector3 pos = Player.CamPosition;
-            Vector3 tar = Player.CamTarget;
-            Debug.WriteLine("CamTarget: " + tar);
-
-            if (Keyboard.GetState().IsKeyDown(Keys.Y))
-            {
-                testNet.Spawn(pos,tar);
-            }
-            testNet.Update();
+            BulletHandler.update();
             
 
             //Tests related to birds
@@ -206,8 +195,10 @@ namespace Winged_Warfare
                 TestCube.Draw(Matrix.CreateTranslation(rotatedVector), Player.ViewMatrix, Player.ProjectionMatrix);
 
                 _level.DrawModels();
-            }            
-            testNet.Draw();
+            }
+
+            BulletHandler.Draw();
+
             _spriteBatch.Begin();
             _menuManager.Draw();
             _spriteBatch.End();

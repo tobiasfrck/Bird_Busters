@@ -14,8 +14,11 @@ namespace Winged_Warfare
     {
 
         public static List<Net> bullets = new List<Net>();
-        public static int reloadTime = 30;
-        public static int reload = 400;
+        public static int reloadTimerShot = 25;
+        public static int reloadTimerMagazin = 200;
+        public static int reloadTimer = 0;
+        public static int MagazinSize = 5;
+        public static int Magazin = MagazinSize;
         public static bool canShoot = true;
 
 
@@ -38,15 +41,29 @@ namespace Winged_Warfare
             if (Keyboard.GetState().IsKeyDown(Keys.Y) && canShoot)
             {
                 bullets.Add(new Net(pos, tar));
-                reload = 0;
-                canShoot = false;
+                if (Magazin == 1)
+                {
+                    reload(reloadTimerMagazin, MagazinSize);
+                }
+                else { reload(); }
+
             }
+            if (!canShoot) { reloadTimer -= 1; }
+            if (reloadTimer < 0) canShoot = true;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.R)&&canShoot)
+            {
+                reload(reloadTimerMagazin, MagazinSize);
+            }
+
+
+
             foreach (Net net in bullets)
             {
                 net.Update();
             }
-            if (!canShoot) { reload += 1; }
-            if (reload > reloadTime) canShoot = true;
+
+
 
         }
         public static void Draw()
@@ -57,5 +74,20 @@ namespace Winged_Warfare
             }
         }
         
+        public static void reload(int Time, int newMagazin)
+        {
+            canShoot = false;
+            reloadTimer = Time;
+            Magazin = newMagazin;
+        }
+        public static void reload()
+        {
+            canShoot = false;
+            reloadTimer = reloadTimerShot;
+            Magazin -= 1;
+        }
+
+
+
     }
 }

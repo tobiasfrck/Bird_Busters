@@ -21,14 +21,13 @@ namespace Winged_Warfare
         private static Vector3 Position;
         private static Vector3 change = new Vector3(0, 0, 0);
 
-        public static float speed = 0.1f;
-        public static float gravity = -0.01f;
+        public static float gravity = -0.0019f;
         public static float velocity = 0f;
         public static bool isGrounded = false;
 
         public static void movement()
         {
-
+            float speed = 0.01f;
             target = Player.GetCamTarget();
             Position = Player.GetCamPosition();
             change = new Vector3(0, 0, 0);
@@ -36,7 +35,7 @@ namespace Winged_Warfare
 
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && isGrounded == true)
             {
-                velocity = 0.15f;
+                velocity = 0.025f;
                 isGrounded = false;
             }
 
@@ -79,20 +78,17 @@ namespace Winged_Warfare
 
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
             {
-                speed = 0.2f;
+                speed += speed;
             }
-            else
-            {
-                speed = 0.1f;
-            }
+
 
 
             Position.Y = Position.Y + velocity;
             velocity += gravity;
 
-            if (Position.Y <= 1)
+            if (Position.Y <= 0.2f)
             {
-                Position.Y = 1;
+                Position.Y = 0.2f;
                 isGrounded = true;
             }
 

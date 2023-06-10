@@ -16,14 +16,14 @@ namespace Winged_Warfare
         //Has drawable object list.
         //Has spawnpoint list.
         //Has lights list.
-        private List<LevelObject> _levelObjects = new();
+        private readonly List<LevelObject> _levelObjects = new();
 
         //debug-mode-variables
         private static bool _debugMode = true;
         private static string _debugText = "Standard-Debug-Text";
         private static int _debugTool = 0; //0 = move, 1 = rotate, 2 = scale
         private static int _debugToolResolution = 0; //0 = 0.1, 1 = 1, 2 = 10
-        private const float _debugToolMinResolution = 0.01f;
+        private const float DebugToolMinResolution = 0.01f;
         private int _selectedObject = 0; // represents the index of the selected object in the list
         private KeyboardState _previousKeyboardState;
         private string[] _levelContent;
@@ -145,7 +145,7 @@ namespace Winged_Warfare
             }
         }
 
-        private Vector3 ParseVector3(string[] vectorAttributes, int startIndex)
+        private static Vector3 ParseVector3(string[] vectorAttributes, int startIndex)
         {
             //Parse string to Vector3.
             CultureInfo culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
@@ -160,14 +160,14 @@ namespace Winged_Warfare
             if (IsPressed(Keys.Left))
             {
                 Debug.WriteLine("Selected Object changed [left].");
-                _selectedObject = (_selectedObject - 1) % _levelObjects.Count;
+                _selectedObject = Mod((_selectedObject - 1), _levelObjects.Count);
             }
 
             //Switch the selected object.
             if (IsPressed(Keys.Right))
             {
                 Debug.WriteLine("Selected Object changed [right].");
-                _selectedObject = (_selectedObject + 1) % _levelObjects.Count;
+                _selectedObject = Mod((_selectedObject + 1), _levelObjects.Count);
             }
 
             //Switch the debug tool.
@@ -181,14 +181,14 @@ namespace Winged_Warfare
             if (IsPressed(Keys.R))
             {
                 Debug.WriteLine("DebugToolResolution changed.");
-                _debugToolResolution = mod(_debugToolResolution + 1, 4);
+                _debugToolResolution = Mod(_debugToolResolution + 1, 4);
             }
 
             //Up the debug tool resolution.
             if (IsPressed(Keys.F))
             {
                 Debug.WriteLine("DebugToolResolution changed.");
-                _debugToolResolution = mod(_debugToolResolution - 1, 4);
+                _debugToolResolution = Mod(_debugToolResolution - 1, 4);
             }
 
             UpdateDebugText();
@@ -255,7 +255,7 @@ namespace Winged_Warfare
         //axis: 0 = X, 1 = Y, 2 = Z
         private void ModifyObjectTranslationRotationScale(int direction, int axis)
         {
-            float change = (float)Math.Round(direction * _debugToolMinResolution * Math.Pow(10, _debugToolResolution),3);
+            float change = (float)Math.Round(direction * DebugToolMinResolution * Math.Pow(10, _debugToolResolution),3);
 
             Vector3 changeVector;
 
@@ -296,25 +296,16 @@ namespace Winged_Warfare
         private void UpdateDebugText()
         {
             //Update debug text.
-            String debugText = "";
-            switch (_debugTool)
+            string debugText = _debugTool switch
             {
-                case 0:
-                    debugText = "Move";
-                    break;
-                case 1:
-                    debugText = "Rotate";
-                    break;
-                case 2:
-                    debugText = "Scale";
-                    break;
-                default:
-                    debugText = "Error";
-                    break;
-            }
+                0 => "Move",
+                1 => "Rotate",
+                2 => "Scale",
+                _ => "Error"
+            };
             _debugText = "Selected Object: " + _selectedObject + "\n" + 
                          "Tool: " + debugText + "\n" + 
-                         "Resolution: " + (float)Math.Round(_debugToolMinResolution * Math.Pow(10, _debugToolResolution), 3) + "\n" +
+                         "Resolution: " + (float)Math.Round(DebugToolMinResolution * Math.Pow(10, _debugToolResolution), 3) + "\n" +
                          "Save: Right-CTRL, Recover: -";
         }
 
@@ -358,7 +349,7 @@ namespace Winged_Warfare
             return _debugMode;
         }
 
-        public static int mod(int x, int m)
+        private static int Mod(int x, int m)
         {
             return (x % m + m) % m;
         }

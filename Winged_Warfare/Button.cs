@@ -68,7 +68,7 @@ namespace Winged_Warfare
         /// </summary>
         /// <param name="mousePosition"></param>
         /// <returns></returns>
-        public bool IsHovering(Vector2 mousePosition)
+        private bool IsHovering(Vector2 mousePosition)
         {
             if (_rectangle.Contains(mousePosition))
             {
@@ -94,10 +94,9 @@ namespace Winged_Warfare
         /// <summary>
         /// Use this after you checked if the button is hovering, to avoid unnecessary calls
         /// </summary>
-        /// <param name="mousePosition"></param>
         /// <param name="isLeftButtonPressed"></param>
         /// <returns>true if the button was pressed and false else</returns>
-        public bool IsPressed(Vector2 mousePosition, bool isLeftButtonPressed)
+        private bool IsPressed(bool isLeftButtonPressed)
         {
             return isLeftButtonPressed;
         }
@@ -109,7 +108,7 @@ namespace Winged_Warfare
         /// <param name="wasLeftButtonPressed"></param>
         /// <param name="isLeftButtonReleased"></param>
         /// <returns>True if clicked, false if not clicked.</returns>
-        public bool IsClicked(Vector2 currentMousePosition, bool wasLeftButtonPressed, bool isLeftButtonReleased)
+        private bool IsClicked(Vector2 currentMousePosition, bool wasLeftButtonPressed, bool isLeftButtonReleased)
         {
             return _rectangle.Contains(currentMousePosition) && wasLeftButtonPressed && isLeftButtonReleased;
         }
@@ -132,7 +131,7 @@ namespace Winged_Warfare
                                _rectangle.Y + _rectangle.Height / 2f - _textDimension.Y / 2f);
             if (IsHovering(mousePosition))
             {
-                if (IsPressed(mousePosition, isLeftButtonPressed))
+                if (IsPressed(isLeftButtonPressed))
                 {
                     spriteBatch.Draw(_pressedTexture, _rectangle, Color.White);
                     spriteBatch.DrawString(_font, _text, position, _textPressedColor);

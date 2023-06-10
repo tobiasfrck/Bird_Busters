@@ -90,7 +90,7 @@ namespace Winged_Warfare
             MouseMovement.Init();
 
             //TODO: Replace textures with actual textures
-            _menuManager = new MenuManager(_spriteBatch, Content.Load<Texture2D>("testContent/button"), Content.Load<Texture2D>("testContent/button"), Content.Load<Texture2D>("testContent/button"), Content.Load<Texture2D>("testContent/button"));
+            _menuManager = new MenuManager(_spriteBatch, null, Content.Load<Texture2D>("testContent/button"), null, null);
 
             Debug.WriteLine("Game initialized in Game1.cs.");
         }
@@ -170,7 +170,7 @@ namespace Winged_Warfare
                     _level.UpdateObjects();
                     Player.Update();
                     MouseMovement.Update();
-                    BulletHandler.update();
+                    BulletHandler.Update();
                     break;
                 case 3:
                     break;

@@ -14,6 +14,7 @@ namespace Winged_Warfare
     internal class MenuManager
     {
         private SpriteBatch _spriteBatch;
+        private readonly Rectangle _fullScreen = new(0, 0, Game1.Width, Game1.Height);
 
         private Texture2D _menuBackground;
         private Texture2D _settingsBackground;
@@ -109,22 +110,35 @@ namespace Winged_Warfare
             switch (_state)
             {
                 case 0:
+                    if (_menuBackground!=null)
+                    {
+                        _spriteBatch.Draw(_menuBackground, _fullScreen, Color.White);
+                    }
                     foreach (Button btn in _menuButtons)
                     {
                         btn.Draw(_spriteBatch, _currentMouseState.Position.ToVector2(), _currentMouseState.LeftButton == ButtonState.Pressed);
                     }
                     break;
                 case 1:
+
+                    if (_settingsBackground!=null)
+                    {
+                        _spriteBatch.Draw(_settingsBackground, _fullScreen, Color.White);
+                    }
                     foreach (Button btn in _settingsButtons)
                     {
                         btn.Draw(_spriteBatch, _currentMouseState.Position.ToVector2(), _currentMouseState.LeftButton == ButtonState.Pressed);
                     }
                     break;
                 case 2:
+                    if (_settingsBackground != null)
+                    {
+                        _spriteBatch.Draw(_gameBackground, _fullScreen, Color.White);
+                    }
                     if (Level.GetDebugMode())
                     {
                         Vector2 textdim = Game1.TestFont.MeasureString(Level.GetDebugText());
-                        _spriteBatch.DrawString(Game1.TestFont, Level.GetDebugText(), new Vector2((Game1.Width / 2f) - (textdim.X / 2f), 900), Color.White);
+                        _spriteBatch.DrawString(Game1.TestFont, Level.GetDebugText(), new Vector2((Game1.Width / 2f) - (textdim.X / 2f), 900), Color.Red);
                     }
                     foreach (Button btn in _gameButtons)
                     {
@@ -132,6 +146,10 @@ namespace Winged_Warfare
                     }
                     break;
                 case 3:
+                    if (_gameEndedBackground!=null)
+                    {
+                        _spriteBatch.Draw(_gameEndedBackground, _fullScreen, Color.White);
+                    }
                     foreach (Button btn in _gameEndedButtons)
                     {
                         btn.Draw(_spriteBatch, _currentMouseState.Position.ToVector2(), _currentMouseState.LeftButton == ButtonState.Pressed);

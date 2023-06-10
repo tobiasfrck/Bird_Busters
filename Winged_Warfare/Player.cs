@@ -16,7 +16,6 @@ namespace Winged_Warfare
         public static Vector3 CamPosition;
         public static Matrix ProjectionMatrix; //3D into 2D
         public static Matrix ViewMatrix; //Location and Orientation of virtual Camera?
-        public static Matrix WorldMatrix; //position in Space of objects
         //Camera end
 
         public Player()
@@ -26,7 +25,7 @@ namespace Winged_Warfare
 
         public static void Update()
         {
-            PlayerMovement.movement();
+            PlayerMovement.Movement();
             ViewMatrix = Matrix.CreateLookAt(CamPosition, CamTarget, Vector3.Up);
         }
 

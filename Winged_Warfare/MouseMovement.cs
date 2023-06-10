@@ -11,10 +11,10 @@ namespace Winged_Warfare
 {
     public class MouseMovement
     {
-        public static Vector2 position = new Vector2(0, 0);
-        public static MouseState mouse;
-        public static bool control = false;
-        public static bool enablecontrol = false;
+        public static Vector2 Position = new Vector2(0, 0);
+        public static MouseState CurMouseState;
+        public static bool Control = false;
+        public static bool Enablecontrol = false;
 
 
         //setzt die Mousposition in die mitte des Bildes bevor das Spiel beginnt;
@@ -27,23 +27,18 @@ namespace Winged_Warfare
         {
 
             //Graphik Einstellungen automatisch Hinzufügen
-            if (Keyboard.GetState().IsKeyDown(Keys.L) && enablecontrol)
+            if (Keyboard.GetState().IsKeyDown(Keys.L) && Enablecontrol)
             {
-                control = !control;
+                Control = !Control;
             }
 
-            if (!control)
+            if (!Control)
             {
-                mouse = Mouse.GetState();
-                PlayerMovement.SetX((float)(mouse.X - Game1.Width / 2) / 1000);
-                PlayerMovement.SetY((float)(mouse.Y - Game1.Height / 2) / 1000);
+                CurMouseState = Mouse.GetState();
+                PlayerMovement.SetX((CurMouseState.X - Game1.Width / 2f) / 1000f);
+                PlayerMovement.SetY((CurMouseState.Y - Game1.Height / 2f) / 1000f);
                 Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             }
-
         }
-
-
     }
-
-
 }

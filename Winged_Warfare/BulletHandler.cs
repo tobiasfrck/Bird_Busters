@@ -31,7 +31,7 @@ namespace Winged_Warfare
         private static bool useMagazin = true;
 
 
-        public static void update()
+        public static void Update()
         {
             Vector3 pos = Player.CamPosition;
             Vector3 tar = Player.CamTarget;
@@ -52,9 +52,9 @@ namespace Winged_Warfare
                 bullets.Add(new Net(pos, tar));
                 if (Magazin == 1 && useMagazin)
                 {
-                    reload(reloadTimerMagazin, MagazinSize);
+                    Reload(reloadTimerMagazin, MagazinSize);
                 }
-                else { reload(); }
+                else { Reload(); }
 
             }
             if (!canShoot) { reloadTimer -= 1; }
@@ -62,7 +62,7 @@ namespace Winged_Warfare
 
             if (Keyboard.GetState().IsKeyDown(Keys.R)&&canShoot)
             {
-                reload(reloadTimerMagazin, MagazinSize);
+                Reload(reloadTimerMagazin, MagazinSize);
             }
 
 
@@ -83,13 +83,13 @@ namespace Winged_Warfare
             }
         }
         
-        public static void reload(int Time, int newMagazin)
+        public static void Reload(int Time, int newMagazin)
         {
             canShoot = false;
             reloadTimer = Time;
             Magazin = newMagazin;
         }
-        public static void reload()
+        public static void Reload()
         {
             canShoot = false;
             reloadTimer = reloadTimerShot;

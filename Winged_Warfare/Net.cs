@@ -44,7 +44,7 @@ namespace Winged_Warfare
       //      Debug.WriteLine(this.position.X + "-"+this.position.Y + "-" + this.position.Z);
         }
 
-        public Vector3 Rad2Deg(Vector3 rad)
+        private static Vector3 Rad2Deg(Vector3 rad)
         {
             Vector3 deg = new Vector3();
             deg.X = MathHelper.ToDegrees(rad.X);
@@ -53,7 +53,7 @@ namespace Winged_Warfare
             return deg;
         }
 
-        public Vector3 DirToRotation(Vector3 dir)
+        public static Vector3 DirToRotation(Vector3 dir)
         {
             Vector3 rotation = new Vector3();
             float angleX = MathF.Acos(Vector3.Dot(dir, Vector3.Up));

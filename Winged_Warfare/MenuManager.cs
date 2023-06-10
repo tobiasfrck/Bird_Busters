@@ -131,7 +131,7 @@ namespace Winged_Warfare
                     }
                     break;
                 case 2:
-                    if (_settingsBackground != null)
+                    if (_gameBackground != null)
                     {
                         _spriteBatch.Draw(_gameBackground, _fullScreen, Color.White);
                     }

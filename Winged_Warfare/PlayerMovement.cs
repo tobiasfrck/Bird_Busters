@@ -25,6 +25,10 @@ namespace Winged_Warfare
         public static float Velocity = 0f;
         public static bool IsGrounded = false;
 
+        //  enables/disables Creative Flight (Press F2)
+        public static bool creativeFlight = false;
+        public static bool flightButtonPressed = false;
+
         public static void Movement()
         {
 
@@ -63,37 +67,36 @@ namespace Winged_Warfare
                 //change.Y += (Position.Y - target.Y);
                 _change.X += (_position.X - _target.X);
             }
-
-
-
-            //if (Keyboard.GetState().IsKeyDown(Keys.Space))
-            //{
-            //     Player.SetCamPosition(Player.GetCamPosition() + new Vector3(0, speed, 0));
-            //    Player.SetCamTarget(Player.GetCamTarget() + new Vector3(0, speed, 0));
-            //}
-
-            if (Keyboard.GetState().IsKeyDown(Keys.LeftControl))
-            {
-                Player.SetCamPosition(Player.GetCamPosition() - new Vector3(0, speed, 0));
-                Player.SetCamTarget(Player.GetCamTarget() - new Vector3(0, speed, 0));
-            }
-
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
             {
                 speed += speed;
             }
 
-
-
-            _position.Y += Velocity;
-            Velocity += Gravity;
-
-            if (_position.Y <= 0.2f)
+            // CreativeFlight
+            checkFlight();
+            if (creativeFlight)
             {
-                _position.Y = 0.2f;
-                IsGrounded = true;
-            }
+                if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                {
+                    _change.Y += 1;
+                }
 
+                if (Keyboard.GetState().IsKeyDown(Keys.LeftControl))
+                {
+                    _change.Y -= 1;
+                }
+            }
+            else
+            {
+                _position.Y += Velocity;
+                Velocity += Gravity;
+
+                if (_position.Y <= 0.2f)
+                {
+                    _position.Y = 0.2f;
+                    IsGrounded = true;
+                }
+            }
             Player.SetCamPosition(_position + (_change * speed));
             Player.SetCamTarget(_target + (_change * speed));
 
@@ -105,8 +108,8 @@ namespace Winged_Warfare
             //Drehen um X/Z-Achse - WIP
             _target = new Vector3((float)0, (float)Y, (float)0);
             Player.SetCamTarget(Player.GetCamTarget() - _target);
+            
         }
-
         public static void SetX(float n)
         {
             X += n;
@@ -123,6 +126,17 @@ namespace Winged_Warfare
             //Debug.WriteLine("Last Y= " + y);
         }
 
+        public static void checkFlight()
+        {
+            if (Keyboard.GetState().IsKeyUp(Keys.F2) && flightButtonPressed)
+                flightButtonPressed = false;
+            if (Keyboard.GetState().IsKeyDown(Keys.F2) && !flightButtonPressed)
+            {
+                creativeFlight = !creativeFlight;
+                flightButtonPressed = true;
+            }
+        }
 
     }
 }
+

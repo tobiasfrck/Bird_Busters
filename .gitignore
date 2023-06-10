@@ -1,5 +1,7 @@
 
 .vs/**
 Winged_Warfare/bin/Debug/**
+Winged_Warfare/bin/Release/**
 Winged_Warfare/obj/Debug/**
+Winged_Warfare/obj/Release/**
 Winged_Warfare/obj/DesktopGL/**

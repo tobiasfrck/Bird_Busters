@@ -5,6 +5,7 @@ using System.Numerics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 
 namespace Winged_Warfare
@@ -13,11 +14,12 @@ namespace Winged_Warfare
     //States: in menu, in settings, in game, game ended
     public class Game1 : Game
     {
-        public static bool exit = false;
+        public static bool Exit = false;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         public static int Width = 1920;
         public static int Height = 1080;
+        private bool _wasUnfocused = false;
 
         //TODO: Delete testing variables
         public Model TestCube;
@@ -84,13 +86,13 @@ namespace Winged_Warfare
             // Initialize camera end
 
 
-            Debug.WriteLine("Game initialized in Game1.cs.");
 
             MouseMovement.Init();
-            
 
             //TODO: Replace textures with actual textures
             _menuManager = new MenuManager(_spriteBatch, Content.Load<Texture2D>("testContent/button"), Content.Load<Texture2D>("testContent/button"), Content.Load<Texture2D>("testContent/button"), Content.Load<Texture2D>("testContent/button"));
+
+            Debug.WriteLine("Game initialized in Game1.cs.");
         }
 
         protected override void LoadContent()
@@ -122,42 +124,69 @@ namespace Winged_Warfare
 
         protected override void Update(GameTime gameTime)
         {
+
+            //Disable update if window is not focused
+            if (!IsActive)
+            {
+                if (!_wasUnfocused)
+                {
+                    IsMouseVisible=true; 
+                    _wasUnfocused = true;
+                    Debug.WriteLine("[LostFocus]: "+Mouse.GetState().Position);
+                }
+                return;
+            }
+
+            //TODO: Reposition mouse if window was unfocused to eliminate weird movement; currently not working
+            if (_wasUnfocused)
+            {
+                _wasUnfocused = false;
+                
+                Debug.WriteLine("[GotFocus]: "+Mouse.GetState().Position);
+                IsMouseVisible = false; //https://github.com/MonoGame/MonoGame/issues/7842#issuecomment-1191712378
+                Mouse.SetPosition(Width/2, Height/2);
+                return;
+            }
+
+
+            //Escape to go back to menu, TODO: pause menu?
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 _menuManager.SwitchToMenu();
 
-            // TODO: Add your update logic here
 
             _menuManager.Update();
+
+
+            //Hide mouse if in game
+            IsMouseVisible = _menuManager.GetState() != 2;
+
             switch (_menuManager.GetState()) // 0 = menu, 1 = settings, 2 = game, 3 = game ended
             {
                 case 0: //menu state
-                    IsMouseVisible = true;
                     break;
                 case 1: //settings state
-                    IsMouseVisible = true;
                     break;
                 case 2: //game state
-                    IsMouseVisible = false;
                     _level.UpdateObjects();
                     Player.Update();
                     MouseMovement.Update();
                     BulletHandler.update();
                     break;
-                case 3: //game ended state
-                    IsMouseVisible = true;
+                case 3:
                     break;
                 default:
-                    IsMouseVisible = true;
-                    Debug.WriteLine("Error: Menu state not found.");
+                    Debug.WriteLine("[Error]: Menu state not found.");
                     break;
             }
 
-            if (exit)
+
+            //Used to end the game with other classes
+            if (Exit)
             {
                 Exit();
             }
 
-            //test
+            //Testing may be deleted
             Vector3 save = new Vector3(Player.CamTarget.X, Player.CamTarget.Y, Player.CamTarget.Z);
             save.Normalize();
             rotationmatrix = Matrix.CreateRotationY(MathHelper.ToRadians(1f));
@@ -166,9 +195,9 @@ namespace Winged_Warfare
             float x = (float)Math.Sin(MathHelper.ToRadians(angle)) * radius;
             float z = (float)Math.Cos(MathHelper.ToRadians(angle)) * radius;
             rotatedVector = Player.CamPosition + new Vector3(x, 0, z);
+            //Testing end
 
 
-            
 
             //Tests related to birds
 
@@ -176,6 +205,7 @@ namespace Winged_Warfare
             base.Update(gameTime);
         }
 
+        //READ COMMENTS IN THIS METHOD
         protected override void Draw(GameTime gameTime)
         {
             // TODO: Delete testing code
@@ -186,25 +216,33 @@ namespace Winged_Warfare
             //rasterizerState.CullMode = CullMode.None;
             //GraphicsDevice.RasterizerState = rasterizerState;
 
-            //Debug.WriteLine("FPS: " + 1000/gameTime.ElapsedGameTime.TotalMilliseconds); //Outputs FPS to console
+            //Debug.WriteLine("[FPS]: " + 1000/gameTime.ElapsedGameTime.TotalMilliseconds); //Outputs FPS to console
 
+            //READ THIS!
+            //DO NOT DRAW ANYTHING RELATED TO THE ACTUAL GAME OUTSIDE OF THE IF STATEMENT
             if (_menuManager.GetState() == 2) //everything that should be drawn in game state
             {
-                GraphicsDevice.DepthStencilState = DepthStencilState.Default; //This fixed broken Models with SpriteBatch and 3D Models
+                //This fixed broken Models with SpriteBatch and 3D Models. 
+                GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+                
+                //Testing and may be deleted
                 Matrix world = Matrix.CreateScale(0.1f);
                 world *= Matrix.CreateRotationX(MathHelper.ToRadians(90));
                 world *= Matrix.CreateTranslation(new Vector3(0, 2, 0));
                 TestCube.Draw(world, Player.ViewMatrix, Player.ProjectionMatrix);
                 TestCube.Draw(Matrix.CreateTranslation(rotatedVector), Player.ViewMatrix, Player.ProjectionMatrix);
+                //Testing end
 
                 _level.DrawModels();
+                BulletHandler.Draw();
             }
 
-            BulletHandler.Draw();
+            
 
             _spriteBatch.Begin();
             _menuManager.Draw();
             _spriteBatch.End();
+            //Do not draw 3D models after this.
 
             base.Draw(gameTime);
         }

@@ -27,6 +27,7 @@ namespace Winged_Warfare
 
         public static void movement()
         {
+
             float speed = 0.01f;
             target = Player.GetCamTarget();
             Position = Player.GetCamPosition();

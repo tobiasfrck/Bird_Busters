@@ -138,6 +138,8 @@ namespace Winged_Warfare
                     }
                     break;
                 default:
+                    Debug.WriteLine("[ERROR]: Invalid state.");
+                    SetState(0);
                     break;
             }
         }
@@ -194,7 +196,7 @@ namespace Winged_Warfare
 
         public void CloseGame()
         {
-            Game1.exit = true;
+            Game1.Exit = true;
         }
     }
 }

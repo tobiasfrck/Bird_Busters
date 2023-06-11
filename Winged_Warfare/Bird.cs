@@ -10,12 +10,12 @@ using Vector3 = Microsoft.Xna.Framework.Vector3;
 namespace Winged_Warfare
 {
 
-    internal class Bird
+    public class Bird
     {
         private static int _birdId = 0;
         private DrawableObject _drawableObject;
-        private bool _isAlive = true;
-        private float _rndDirection = 0.1f; // in percent
+        public bool _isAlive = true;
+        private float _rndDirection = 0.0f; // in percent
 
         private float _speed;
         private float _minSpeed;
@@ -27,6 +27,9 @@ namespace Winged_Warfare
 
         private float _minHeight;
         private float _maxHeight;
+        private Random random = new Random();
+
+        private Vector2 Offset = new Vector2();
 
         private Vector2 _currentTarget;
 
@@ -37,22 +40,41 @@ namespace Winged_Warfare
         //No height needed, because height is variable
         private Vector2 _target2;
 
-        public Bird(Vector3 position, Vector3 rotation, Vector3 scale, float speed, float acceleration, float maxSpeed,
-            float airResistanceSpeed, float minHeight, float maxHeight, Vector2 target, float targetTolerance,
+        public Bird(Vector3 position, Vector3 rotation, Vector3 scale, Vector2 target, float targetTolerance,
             Vector2 target2)
         {
+
+            // Vögel spawnen in einem Bereich anstatt auf der gleichen Stelle
+            Offset.X = ((float)random.NextDouble() - 0.5f) * 2;
+            Offset.Y = ((float)random.NextDouble() - 0.5f) * 2;
+
+            position.X += Offset.X;
+            position.Z += Offset.Y;
+            
+            // Vögel haben relativ zu ihrem Spawnpoint verschobene Targets (funktioniert irgenwie nicht)
+            target.X += Offset.X;
+            target.Y += Offset.Y;
+
+            target2.X += Offset.X;
+            target2.Y += Offset.Y;
+
             _drawableObject = new DrawableObject(position, rotation, scale, "testContent/testCube", -1);
-            _speed = speed + acceleration;
-            _minSpeed = speed;
-            _acceleration = acceleration;
-            _airResistanceSpeed = airResistanceSpeed;
-            _minHeight = minHeight;
-            _maxHeight = maxHeight;
+
+            //Bird bekommt random Stats
+            _acceleration = (float)random.NextDouble() + 0.01f;
+            _speed = ((float)random.NextDouble()+0.2f)/50;
+            _minSpeed = ((float)random.NextDouble() + 0.1f) / 50;
+            _maxSpeed = ((float)random.NextDouble() + 0.5f) / 50;
+            _minHeight = position.Y+ (float)random.NextDouble()*-2f;
+            _maxHeight = position.Y+ (float)random.NextDouble()*2f;
+            _airResistanceSpeed = (float)random.NextDouble();
+
             _target = target;
             _currentTarget = target;
             _targetTolerance = targetTolerance;
             _target2 = target2;
-            _maxSpeed = maxSpeed;
+
+
         }
 
         public void Update()

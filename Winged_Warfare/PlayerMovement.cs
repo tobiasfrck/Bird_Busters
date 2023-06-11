@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System;
 using System.Data;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
@@ -21,7 +20,7 @@ namespace Winged_Warfare
         private static Vector3 _position;
         private static Vector3 _change = new Vector3(0, 0, 0);
 
-        public static float Gravity = -0.0019f;
+        public static float Gravity = -0.0018f;
         public static float Velocity = 0f;
         public static bool IsGrounded = false;
 
@@ -32,13 +31,13 @@ namespace Winged_Warfare
         public static void Movement()
         {
 
-            float speed = 0.01f;
+            float speed = 0.03f;
             _target = Player.GetCamTarget();
             _position = Player.GetCamPosition();
             _change = new Vector3(0, 0, 0);
 
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space) && IsGrounded == true)
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && IsGrounded == true &&!creativeFlight)
             {
                 Velocity = 0.025f;
                 IsGrounded = false;
@@ -69,7 +68,7 @@ namespace Winged_Warfare
             }
             if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
             {
-                speed += speed;
+                speed += speed/2;
             }
 
             // CreativeFlight

@@ -171,6 +171,7 @@ namespace Winged_Warfare
                     Player.Update();
                     MouseMovement.Update();
                     BulletHandler.Update();
+                    BirdHandler.Update();
                     break;
                 case 3:
                     break;
@@ -235,6 +236,7 @@ namespace Winged_Warfare
 
                 _level.DrawModels();
                 BulletHandler.Draw();
+                BirdHandler.Draw();
             }
 
             

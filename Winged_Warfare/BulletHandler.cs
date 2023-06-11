@@ -12,7 +12,7 @@ namespace Winged_Warfare
 {
     public class BulletHandler
     {
-
+        //Liste mit allen Bullets
         public static List<Net> bullets = new List<Net>();
         //Delay-Zeit zwischen Jedem Schuss
         private static int reloadTimerShot = 25;
@@ -23,9 +23,8 @@ namespace Winged_Warfare
         //Magazin Größe
         private static int MagazinSize = 5;
         //Muinition im Magazin
-        private static int Magazin = MagazinSize;
-       
-        
+        private static int Magazin = MagazinSize;       
+        //Verhindert das schießen während dem Nachladen
         private static bool canShoot = true;
         //Ob ein Magazin benutzt werden soll (Wenn nein/false, ist reloadTimerMagazin = reloadTimerShot)
         private static bool useMagazin = true;
@@ -33,10 +32,6 @@ namespace Winged_Warfare
 
         public static void Update()
         {
-            Vector3 pos = Player.CamPosition;
-            Vector3 tar = Player.CamTarget;
-            Debug.WriteLine(bullets.Count);
-
 
             for (int i = bullets.Count - 1; i >= 0; i--)
             {
@@ -49,15 +44,18 @@ namespace Winged_Warfare
 
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && canShoot)
             {
-                bullets.Add(new Net(pos, tar));
+
+                //Spawned ein neues Netz
+                bullets.Add(new Net(Player.CamPosition, Player.CamTarget));                
+                //Schaut ob gerade die letzte Kugel verschossen wurde
                 if (Magazin == 1 && useMagazin)
                 {
                     Reload(reloadTimerMagazin, MagazinSize);
                 }
-                else { Reload(); }
-
+                else Reload();
             }
-            if (!canShoot) { reloadTimer -= 1; }
+
+            if (!canShoot) reloadTimer -= 1;
             if (reloadTimer < 0) canShoot = true;
 
             if (Keyboard.GetState().IsKeyDown(Keys.R)&&canShoot)
@@ -74,6 +72,7 @@ namespace Winged_Warfare
 
 
 
+
         }
         public static void Draw()
         {
@@ -83,12 +82,15 @@ namespace Winged_Warfare
             }
         }
         
+        //Magazin Nachladen
         public static void Reload(int Time, int newMagazin)
         {
             canShoot = false;
             reloadTimer = Time;
             Magazin = newMagazin;
         }
+
+        //"Nachladen" zwischen einzelnen Schüssen
         public static void Reload()
         {
             canShoot = false;

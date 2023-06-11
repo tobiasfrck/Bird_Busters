@@ -15,7 +15,7 @@ namespace Winged_Warfare
     public class BirdHandler
     {
         public static List<Bird> Birds = new List<Bird>();
-        private static int MaxBirdCount = 2000000;
+        private static int MaxBirdCount = 20000;
         private static int CurBirdCount = 0;
         private static int SpawnCooldown = 1;
         private static int Timer = 0;
@@ -24,7 +24,7 @@ namespace Winged_Warfare
         {
             if (Timer > 0) Timer--;
             if (CurBirdCount < MaxBirdCount && Timer <= 0) {
-                Birds.Add(new Bird(new Vector3(0, 8, 0), new Vector3(1, 1, 1), new Vector3(0.2f, 0.2f, 0.2f), new System.Numerics.Vector2(80, 10),15, new System.Numerics.Vector2(80, -10)));
+                Birds.Add(new Bird(new Vector3(0, 1, 0), new Vector3(1, 1, 1), new Vector3(0.2f, 0.2f, 0.2f), new System.Numerics.Vector2(50, 10),5, new System.Numerics.Vector2(70, -50)));
                 CurBirdCount++;
                 Timer = SpawnCooldown;
             }
@@ -32,7 +32,7 @@ namespace Winged_Warfare
 
             for (int i = Birds.Count - 1; i >= 0; i--)
             {
-                if (!Birds[i]._isAlive)
+                if (!Birds[i].IsAlive)
                 {
                     Birds.RemoveAt(i);
                 }

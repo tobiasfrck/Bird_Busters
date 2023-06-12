@@ -16,6 +16,7 @@ namespace Winged_Warfare
         public Vector3 lastPosition;
         public Vector3 target;
         private DrawableObject _drawableObject;
+        public bool Marked = false;
 
         public Net(Vector3 spawnPosition, Vector3 spawnTarget)
         {

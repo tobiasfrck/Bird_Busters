@@ -14,6 +14,7 @@ namespace Winged_Warfare
     {
         //Liste mit allen Bullets
         public static List<Net> bullets = new List<Net>();
+        public static List<Bird> birds;
         //Delay-Zeit zwischen Jedem Schuss
         private static int reloadTimerShot = 25;
         //Delay-Zeit beim Nachladen
@@ -30,18 +31,11 @@ namespace Winged_Warfare
         private static bool useMagazin = true;
 
 
+
         public static void Update()
         {
 
-            for (int i = bullets.Count - 1; i >= 0; i--)
-            {
-                if (bullets[i].position.Y <= -20)
-                {
-                    bullets.RemoveAt(i);
-                }
-            }
-
-
+//          Shoot Mechanic
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && canShoot)
             {
 
@@ -65,11 +59,51 @@ namespace Winged_Warfare
 
 
 
+
+//          Hit-Logic (change If Statement)
+//          Marks Bullet und Bird, removes them later
+//          Comment the Bullet Mark line to make the Net fly through Birds
+            birds = BirdHandler.Birds;
+            for (int i = bullets.Count - 1; i >= 0; i--)
+            {
+                for (int j = birds.Count - 1; j >= 0; j--)
+                {
+                    if (Vector3.Distance(bullets[i].position, birds[j]._position) <= 1)
+                    {
+//                        bullets[i].Marked = true;
+                        birds[j].Marked = true;
+                        Debug.WriteLine("hit");
+                        Score.IncreaseScore();
+                        Debug.WriteLine("New Score:" + Score.CurrentScore);
+                    }
+                }
+            }
+
+//          End of Logic
+//
+//          Update Bullets
             foreach (Net net in bullets)
             {
                 net.Update();
             }
 
+//          Removes Bullets When Marked or outside of the Game/Map
+            for (int i = bullets.Count - 1; i >= 0; i--)
+            {
+                if (bullets[i].position.Y <= -20 || bullets[i].Marked)
+                {
+                    bullets.RemoveAt(i);
+                }
+            }
+
+//          Removes Birds when marked
+            for (int i = birds.Count - 1; i >= 0; i--)
+            {
+                if (birds[i].Marked)
+                {
+                    birds.RemoveAt(i);
+                }
+            }
 
 
 

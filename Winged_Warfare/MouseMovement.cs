@@ -27,9 +27,9 @@ namespace Winged_Warfare
         {
 
 
-            if (Keyboard.GetState().IsKeyUp(Keys.L) && ControlButtonPressed)
+            if (Keyboard.GetState().IsKeyUp(Keys.G) && ControlButtonPressed)
                 ControlButtonPressed = false;
-            if (Keyboard.GetState().IsKeyDown(Keys.L) && !ControlButtonPressed)
+            if (Keyboard.GetState().IsKeyDown(Keys.G) && !ControlButtonPressed)
             {
                 Control = !Control;
                 ControlButtonPressed = true;

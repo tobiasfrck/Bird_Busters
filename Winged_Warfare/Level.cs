@@ -88,7 +88,14 @@ namespace Winged_Warfare
             for (int i = 0; i < _levelContent.Length; i++)
             {
                 LevelObject toAdd = LineToLevelObject(_levelContent[i], i);
-                if (toAdd != null) {_levelObjects.Add(toAdd);}
+                if (toAdd != null)
+                {
+                    _levelObjects.Add(toAdd);
+                }
+                else
+                {
+                    Debug.WriteLine("Error in level file. Line: " + i + " content: " + _levelContent[i]);
+                }
             }
             Debug.WriteLine("Level loaded with " + _levelObjects.Count + " objects.");
         }

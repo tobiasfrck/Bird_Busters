@@ -15,9 +15,9 @@ namespace Winged_Warfare
     public class BirdHandler
     {
         public static List<Bird> Birds = new List<Bird>();
-        private static int MaxBirdCount = 20000;
+        private static int MaxBirdCount = 40;
         private static int CurBirdCount = 0;
-        private static int SpawnCooldown = 1;
+        private static int SpawnCooldown = 50;
         private static int Timer = 0;
 
         public static void Update()
@@ -29,6 +29,10 @@ namespace Winged_Warfare
                 Timer = SpawnCooldown;
             }
 
+            foreach (Bird bird in Birds)
+            {
+                bird.Update();
+            }
 
             for (int i = Birds.Count - 1; i >= 0; i--)
             {
@@ -39,11 +43,6 @@ namespace Winged_Warfare
             }
 
 
-
-            foreach (Bird bird in Birds)
-            {
-                bird.Update();
-            }
         }
         public static void Draw()
         {

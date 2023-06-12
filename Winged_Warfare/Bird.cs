@@ -18,6 +18,7 @@ namespace Winged_Warfare
         private DrawableObject _drawableObject;
         public bool IsAlive = true;
         private float _rndDirection = 0.1f; // in percent
+        public Vector3 _position;
 
         private float _speed;
         private float _minSpeed;
@@ -42,6 +43,8 @@ namespace Winged_Warfare
 
         //No height needed, because height is variable
         private Vector2 _target2;
+
+        public bool Marked;
 
         public Bird(Vector3 position, Vector3 rotation, Vector3 scale, Vector2 target, float targetTolerance,
             Vector2 target2)
@@ -85,7 +88,7 @@ namespace Winged_Warfare
         public void Update()
         {
             bool flap = false;
-
+            _position = _drawableObject.Position;
             //if Bird is within the tolerance of the first target, it will fly to the second target
             if (Vector3.Distance(_drawableObject.Position, new Vector3(_target.X, _drawableObject.Position.Y, _target.Y)) < _targetTolerance && _currentTarget!=_target2)
             {

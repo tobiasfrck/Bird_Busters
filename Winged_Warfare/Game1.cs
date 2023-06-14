@@ -158,26 +158,37 @@ namespace Winged_Warfare
 
 
             //Hide mouse if in game
-            IsMouseVisible = _menuManager.GetState() != 2;
+            IsMouseVisible = _menuManager.GetState() != GameState.Game;
 
             switch (_menuManager.GetState()) // 0 = menu, 1 = settings, 2 = game, 3 = game ended
             {
-                case 0: //menu state
+                case GameState.Menu: 
                     break;
-                case 1: //settings state
+                case GameState.Settings: 
                     break;
-                case 2: //game state
+                case GameState.Game: 
                     _level.UpdateObjects();
                     Player.Update();
                     MouseMovement.Update();
                     BulletHandler.Update();
                     BirdHandler.Update();
                     break;
-                case 3:
+                case GameState.GameEnded:
                     break;
                 default:
                     Debug.WriteLine("[Error]: Menu state not found.");
                     break;
+            }
+
+
+            //If Player has won or lost
+            if (Score.hasWon())
+            {
+                _menuManager.SwitchToMenu(); //this needs to be changed to a win/lose screen
+                Debug.WriteLine("--------");
+                Debug.WriteLine("You won!");
+                Debug.WriteLine("--------");
+                Score.ResetScore();
             }
 
 
@@ -221,7 +232,7 @@ namespace Winged_Warfare
 
             //READ THIS!
             //DO NOT DRAW ANYTHING RELATED TO THE ACTUAL GAME OUTSIDE OF THE IF STATEMENT
-            if (_menuManager.GetState() == 2) //everything that should be drawn in game state
+            if (_menuManager.GetState() == GameState.Game) //everything that should be drawn in game state
             {
                 //This fixed broken Models with SpriteBatch and 3D Models. 
                 GraphicsDevice.DepthStencilState = DepthStencilState.Default;

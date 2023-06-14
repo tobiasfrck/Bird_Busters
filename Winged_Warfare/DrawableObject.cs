@@ -64,7 +64,7 @@ namespace Winged_Warfare
                         effectMatrices.View = Player.ViewMatrix;
                         effectMatrices.Projection = Player.ProjectionMatrix;
                         BasicEffect basicEffect = effect as BasicEffect;
-                        basicEffect.EnableDefaultLighting();
+                        basicEffect?.EnableDefaultLighting();
                     }
                     mesh.Draw();
                 }

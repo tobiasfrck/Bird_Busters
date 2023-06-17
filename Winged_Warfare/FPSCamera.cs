@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System;
 using System.Data;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
@@ -35,7 +34,7 @@ namespace Winged_Warfare
         /// <summary>
         /// The projection matrix for this camera
         /// </summary>
-        public Matrix Projection { get; protected set; }
+        public static Matrix Projection { get; protected set; }
 
         /// <summary>
         /// The sensitivity of the mouse when aiming
@@ -55,6 +54,12 @@ namespace Winged_Warfare
         static Vector3 _change;
         static float Velocity;
         static float Gravity= -0.001f;
+        public static bool IsSprinting;
+        public static bool IsMoving;
+        static float POVadjusted;
+
+        //Standart Settings
+        float POV = MathHelper.ToRadians(45);
 
         /// <summary>
         /// Constructs a new FPS Camera
@@ -67,10 +72,10 @@ namespace Winged_Warfare
             position = _position;
             this.horizontalAngle = 0;
             this.verticalAngle = 0;
-            this.Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, game.GraphicsDevice.Viewport.AspectRatio, 1, 1000);
+            Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), game.GraphicsDevice.DisplayMode.AspectRatio, 0.001f, 1000);
             Mouse.SetPosition(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
             oldMouseState = Mouse.GetState();
-
+            POVadjusted = POV;
 
         }
 
@@ -84,21 +89,24 @@ namespace Winged_Warfare
             var newMouseState = Mouse.GetState();
 
             float Speed = 0.03f;
+            IsMoving = false;
+            IsSprinting = false;
+
+            //Sprinting
             if (keyboard.IsKeyDown(Keys.LeftShift))
             {
                 Speed += Speed / 2;
+                IsSprinting = true;
             }
-
-
 
             // Get the direction the player is currently facing
             var facing = Vector3.Transform(Vector3.Forward, Matrix.CreateRotationY(horizontalAngle));
             // Forward and backward movement
-            if (keyboard.IsKeyDown(Keys.W)) position += facing * Speed;
-            if (keyboard.IsKeyDown(Keys.S)) position -= facing * Speed;
+            if (keyboard.IsKeyDown(Keys.W)) { position += facing * Speed; IsMoving = true; }
+            if (keyboard.IsKeyDown(Keys.S)) { position -= facing * Speed; IsMoving = true; }
             // Strifing movement
-            if (keyboard.IsKeyDown(Keys.A)) position += Vector3.Cross(Vector3.Up, facing) * Speed;
-            if (keyboard.IsKeyDown(Keys.D)) position -= Vector3.Cross(Vector3.Up, facing) * Speed;
+            if (keyboard.IsKeyDown(Keys.A)) { position += Vector3.Cross(Vector3.Up, facing) * Speed; IsMoving = true; }
+            if (keyboard.IsKeyDown(Keys.D)) { position -= Vector3.Cross(Vector3.Up, facing) * Speed; IsMoving = true; }
             // Adjust horizontal angle
             horizontalAngle += Sensitivity * (oldMouseState.X - newMouseState.X);
 
@@ -107,16 +115,39 @@ namespace Winged_Warfare
             if (verticalAngle <= -1.56f) verticalAngle = -1.559f;
             if (verticalAngle >= 1.56f) verticalAngle = 1.559f;
             direction = Vector3.Transform(Vector3.Forward, Matrix.CreateRotationX(verticalAngle) * Matrix.CreateRotationY(horizontalAngle));
-            Debug.WriteLine("verticalAngle= " + verticalAngle);
+            // Debug.WriteLine("verticalAngle= " + verticalAngle);
 
 
+
+
+            //Smooth POV when starting to sprint/stoping to sprint
+            if (!IsSprinting || !IsMoving && POVadjusted>POV)
+            {
+                POVadjusted = POVadjusted*0.99f;
+            }
+
+            if (IsSprinting && IsMoving && POVadjusted<=POV*1.1f)
+            {
+                POVadjusted = POVadjusted*1.01f;
+            }
+            if (POVadjusted < POV) POVadjusted = POV;
+            if (POVadjusted > POV*1.1f) POVadjusted = POV*1.1f;
+
+            //Change POV when the Player is zooming (Right Mouse Button)
+            if (Mouse.GetState().RightButton == ButtonState.Pressed && !(IsSprinting && IsMoving))
+            {
+                POVadjusted = POV * 0.5f;
+            }
+
+
+            //Jumping
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && IsGrounded == true && !creativeFlight)
             {
                 Velocity = 0.025f;
                 IsGrounded = false;
             }
 
-
+            //Createive Flight
             _change = new Vector3(0, 0, 0);
             checkFlight();
             if (creativeFlight)
@@ -144,8 +175,10 @@ namespace Winged_Warfare
             }
             position += _change;
 
-            // create the veiw matrix
+            // recreate the ViewMatrix
             View = Matrix.CreateLookAt(position, position + direction, Vector3.Up);
+            // recreate ProjectionMatrix
+            Projection = Matrix.CreatePerspectiveFieldOfView(POVadjusted, game.GraphicsDevice.Viewport.AspectRatio, 0.001f, 1000);
             // Reset mouse state 
             Mouse.SetPosition(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
             oldMouseState = Mouse.GetState();

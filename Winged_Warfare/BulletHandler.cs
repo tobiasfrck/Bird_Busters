@@ -34,9 +34,9 @@ namespace Winged_Warfare
 
         public static void Update()
         {
-
+            
 //          Shoot Mechanic
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed && canShoot)
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed && canShoot && !(FPSCamera.IsMoving && FPSCamera.IsSprinting))
             {
 
                 //Spawned ein neues Netz

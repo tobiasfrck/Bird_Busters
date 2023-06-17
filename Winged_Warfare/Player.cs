@@ -28,6 +28,7 @@ namespace Winged_Warfare
             ViewMatrix = FPSCamera.View;
             CamTarget = FPSCamera.direction;
             CamPosition = FPSCamera.position;
+            ProjectionMatrix = FPSCamera.Projection;
         }
 
         // Camera related methods

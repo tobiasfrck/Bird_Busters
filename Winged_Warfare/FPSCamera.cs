@@ -58,6 +58,10 @@ namespace Winged_Warfare
         public static bool IsMoving;
         static float POVadjusted;
 
+        //Collision Corners
+        public Vector2 Corner1 = new Vector2(-2.9f,-2.4f);
+        public Vector2 Corner2 = new Vector2(-0.1f, 2.4f);
+
         //Standart Settings
         float POV = MathHelper.ToRadians(45);
 
@@ -174,6 +178,14 @@ namespace Winged_Warfare
                 }
             }
             position += _change;
+
+            //Corner Collision
+            if (!creativeFlight) { 
+                if (position.X < Corner1.X) position.X = Corner1.X;
+                if (position.Z < Corner1.Y) position.Z = Corner1.Y;
+                if (position.X > Corner2.X) position.X = Corner2.X;
+                if (position.Z > Corner2.Y) position.Z = Corner2.Y;
+            }
 
             // recreate the ViewMatrix
             View = Matrix.CreateLookAt(position, position + direction, Vector3.Up);

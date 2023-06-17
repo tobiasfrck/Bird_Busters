@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/button_hover.png</SourceFile>
-  <SourceTime>2023-06-10T23:48:24+02:00</SourceTime>
-  <DestFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/testContent/button_hover.xnb</DestFile>
-  <DestTime>2023-06-15T23:39:32.7658222+02:00</DestTime>
+  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/button_hover.png</SourceFile>
+  <SourceTime>2023-06-06T22:32:02.2852768+02:00</SourceTime>
+  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/testContent/button_hover.xnb</DestFile>
+  <DestTime>2023-06-17T19:31:43.3773975+02:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2022-07-26T11:44:56+02:00</ImporterTime>
+  <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2022-07-26T11:44:56+02:00</ProcessorTime>
+  <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

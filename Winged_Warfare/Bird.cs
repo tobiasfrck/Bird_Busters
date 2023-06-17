@@ -71,11 +71,11 @@ namespace Winged_Warfare
             //Bird bekommt random Stats
             _minSpeed = ((float)random.NextDouble() + 0.1f) / 5;
             _acceleration = _minSpeed;
-            _speed = _minSpeed;
+            _speed = _minSpeed*2;
             _maxSpeed = ((float)random.NextDouble() + 0.5f) / 50;
             _minHeight = 2.5f;
             _maxHeight = 10f;
-            _airResistanceSpeed = _minSpeed/3f;
+            _airResistanceSpeed = _minSpeed/10f;
 
             _target = target;
             _currentTarget = target;

@@ -92,6 +92,8 @@ namespace Winged_Warfare
             // Initialize the camera 
             camera = new FPSCamera(this, Player.CamPosition);
 
+            BirdHandler.CreateList();
+
             Debug.WriteLine("Game initialized in Game1.cs.");
         }
 

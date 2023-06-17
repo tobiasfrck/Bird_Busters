@@ -25,8 +25,9 @@ namespace Winged_Warfare
 
         public static void Update()
         {
-            PlayerMovement.Movement();
-            ViewMatrix = Matrix.CreateLookAt(CamPosition, CamTarget, Vector3.Up);
+            ViewMatrix = FPSCamera.View;
+            CamTarget = FPSCamera.direction;
+            CamPosition = FPSCamera.position;
         }
 
         // Camera related methods

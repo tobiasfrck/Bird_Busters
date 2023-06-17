@@ -28,7 +28,7 @@ namespace Winged_Warfare
         //Verhindert das schießen während dem Nachladen
         private static bool canShoot = true;
         //Ob ein Magazin benutzt werden soll (Wenn nein/false, ist reloadTimerMagazin = reloadTimerShot)
-        private static bool useMagazin = true;
+        private static bool useMagazin = false;
 
 
 
@@ -40,7 +40,7 @@ namespace Winged_Warfare
             {
 
                 //Spawned ein neues Netz
-                bullets.Add(new Net(Player.CamPosition, Player.CamTarget));                
+                bullets.Add(new Net(FPSCamera.position, Player.CamTarget));                
                 //Schaut ob gerade die letzte Kugel verschossen wurde
                 if (Magazin == 1 && useMagazin)
                 {

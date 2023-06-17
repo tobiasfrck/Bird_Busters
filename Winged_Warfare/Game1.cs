@@ -35,6 +35,8 @@ namespace Winged_Warfare
         //Testing for bird
         private Bird _bird;
 
+        // The game camera
+        FPSCamera camera;
 
         //Assets
         //dictionary to look up models by name
@@ -78,19 +80,17 @@ namespace Winged_Warfare
             base.Initialize();
             // TODO: Add your initialization logic here
             // Initialize camera in Game1.cs because of "No Graphics Device Service" problem.
-            Player.CamPosition = new Vector3(0f, 0f, 0f);
+            Player.CamPosition = new Vector3(0f, 0.2f, 0f);
             Player.CamTarget = new Vector3(Player.CamPosition.X, Player.CamPosition.Y, Player.CamPosition.Z + 1);
             Player.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), GraphicsDevice.DisplayMode.AspectRatio, 0.01f, 1000f);
             Player.ViewMatrix = Matrix.CreateLookAt(Player.CamPosition, Player.CamTarget, Vector3.Up);
             Debug.WriteLine("Camera initialized in Camera.cs.");
             // Initialize camera end
 
-
-
-            MouseMovement.Init();
-
             //TODO: Replace textures with actual textures
             _menuManager = new MenuManager(_spriteBatch, null, Content.Load<Texture2D>("testContent/button"), null, null);
+            // Initialize the camera 
+            camera = new FPSCamera(this, Player.CamPosition);
 
             Debug.WriteLine("Game initialized in Game1.cs.");
         }
@@ -105,6 +105,8 @@ namespace Winged_Warfare
             Button = Content.Load<Texture2D>("testContent/button");
             ButtonHover = Content.Load<Texture2D>("testContent/button_hover");
             ButtonPressed = Content.Load<Texture2D>("testContent/button_pressed");
+
+
 
             //TODO: Load textures for _menuManager
 
@@ -169,9 +171,10 @@ namespace Winged_Warfare
                 case GameState.Game: 
                     _level.UpdateObjects();
                     Player.Update();
-                    MouseMovement.Update();
                     BulletHandler.Update();
                     BirdHandler.Update();
+                    // Update the camera
+                    camera.Update(gameTime);
                     break;
                 case GameState.GameEnded:
                     break;

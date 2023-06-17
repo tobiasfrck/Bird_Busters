@@ -22,8 +22,9 @@ namespace Winged_Warfare
         {
             _drawableObject = new DrawableObject(position, this.target, new Vector3(1, 1, 1), "testContent/Net", 50);
             this.position = spawnPosition;
+            this.position.Y -= 0.75f;
             this.lastPosition = spawnPosition;
-            this.target = position - spawnTarget;
+            this.target = -spawnTarget;
             this.target.Y += -0.09f;
             this.velocity = 0f;
         }

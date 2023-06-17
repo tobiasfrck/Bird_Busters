@@ -145,8 +145,8 @@ namespace Winged_Warfare
                     }
                     if (Level.GetDebugMode())
                     {
-                        Vector2 textdim = Game1.TestFont.MeasureString(Level.GetDebugText());
-                        _spriteBatch.DrawString(Game1.TestFont, Level.GetDebugText(), new Vector2((Game1.Width / 2f) - (textdim.X / 2f), 900), Color.Red);
+                        Vector2 textDim = Game1.TestFont.MeasureString(Level.GetDebugText());
+                        _spriteBatch.DrawString(Game1.TestFont, Level.GetDebugText(), new Vector2((Game1.Width / 2f) - (textDim.X / 2f), 900), Color.Red);
                     }
                     foreach (Button btn in _gameButtons)
                     {
@@ -172,26 +172,26 @@ namespace Winged_Warfare
 
         private void CreateMainMenu()
         {
-            Button StartGame = new Button(new Vector2(Game1.Width / 2f, 25), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Start Game", Game1.TestFont, Color.Black, Color.Black, Color.Black);
-            Button Settings = new Button(new Vector2(Game1.Width / 2f, 400), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Settings", Game1.TestFont, Color.Black, Color.Black, Color.Black);
-            Button ExitGame = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Exit", Game1.TestFont, Color.Black, Color.Black, Color.Black);
-            _menuButtons.Add(StartGame);
-            _menuButtons.Add(Settings);
-            _menuButtons.Add(ExitGame);
-            StartGame.SetClick(SwitchToGame); //action for button 0
-            Settings.SetClick(SwitchToSettings); //action for button 1
-            ExitGame.SetClick(CloseGame);
+            Button startGame = new Button(new Vector2(Game1.Width / 2f, 25), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Start Game", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button settings = new Button(new Vector2(Game1.Width / 2f, 400), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Settings", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button exitGame = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Exit", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            _menuButtons.Add(startGame);
+            _menuButtons.Add(settings);
+            _menuButtons.Add(exitGame);
+            startGame.SetClick(SwitchToGame); //action for button 0
+            settings.SetClick(SwitchToSettings); //action for button 1
+            exitGame.SetClick(CloseGame);
         }
 
         private void CreateSettingsMenu()
         {
-            Button ToMenu = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.Green, Color.Red);
-            _settingsButtons.Add(ToMenu);
-            ToMenu.SetClick(SwitchToMenu);
+            Button toMenu = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.Green, Color.Red);
+            _settingsButtons.Add(toMenu);
+            toMenu.SetClick(SwitchToMenu);
         }
 
         public GameState GetState() => _state;
-        public void SetState(GameState state) => _state = state;
+        private void SetState(GameState state) => _state = state;
 
         //---------------------------
         //All actions for the buttons
@@ -222,7 +222,7 @@ namespace Winged_Warfare
 
         public void CloseGame()
         {
-            Game1.Exit = true;
+            Game1.CloseGame = true;
         }
     }
 }

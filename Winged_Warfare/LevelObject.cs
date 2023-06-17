@@ -16,7 +16,7 @@ namespace Winged_Warfare
         private Vector3 _scale;
         private Vector3 _position;
         private Matrix _worldMatrix;
-        private int _line = 0; //line in the level file; used for debugging
+        private readonly int _line = 0; //line in the level file; used for debugging
 
         public LevelObject(Vector3 position, Vector3 rotation, Vector3 scale, int line)
         {
@@ -76,10 +76,9 @@ namespace Winged_Warfare
             UpdateWorldMatrix();
         }
 
-        public int Line
+        private int Line
         {
             get => _line;
-            set => _line = value;
         }
 
         public Vector3 Position
@@ -115,7 +114,6 @@ namespace Winged_Warfare
         public Matrix WorldMatrix
         {
             get => _worldMatrix;
-            set => _worldMatrix = value;
         }
     }
 }

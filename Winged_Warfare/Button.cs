@@ -21,7 +21,7 @@ namespace Winged_Warfare
         private static int _buttonCount = 0;
         private int _buttonID = 0;
 
-        private Delegate click;
+        private Delegate _click;
 
         private Texture2D _texture;
         private Texture2D _hoverTexture;
@@ -121,7 +121,7 @@ namespace Winged_Warfare
             if (IsClicked(mousePosition,wasLeftButtonPressed, isLeftButtonReleased))
             {
                 Debug.WriteLine("Button " + _buttonID + " was clicked.");
-                click?.DynamicInvoke(); // execute click action if click is not null
+                _click?.DynamicInvoke(); // execute click action if click is not null
             }
         }
 
@@ -156,7 +156,7 @@ namespace Winged_Warfare
 
         public void SetClick(Delegate del)
         {
-            click = del;
+            _click = del;
         }
 
         public static void ResetConflicts()

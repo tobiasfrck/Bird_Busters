@@ -351,6 +351,7 @@ namespace Winged_Warfare
         {
             return _debugText;
         }
+
         public static bool GetDebugMode()
         {
             return _debugMode;

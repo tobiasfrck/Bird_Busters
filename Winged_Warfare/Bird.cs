@@ -147,7 +147,6 @@ namespace Winged_Warfare
             {
                 currentSubTarget.Y = _minHeight + (float)(rnd.NextDouble() * (_maxHeight - _minHeight));
             }
-
             
 
             //if Bird is outside of 2*targetTolerance range, it will fly with a random direction change to make it look more natural
@@ -177,85 +176,6 @@ namespace Winged_Warfare
             direction.Normalize();
             _currentDirection = direction;
 
-        }
-
-        public void Update_old()
-        {
-            //if Bird is within the tolerance of the first target, it will fly to the second target
-            if (Vector3.Distance(_drawableObject.Position, new Vector3(_target, _drawableObject.Position.Y)) < _targetTolerance)
-            {
-                _currentTarget = _target2;
-            }
-
-
-            if (_speed < _minSpeed)
-            {
-                _speed += _acceleration;
-            }
-
-            //if Bird is within the tolerance of the second target, it will die
-            if (Vector3.Distance(_drawableObject.Position, new Vector3(_target, _drawableObject.Position.Y)) < _targetTolerance)
-            {
-                IsAlive = false;
-            }
-
-            if (IsAlive)
-            {
-                FlapWings_old();
-            }
-
-            //apply air resistance
-            _speed -= _airResistanceSpeed;
-
-            //Apply gravity
-            _drawableObject.Position = new Vector3(_drawableObject.Position.X, _drawableObject.Position.Y - _gravityAcceleration, _drawableObject.Position.Z);
-        }
-
-        
-
-        //move the bird towards the current target
-        private void FlapWings_old()
-        {
-            Random rnd = new Random();
-
-            Vector3 currentSubTarget = new Vector3(_currentTarget.X, 0, _currentTarget.Y);
-
-            //if Bird is too high or too low, it will fly to a random height between minHeight and maxHeight
-            if (_drawableObject.Position.Y < _minHeight || _drawableObject.Position.Y > _maxHeight)
-            {
-                currentSubTarget.Y = _minHeight + rnd.Next(0, (int)(_maxHeight - _minHeight));
-            }
-
-            Vector3 direction = currentSubTarget - _drawableObject.Position;
-
-            direction.Normalize();
-
-            //if Bird is outside of 2*targetTolerance range, it will fly with a random direction change to make it look more natural
-            if (Vector3.Distance(_drawableObject.Position, currentSubTarget) > 2 * _targetTolerance)
-            {
-                Vector2 change;
-                Vector2 direction2D = new Vector2(direction.X, direction.Z);
-                Vector2 position2D = new Vector2(_drawableObject.Position.X, _drawableObject.Position.Z);
-                int k = 0;
-
-                //While the new random direction is not somewhat towards the target do:
-                do
-                {
-                    k++;
-                    float xChange = (float)(rnd.NextDouble() * rnd.Next(-1, 1) * (1f - _rndDirection));
-                    float zChange = (float)(rnd.NextDouble() * rnd.Next(-1, 1) * (1f - _rndDirection));
-                    change = new Vector2(xChange, zChange);
-                } while (Vector2.Distance(direction2D * change + position2D, _currentTarget) > Vector2.Distance(position2D, _currentTarget) && k < 10);
-
-                //apply [_rndDirection]% random direction change if done in less than 10 tries
-                if (k < 10)
-                {
-                    direction.X *= change.X;
-                    direction.Z *= change.Y;
-                }
-            }
-
-            _drawableObject.Position += direction * _speed;
         }
 
         public void Draw()

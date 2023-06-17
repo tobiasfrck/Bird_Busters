@@ -14,7 +14,7 @@ namespace Winged_Warfare
     //States: in menu, in settings, in game, game ended
     public class Game1 : Game
     {
-        public static bool Exit = false;
+        public static bool CloseGame = false;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         public static int Width = 1920;
@@ -22,28 +22,17 @@ namespace Winged_Warfare
         private bool _wasUnfocused = false;
 
         //TODO: Delete testing variables
-        public Model TestCube;
-        public Model planeModel;
-        public Model NetModel;
-        private int _cubePos = -100;
-        Matrix rotationmatrix;
-        Vector3 rotatedVector;
-        float angle = 0;
-        private float radius = 10;
         //---------------------------
 
-        //Testing for bird
-        private Bird _bird;
-
         // The game camera
-        FPSCamera camera;
+        private FPSCamera _camera;
 
         //Assets
         //dictionary to look up models by name
-        public static Dictionary<string, Model> Models = new();
+        public static readonly Dictionary<string, Model> Models = new();
 
         //contains all model names
-        private static readonly string[] _modelNames = {
+        private static readonly string[] ModelNames = {
             "testContent/testCube",
             "testContent/planeTest",
             "testContent/Net",
@@ -90,7 +79,7 @@ namespace Winged_Warfare
             //TODO: Replace textures with actual textures
             _menuManager = new MenuManager(_spriteBatch, null, Content.Load<Texture2D>("testContent/button"), null, null);
             // Initialize the camera 
-            camera = new FPSCamera(this, Player.CamPosition);
+            _camera = new FPSCamera(this, Player.CamPosition);
 
             BirdHandler.CreateList();
 
@@ -101,8 +90,6 @@ namespace Winged_Warfare
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             // TODO: use this.Content to load your game content here
-            TestCube = Content.Load<Model>("testContent/testCube");
-            NetModel = Content.Load<Model>("testContent/Net");
             TestFont = Content.Load<SpriteFont>("testContent/testFont");
             Button = Content.Load<Texture2D>("testContent/button");
             ButtonHover = Content.Load<Texture2D>("testContent/button_hover");
@@ -120,7 +107,7 @@ namespace Winged_Warfare
         private void LoadModels()
         {
             //create dictionary with all models
-            foreach (var modelName in _modelNames)
+            foreach (var modelName in ModelNames)
             {
                 Models.Add(modelName, Content.Load<Model>(modelName));
             }
@@ -176,7 +163,7 @@ namespace Winged_Warfare
                     BulletHandler.Update();
                     BirdHandler.Update();
                     // Update the camera
-                    camera.Update(gameTime);
+                    _camera.Update(gameTime);
                     break;
                 case GameState.GameEnded:
                     break;
@@ -187,7 +174,7 @@ namespace Winged_Warfare
 
 
             //If Player has won or lost
-            if (Score.hasWon())
+            if (Score.HasWon())
             {
                 _menuManager.SwitchToMenu(); //this needs to be changed to a win/lose screen
                 Debug.WriteLine("--------");
@@ -198,26 +185,14 @@ namespace Winged_Warfare
 
 
             //Used to end the game with other classes
-            if (Exit)
+            if (CloseGame)
             {
                 Exit();
             }
 
             //Testing may be deleted
-            Vector3 save = new Vector3(Player.CamTarget.X, Player.CamTarget.Y, Player.CamTarget.Z);
-            save.Normalize();
-            rotationmatrix = Matrix.CreateRotationY(MathHelper.ToRadians(1f));
-            rotatedVector = Vector3.Transform(Player.CamPosition, rotationmatrix);
-            angle += 1f;
-            float x = (float)Math.Sin(MathHelper.ToRadians(angle)) * radius;
-            float z = (float)Math.Cos(MathHelper.ToRadians(angle)) * radius;
-            rotatedVector = Player.CamPosition + new Vector3(x, 0, z);
+            
             //Testing end
-
-
-
-            //Tests related to birds
-
 
             base.Update(gameTime);
         }
@@ -242,14 +217,6 @@ namespace Winged_Warfare
                 //This fixed broken Models with SpriteBatch and 3D Models. 
                 GraphicsDevice.DepthStencilState = DepthStencilState.Default;
                 
-                //Testing and may be deleted
-                Matrix world = Matrix.CreateScale(0.1f);
-                world *= Matrix.CreateRotationX(MathHelper.ToRadians(90));
-                world *= Matrix.CreateTranslation(new Vector3(0, 2, 0));
-//                TestCube.Draw(world, Player.ViewMatrix, Player.ProjectionMatrix);
-//                TestCube.Draw(Matrix.CreateTranslation(rotatedVector), Player.ViewMatrix, Player.ProjectionMatrix);
-                //Testing end
-
                 _level.DrawModels();
                 BulletHandler.Draw();
                 BirdHandler.Draw();
@@ -264,8 +231,5 @@ namespace Winged_Warfare
 
             base.Draw(gameTime);
         }
-
-
-
     }
 }

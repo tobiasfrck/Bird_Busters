@@ -15,7 +15,7 @@ namespace Winged_Warfare
     internal class DrawableObject : LevelObject
     {
         private Model _model;
-        private string _modelName;
+        private readonly string _modelName;
 
         public DrawableObject(Vector3 position, Vector3 rotation, Vector3 scale, int line) : base(position,rotation, scale, line)
         {
@@ -51,8 +51,6 @@ namespace Winged_Warfare
             {
                 int count = _model.Bones.Count;
                 Matrix[] transforms = new Matrix[_model.Bones.Count];
-                //if (_model.sharedDrawBoneMatrices == null || _model.sharedDrawBoneMatrices.Length < count)
-                //    _model.sharedDrawBoneMatrices = new Matrix[count];
                 _model.CopyAbsoluteBoneTransformsTo(transforms);
                 foreach (ModelMesh mesh in _model.Meshes)
                 {
@@ -69,14 +67,15 @@ namespace Winged_Warfare
                     mesh.Draw();
                 }
             }
-                //_model.Draw(WorldMatrix, Player.ViewMatrix, Player.ProjectionMatrix);
         }
 
         //Generates a new line for the level file, based on the current position, rotation and scale.
         public override string RegenerateLine()
         {
-            NumberFormatInfo nfi = new System.Globalization.NumberFormatInfo();
-            nfi.NumberDecimalSeparator = ".";
+            NumberFormatInfo nfi = new NumberFormatInfo
+            {
+                NumberDecimalSeparator = "."
+            };
             string line = "model," + Position.X.ToString(nfi) + "," + Position.Y.ToString(nfi) + "," + Position.Z.ToString(nfi) + "," + Rotation.X.ToString(nfi) + "," + Rotation.Y.ToString(nfi) + "," + Rotation.Z.ToString(nfi) + "," + Scale.X.ToString(nfi) + "," + Scale.Y.ToString(nfi) + "," + Scale.Z.ToString(nfi) + "," + _modelName;
             return line;
         }

@@ -244,8 +244,8 @@ namespace Winged_Warfare
                 Matrix world = Matrix.CreateScale(0.1f);
                 world *= Matrix.CreateRotationX(MathHelper.ToRadians(90));
                 world *= Matrix.CreateTranslation(new Vector3(0, 2, 0));
-                TestCube.Draw(world, Player.ViewMatrix, Player.ProjectionMatrix);
-                TestCube.Draw(Matrix.CreateTranslation(rotatedVector), Player.ViewMatrix, Player.ProjectionMatrix);
+//                TestCube.Draw(world, Player.ViewMatrix, Player.ProjectionMatrix);
+//                TestCube.Draw(Matrix.CreateTranslation(rotatedVector), Player.ViewMatrix, Player.ProjectionMatrix);
                 //Testing end
 
                 _level.DrawModels();

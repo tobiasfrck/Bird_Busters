@@ -1,4 +1,4 @@
-model,-2,0,0,0,0,0,0.5,0.5,0.5,testContent/testCube
+model,-2,-5,0,0,0,0,0.5,0.5,0.5,testContent/testCube
 model,0,0,0,0,0,0,1,1,1,Level_Concept
-model,0,0,0,0,0,0,1,1,1,testContent/Net
+model,0,-5,0,0,0,0,1,1,1,testContent/Net
 spawn,0,0,0,0,0,0,1,1,1,[WEITERE EIGENSCHAFTEN VON SPAWNPOINTS]

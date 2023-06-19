@@ -5,12 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Timers;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using static System.Formats.Asn1.AsnWriter;
 
 namespace Winged_Warfare
 {
     internal class Spawnpoint : LevelObject
     {
+        private int _spawnpointID = 0;
         private bool _isActive;
 
         private float _spawnRate; // birds per second
@@ -22,13 +24,18 @@ namespace Winged_Warfare
         private static int _spawnedTotal;
         private static int _maxAlive;
 
-        private DrawableObject _debugDrawableObject;
+        private PathPoint _pathPoint;
+        private Model _model;
 
         //TODO: Add more attributes to the spawnpoint
 
         public Spawnpoint(Vector3 position, Vector3 rotation, Vector3 scale, int line) : base(position, rotation, scale, line)
         {
             _spawnTimer = new Stopwatch();
+            if (!Game1.Models.TryGetValue("testContent/testCube", out _model))
+            {
+                Debug.WriteLine("Model not found");
+            }
         }
 
         // TODO: Think of methods to spawn enemies
@@ -73,11 +80,28 @@ namespace Winged_Warfare
         {
         }
 
+        public int GetSpawnpointID()
+        {
+            return _spawnpointID;
+        }
+
+
+
+        public void SetPathPoint(PathPoint pathPoint)
+        {
+            _pathPoint = pathPoint;
+        }
+
+        private PathPoint GetPathPoint()
+        {
+            return _pathPoint;
+        }
+
         public override void Draw()
         {
             if (Level.GetDebugMode())
             {
-                _debugDrawableObject.Draw();
+                _model.Draw(Matrix.CreateTranslation(Position), Player.ViewMatrix, Player.ProjectionMatrix);
             }
         }
 

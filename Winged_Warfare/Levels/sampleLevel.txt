@@ -1,4 +1,10 @@
 model,-2,-5,0,0,0,0,0.5,0.5,0.5,testContent/testCube
 model,0,0,0,0,0,0,1,1,1,Level_Concept
 model,0,-5,0,0,0,0,1,1,1,testContent/Net
+pathpoint,0,-50,3,1
+pathpoint,1,7,0,2,3,4,5
+pathpoint,2,7,500
+pathpoint,3,700,0
+pathpoint,4,7,-500
+pathpoint,5,50,50,4
 spawn,0,0,0,0,0,0,1,1,1,[WEITERE EIGENSCHAFTEN VON SPAWNPOINTS]

@@ -82,6 +82,7 @@ namespace Winged_Warfare
             _camera = new FPSCamera(this, Player.CamPosition);
 
             BirdHandler.CreateList();
+            BirdHandler._startPoints = _level.GetStartPoints();
 
             Debug.WriteLine("Game initialized in Game1.cs.");
         }

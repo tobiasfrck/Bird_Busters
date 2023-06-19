@@ -10,7 +10,7 @@ using Vector3 = Microsoft.Xna.Framework.Vector3;
 
 namespace Winged_Warfare
 {
-    public class BulletHandler
+    internal class BulletHandler
     {
         //Liste mit allen Bullets
         public static List<Net> bullets = new List<Net>();

@@ -11,12 +11,15 @@ namespace Winged_Warfare
 {
     //Does everything concerning the current run and level
     //Loads level, spawns animals, has timer, checks end conditions, ends game.
-    public class Level
+    internal class Level
     {
         //Has drawable object list.
         //Has spawnpoint list.
         //Has lights list.
         private readonly List<LevelObject> _levelObjects = new();
+        private readonly List<PathPoint> _startPoints = new();
+        private readonly List<PathPoint> _tempPathPoints = new();
+        private readonly List<Spawnpoint> _spawnpoints = new();
 
         //debug-mode-variables
         private static bool _debugMode = true;
@@ -27,7 +30,7 @@ namespace Winged_Warfare
         private int _selectedObject = 0; // represents the index of the selected object in the list
         private KeyboardState _previousKeyboardState;
         private string[] _levelContent;
-        private string _levelPath="";
+        private string _levelPath = "";
 
         public Player Player1;
 
@@ -97,6 +100,11 @@ namespace Winged_Warfare
                     Debug.WriteLine("Error in level file. Line: " + i + " content: " + _levelContent[i]);
                 }
             }
+
+            //When loading is done, create graph for bird paths.
+            CreateGraphForPaths();
+
+
             Debug.WriteLine("Level loaded with " + _levelObjects.Count + " objects.");
         }
 
@@ -114,13 +122,24 @@ namespace Winged_Warfare
                     Debug.WriteLine("Created drawable object in line: " + lineNum);
                     break;
                 case 1:
-                    //Create spawnpoint and add to list.
+                    //Create pathpoint and add to list.
+                    PathPoint p = new PathPoint(ParseInt(attributes[1]),
+                        new Vector2(ParseFloat(attributes[2]), ParseFloat(attributes[3])), lineNum);
+                    for (int i = 4; i < attributes.Length; i++)
+                    {
+                        p.AddNextPointID(ParseInt(attributes[i]));
+                    }
+                    _tempPathPoints.Add(p);
+                    Debug.WriteLine("Created pathpoint in line: " + lineNum);
+                    levelObject = p;
                     break;
                 case 2:
-                    //Create light and add to list.
+                    //Create Spawnpoint and add to list.
+                    //levelObject = new Spawnpoint(ParseInt(attributes[1]), ParseVector3(attributes, 2), lineNum);
+
                     break;
                 case 3:
-                    //Create player origin and add to list.
+                    //Create light and add to list.
                     break;
                 default:
                     Debug.WriteLine("Error in level file. Line: " + lineNum);
@@ -134,18 +153,18 @@ namespace Winged_Warfare
             //Identify object type and return int.
             //-1 = error
             //0  = drawable object
-            //1  = spawnpoint
-            //2  = light
-            //3  = player origin
+            //1  = pathpoint
+            //2  = spawnpoint
+            //3  = light
             switch (objectType)
             {
                 case "model":
                     return 0;
-                case "spawn":
+                case "pathpoint":
                     return 1;
-                case "light":
+                case "spawnpoint":
                     return 2;
-                case "origin":
+                case "light":
                     return 3;
                 default:
                     return -1;
@@ -158,6 +177,47 @@ namespace Winged_Warfare
             CultureInfo culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
             culture.NumberFormat.NumberDecimalSeparator = ".";
             return new Vector3(float.Parse(vectorAttributes[startIndex], NumberStyles.Any, culture), float.Parse(vectorAttributes[startIndex + 1], NumberStyles.Any, culture), float.Parse(vectorAttributes[startIndex + 2], NumberStyles.Any, culture));
+        }
+
+        private static int ParseInt(string intAttribute)
+        {
+            //Parse string to int.
+            return int.Parse(intAttribute);
+        }
+
+        private static float ParseFloat(string floatAttribute)
+        {
+            //Parse string to float.
+            CultureInfo culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+            culture.NumberFormat.NumberDecimalSeparator = ".";
+            return float.Parse(floatAttribute, NumberStyles.Any, culture);
+        }
+
+        //This is awful. :/
+        private void CreateGraphForPaths()
+        {
+            Debug.WriteLine("Creating graph for paths.");
+            foreach (PathPoint pathPoint in _tempPathPoints)
+            {
+
+                //Check if pathpoint is a spawnpoint. pathpoint is a spawnpoint if it has the same ID as the spawnpoint.
+                Spawnpoint sp = _spawnpoints.Find(X => X.GetSpawnpointID() == pathPoint.GetPointID());
+                if (sp != null || pathPoint.GetPointID() == 0)
+                {
+                    pathPoint.SetSpawnpoint(sp);
+                    sp?.SetPathPoint(pathPoint);
+                    _startPoints.Add(pathPoint);
+                }
+                Debug.WriteLine("Pathpoint: " + pathPoint.GetPointID());
+
+                //TODO: Change to findall.
+                //add next points to pathpoint.
+                foreach (int i in pathPoint.GetNextPointsID())
+                {
+                    Debug.WriteLine(_tempPathPoints.Find(X => X.GetPointID() == i).RegenerateLine());
+                    pathPoint.AddNextPoint(_tempPathPoints.Find(X => X.GetPointID() == i));
+                }
+            }
         }
 
         private void DebugMode()
@@ -200,7 +260,7 @@ namespace Winged_Warfare
 
             UpdateDebugText();
 
-            if (_selectedObject>_levelObjects.Count)
+            if (_selectedObject > _levelObjects.Count)
             {
                 return;
             }
@@ -208,19 +268,19 @@ namespace Winged_Warfare
             //-X
             if (IsPressed(Keys.J))
             {
-                ModifyObjectTranslationRotationScale(-1,0);
+                ModifyObjectTranslationRotationScale(-1, 0);
             }
 
             //+X
             if (IsPressed(Keys.U))
             {
-                ModifyObjectTranslationRotationScale(1,0);
+                ModifyObjectTranslationRotationScale(1, 0);
             }
 
             //-Y
             if (IsPressed(Keys.K))
             {
-                ModifyObjectTranslationRotationScale(-1,1);
+                ModifyObjectTranslationRotationScale(-1, 1);
             }
 
             //+Y
@@ -232,13 +292,13 @@ namespace Winged_Warfare
             //-Z
             if (IsPressed(Keys.L))
             {
-                ModifyObjectTranslationRotationScale(-1,2);
+                ModifyObjectTranslationRotationScale(-1, 2);
             }
 
             //+Z
             if (IsPressed(Keys.O))
             {
-                ModifyObjectTranslationRotationScale(1,2);
+                ModifyObjectTranslationRotationScale(1, 2);
             }
 
             // save changes to selected object to level file
@@ -252,17 +312,17 @@ namespace Winged_Warfare
             if (IsPressed(Keys.OemMinus))
             {
                 LevelObject toReplace = LineToLevelObject(_levelContent[_selectedObject], _selectedObject);
-                if (toReplace != null) { _levelObjects[_selectedObject]=toReplace;}
+                if (toReplace != null) { _levelObjects[_selectedObject] = toReplace; }
             }
 
-           
+
         }
 
         //direction: -1 = decrease, 1 = increase
         //axis: 0 = X, 1 = Y, 2 = Z
         private void ModifyObjectTranslationRotationScale(int direction, int axis)
         {
-            float change = (float)Math.Round(direction * DebugToolMinResolution * Math.Pow(10, _debugToolResolution),3);
+            float change = (float)Math.Round(direction * DebugToolMinResolution * Math.Pow(10, _debugToolResolution), 3);
 
             Vector3 changeVector;
 
@@ -279,7 +339,7 @@ namespace Winged_Warfare
                     break;
                 default:
                     Debug.WriteLine("Error in axis.");
-                    return;       
+                    return;
             }
 
             switch (_debugTool)
@@ -310,8 +370,8 @@ namespace Winged_Warfare
                 2 => "Scale",
                 _ => "Error"
             };
-            _debugText = "Selected Object: " + _selectedObject + "\n" + 
-                         "Tool: " + debugText + "\n" + 
+            _debugText = "Selected Object: " + _selectedObject + "\n" +
+                         "Tool: " + debugText + "\n" +
                          "Resolution: " + (float)Math.Round(DebugToolMinResolution * Math.Pow(10, _debugToolResolution), 3) + "\n" +
                          "Save: Right-CTRL, Recover: -";
         }
@@ -355,6 +415,11 @@ namespace Winged_Warfare
         public static bool GetDebugMode()
         {
             return _debugMode;
+        }
+
+        public List<PathPoint> GetStartPoints()
+        {
+            return _startPoints;
         }
 
         private static int Mod(int x, int m)

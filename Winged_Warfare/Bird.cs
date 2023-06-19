@@ -13,13 +13,13 @@ using Vector3 = Microsoft.Xna.Framework.Vector3;
 namespace Winged_Warfare
 {
 
-    public class Bird
+    internal class Bird
     {
         private int _birdID = 0;
         private static int _birdCount = 0;
         private DrawableObject _drawableObject;
         public bool IsAlive = true;
-        private float _rndDirection = 0.1f; // in percent
+        private float _rndDirection = 1f; // in percent
         public Vector3 _position;
 
         private float _speed;
@@ -43,13 +43,24 @@ namespace Winged_Warfare
         private Vector2 _target;
         private float _targetTolerance;
 
+        private PathPoint _pathPoint;
+
         //No height needed, because height is variable
         private Vector2 _target2;
 
         public bool Marked;
 
         public Bird(Vector3 position, Vector3 rotation, Vector3 scale, Vector2 target, float targetTolerance,
-            Vector2 target2)
+            Vector2 target2, PathPoint p) : this(position, rotation, scale, target, targetTolerance, target2)
+        {
+            _pathPoint = p;
+            if (_birdID == 0)
+            {
+                PrintPath();
+            }
+        }
+        public Bird(Vector3 position, Vector3 rotation, Vector3 scale, Vector2 target, float targetTolerance,
+            Vector2 target2) 
         {
             _birdID = _birdCount;
             _birdCount++;
@@ -73,21 +84,83 @@ namespace Winged_Warfare
             //Bird bekommt random Stats
             _minSpeed = ((float)random.NextDouble() + 0.1f) / 5;
             _acceleration = _minSpeed;
-            _speed = _minSpeed*2;
+            _speed = _minSpeed * 2;
             _maxSpeed = ((float)random.NextDouble() + 0.5f) / 50;
             _minHeight = 2.5f;
             _maxHeight = 10f;
-            _airResistanceSpeed = _minSpeed/10f;
+            _airResistanceSpeed = _minSpeed / 10f;
 
             _target = target;
             _currentTarget = target;
             _targetTolerance = targetTolerance;
             _target2 = target2;
-
-
         }
 
         public void Update()
+        {
+            
+
+            bool flap = false;
+            _position = _drawableObject.Position;
+            //if Bird is within the tolerance of the first target, it will fly to the second target
+            if (Vector3.Distance(_drawableObject.Position, new Vector3(_pathPoint.GetPosition().X, _drawableObject.Position.Y, _pathPoint.GetPosition().Y)) < _targetTolerance && _pathPoint.HasNextPoint())
+            {
+                //Debug.WriteLine("[Bird " + _birdId + "]: Reached Target1");
+                _pathPoint = _pathPoint.GetRandomNextPoint();
+                _currentTarget = _pathPoint.GetPosition();
+            }
+
+            if (_speed <= _minSpeed)
+            {
+                flap = true;
+                _speed += _acceleration;
+                //Debug.WriteLine("[Bird "+_birdID"]: Flapped because of speed");
+            }
+
+            //if Bird is within the tolerance of the last target, it will die
+            if (_pathPoint.IsLastPoint() && Vector3.Distance(_drawableObject.Position, new Vector3(_pathPoint.GetPosition().X, _drawableObject.Position.Y, _pathPoint.GetPosition().Y)) < _targetTolerance)
+            {
+                //Debug.WriteLine("[Bird " + _birdID + "]: Reached the last target.");
+                IsAlive = false;
+            }
+
+            //if Bird is alive, it will flap its wings -> change in speed, direction and height
+            if (IsAlive && flap)
+            {
+                FlapWings();
+            }
+
+
+
+            //apply air resistance
+            _speed -= _airResistanceSpeed;
+
+            //Apply gravity
+            _drawableObject.Position = new Vector3(_drawableObject.Position.X, _drawableObject.Position.Y - _gravityAcceleration, _drawableObject.Position.Z);
+
+            if (_speed < 0.0001)
+            {
+                Debug.WriteLine("Bird " + _birdID + " Speed: " + _speed);
+                Debug.WriteLine("---");
+            }
+
+            //move to current direction
+            _drawableObject.Move(_currentDirection * _speed);
+
+            _drawableObject.Rotation = GetLookAtRotation(_position, _drawableObject.Position);
+        }
+
+        public void PrintPath()
+        {
+            PathPoint p = _pathPoint;
+            while (p != null)
+            {
+                Debug.WriteLine(p.GetPosition());
+                p = p.GetRandomNextPoint();
+            }
+        }
+
+        public void Update_old()
         {
             bool flap = false;
             _position = _drawableObject.Position;
@@ -141,20 +214,18 @@ namespace Winged_Warfare
 
         public void FlapWings()
         {
-            Random rnd = new Random();
-
 
             Vector3 currentSubTarget = new Vector3(_currentTarget.X, 0, _currentTarget.Y);
 
             //if Bird is too high or too low, it will fly to a random height between minHeight and maxHeight
-            if (_drawableObject.Position.Y < _minHeight || _drawableObject.Position.Y > _maxHeight || rnd.Next(1)==0)
+            if (_drawableObject.Position.Y < _minHeight || _drawableObject.Position.Y > _maxHeight || random.Next(1)==0)
             {
-                currentSubTarget.Y = _minHeight + (float)(rnd.NextDouble() * (_maxHeight - _minHeight));
+                currentSubTarget.Y = _minHeight + (float)(random.NextDouble() * (_maxHeight - _minHeight));
             }
             
 
             //if Bird is outside of 2*targetTolerance range, it will fly with a random direction change to make it look more natural
-            if (Vector3.Distance(_drawableObject.Position, currentSubTarget) > 2 * _targetTolerance)
+            if (Vector3.Distance(_drawableObject.Position, currentSubTarget) > 1 * _targetTolerance)
             {
                 Vector2 newSubTarget = new Vector2(currentSubTarget.X, currentSubTarget.Z);
                 Vector2 position2D = new Vector2(_drawableObject.Position.X, _drawableObject.Position.Z);
@@ -164,8 +235,8 @@ namespace Winged_Warfare
                 do
                 {
                     k++;
-                    newSubTarget.X *= (float)(rnd.NextDouble() * rnd.Next(-1, 1) * (1f - _rndDirection));
-                    newSubTarget.Y *= (float)(rnd.NextDouble() * rnd.Next(-1, 1) * (1f - _rndDirection));
+                    newSubTarget.X *= (float)(random.NextDouble() * random.Next(-1, 1) * (1f - _rndDirection));
+                    newSubTarget.Y *= (float)(random.NextDouble() * random.Next(-1, 1) * (1f - _rndDirection));
                 } while (Vector2.Distance(newSubTarget, _currentTarget) > Vector2.Distance(position2D, _currentTarget) && k < 10);
 
                 //apply [_rndDirection]% random direction change if done in less than 10 tries

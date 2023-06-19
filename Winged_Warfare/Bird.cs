@@ -5,7 +5,9 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 
 namespace Winged_Warfare
@@ -133,6 +135,8 @@ namespace Winged_Warfare
 
             //move to current direction
             _drawableObject.Move(_currentDirection * _speed);
+
+            _drawableObject.Rotation = GetLookAtRotation(_position, _drawableObject.Position);
         }
 
         public void FlapWings()
@@ -181,6 +185,34 @@ namespace Winged_Warfare
         public void Draw()
         {
             _drawableObject.Draw();
+        }
+
+        //returns the rotation vector to look from "from" to "to" in degrees
+        private Vector3 GetLookAtRotation(Vector3 from, Vector3 to)
+        {
+            Matrix lookAtMatrix = Matrix.CreateLookAt(from, to, Vector3.Up);
+
+            Vector3 rotation = new()
+            {
+                X = (float)Math.Atan2(lookAtMatrix.M32, lookAtMatrix.M33),
+                Y = (float)Math.Atan2(-lookAtMatrix.M31,
+                    Math.Sqrt(lookAtMatrix.M32 * lookAtMatrix.M32 + lookAtMatrix.M33 * lookAtMatrix.M33)),
+                Z = (float)Math.Atan2(lookAtMatrix.M21, lookAtMatrix.M11)
+            };
+
+            return Rad2Deg(rotation);
+        }
+
+
+        private static Vector3 Rad2Deg(Vector3 rad)
+        {
+            Vector3 deg = new()
+            {
+                X = MathHelper.ToDegrees(rad.X),
+                Y = MathHelper.ToDegrees(rad.Y),
+                Z = MathHelper.ToDegrees(rad.Z)
+            };
+            return deg;
         }
     }
 }

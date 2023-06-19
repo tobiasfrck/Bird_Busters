@@ -131,6 +131,9 @@ namespace Winged_Warfare
             reloadTimer = reloadTimerShot;
             Magazin -= 1;
         }
-
+        public static void Reset()
+        {
+            bullets.Clear();
+        }
     }
 }

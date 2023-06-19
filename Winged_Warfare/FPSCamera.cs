@@ -19,6 +19,7 @@ namespace Winged_Warfare
         float verticalAngle;
         // The camera's position in the world 
         public static Vector3 position;
+        public static Vector3 StartPosition;
         // The state of the mouse in the prior frame
         MouseState oldMouseState;
         // The Game this camera belongs to 
@@ -74,6 +75,7 @@ namespace Winged_Warfare
         {
             this.game = _game;
             position = _position;
+            StartPosition = position;
             this.horizontalAngle = 0;
             this.verticalAngle = 0;
             Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), game.GraphicsDevice.DisplayMode.AspectRatio, 0.001f, 1000);
@@ -206,6 +208,11 @@ namespace Winged_Warfare
                 flightButtonPressed = true;
             }
         }
-
+        public void Reset()
+        {
+            position = StartPosition;
+            this.horizontalAngle = 0;
+            this.verticalAngle = 0;
+        }
     }
 }

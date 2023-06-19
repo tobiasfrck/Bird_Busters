@@ -77,6 +77,10 @@ namespace Winged_Warfare
                 bird.Draw();
             }
         }
+        public static void Reset()
+        {
+            Birds.Clear();  
+        }
 
 
     }

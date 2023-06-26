@@ -50,7 +50,7 @@ namespace Winged_Warfare
                 //Vögel bekommen ein zufälliges Ziel zugelost
                 int TargetNumber = Random.Next(_startPoints.Count);
 
-                Birds.Add(new Bird(new Vector3(-50, 3, 0), new Vector3(1, 1, 1), new Vector3(0.2f, 0.2f, 0.2f), new Vector2(0, 0), 5, new Vector2(0,0), _startPoints[TargetNumber]));
+                Birds.Add(new Bird(new Vector3(-50, 3, 0), new Vector3(1, 1, 1), new Vector3(0.2f, 0.2f, 0.2f), 5,  _startPoints[TargetNumber]));
                 CurBirdCount++;
                 Timer = SpawnCooldown;
             }

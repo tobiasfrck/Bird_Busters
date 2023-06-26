@@ -135,8 +135,11 @@ namespace Winged_Warfare
                     break;
                 case 2:
                     //Create Spawnpoint and add to list.
-                    //levelObject = new Spawnpoint(ParseInt(attributes[1]), ParseVector3(attributes, 2), lineNum);
-
+                    //levelObject = new Spawnpoint(ParseInt(sattributes[1]), ParseVector3(attributes, 2), lineNum);
+                    Spawnpoint s = new Spawnpoint(ParseInt(attributes[1]), ParseFloat(attributes[2]), ParseFloat(attributes[3]), lineNum);
+                    _spawnpoints.Add(s);
+                    Debug.WriteLine("Created spawnpoint in line: " + lineNum);
+                    levelObject = s;
                     break;
                 case 3:
                     //Create light and add to list.
@@ -202,8 +205,9 @@ namespace Winged_Warfare
 
                 //Check if pathpoint is a spawnpoint. pathpoint is a spawnpoint if it has the same ID as the spawnpoint.
                 Spawnpoint sp = _spawnpoints.Find(X => X.GetSpawnpointID() == pathPoint.GetPointID());
-                if (sp != null || pathPoint.GetPointID() == 0)
+                if (sp != null)
                 {
+                    Debug.WriteLine("Spawnpoint found: " + sp.GetSpawnpointID());
                     pathPoint.SetSpawnpoint(sp);
                     sp?.SetPathPoint(pathPoint);
                     _startPoints.Add(pathPoint);
@@ -220,6 +224,7 @@ namespace Winged_Warfare
             }
         }
 
+        [Conditional("DEBUG")]
         private void DebugMode()
         {
             //Debug mode.

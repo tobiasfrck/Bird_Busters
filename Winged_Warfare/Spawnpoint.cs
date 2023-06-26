@@ -12,26 +12,43 @@ namespace Winged_Warfare
 {
     internal class Spawnpoint : LevelObject
     {
+        public static List<Bird> Birds = new List<Bird>();
+
+        private static bool _firstSpawnpointSpawned = false;
+        private bool _isFirstSpawnpoint = false;
         private int _spawnpointID = 0;
         private bool _isActive;
 
+        private float _frames = 0f;
+        private int _secondsUntilApplyCurrSRMultilplier = 0; //standard 30 seconds
+
         private float _spawnRate; // birds per second
-        private int _currSpawnedPerWave; // current birds per wave
-        private int _maxSpawn; // max birds to spawn
+        private float _currSpawnRateMultiplier = 1f; // used to store multiplier that increases spawn rate over time
+        private float _tempSpawnRateMultiplier = 1f; // used to store multipliers of special events
+        private float _spawnTank = 0f; // the "tank" is filled each frame and when it reaches >1, n>=1 birds are spawned
+
         private Stopwatch _spawnTimer;
 
-        private static int _currentlyAlive;
-        private static int _spawnedTotal;
-        private static int _maxAlive;
 
         private PathPoint _pathPoint;
         private Model _model;
 
         //TODO: Add more attributes to the spawnpoint
 
-        public Spawnpoint(Vector3 position, Vector3 rotation, Vector3 scale, int line) : base(position, rotation, scale, line)
+        //Spawnpoints are positioned on initialization in origin.
+        //They are then moved to the position of the pathpoint they are assigned to.
+        public Spawnpoint(int spawnpointId, float spawnRate, float SpawnRateMultiplier, int line) : base(new Vector3(0,0,0), new Vector3(0,0,0), new Vector3(1,1,1), line)
         {
+            if (_firstSpawnpointSpawned == false)
+            {
+                _isFirstSpawnpoint = true;
+                _firstSpawnpointSpawned = true;
+            }
+            _spawnpointID = spawnpointId;
             _spawnTimer = new Stopwatch();
+            _spawnRate = spawnRate;
+            _currSpawnRateMultiplier = SpawnRateMultiplier;
+
             if (!Game1.Models.TryGetValue("testContent/testCube", out _model))
             {
                 Debug.WriteLine("Model not found");
@@ -43,41 +60,45 @@ namespace Winged_Warfare
 
         public override void Update()
         {
+            float spawnAmount = (_spawnRate / Game1.Fps) * _tempSpawnRateMultiplier;
+            _spawnTank += spawnAmount;
             SpawnBird();
+
+            //first spawnpoint is responsible for updating birds
+            if (_isFirstSpawnpoint)
+            {
+                foreach (Bird bird in Birds)
+                {
+                    bird.Update();
+                }
+
+                for (int i = Birds.Count - 1; i >= 0; i--)
+                {
+                    if (!Birds[i].IsAlive)
+                    {
+                        Birds.RemoveAt(i);
+                    }
+                }
+            }
+
         }
 
         private void SpawnBird()
         {
-            if (!_isActive)
+            if (_spawnTank >= 1)
             {
-                _spawnTimer.Start();
-                _isActive = true;
-                return;
+                int birdsToSpawn = (int) Math.Floor(_spawnTank);
+                _spawnTank -= birdsToSpawn;
+                for (int i = 0; i < birdsToSpawn; i++)
+                {
+                    Birds.Add(new Bird(_pathPoint, 5));
+                }
             }
-
-            if (_spawnTimer.ElapsedMilliseconds >= 1000 / _spawnRate)
-            {
-                _spawnTimer.Restart();
-                _currSpawnedPerWave = 0;
-            }
-
-
-
-
-            if (_currentlyAlive < _maxAlive)
-            {
-
-            }
-
         }
 
-        private void startSpawnTimer()
+        public override String RegenerateLine()
         {
-            
-        }
-
-        private void OnTimedEvent(Object source, ElapsedEventArgs e)
-        {
+            return "spawnpoint," + _spawnpointID + "," + _spawnRate + "," + _currSpawnRateMultiplier;
         }
 
         public int GetSpawnpointID()
@@ -90,6 +111,7 @@ namespace Winged_Warfare
         public void SetPathPoint(PathPoint pathPoint)
         {
             _pathPoint = pathPoint;
+            Position = _pathPoint.GetPosition3D();
         }
 
         private PathPoint GetPathPoint()
@@ -97,11 +119,35 @@ namespace Winged_Warfare
             return _pathPoint;
         }
 
+        // Use Reset only when you reload the level
+        public static void Reset()
+        {
+            Birds.Clear();
+            _firstSpawnpointSpawned = false;
+        }
+
         public override void Draw()
         {
+            //TODO: optimize this
+            _frames++;
+
+            if (_frames >= Game1.Fps)
+            {
+                _secondsSinceLastReset++;
+                _frames = 0;
+            }
+
             if (Level.GetDebugMode())
             {
                 _model.Draw(Matrix.CreateTranslation(Position), Player.ViewMatrix, Player.ProjectionMatrix);
+            }
+
+            if (_isFirstSpawnpoint)
+            {
+                foreach (Bird bird in Birds)
+                {
+                    bird.Draw();
+                }
             }
         }
 

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
-using Vector3 = System.Numerics.Vector3;
+using Vector3 = Microsoft.Xna.Framework.Vector3;
 
 namespace Winged_Warfare
 {
@@ -77,6 +78,11 @@ namespace Winged_Warfare
         public Vector2 GetPosition()
         {
             return new Vector2(Position.X, Position.Z);
+        }
+
+        public Vector3 GetPosition3D()
+        {
+            return Position;
         }
 
 

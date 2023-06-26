@@ -143,11 +143,7 @@ namespace Winged_Warfare
                     {
                         _spriteBatch.Draw(_gameBackground, _fullScreen, Color.White);
                     }
-                    if (Level.GetDebugMode())
-                    {
-                        Vector2 textDim = Game1.TestFont.MeasureString(Level.GetDebugText());
-                        _spriteBatch.DrawString(Game1.TestFont, Level.GetDebugText(), new Vector2((Game1.Width / 2f) - (textDim.X / 2f), 900), Color.Red);
-                    }
+                    DrawDebug();
                     foreach (Button btn in _gameButtons)
                     {
                         btn.Draw(_spriteBatch, _currentMouseState.Position.ToVector2(), _currentMouseState.LeftButton == ButtonState.Pressed);
@@ -167,6 +163,17 @@ namespace Winged_Warfare
                     Debug.WriteLine("[ERROR]: Invalid state.");
                     SetState(0);
                     break;
+            }
+        }
+
+        [Conditional("DEBUG")]
+        private void DrawDebug()
+        {
+            if (Level.GetDebugMode())
+            {
+                Vector2 textDim = Game1.TestFont.MeasureString(Level.GetDebugText());
+                _spriteBatch.DrawString(Game1.TestFont, Level.GetDebugText(),
+                    new Vector2((Game1.Width / 2f) - (textDim.X / 2f), 900), Color.Red);
             }
         }
 

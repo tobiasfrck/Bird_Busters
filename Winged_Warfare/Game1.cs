@@ -20,6 +20,7 @@ namespace Winged_Warfare
         public static int Width = 1920;
         public static int Height = 1080;
         private bool _wasUnfocused = false;
+        public static float Fps = 0;
 
         //TODO: Delete testing variables
         //---------------------------
@@ -81,8 +82,8 @@ namespace Winged_Warfare
             // Initialize the camera 
             _camera = new FPSCamera(this, Player.CamPosition);
 
-            BirdHandler.CreateList();
-            BirdHandler._startPoints = _level.GetStartPoints();
+            //BirdHandler.CreateList();
+            //BirdHandler._startPoints = _level.GetStartPoints();
 
             Debug.WriteLine("Game initialized in Game1.cs.");
         }
@@ -162,7 +163,7 @@ namespace Winged_Warfare
                     _level.UpdateObjects();
                     Player.Update();
                     BulletHandler.Update();
-                    BirdHandler.Update();
+                    //BirdHandler.Update();
                     // Update the camera
                     _camera.Update(gameTime);
                     break;
@@ -182,7 +183,7 @@ namespace Winged_Warfare
                 Debug.WriteLine("You won!");
                 Debug.WriteLine("--------");
                 Score.ResetScore();
-                BirdHandler.Reset();
+                //BirdHandler.Reset();
                 BulletHandler.Reset();
                 _camera.Reset();
             }
@@ -212,6 +213,7 @@ namespace Winged_Warfare
             //rasterizerState.CullMode = CullMode.None;
             //GraphicsDevice.RasterizerState = rasterizerState;
 
+            Fps = (float)(1000 / gameTime.ElapsedGameTime.TotalMilliseconds); //calculates FPS
             //Debug.WriteLine("[FPS]: " + 1000/gameTime.ElapsedGameTime.TotalMilliseconds); //Outputs FPS to console
 
             //READ THIS!
@@ -223,7 +225,7 @@ namespace Winged_Warfare
                 
                 _level.DrawModels();
                 BulletHandler.Draw();
-                BirdHandler.Draw();
+                //BirdHandler.Draw();
             }
 
             

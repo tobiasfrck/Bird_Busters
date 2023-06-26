@@ -50,15 +50,42 @@ namespace Winged_Warfare
 
         public bool Marked;
 
-        public Bird(Vector3 position, Vector3 rotation, Vector3 scale, Vector2 target, float targetTolerance,
-            Vector2 target2, PathPoint p) : this(position, rotation, scale, target, targetTolerance, target2)
+        public Bird(Vector3 position, Vector3 rotation, Vector3 scale, float targetTolerance,
+            PathPoint p)
         {
+            _birdID = _birdCount;
+            _birdCount++;
             _pathPoint = p;
             if (_birdID == 0)
             {
                 PrintPath();
             }
+
+            // Vögel spawnen in einem Bereich anstatt auf der gleichen Stelle
+            Offset.X = ((float)random.NextDouble() - 0.5f) * 2;
+            Offset.Y = ((float)random.NextDouble() - 0.5f) * 2;
+
+            position.X += Offset.X;
+            position.Z += Offset.Y;
+
+            _drawableObject = new DrawableObject(position, rotation, scale, "testContent/testCube", -1);
+
+            //Bird bekommt random Stats
+            _minSpeed = ((float)random.NextDouble() + 0.1f) / 5;
+            _acceleration = _minSpeed;
+            _speed = _minSpeed * 2;
+            _maxSpeed = ((float)random.NextDouble() + 0.5f) / 50;
+            _minHeight = 2.5f;
+            _maxHeight = 10f;
+            _airResistanceSpeed = _minSpeed / 10f;
+
+            _targetTolerance = targetTolerance;
         }
+
+        public Bird(PathPoint p, float targetTolerance) : this(p.Position, new Vector3(0,0,0), new Vector3(0.2f, 0.2f, 0.2f), targetTolerance, p)
+        {
+        }
+
         public Bird(Vector3 position, Vector3 rotation, Vector3 scale, Vector2 target, float targetTolerance,
             Vector2 target2) 
         {

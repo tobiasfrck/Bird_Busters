@@ -23,6 +23,7 @@ namespace Winged_Warfare
     {
         private SpriteBatch _spriteBatch;
         private readonly Rectangle _fullScreen = new(0, 0, Game1.Width, Game1.Height);
+        private Viewport Viewport = new(0, 0, Game1.Width, Game1.Height);
 
         private Texture2D _menuBackground;
         private Texture2D _settingsBackground;
@@ -231,5 +232,11 @@ namespace Winged_Warfare
         {
             Game1.CloseGame = true;
         }
+
+        public Vector3 WorldToScreen(Vector3 source, Matrix worldMatrix)
+        {
+            return Viewport.Project(source, Player.ProjectionMatrix, Player.ViewMatrix, worldMatrix);
+        }
+
     }
 }

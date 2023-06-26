@@ -49,7 +49,10 @@ namespace Winged_Warfare
         private Level _level;
 
         //Menu
-        private MenuManager _menuManager;
+        private static MenuManager _menuManager;
+
+        //Game
+        public static Game1 Instance;
 
         public Game1()
         {
@@ -61,10 +64,11 @@ namespace Winged_Warfare
             _graphics.PreferredBackBufferWidth = Width; // you can change this if its too big or too small for your screen
             _graphics.PreferredBackBufferHeight = Height; // you can change this if its too big or too small for your screen
             //_graphics.ApplyChanges(); // apply changes to the graphics device manager; not needed here but if you change the screen size during runtime you need this
+            Instance = this;
         }
 
 
-
+        
         protected override void Initialize()
         {
             base.Initialize();
@@ -237,5 +241,7 @@ namespace Winged_Warfare
 
             base.Draw(gameTime);
         }
+
     }
+
 }

@@ -19,7 +19,7 @@ namespace Winged_Warfare
         private static int _birdCount = 0;
         private DrawableObject _drawableObject;
         public bool IsAlive = true;
-        private float _rndDirection = 1f; // in percent
+        private float _rndDirection = 0.1f; // in percent
         public Vector3 _position;
 
         private float _speed;
@@ -99,7 +99,7 @@ namespace Winged_Warfare
             position.X += Offset.X;
             position.Z += Offset.Y;
 
-            // Vögel haben relativ zu ihrem Spawnpoint verschobene Targets (funktioniert irgenwie nicht)
+            // Vögel haben relativ zu ihrem BirdSpawnpoint verschobene Targets (funktioniert irgenwie nicht)
             target.X += Offset.X;
             target.Y += Offset.Y;
 

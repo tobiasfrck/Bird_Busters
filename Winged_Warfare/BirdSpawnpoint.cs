@@ -10,7 +10,7 @@ using static System.Formats.Asn1.AsnWriter;
 
 namespace Winged_Warfare
 {
-    internal class Spawnpoint : LevelObject
+    internal class BirdSpawnpoint : LevelObject
     {
         public static List<Bird> Birds = new List<Bird>();
 
@@ -37,7 +37,7 @@ namespace Winged_Warfare
 
         //Spawnpoints are positioned on initialization in origin.
         //They are then moved to the position of the pathpoint they are assigned to.
-        public Spawnpoint(int spawnpointId, float spawnRate, float SpawnRateMultiplier, int line) : base(new Vector3(0,0,0), new Vector3(0,0,0), new Vector3(1,1,1), line)
+        public BirdSpawnpoint(int spawnpointId, float spawnRate, float SpawnRateMultiplier, int line) : base(new Vector3(0,0,0), new Vector3(0,0,0), new Vector3(1,1,1), line)
         {
             if (_firstSpawnpointSpawned == false)
             {
@@ -133,7 +133,7 @@ namespace Winged_Warfare
 
             if (_frames >= Game1.Fps)
             {
-                _secondsSinceLastReset++;
+                //_secondsUntilApplyCurrSRMultilplier++;
                 _frames = 0;
             }
 

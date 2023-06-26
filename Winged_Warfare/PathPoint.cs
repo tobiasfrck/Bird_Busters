@@ -15,7 +15,7 @@ namespace Winged_Warfare
     internal class PathPoint : LevelObject
     {
         private int _pointID = 0;
-        private Spawnpoint _spawnpoint;
+        private BirdSpawnpoint _birdSpawnpoint;
         private List<PathPoint> _nextPoints;
         private Model _model;
         private List<int> _nextPointsId;
@@ -33,10 +33,10 @@ namespace Winged_Warfare
             }
         }
 
-        public PathPoint(int pointID, Vector2 pos, Spawnpoint sp, int line) : base(new Vector3(pos.X, 0, pos.Y), Vector3.Zero, Vector3.One, line)
+        public PathPoint(int pointID, Vector2 pos, BirdSpawnpoint sp, int line) : base(new Vector3(pos.X, 0, pos.Y), Vector3.Zero, Vector3.One, line)
         {
             _pointID = pointID;
-            _spawnpoint = sp;
+            _birdSpawnpoint = sp;
             _nextPoints = new List<PathPoint>();
             _nextPointsId = new List<int>();
             if (!Game1.Models.TryGetValue("testContent/testCube", out _model))
@@ -65,9 +65,9 @@ namespace Winged_Warfare
             }
         }
 
-        public void SetSpawnpoint(Spawnpoint sp)
+        public void SetSpawnpoint(BirdSpawnpoint sp)
         {
-            _spawnpoint = sp;
+            _birdSpawnpoint = sp;
         }
 
         public int GetPointID()
@@ -88,7 +88,7 @@ namespace Winged_Warfare
 
         public bool IsSpawnpoint()
         {
-            return _spawnpoint != null;
+            return _birdSpawnpoint != null;
         }
 
         public void AddNextPoint(PathPoint point)
@@ -115,9 +115,9 @@ namespace Winged_Warfare
             return _nextPoints[rnd.Next(_nextPoints.Count)];
         }
 
-        public Spawnpoint GetSpawnpoint()
+        public BirdSpawnpoint GetSpawnpoint()
         {
-            return _spawnpoint;
+            return _birdSpawnpoint;
         }
 
         public bool IsLastPoint()

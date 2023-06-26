@@ -19,7 +19,7 @@ namespace Winged_Warfare
         private readonly List<LevelObject> _levelObjects = new();
         private readonly List<PathPoint> _startPoints = new();
         private readonly List<PathPoint> _tempPathPoints = new();
-        private readonly List<Spawnpoint> _spawnpoints = new();
+        private readonly List<BirdSpawnpoint> _spawnpoints = new();
 
         //debug-mode-variables
         private static bool _debugMode = true;
@@ -134,9 +134,9 @@ namespace Winged_Warfare
                     levelObject = p;
                     break;
                 case 2:
-                    //Create Spawnpoint and add to list.
-                    //levelObject = new Spawnpoint(ParseInt(sattributes[1]), ParseVector3(attributes, 2), lineNum);
-                    Spawnpoint s = new Spawnpoint(ParseInt(attributes[1]), ParseFloat(attributes[2]), ParseFloat(attributes[3]), lineNum);
+                    //Create BirdSpawnpoint and add to list.
+                    //levelObject = new BirdSpawnpoint(ParseInt(sattributes[1]), ParseVector3(attributes, 2), lineNum);
+                    BirdSpawnpoint s = new BirdSpawnpoint(ParseInt(attributes[1]), ParseFloat(attributes[2]), ParseFloat(attributes[3]), lineNum);
                     _spawnpoints.Add(s);
                     Debug.WriteLine("Created spawnpoint in line: " + lineNum);
                     levelObject = s;
@@ -204,10 +204,10 @@ namespace Winged_Warfare
             {
 
                 //Check if pathpoint is a spawnpoint. pathpoint is a spawnpoint if it has the same ID as the spawnpoint.
-                Spawnpoint sp = _spawnpoints.Find(X => X.GetSpawnpointID() == pathPoint.GetPointID());
+                BirdSpawnpoint sp = _spawnpoints.Find(X => X.GetSpawnpointID() == pathPoint.GetPointID());
                 if (sp != null)
                 {
-                    Debug.WriteLine("Spawnpoint found: " + sp.GetSpawnpointID());
+                    Debug.WriteLine("BirdSpawnpoint found: " + sp.GetSpawnpointID());
                     pathPoint.SetSpawnpoint(sp);
                     sp?.SetPathPoint(pathPoint);
                     _startPoints.Add(pathPoint);

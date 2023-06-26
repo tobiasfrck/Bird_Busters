@@ -91,7 +91,7 @@ namespace Winged_Warfare
                 _spawnTank -= birdsToSpawn;
                 for (int i = 0; i < birdsToSpawn; i++)
                 {
-                    Birds.Add(new Bird(_pathPoint, 5));
+                    Birds.Add(new Bird(_pathPoint, 3f));
                 }
             }
         }

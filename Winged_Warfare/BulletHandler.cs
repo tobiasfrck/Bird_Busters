@@ -72,6 +72,7 @@ namespace Winged_Warfare
                     {
 //                        bullets[i].Marked = true;
                         birds[j].Marked = true;
+                        Debug.WriteLine(birds[j].GetBirdStats());
                         Debug.WriteLine("hit");
                         Score.IncreaseScore();
                         Debug.WriteLine("New Score:" + Score.CurrentScore);

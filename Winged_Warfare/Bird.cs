@@ -83,12 +83,12 @@ namespace Winged_Warfare
             GenerateCurrentTarget();
         }
 
-        public Bird(PathPoint p, float targetTolerance) : this(p.Position, new Vector3(0,0,0), new Vector3(0.2f, 0.2f, 0.2f), targetTolerance, p)
+        public Bird(PathPoint p, float targetTolerance) : this(p.Position, new Vector3(0, 0, 0), new Vector3(0.2f, 0.2f, 0.2f), targetTolerance, p)
         {
         }
 
         public Bird(Vector3 position, Vector3 rotation, Vector3 scale, Vector2 target, float targetTolerance,
-            Vector2 target2) 
+            Vector2 target2)
         {
             _birdID = _birdCount;
             _birdCount++;
@@ -129,7 +129,7 @@ namespace Winged_Warfare
             bool flap = false;
             _position = _drawableObject.Position;
             //if Bird is within the tolerance of the first target, it will fly to the second target
-            if (Vector3.Distance(_drawableObject.Position, new Vector3(_currentTarget.X, _drawableObject.Position.Y, _currentTarget.Y)) < _targetTolerance*1 && _pathPoint.HasNextPoint())
+            if (Vector3.Distance(_drawableObject.Position, new Vector3(_currentTarget.X, _drawableObject.Position.Y, _currentTarget.Y)) < _targetTolerance * 1 && _pathPoint.HasNextPoint())
             {
                 //Debug.WriteLine("[Bird " + _birdId + "]: Reached Target1");
                 _pathPoint = _pathPoint.GetRandomNextPoint();
@@ -192,11 +192,11 @@ namespace Winged_Warfare
             Vector3 currentSubTarget = new Vector3(_currentTarget.X, _drawableObject.Position.Y, _currentTarget.Y);
 
             //if Bird is too low, it will flap to a random height between minHeight and maxHeight
-            if (_drawableObject.Position.Y < _minHeight  || (random.NextDouble()>=0.75 && (_minHeight+_maxHeight)/2 > _drawableObject.Position.Y))
+            if (_drawableObject.Position.Y < _minHeight || (random.NextDouble() >= 0.75 && (_minHeight + _maxHeight) / 2 > _drawableObject.Position.Y))
             {
                 currentSubTarget.Y = _minHeight + (float)(random.NextDouble() * (_maxHeight - _minHeight));
             }
-            
+
 
             //if Bird is outside of 2*targetTolerance range, it will fly with a random direction change to make it look more natural
             if (Vector3.Distance(_drawableObject.Position, currentSubTarget) > 1 * _targetTolerance)
@@ -208,20 +208,24 @@ namespace Winged_Warfare
                 do
                 {
                     k++;
-                    float angle = (float)(random.NextDouble() * random.Next(-1,1)) * _rndDirection;
-                    newSubTarget.X = (float)(Math.Cos(angle * currentSubTarget.X) - Math.Sin(angle * currentSubTarget.Y));
-                    newSubTarget.Y = (float)(Math.Sin(angle * currentSubTarget.X) + Math.Cos(angle * currentSubTarget.Y));
+                    float angle = (float)(random.NextDouble() * random.Next(-1, 1)) * _rndDirection;
+                    newSubTarget.X = (float)(Math.Cos(angle * currentSubTarget.X) - Math.Sin(angle * currentSubTarget.Z));
+                    newSubTarget.Y = (float)(Math.Sin(angle * currentSubTarget.X) + Math.Cos(angle * currentSubTarget.Z));
                 } while (Vector2.Distance(newSubTarget, _currentTarget) * 1.1f > Vector2.Distance(position2D, _currentTarget) && k < 10);
 
                 //apply [_rndDirection]% random direction change if done in less than 10 tries
                 if (k < 10)
                 {
-                    currentSubTarget.X = newSubTarget.X;
-                    currentSubTarget.Z = newSubTarget.Y;
+                    currentSubTarget.X += newSubTarget.X;
+                    currentSubTarget.Z += newSubTarget.Y;
                 }
                 else
                 {
-                    //Debug.WriteLine("Bird " + _birdID + " couldn't find a new direction");
+                    Debug.WriteLine("Bird " + _birdID + " couldn't find a new direction");
+                    //NewSubTarget
+                    Debug.WriteLine("CurrentSubTarget: " + currentSubTarget);
+                    Debug.WriteLine("CurrentTarget: " + _currentTarget);
+                    Debug.WriteLine("NewSubTarget: " + newSubTarget);
                 }
             }
             Vector3 direction = currentSubTarget - _drawableObject.Position;

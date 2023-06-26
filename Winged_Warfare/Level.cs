@@ -323,8 +323,10 @@ namespace Winged_Warfare
 
         }
 
+
         //direction: -1 = decrease, 1 = increase
         //axis: 0 = X, 1 = Y, 2 = Z
+        [Conditional("DEBUG")]
         private void ModifyObjectTranslationRotationScale(int direction, int axis)
         {
             float change = (float)Math.Round(direction * DebugToolMinResolution * Math.Pow(10, _debugToolResolution), 3);
@@ -365,6 +367,7 @@ namespace Winged_Warfare
         }
 
 
+        [Conditional("DEBUG")]
         private void UpdateDebugText()
         {
             //Update debug text.

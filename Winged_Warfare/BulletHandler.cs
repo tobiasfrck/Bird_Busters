@@ -63,7 +63,7 @@ namespace Winged_Warfare
 //          Hit-Logic (change If Statement)
 //          Marks Bullet und Bird, removes them later
 //          Comment the Bullet Mark line to make the Net fly through Birds
-            birds = BirdHandler.Birds;
+            birds = BirdSpawnpoint.Birds;
             for (int i = bullets.Count - 1; i >= 0; i--)
             {
                 for (int j = birds.Count - 1; j >= 0; j--)

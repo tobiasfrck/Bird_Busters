@@ -221,11 +221,11 @@ namespace Winged_Warfare
                 }
                 else
                 {
-                    Debug.WriteLine("Bird " + _birdID + " couldn't find a new direction");
+                    //Debug.WriteLine("Bird " + _birdID + " couldn't find a new direction");
                     //NewSubTarget
-                    Debug.WriteLine("CurrentSubTarget: " + currentSubTarget);
-                    Debug.WriteLine("CurrentTarget: " + _currentTarget);
-                    Debug.WriteLine("NewSubTarget: " + newSubTarget);
+                    //Debug.WriteLine("CurrentSubTarget: " + currentSubTarget);
+                    //Debug.WriteLine("CurrentTarget: " + _currentTarget);
+                    //Debug.WriteLine("NewSubTarget: " + newSubTarget);
                 }
             }
             Vector3 direction = currentSubTarget - _drawableObject.Position;

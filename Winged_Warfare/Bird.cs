@@ -16,11 +16,11 @@ namespace Winged_Warfare
 
     internal class Bird
     {
-        private int _birdID = 0;
-        private static int _birdCount = 0;
+        private int _birdID;
+        private static int _birdCount;
         private DrawableObject _drawableObject;
         public bool IsAlive = true;
-        private float _rndDirection = 15f; // in degree
+        private readonly float _rndDirection = 15f; // in degree
         public Vector3 _position;
 
         private float _speed;
@@ -33,27 +33,23 @@ namespace Winged_Warfare
 
         private float _minHeight;
         private float _maxHeight;
-        private Random random = new Random();
+        private Random _random = new();
 
-        private Vector2 Offset = new Vector2();
+        private Vector2 _offset;
 
         private Vector2 _currentTarget;
         private Vector3 _currentDirection;
 
-        //No height needed, because height is variable
-        private Vector2 _target;
         private float _targetTolerance;
 
         private PathPoint _pathPoint;
 
-        //No height needed, because height is variable
-        private Vector2 _target2;
-
-        public bool Marked;
-
-        public Bird(Vector3 position, Vector3 rotation, Vector3 scale, float targetTolerance,
-            PathPoint p)
+        public Bird(PathPoint p, float targetTolerance)
         {
+            Vector3 position = p.Position;
+            Vector3 rotation = new Vector3(0, 0, 0);
+            Vector3 scale = new Vector3(0.2f, 0.2f, 0.2f);
+
             _birdID = _birdCount;
             _birdCount++;
             _pathPoint = p;
@@ -63,66 +59,25 @@ namespace Winged_Warfare
             }
 
             // Vögel spawnen in einem Bereich anstatt auf der gleichen Stelle
-            Offset.X = ((float)random.NextDouble() - 0.5f) * 2;
-            Offset.Y = ((float)random.NextDouble() - 0.5f) * 2;
+            _offset.X = ((float)_random.NextDouble() - 0.5f) * 2;
+            _offset.Y = ((float)_random.NextDouble() - 0.5f) * 2;
 
-            position.X += Offset.X;
-            position.Z += Offset.Y;
+            position.X += _offset.X;
+            position.Z += _offset.Y;
 
             _drawableObject = new DrawableObject(position, rotation, scale, "testContent/testCube", -1);
 
             //Bird bekommt random Stats
-            _minSpeed = ((float)random.NextDouble() + 0.2f) / 5;
+            _minSpeed = ((float)_random.NextDouble() + 0.2f) / 5;
             _acceleration = _minSpeed;
             _speed = _minSpeed * 2;
-            _maxSpeed = ((float)random.NextDouble() + 0.5f) / 50;
+            _maxSpeed = ((float)_random.NextDouble() + 0.5f) / 50;
             _minHeight = 2.5f;
             _maxHeight = 10f;
             _airResistanceSpeed = _minSpeed / 10f;
 
             _targetTolerance = targetTolerance;
             GenerateCurrentTarget();
-        }
-
-        public Bird(PathPoint p, float targetTolerance) : this(p.Position, new Vector3(0, 0, 0), new Vector3(0.2f, 0.2f, 0.2f), targetTolerance, p)
-        {
-        }
-
-        public Bird(Vector3 position, Vector3 rotation, Vector3 scale, Vector2 target, float targetTolerance,
-            Vector2 target2)
-        {
-            _birdID = _birdCount;
-            _birdCount++;
-
-            // Vögel spawnen in einem Bereich anstatt auf der gleichen Stelle
-            Offset.X = ((float)random.NextDouble() - 0.5f) * 2;
-            Offset.Y = ((float)random.NextDouble() - 0.5f) * 2;
-
-            position.X += Offset.X;
-            position.Z += Offset.Y;
-
-            // Vögel haben relativ zu ihrem BirdSpawnpoint verschobene Targets (funktioniert irgenwie nicht)
-            target.X += Offset.X;
-            target.Y += Offset.Y;
-
-            target2.X += Offset.X;
-            target2.Y += Offset.Y;
-
-            _drawableObject = new DrawableObject(position, rotation, scale, "testContent/testCube", -1);
-
-            //Bird bekommt random Stats
-            _minSpeed = ((float)random.NextDouble() + 0.1f) / 5;
-            _acceleration = _minSpeed;
-            _speed = _minSpeed * 2;
-            _maxSpeed = ((float)random.NextDouble() + 0.5f) / 50;
-            _minHeight = 2.5f;
-            _maxHeight = 10f;
-            _airResistanceSpeed = _minSpeed / 10f;
-
-            _target = target;
-            _currentTarget = target;
-            _targetTolerance = targetTolerance;
-            _target2 = target2;
         }
 
         public void Update()
@@ -154,7 +109,7 @@ namespace Winged_Warfare
             //if Bird is alive, it will flap its wings -> change in speed, direction and height
             if (IsAlive && flap)
             {
-                int index = random.Next(0,150);
+                int index = _random.Next(0,150);
                 if (index < 1) {
                     float distance = Vector3.Distance(this._position,Player.GetCamPosition());
                     Debug.WriteLine(distance);
@@ -187,7 +142,7 @@ namespace Winged_Warfare
             _drawableObject.Rotation = GetLookAtRotation(_position, _drawableObject.Position);
         }
 
-        public void PrintPath()
+        private void PrintPath()
         {
             PathPoint p = _pathPoint;
             while (p != null)
@@ -197,15 +152,15 @@ namespace Winged_Warfare
             }
         }
 
-        public void FlapWings()
+        private void FlapWings()
         {
             Vector2 position2D = new Vector2(_drawableObject.Position.X, _drawableObject.Position.Z);
             Vector3 currentSubTarget = new Vector3(_currentTarget.X, _drawableObject.Position.Y, _currentTarget.Y);
 
             //if Bird is too low, it will flap to a random height between minHeight and maxHeight
-            if (_drawableObject.Position.Y < _minHeight || (random.NextDouble() >= 0.75 && (_minHeight + _maxHeight) / 2 > _drawableObject.Position.Y))
+            if (_drawableObject.Position.Y < _minHeight || (_random.NextDouble() >= 0.75 && (_minHeight + _maxHeight) / 2 > _drawableObject.Position.Y))
             {
-                currentSubTarget.Y = _minHeight + (float)(random.NextDouble() * (_maxHeight - _minHeight));
+                currentSubTarget.Y = _minHeight + (float)(_random.NextDouble() * (_maxHeight - _minHeight));
             }
 
 
@@ -219,7 +174,7 @@ namespace Winged_Warfare
                 do
                 {
                     k++;
-                    float angle = (float)(random.NextDouble() * random.Next(-1, 1)) * _rndDirection;
+                    float angle = (float)(_random.NextDouble() * _random.Next(-1, 1)) * _rndDirection;
                     newSubTarget.X = (float)(Math.Cos(angle * currentSubTarget.X) - Math.Sin(angle * currentSubTarget.Z));
                     newSubTarget.Y = (float)(Math.Sin(angle * currentSubTarget.X) + Math.Cos(angle * currentSubTarget.Z));
                 } while (Vector2.Distance(newSubTarget, _currentTarget) * 1.1f > Vector2.Distance(position2D, _currentTarget) && k < 10);
@@ -250,8 +205,8 @@ namespace Winged_Warfare
         private void GenerateCurrentTarget()
         {
             _currentTarget = _pathPoint.GetPosition();
-            float r = _targetTolerance * (float)Math.Sqrt(random.NextDouble());
-            float theta = (float)(random.NextDouble() * 2 * MathHelper.Pi);
+            float r = _targetTolerance * (float)Math.Sqrt(_random.NextDouble());
+            float theta = (float)(_random.NextDouble() * 2 * MathHelper.Pi);
             _currentTarget.X += r * (float)Math.Cos(theta);
             _currentTarget.Y += r * (float)Math.Sin(theta);
         }

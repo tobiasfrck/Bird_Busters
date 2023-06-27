@@ -62,7 +62,7 @@ namespace Winged_Warfare
 
 
 //          Hit-Logic (change If Statement)
-//          Marks Bullet und Bird, removes them later
+//          Marks Bullet and Bird as not alive, removes them later
 //          Comment the Bullet Mark line to make the Net fly through Birds
             birds = BirdSpawnpoint.Birds;
             for (int i = bullets.Count - 1; i >= 0; i--)
@@ -73,7 +73,7 @@ namespace Winged_Warfare
                     {
                         //bullets[i].Marked = true;
                         Game1.HitMarker.Play(Game1.Volume/2, 0, 0);
-                        birds[j].Marked = true;
+                        birds[j].IsAlive = false;
                         Debug.WriteLine(birds[j].GetBirdStats());
                         Debug.WriteLine("hit");
                         Score.IncreaseScore();
@@ -98,18 +98,6 @@ namespace Winged_Warfare
                     bullets.RemoveAt(i);
                 }
             }
-
-//          Removes Birds when marked
-            for (int i = birds.Count - 1; i >= 0; i--)
-            {
-                if (birds[i].Marked)
-                {
-                    birds.RemoveAt(i);
-                }
-            }
-
-
-
         }
         public static void Draw()
         {

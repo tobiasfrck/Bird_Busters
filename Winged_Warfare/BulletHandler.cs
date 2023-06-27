@@ -40,6 +40,7 @@ namespace Winged_Warfare
             {
 
                 //Spawned ein neues Netz
+                Game1.ShootEffect.Play(Game1.Volume,0,0);
                 bullets.Add(new Net(FPSCamera.position, Player.CamTarget));                
                 //Schaut ob gerade die letzte Kugel verschossen wurde
                 if (Magazin == 1 && useMagazin)
@@ -70,7 +71,8 @@ namespace Winged_Warfare
                 {
                     if (Vector3.Distance(bullets[i].position, birds[j]._position) <= 1)
                     {
-//                        bullets[i].Marked = true;
+                        //bullets[i].Marked = true;
+                        Game1.HitMarker.Play(Game1.Volume/2, 0, 0);
                         birds[j].Marked = true;
                         Debug.WriteLine(birds[j].GetBirdStats());
                         Debug.WriteLine("hit");

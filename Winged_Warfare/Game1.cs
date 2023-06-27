@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
@@ -21,6 +22,12 @@ namespace Winged_Warfare
         public static int Height = 1080;
         private bool _wasUnfocused = false;
         public static float Fps = 0;
+        
+        // Lautstärke Soundeffekte
+        public static float Volume = 1;
+        public static SoundEffect ShootEffect;
+        public static SoundEffect HitMarker;
+        public static SoundEffect BirdFlaps;
 
         //TODO: Delete testing variables
         //---------------------------
@@ -101,6 +108,10 @@ namespace Winged_Warfare
             ButtonHover = Content.Load<Texture2D>("testContent/button_hover");
             ButtonPressed = Content.Load<Texture2D>("testContent/button_pressed");
 
+            //SoundEffekte:
+            ShootEffect = Content.Load<SoundEffect>("Audio/Shoot");
+            HitMarker = Content.Load<SoundEffect>("Audio/hitmarker");
+            BirdFlaps = Content.Load<SoundEffect>("Audio/BirdFlaps1");
 
 
             //TODO: Load textures for _menuManager
@@ -187,7 +198,7 @@ namespace Winged_Warfare
                 Debug.WriteLine("You won!");
                 Debug.WriteLine("--------");
                 Score.ResetScore();
-                //BirdHandler.Reset();
+                BirdSpawnpoint.Reset();
                 BulletHandler.Reset();
                 _camera.Reset();
             }

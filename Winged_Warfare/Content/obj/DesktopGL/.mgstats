@@ -1,3 +1,2 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/Net.fbx","F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/Net.xnb","ModelProcessor","ModelContent",31790,7093,0,212146
-"F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/NetTexture.png","F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/NetTexture.xnb","TextureProcessor","Texture2DContent",683,16469,0,0018642
+"F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/BirdFlaps1.mp3","F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Audio/BirdFlaps1.xnb","SoundEffectProcessor","SoundEffectContent",34848,484133,0,4751654

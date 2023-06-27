@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
@@ -153,9 +154,16 @@ namespace Winged_Warfare
             //if Bird is alive, it will flap its wings -> change in speed, direction and height
             if (IsAlive && flap)
             {
-                int index = random.Next(0,200);
-                if (index < 1)
-                Game1.BirdFlaps.Play(Game1.Volume/4,0,0);
+                int index = random.Next(0,150);
+                if (index < 1) {
+                    float distance = Vector3.Distance(this._position,Player.GetCamPosition());
+                    Debug.WriteLine(distance);
+                    distance = distance / 100;
+                    float FixedVolume = (Game1.Volume - distance);
+                    if(FixedVolume>0)
+                        Game1.BirdFlaps.Play(FixedVolume, 0, 0);
+                    Debug.WriteLine(distance + " / "+FixedVolume);
+                }
                 FlapWings();
             }
 

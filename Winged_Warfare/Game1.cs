@@ -198,7 +198,7 @@ namespace Winged_Warfare
                 Debug.WriteLine("You won!");
                 Debug.WriteLine("--------");
                 Score.ResetScore();
-                //BirdHandler.Reset();
+                BirdSpawnpoint.Reset();
                 BulletHandler.Reset();
                 _camera.Reset();
             }

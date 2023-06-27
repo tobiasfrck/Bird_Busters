@@ -242,6 +242,13 @@ namespace Winged_Warfare
             base.Draw(gameTime);
         }
 
+        public void RestartLevel()
+        {
+            _level = new Level();
+            _level.LoadLevel("Levels/sampleLevel.txt");
+            Score.ResetScore();
+            BirdSpawnpoint.Reset();
+        }
     }
 
 }

@@ -45,7 +45,7 @@ namespace Winged_Warfare
             }
         }
 
-        public new string RegenerateLine()
+        public override string RegenerateLine()
         {
             string line = "pathpoint," + _pointID + "," + Position.X + "," + Position.Z;
 

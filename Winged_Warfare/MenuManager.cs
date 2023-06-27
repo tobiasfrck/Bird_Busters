@@ -52,6 +52,7 @@ namespace Winged_Warfare
             // Do NOT change the order of the buttons; This WILL break the code. lol
             CreateMainMenu();
             CreateSettingsMenu();
+            //CreateGameEndedMenu();
 
             foreach (Button button in _menuButtons)
             {
@@ -71,6 +72,8 @@ namespace Winged_Warfare
             }
             _horizontalCenter = Game1.Width / 2f;
         }
+
+        
 
         public void Update()
         {
@@ -155,6 +158,7 @@ namespace Winged_Warfare
                     {
                         _spriteBatch.Draw(_gameEndedBackground, _fullScreen, Color.White);
                     }
+                    //_spriteBatch.DrawString(Game1.TestFont, "Game Ended", new Vector2(_horizontalCenter, 25), Color.White);
                     foreach (Button btn in _gameEndedButtons)
                     {
                         btn.Draw(_spriteBatch, _currentMouseState.Position.ToVector2(), _currentMouseState.LeftButton == ButtonState.Pressed);
@@ -198,6 +202,16 @@ namespace Winged_Warfare
             toMenu.SetClick(SwitchToMenu);
         }
 
+        private void CreateGameEndedMenu()
+        {
+            Button toMenu = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.Green, Color.Red);
+            Button restart = new Button(new Vector2(Game1.Width / 2f, 400), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Restart", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            _gameEndedButtons.Add(toMenu);
+            _gameEndedButtons.Add(restart);
+            toMenu.SetClick(SwitchToMenu);
+            restart.SetClick(SwitchToGame);
+        }
+
         public GameState GetState() => _state;
         private void SetState(GameState state) => _state = state;
 
@@ -220,6 +234,7 @@ namespace Winged_Warfare
             Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();
             SetState(GameState.Game);
+            //Game1.Instance.RestartLevel();
         }
 
         public void SwitchToEndscreen()

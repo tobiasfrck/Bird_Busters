@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/cubeTexture.png</SourceFile>
-  <SourceTime>2023-06-04T15:24:31+02:00</SourceTime>
+  <SourceTime>2023-06-10T23:48:24+02:00</SourceTime>
   <DestFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/cubeTexture_0.xnb</DestFile>
-  <DestTime>2023-06-09T12:06:32.8671662+02:00</DestTime>
+  <DestTime>2023-06-27T12:02:13.5092538+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T11:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

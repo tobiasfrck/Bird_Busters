@@ -153,6 +153,9 @@ namespace Winged_Warfare
             //if Bird is alive, it will flap its wings -> change in speed, direction and height
             if (IsAlive && flap)
             {
+                int index = random.Next(0,200);
+                if (index < 1)
+                Game1.BirdFlaps.Play(Game1.Volume/4,0,0);
                 FlapWings();
             }
 

@@ -65,6 +65,9 @@ namespace Winged_Warfare
         //Game
         public static Game1 Instance;
 
+        //Gameloop Timer
+        public static Timer _gameTimer;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -183,6 +186,7 @@ namespace Winged_Warfare
                 case GameState.Settings: 
                     break;
                 case GameState.Game: 
+                    _gameTimer?.Update();
                     _level.UpdateObjects();
                     Player.Update();
                     BulletHandler.Update();
@@ -198,8 +202,8 @@ namespace Winged_Warfare
             }
 
 
-            //If Player has won or lost
-            if (Score.HasWon())
+            //If Game has ended, restart level
+            if (_menuManager.NeedsReset())
             {
                 _menuManager.SwitchToMenu(); //this needs to be changed to a win/lose screen
                 Debug.WriteLine("--------");
@@ -238,6 +242,7 @@ namespace Winged_Warfare
             GraphicsDevice.RasterizerState = rasterizerState;
 
             Fps = (float)(1000 / gameTime.ElapsedGameTime.TotalMilliseconds); //calculates FPS
+            Timer._fps = Fps;
             //Debug.WriteLine("[FPS]: " + 1000/gameTime.ElapsedGameTime.TotalMilliseconds); //Outputs FPS to console
 
             //READ THIS!

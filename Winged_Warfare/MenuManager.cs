@@ -41,6 +41,8 @@ namespace Winged_Warfare
         private MouseState _currentMouseState;
         private MouseState _previousMouseState;
 
+        private bool _gameNeedsReset = false;
+
         public MenuManager(SpriteBatch spriteBatch, Texture2D menuBackground, Texture2D settingsBackground, Texture2D gameBackground, Texture2D gameEndedBackground)
         {
             _spriteBatch = spriteBatch;
@@ -183,7 +185,7 @@ namespace Winged_Warfare
                     _spriteBatch.DrawString(Game1.TestFont, "Score: " + Score.GetScore(), new Vector2(xOffset-scoreTextSize, 10 + highscoreTextYSize), Color.White);
 
                     // TODO: Draw remaining time HUD
-                    _spriteBatch.DrawString(Game1.TestFont, "Time: " + "Time goes here", new Vector2(10, 10), Color.White);
+                    _spriteBatch.DrawString(Game1.TestFont, "Time: " + Game1._gameTimer?.GetSeconds(), new Vector2(10, 10), Color.White);
 
                     //Some kind of buttons during gameplay; currently not used
                     foreach (Button btn in _gameButtons)
@@ -257,6 +259,7 @@ namespace Winged_Warfare
         //All actions for the buttons
         public void SwitchToMenu()
         {
+            Game1._gameTimer.Pause();
             Button.ResetConflicts();
             SetState(0);
         }
@@ -269,14 +272,34 @@ namespace Winged_Warfare
 
         public void SwitchToGame()
         {
+            Game1._gameTimer = new Timer(60000, SetGameNeedsReset);
             Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();
             SetState(GameState.Game);
             //Game1.Instance.RestartLevel();
         }
 
+        private void SetGameNeedsReset()
+        {
+            _gameNeedsReset = true;
+        }
+
+        public bool NeedsReset()
+        {
+            if (_gameNeedsReset == true)
+            {
+                _gameNeedsReset = false;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void SwitchToEndscreen()
         {
+            Game1._gameTimer.Pause();
             Button.ResetConflicts();
             SetState(GameState.GameEnded);
         }

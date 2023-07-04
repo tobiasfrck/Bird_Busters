@@ -107,6 +107,8 @@ namespace Winged_Warfare
                     }
                     break;
                 default:
+                    Debug.WriteLine("[ERROR]: Invalid state.");
+                    SetState(0);
                     break;
             }
 
@@ -132,7 +134,6 @@ namespace Winged_Warfare
                     }
                     break;
                 case GameState.Settings:
-
                     if (_settingsBackground!=null)
                     {
                         _spriteBatch.Draw(_settingsBackground, _fullScreen, Color.White);
@@ -148,6 +149,24 @@ namespace Winged_Warfare
                         _spriteBatch.Draw(_gameBackground, _fullScreen, Color.White);
                     }
                     DrawDebug();
+                    
+                    // Draw Ammunition HUD
+                    int magDisplaySize = 100;
+                    int magDisplayYPosition = Game1.Height - 110;
+                    for (int i = 0; i < BulletHandler.GetMagazinSize(); i++)
+                    {
+                        int magDisplayXPosition = (i+1) * -110 + Game1.Width - 10;
+                        //Draw available bullets
+                        if (i<BulletHandler.GetAvailableShots())
+                        {
+                            _spriteBatch.Draw(Game1.HUDAmmo, new Rectangle(magDisplayXPosition, magDisplayYPosition, magDisplaySize, magDisplaySize),Color.White);
+                        }
+                        else //Draw unavailable bullets
+                        {
+                            _spriteBatch.Draw(Game1.HUDAmmoEmpty, new Rectangle(magDisplayXPosition, magDisplayYPosition, magDisplaySize, magDisplaySize), Color.White);
+                        }
+                    }
+
                     foreach (Button btn in _gameButtons)
                     {
                         btn.Draw(_spriteBatch, _currentMouseState.Position.ToVector2(), _currentMouseState.LeftButton == ButtonState.Pressed);

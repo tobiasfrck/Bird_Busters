@@ -22,8 +22,8 @@ namespace Winged_Warfare
         //Timer der die Zeit runterechnent
         private static int reloadTimer = 0;
         //Magazin Größe
-        private static int MagazinSize = 5;
-        //Muinition im Magazin
+        private const int MagazinSize = 5;
+        //Munition im Magazin
         private static int Magazin = MagazinSize;       
         //Verhindert das schießen während dem Nachladen
         private static bool canShoot = true;
@@ -58,7 +58,12 @@ namespace Winged_Warfare
                 Reload(reloadTimerMagazin, MagazinSize);
             }
 
-
+            //TODO: frustrating, when mag shows its full but you cant shoot
+            //Disables shooting when magazin is empty
+            if (Magazin == 0)
+            {
+                canShoot = false;
+            }
 
 
 //          Hit-Logic (change If Statement)
@@ -122,6 +127,17 @@ namespace Winged_Warfare
             reloadTimer = reloadTimerShot;
             Magazin -= 1;
         }
+
+        public static int GetAvailableShots()
+        {
+            return Magazin;
+        }
+
+        public static int GetMagazinSize()
+        {
+            return MagazinSize;
+        }
+
         public static void Reset()
         {
             bullets.Clear();

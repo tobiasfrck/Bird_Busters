@@ -112,12 +112,12 @@ namespace Winged_Warfare
                 int index = _random.Next(0,150);
                 if (index < 1) {
                     float distance = Vector3.Distance(this._position,Player.GetCamPosition());
-                    Debug.WriteLine(distance);
+                    //Debug.WriteLine(distance);
                     distance = distance / 100;
                     float FixedVolume = (Game1.Volume - distance);
                     if(FixedVolume>0)
                         Game1.BirdFlaps.Play(FixedVolume, 0, 0);
-                    Debug.WriteLine(distance + " / "+FixedVolume);
+                    //Debug.WriteLine(distance + " / "+FixedVolume);
                 }
                 FlapWings();
             }

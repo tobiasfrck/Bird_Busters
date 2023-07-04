@@ -28,7 +28,7 @@ namespace Winged_Warfare
         //Verhindert das schießen während dem Nachladen
         private static bool canShoot = true;
         //Ob ein Magazin benutzt werden soll (Wenn nein/false, ist reloadTimerMagazin = reloadTimerShot)
-        private static bool useMagazin = false;
+        private static bool useMagazin = true;
 
 
 
@@ -60,11 +60,10 @@ namespace Winged_Warfare
 
             //TODO: frustrating, when mag shows its full but you cant shoot
             //Disables shooting when magazin is empty
-            if (Magazin == 0)
-            {
-                canShoot = false;
-            }
-
+//           if (Magazin == 0){
+//                canShoot = false;
+//            }
+//
 
 //          Hit-Logic (change If Statement)
 //          Marks Bullet and Bird as not alive, removes them later

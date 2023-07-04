@@ -8,27 +8,49 @@ namespace Winged_Warfare
 {
     public class Score
     {
-        public static int CurrentScore = 0;
-        private static int _maxScore = 10; // TODO: Score should be based on time, not on kills, this is just to have a gameplay-loop
-        public static int Highscore;
+        private static int _currentScore = 0;
+        private static int _maxScore = 150; // TODO: Score should be based on time, not on kills, this is just to have a gameplay-loop
+        private static int _highscore;
 
         public static void IncreaseScore(int i)
         {
-            CurrentScore += i;
+            _currentScore += i;
+            if (_currentScore > _highscore)
+            {
+                SetHighscore(_currentScore);
+            }
         }
         public static void IncreaseScore()
         {
-            CurrentScore += 1;
+            IncreaseScore(1);
         }
 
         public static void ResetScore()
         {
-            CurrentScore = 0;
+            _currentScore = 0;
+        }
+
+        public static int GetScore()
+        {
+            return _currentScore;
+        }
+
+        public static void SetHighscore(int score)
+        {
+            _highscore = score;
+            Level.SaveHighscore(score);
+        }
+
+        public static int GetHighscore()
+        {
+            return _highscore;
         }
 
         public static bool HasWon()
         {
-            if (CurrentScore >= _maxScore)
+
+
+            if (_currentScore >= _maxScore)
             {
                 return true;
             }

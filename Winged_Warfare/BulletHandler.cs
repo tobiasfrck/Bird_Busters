@@ -80,8 +80,8 @@ namespace Winged_Warfare
                         birds[j].IsAlive = false;
                         Debug.WriteLine(birds[j].GetBirdStats());
                         Debug.WriteLine("hit");
-                        Score.IncreaseScore();
-                        Debug.WriteLine("New Score:" + Score.CurrentScore);
+                        Score.IncreaseScore(birds[j].GetBirdScore());
+                        Debug.WriteLine("New Score:" + Score.GetScore());
                     }
                 }
             }

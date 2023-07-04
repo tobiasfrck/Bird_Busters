@@ -22,7 +22,8 @@ namespace Winged_Warfare
         private readonly List<BirdSpawnpoint> _spawnpoints = new();
 
         //debug-mode-variables
-        private static bool _debugMode = true;
+        private static bool _debugMode = false;
+        private static bool _debugModeWasActive = false;
         private static string _debugText = "Standard-Debug-Text";
         private static int _debugTool = 0; //0 = move, 1 = rotate, 2 = scale
         private static int _debugToolResolution = 0; //0 = 0.1, 1 = 1, 2 = 10
@@ -32,9 +33,12 @@ namespace Winged_Warfare
         private string[] _levelContent;
         private string _levelPath = "";
 
+        private static Level _currentLevel;
+
         public Level()
         {
             _previousKeyboardState = Keyboard.GetState();
+            _currentLevel = this;
         }
 
         public void UpdateObjects()
@@ -49,6 +53,7 @@ namespace Winged_Warfare
             {
                 Debug.WriteLine("Debug mode toggled");
                 _debugMode = !_debugMode;
+                _debugModeWasActive = true;
             }
 
             if (_debugMode)
@@ -87,6 +92,11 @@ namespace Winged_Warfare
 
             for (int i = 0; i < _levelContent.Length; i++)
             {
+                if (i == 0 && _levelContent[i].StartsWith("Highscore: "))
+                {
+                    Score.SetHighscore(ParseInt(_levelContent[i].Substring(11)));
+                }
+
                 LevelObject toAdd = LineToLevelObject(_levelContent[i], i);
                 if (toAdd != null)
                 {
@@ -381,7 +391,25 @@ namespace Winged_Warfare
                          "Save: Right-CTRL, Recover: -";
         }
 
-        private void SaveLevel()
+        public static void SaveHighscore(int highscore)
+        {
+            String[] lines;
+            try
+            {
+                lines = File.ReadAllLines(_currentLevel._levelPath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
+            lines[0] = "Highscore: " + highscore;
+
+            File.WriteAllLines(_currentLevel._levelPath, lines);
+        }
+
+        public void SaveLevel()
         {
             //Save level.
             Debug.WriteLine("Saving level.");
@@ -394,10 +422,14 @@ namespace Winged_Warfare
                 levelContent += levelObject.RegenerateLine() + "\n";
             }
             */
-            foreach (string s in _levelContent)
+
+            levelContent += Score.GetHighscore() + "\n";
+
+            for (var index = 1; index < _levelContent.Length; index++)
             {
-                levelContent += s + "\n";
+                levelContent += _levelContent[index] + "\n";
             }
+
 
             File.WriteAllText(_levelPath, levelContent);
         }
@@ -420,6 +452,11 @@ namespace Winged_Warfare
         public static bool GetDebugMode()
         {
             return _debugMode;
+        }
+
+        public static bool GetDebugModeWasActive()
+        {
+            return _debugModeWasActive;
         }
 
         public List<PathPoint> GetStartPoints()

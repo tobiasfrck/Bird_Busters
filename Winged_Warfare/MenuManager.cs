@@ -173,14 +173,14 @@ namespace Winged_Warfare
                     }
 
                     //Draw Highscore HUD
-                    float highscoreTextXSize = Game1.TestFont.MeasureString("Highscore: " + Score.Highscore).X;
-                    float highscoreTextYSize = Game1.TestFont.MeasureString("Highscore: " + Score.Highscore).Y;
-                    _spriteBatch.DrawString(Game1.TestFont, "Highscore: " + Score.Highscore, new Vector2(xOffset - highscoreTextXSize, 10), Color.White);
+                    float highscoreTextXSize = Game1.TestFont.MeasureString("Highscore: " + Score.GetHighscore()).X;
+                    float highscoreTextYSize = Game1.TestFont.MeasureString("Highscore: " + Score.GetHighscore()).Y;
+                    _spriteBatch.DrawString(Game1.TestFont, "Highscore: " + Score.GetHighscore(), new Vector2(xOffset - highscoreTextXSize, 10), Color.White);
 
                     // Draw Score HUD
-                    float scoreTextSize = Game1.TestFont.MeasureString("Score: " + Score.CurrentScore).X;
+                    float scoreTextSize = Game1.TestFont.MeasureString("Score: " + Score.GetScore()).X;
 
-                    _spriteBatch.DrawString(Game1.TestFont, "Score: " + Score.CurrentScore, new Vector2(xOffset-scoreTextSize, 10 + highscoreTextYSize), Color.White);
+                    _spriteBatch.DrawString(Game1.TestFont, "Score: " + Score.GetScore(), new Vector2(xOffset-scoreTextSize, 10 + highscoreTextYSize), Color.White);
 
                     // TODO: Draw remaining time HUD
                     _spriteBatch.DrawString(Game1.TestFont, "Time: " + "Time goes here", new Vector2(10, 10), Color.White);

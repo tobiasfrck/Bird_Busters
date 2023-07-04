@@ -23,6 +23,8 @@ namespace Winged_Warfare
         private readonly float _rndDirection = 15f; // in degree
         public Vector3 _position;
 
+        private int _scorePoints = 10;
+
         private float _speed;
         private float _minSpeed;
         private float _maxSpeed;
@@ -235,6 +237,11 @@ namespace Winged_Warfare
         public String GetBirdStats()
         {
             return "Bird " + _birdID + " MinSpeed: " + _minSpeed + " minHeight: " + _minHeight + " Position: " + _drawableObject.Position;
+        }
+
+        public int GetBirdScore()
+        {
+            return _scorePoints;
         }
 
         private static Vector3 Rad2Deg(Vector3 rad)

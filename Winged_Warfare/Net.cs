@@ -19,6 +19,8 @@ namespace Winged_Warfare
         public Vector3 target;
         private DrawableObject _drawableObject;
         public bool Marked = false;
+        public int HitCount = 0;
+        private float _scoreMultiplier = 1.05f;
 
         public Net(Vector3 spawnPosition, Vector3 spawnTarget)
         {
@@ -77,6 +79,11 @@ namespace Winged_Warfare
         public void Draw()
         {
             _drawableObject.Draw();
+        }
+
+        public float GetScoreMultiplier()
+        {
+            return (float)Math.Pow(_scoreMultiplier,HitCount);
         }
 
     }

@@ -83,9 +83,12 @@ namespace Winged_Warfare
                         //bullets[i].Marked = true;
                         Game1.HitMarker.Play(Game1.Volume/2, 0, 0);
                         birds[j].IsAlive = false;
+                        bullets[i].HitCount++;
+                        float playerDistanceToBird = Vector3.Distance(birds[j]._position, FPSCamera.position);
+                        float distanceMultplier = (float)Math.Pow(1.0155f, playerDistanceToBird);
                         Debug.WriteLine(birds[j].GetBirdStats());
-                        Debug.WriteLine("hit");
-                        Score.IncreaseScore(birds[j].GetBirdScore());
+                        Debug.WriteLine("hit from: "+ playerDistanceToBird);
+                        Score.IncreaseScore((int)(birds[j].GetBirdScore() * bullets[i].GetScoreMultiplier() * distanceMultplier));
                         Debug.WriteLine("New Score:" + Score.GetScore());
                     }
                 }

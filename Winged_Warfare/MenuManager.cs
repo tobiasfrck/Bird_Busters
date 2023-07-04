@@ -146,6 +146,10 @@ namespace Winged_Warfare
                     }
                     break;
                 case GameState.Game:
+                    //Vector3 t = WorldToScreen(new Vector3(0, 0, 0), Matrix.CreateTranslation(FPSCamera.position));
+                    //_spriteBatch.Draw(Game1.HUDAmmoEmpty,new Vector2(t.X,t.Y), Color.White);
+
+
                     // Margin for all HUD elements on the right side of the screen
                     int xOffset = Game1.Width - 10;
 

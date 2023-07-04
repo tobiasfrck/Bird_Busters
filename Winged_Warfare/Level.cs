@@ -23,7 +23,6 @@ namespace Winged_Warfare
 
         //debug-mode-variables
         private static bool _debugMode = false;
-        private static bool _debugModeWasActive = false;
         private static string _debugText = "Standard-Debug-Text";
         private static int _debugTool = 0; //0 = move, 1 = rotate, 2 = scale
         private static int _debugToolResolution = 0; //0 = 0.1, 1 = 1, 2 = 10
@@ -49,17 +48,19 @@ namespace Winged_Warfare
                 lvlObject.Update();
             }
 
+            #if DEBUG
             if (IsPressed(Keys.N))
             {
                 Debug.WriteLine("Debug mode toggled");
                 _debugMode = !_debugMode;
-                _debugModeWasActive = true;
             }
 
             if (_debugMode)
             {
                 DebugMode();
             }
+            #endif
+
 
             _previousKeyboardState = Keyboard.GetState();
         }
@@ -452,11 +453,6 @@ namespace Winged_Warfare
         public static bool GetDebugMode()
         {
             return _debugMode;
-        }
-
-        public static bool GetDebugModeWasActive()
-        {
-            return _debugModeWasActive;
         }
 
         public List<PathPoint> GetStartPoints()

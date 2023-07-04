@@ -164,7 +164,7 @@ namespace Winged_Warfare
                     {
                         int magDisplayXPosition = (i+1) * -110 + xOffset;
                         //Draw available bullets
-                        if (i<BulletHandler.GetAvailableShots())
+                        if (i<BulletHandler.GetAvailableShots() && BulletHandler.IsReloading() == false)
                         {
                             _spriteBatch.Draw(Game1.HUDAmmo, new Rectangle(magDisplayXPosition, magDisplayYPosition, magDisplaySize, magDisplaySize),Color.White);
                         }
@@ -276,7 +276,6 @@ namespace Winged_Warfare
             Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();
             SetState(GameState.Game);
-            //Game1.Instance.RestartLevel();
         }
 
         private void SetGameNeedsReset()
@@ -291,10 +290,7 @@ namespace Winged_Warfare
                 _gameNeedsReset = false;
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         public void SwitchToEndscreen()

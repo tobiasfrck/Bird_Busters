@@ -30,6 +30,7 @@ namespace Winged_Warfare
         //Ob ein Magazin benutzt werden soll (Wenn nein/false, ist reloadTimerMagazin = reloadTimerShot)
         private static bool useMagazin = true;
 
+        private static bool _isReloading = false;
 
 
         public static void Update()
@@ -51,7 +52,11 @@ namespace Winged_Warfare
             }
 
             if (!canShoot) reloadTimer -= 1;
-            if (reloadTimer < 0) canShoot = true;
+            if (reloadTimer < 0)
+            {
+                canShoot = true;
+                _isReloading = false;
+            }
 
             if (Keyboard.GetState().IsKeyDown(Keys.R)&&canShoot)
             {
@@ -114,6 +119,7 @@ namespace Winged_Warfare
         //Magazin Nachladen
         public static void Reload(int Time, int newMagazin)
         {
+            _isReloading = true;
             canShoot = false;
             reloadTimer = Time;
             Magazin = newMagazin;
@@ -135,6 +141,11 @@ namespace Winged_Warfare
         public static int GetMagazinSize()
         {
             return MagazinSize;
+        }
+
+        public static bool IsReloading()
+        {
+            return _isReloading;
         }
 
         public static void Reset()

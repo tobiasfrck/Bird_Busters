@@ -32,11 +32,8 @@ namespace Winged_Warfare
         private string[] _levelContent;
         private string _levelPath = "";
 
-        public Player Player1;
-
         public Level()
         {
-            Player1 = new Player();
             _previousKeyboardState = Keyboard.GetState();
         }
 

@@ -44,12 +44,15 @@ namespace Winged_Warfare
             "testContent/testCube",
             "testContent/planeTest",
             "testContent/Net",
-            "Level_Concept"
+            "Level_Concept",
+            "8Ball_Net"
         };
         public static SpriteFont TestFont;
         public static Texture2D Button;
         public static Texture2D ButtonHover;
         public static Texture2D ButtonPressed;
+
+        public static Texture2D HUDAmmo;
         //Assets end
 
         //Level
@@ -113,6 +116,8 @@ namespace Winged_Warfare
             HitMarker = Content.Load<SoundEffect>("Audio/hitmarker");
             BirdFlaps = Content.Load<SoundEffect>("Audio/BirdFlaps1");
 
+            // Content for HUD
+            HUDAmmo = Content.Load<Texture2D>("Net_HUD_Texture");
 
             //TODO: Load textures for _menuManager
 
@@ -200,6 +205,7 @@ namespace Winged_Warfare
                 Score.ResetScore();
                 BirdSpawnpoint.Reset();
                 BulletHandler.Reset();
+                RestartLevel();
                 _camera.Reset();
             }
 
@@ -224,9 +230,9 @@ namespace Winged_Warfare
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             //Uncomment to draw invisible faces of a model. Useful for debugging.
-            //RasterizerState rasterizerState = new RasterizerState();
-            //rasterizerState.CullMode = CullMode.None;
-            //GraphicsDevice.RasterizerState = rasterizerState;
+            RasterizerState rasterizerState = new RasterizerState();
+            rasterizerState.CullMode = CullMode.None;
+            GraphicsDevice.RasterizerState = rasterizerState;
 
             Fps = (float)(1000 / gameTime.ElapsedGameTime.TotalMilliseconds); //calculates FPS
             //Debug.WriteLine("[FPS]: " + 1000/gameTime.ElapsedGameTime.TotalMilliseconds); //Outputs FPS to console
@@ -257,8 +263,6 @@ namespace Winged_Warfare
         {
             _level = new Level();
             _level.LoadLevel("Levels/sampleLevel.txt");
-            Score.ResetScore();
-            BirdSpawnpoint.Reset();
         }
     }
 

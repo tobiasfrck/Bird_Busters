@@ -163,8 +163,13 @@ namespace Winged_Warfare
                     for (int i = 0; i < BulletHandler.GetMagazinSize(); i++)
                     {
                         int magDisplayXPosition = (i+1) * -110 + xOffset;
+                        //Draw unavailable bullets while reloading
+                        if (BulletHandler.IsReloading() == true)
+                        {
+                            _spriteBatch.Draw(Game1.HUDAmmoReloading, new Rectangle(magDisplayXPosition, magDisplayYPosition, magDisplaySize, magDisplaySize), Color.White);
+                        }
                         //Draw available bullets
-                        if (i<BulletHandler.GetAvailableShots() && BulletHandler.IsReloading() == false)
+                        else if (i < BulletHandler.GetAvailableShots() && BulletHandler.IsReloading() == false) 
                         {
                             _spriteBatch.Draw(Game1.HUDAmmo, new Rectangle(magDisplayXPosition, magDisplayYPosition, magDisplaySize, magDisplaySize),Color.White);
                         }

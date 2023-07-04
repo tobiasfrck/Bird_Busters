@@ -54,6 +54,7 @@ namespace Winged_Warfare
 
         public static Texture2D HUDAmmo;
         public static Texture2D HUDAmmoEmpty;
+        public static Texture2D HUDAmmoReloading;
         //Assets end
 
         //Level
@@ -123,6 +124,7 @@ namespace Winged_Warfare
             // Content for HUD
             HUDAmmo = Content.Load<Texture2D>("Net_HUD_Texture");
             HUDAmmoEmpty = Content.Load<Texture2D>("Net_HUD_Texture_transparent");
+            HUDAmmoReloading = Content.Load<Texture2D>("Net_HUD_Texture_reloading");
 
 
             //TODO: Load textures for _menuManager

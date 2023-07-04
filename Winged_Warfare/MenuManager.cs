@@ -144,6 +144,11 @@ namespace Winged_Warfare
                     }
                     break;
                 case GameState.Game:
+                    // Margin for all HUD elements on the right side of the screen
+                    int xOffset = Game1.Width - 10;
+
+                    //TODO: Clean unused code if you are sure it is not needed! So probably later.
+                    // Would draw the game background here but currently not used
                     if (_gameBackground != null)
                     {
                         _spriteBatch.Draw(_gameBackground, _fullScreen, Color.White);
@@ -155,7 +160,7 @@ namespace Winged_Warfare
                     int magDisplayYPosition = Game1.Height - 110;
                     for (int i = 0; i < BulletHandler.GetMagazinSize(); i++)
                     {
-                        int magDisplayXPosition = (i+1) * -110 + Game1.Width - 10;
+                        int magDisplayXPosition = (i+1) * -110 + xOffset;
                         //Draw available bullets
                         if (i<BulletHandler.GetAvailableShots())
                         {
@@ -167,6 +172,20 @@ namespace Winged_Warfare
                         }
                     }
 
+                    //Draw Highscore HUD
+                    float highscoreTextXSize = Game1.TestFont.MeasureString("Highscore: " + Score.Highscore).X;
+                    float highscoreTextYSize = Game1.TestFont.MeasureString("Highscore: " + Score.Highscore).Y;
+                    _spriteBatch.DrawString(Game1.TestFont, "Highscore: " + Score.Highscore, new Vector2(xOffset - highscoreTextXSize, 10), Color.White);
+
+                    // Draw Score HUD
+                    float scoreTextSize = Game1.TestFont.MeasureString("Score: " + Score.CurrentScore).X;
+
+                    _spriteBatch.DrawString(Game1.TestFont, "Score: " + Score.CurrentScore, new Vector2(xOffset-scoreTextSize, 10 + highscoreTextYSize), Color.White);
+
+                    // TODO: Draw remaining time HUD
+                    _spriteBatch.DrawString(Game1.TestFont, "Time: " + "Time goes here", new Vector2(10, 10), Color.White);
+
+                    //Some kind of buttons during gameplay; currently not used
                     foreach (Button btn in _gameButtons)
                     {
                         btn.Draw(_spriteBatch, _currentMouseState.Position.ToVector2(), _currentMouseState.LeftButton == ButtonState.Pressed);

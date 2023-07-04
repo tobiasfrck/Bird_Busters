@@ -10,7 +10,7 @@ namespace Winged_Warfare
     {
         public static int CurrentScore = 0;
         private static int _maxScore = 10; // TODO: Score should be based on time, not on kills, this is just to have a gameplay-loop
-        public static int HighScore;
+        public static int Highscore;
 
         public static void IncreaseScore(int i)
         {

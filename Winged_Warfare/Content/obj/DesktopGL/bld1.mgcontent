@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bld1.png</SourceFile>
-  <SourceTime>2023-06-04T09:42:18.7439758+02:00</SourceTime>
-  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/bld1.xnb</DestFile>
-  <DestTime>2023-07-04T15:57:33.3292812+02:00</DestTime>
+  <SourceFile>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/bld1.png</SourceFile>
+  <SourceTime>2023-07-05T11:58:14.8433619+02:00</SourceTime>
+  <DestFile>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/bld1.xnb</DestFile>
+  <DestTime>2023-07-05T12:04:54.5874869+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

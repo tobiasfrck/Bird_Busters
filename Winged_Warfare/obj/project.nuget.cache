@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "K5RyrGreiuU/8F9wLuhVeluw3Y11/zB+V3HfUpB82G0PWEyg2ENO9/k/0AqjE3OHqyXzVL2jfqvZrAJDHiyZuQ==",
+  "dgSpecHash": "t18gYypryrX7DZeE5WP/dfo1yR+IINRfDZv3gRnNENaSiE5GFHpFgZuu4bld2tKuZIFH3mMmnHhzpwLWM6HM6w==",
   "success": true,
-  "projectFilePath": "D:\\Projektdateien\\Spiel-Projekte\\Winged_Warfare\\Winged_Warfare\\Winged_Warfare.csproj",
+  "projectFilePath": "C:\\Users\\donne\\Source\\Repos\\Winged_Warfare\\Winged_Warfare\\Winged_Warfare.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\tobia\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\tobia\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+    "C:\\Users\\donne\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\donne\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
   ],
   "logs": []
 }

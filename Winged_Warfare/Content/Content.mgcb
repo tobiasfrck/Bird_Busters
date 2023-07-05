@@ -177,6 +177,18 @@
 /processorParam:TextureFormat=Color
 /build:testContent/cubeTexture.png
 
+#begin testContent/menu_box.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:testContent/menu_box.png
+
 #begin testContent/net_ammo.png
 /importer:TextureImporter
 /processor:TextureProcessor

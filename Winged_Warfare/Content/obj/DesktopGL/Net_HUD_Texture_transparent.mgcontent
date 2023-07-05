@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Net_HUD_Texture_transparent.png</SourceFile>
-  <SourceTime>2023-07-04T20:20:31.7596923+02:00</SourceTime>
-  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Net_HUD_Texture_transparent.xnb</DestFile>
-  <DestTime>2023-07-04T20:25:19.3097672+02:00</DestTime>
+  <SourceFile>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/Net_HUD_Texture_transparent.png</SourceFile>
+  <SourceTime>2023-07-05T11:58:12.7834916+02:00</SourceTime>
+  <DestFile>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Net_HUD_Texture_transparent.xnb</DestFile>
+  <DestTime>2023-07-05T12:04:57.4350839+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -146,10 +146,8 @@ namespace Winged_Warfare
                     }
                     break;
                 case GameState.Game:
-                    //Vector3 t = WorldToScreen(new Vector3(0, 0, 0), Matrix.CreateTranslation(FPSCamera.position));
-                    //_spriteBatch.Draw(Game1.HUDAmmoEmpty,new Vector2(t.X,t.Y), Color.White);
-
-
+                    //Vector2 t = WorldToScreen(new Vector3(0, 0, 0));
+                    //_spriteBatch.Draw(Game1.HUDAmmoEmpty,t, Color.White);
                     // Margin for all HUD elements on the right side of the screen
                     int xOffset = Game1.Width - 10;
 
@@ -268,7 +266,7 @@ namespace Winged_Warfare
         //All actions for the buttons
         public void SwitchToMenu()
         {
-            Game1._gameTimer.Pause();
+            Game1._gameTimer?.Pause();
             Button.ResetConflicts();
             SetState(0);
         }
@@ -304,7 +302,7 @@ namespace Winged_Warfare
 
         public void SwitchToEndscreen()
         {
-            Game1._gameTimer.Pause();
+            Game1._gameTimer?.Pause();
             Button.ResetConflicts();
             SetState(GameState.GameEnded);
         }
@@ -314,9 +312,20 @@ namespace Winged_Warfare
             Game1.CloseGame = true;
         }
 
-        public Vector3 WorldToScreen(Vector3 source, Matrix worldMatrix)
+        public static Vector2 WorldToScreen(Vector3 worldPosition)
         {
-            return Viewport.Project(source, Player.ProjectionMatrix, Player.ViewMatrix, worldMatrix);
+            // Transform the world position by the view and projection matrices
+            Vector3 transformedPosition = Vector3.Transform(worldPosition, Player.ViewMatrix * Player.ProjectionMatrix);
+
+            // Normalize the transformed position
+            Vector2 normalizedPosition = new Vector2(transformedPosition.X / transformedPosition.Z, transformedPosition.Y / transformedPosition.Z);
+
+            // Convert the normalized position to screenspace
+            Vector2 screenspacePosition = new Vector2(
+                (normalizedPosition.X + 1) * 0.5f * Game1.Width,
+                (1 - normalizedPosition.Y) * 0.5f * Game1.Height);
+
+            return screenspacePosition;
         }
 
     }

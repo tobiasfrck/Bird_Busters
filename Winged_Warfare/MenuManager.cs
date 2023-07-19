@@ -32,9 +32,9 @@ namespace Winged_Warfare
 
         private List<Button> _menuButtons = new();
         private List<Button> _settingsButtons = new();
-        private List<Button> _gameButtons = new();
+        public List<Button> _gameButtons = new();
         private List<Button> _gameEndedButtons = new();
-        private GameState _state = GameState.Menu; // Menu, Settings, Game, GameEnded
+        public GameState _state = GameState.Menu; // Menu, Settings, Game, GameEnded
 
         private float _horizontalCenter = 0;
 

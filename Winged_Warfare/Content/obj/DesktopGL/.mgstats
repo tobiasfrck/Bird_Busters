@@ -1,2 +1,2 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/menu_box.png","C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/menu_box.xnb","TextureProcessor","Texture2DContent",609474,15133085,1,4543055
+"C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/Audio/netshot.mp3","C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Audio/netshot.xnb","SongProcessor","SongContent",30013,125,0,5938555

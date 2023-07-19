@@ -50,17 +50,41 @@
 /processorParam:Quality=Best
 /build:Audio/BirdFlaps1.mp3
 
+#begin Audio/funk-jam.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/funk-jam.mp3
+
+#begin Audio/game-jam.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/game-jam.mp3
+
 #begin Audio/hitmarker.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Audio/hitmarker.mp3
 
+#begin Audio/netshot.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/netshot.mp3
+
 #begin Audio/Shoot.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Audio/Shoot.mp3
+
+#begin Audio/stepSound.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/stepSound.mp3
 
 #begin bld1.png
 /importer:TextureImporter

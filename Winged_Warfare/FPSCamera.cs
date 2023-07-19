@@ -59,6 +59,9 @@ namespace Winged_Warfare
         public static bool IsMoving;
         static float POVadjusted;
 
+        private float stepCooldown = 0.3f; // Zeitabstand zwischen zwei Schritten (in Sekunden)
+        private float currentStepTime = 0f;
+
         //Collision Corners
         public Vector2 Corner1 = new Vector2(-2.9f,-2.4f);
         public Vector2 Corner2 = new Vector2(-0.1f, 2.4f);
@@ -116,6 +119,19 @@ namespace Winged_Warfare
             // Adjust horizontal angle
             horizontalAngle += Sensitivity * (oldMouseState.X - newMouseState.X);
 
+            // stepsounds and cooldown for the movement
+            if (keyboard.IsKeyDown(Keys.W) ^ keyboard.IsKeyDown(Keys.S) ^ keyboard.IsKeyDown(Keys.A) ^ keyboard.IsKeyDown(Keys.D))
+
+            {
+                if (currentStepTime <= 0f)
+                {
+                    Game1.HitMarker.Play(Game1.Volume, 0, 0);
+                    currentStepTime = stepCooldown;
+                }
+                // reduce the time between step-checks
+                currentStepTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+            
             // Adjust vertical angle 
             verticalAngle += Sensitivity * (oldMouseState.Y - newMouseState.Y);
             if (verticalAngle <= -1.56f) verticalAngle = -1.559f;

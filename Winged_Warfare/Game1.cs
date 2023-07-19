@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Numerics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
@@ -28,6 +29,18 @@ namespace Winged_Warfare
         public static SoundEffect ShootEffect;
         public static SoundEffect HitMarker;
         public static SoundEffect BirdFlaps;
+        public static SoundEffect stepSound;
+        public static Song gameOverMusic;
+        public static Song startScreenMusic;
+        public static Song gameScreenMusic;
+        public static Song currentBackgroundMusic;
+     
+
+        public bool isMusicPlaying = true;
+        private float musicVolume = 0.3f;
+
+
+
 
         //TODO: Delete testing variables
         //---------------------------
@@ -69,6 +82,9 @@ namespace Winged_Warfare
         //Gameloop Timer
         public static Timer _gameTimer;
 
+        
+
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -101,8 +117,10 @@ namespace Winged_Warfare
             // Initialize the camera 
             _camera = new FPSCamera(this, Player.CamPosition);
 
+    
             //BirdHandler.CreateList();
             //BirdHandler._startPoints = _level.GetStartPoints();
+
 
             Debug.WriteLine("Game initialized in Game1.cs.");
         }
@@ -118,8 +136,20 @@ namespace Winged_Warfare
 
             //SoundEffekte:
             ShootEffect = Content.Load<SoundEffect>("Audio/Shoot");
-            HitMarker = Content.Load<SoundEffect>("Audio/hitmarker");
+            HitMarker = Content.Load<SoundEffect>("Audio/Shoot");
             BirdFlaps = Content.Load<SoundEffect>("Audio/BirdFlaps1");
+            //stepSound = Content.Load<SoundEffect>("Audio/stepSound");
+
+
+
+            //backgroundmusic
+            startScreenMusic = Content.Load<Song>("Audio/funk-jam");
+            gameScreenMusic = Content.Load<Song>("Audio/game-jam");
+            currentBackgroundMusic = startScreenMusic;
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(currentBackgroundMusic);
+            MediaPlayer.Volume = musicVolume;
+
 
             // Content for HUD
             HUDAmmo = Content.Load<Texture2D>("Net_HUD_Texture");
@@ -139,7 +169,7 @@ namespace Winged_Warfare
             //create dictionary with all models
             foreach (var modelName in ModelNames)
             {
-                Models.Add(modelName, Content.Load<Model>(modelName));
+               Models.Add(modelName, Content.Load<Model>(modelName));
             }
         }
 
@@ -218,8 +248,11 @@ namespace Winged_Warfare
                 _camera.Reset();
             }
 
+           
 
             //Used to end the game with other classes
+
+
             if (CloseGame)
             {
                 Exit();

@@ -29,7 +29,7 @@ namespace Winged_Warfare
         public static SoundEffect ShootEffect;
         public static SoundEffect HitMarker;
         public static SoundEffect BirdFlaps;
-        public static SoundEffect stepSound;
+        public static SoundEffect StepSound;
         public static Song gameOverMusic;
         public static Song startScreenMusic;
         public static Song gameScreenMusic;
@@ -37,7 +37,7 @@ namespace Winged_Warfare
      
 
         public bool isMusicPlaying = true;
-        private float musicVolume = 0.3f;
+        private float musicVolume = 0.1f;
 
 
 
@@ -81,8 +81,6 @@ namespace Winged_Warfare
 
         //Gameloop Timer
         public static Timer _gameTimer;
-
-        
 
 
         public Game1()
@@ -128,36 +126,38 @@ namespace Winged_Warfare
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            // TODO: use this.Content to load your game content here
+
+            // Fonts
             TestFont = Content.Load<SpriteFont>("testContent/testFont");
+
+
+            // Textures
             Button = Content.Load<Texture2D>("testContent/button");
             ButtonHover = Content.Load<Texture2D>("testContent/button_hover");
             ButtonPressed = Content.Load<Texture2D>("testContent/button_pressed");
 
-            //SoundEffekte:
+            // Textures for HUD
+            HUDAmmo = Content.Load<Texture2D>("Net_HUD_Texture");
+            HUDAmmoEmpty = Content.Load<Texture2D>("Net_HUD_Texture_transparent");
+            HUDAmmoReloading = Content.Load<Texture2D>("Net_HUD_Texture_reloading");
+
+
+            // SFX
             ShootEffect = Content.Load<SoundEffect>("Audio/Shoot");
             HitMarker = Content.Load<SoundEffect>("Audio/Shoot");
             BirdFlaps = Content.Load<SoundEffect>("Audio/BirdFlaps1");
             //stepSound = Content.Load<SoundEffect>("Audio/stepSound");
 
 
-
-            //backgroundmusic
+            // Music
             startScreenMusic = Content.Load<Song>("Audio/funk-jam");
             gameScreenMusic = Content.Load<Song>("Audio/game-jam");
+
             currentBackgroundMusic = startScreenMusic;
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(currentBackgroundMusic);
             MediaPlayer.Volume = musicVolume;
 
-
-            // Content for HUD
-            HUDAmmo = Content.Load<Texture2D>("Net_HUD_Texture");
-            HUDAmmoEmpty = Content.Load<Texture2D>("Net_HUD_Texture_transparent");
-            HUDAmmoReloading = Content.Load<Texture2D>("Net_HUD_Texture_reloading");
-
-
-            //TODO: Load textures for _menuManager
 
             LoadModels();
             _level = new Level();
@@ -251,16 +251,10 @@ namespace Winged_Warfare
            
 
             //Used to end the game with other classes
-
-
             if (CloseGame)
             {
                 Exit();
             }
-
-            //Testing may be deleted
-            
-            //Testing end
 
             base.Update(gameTime);
         }

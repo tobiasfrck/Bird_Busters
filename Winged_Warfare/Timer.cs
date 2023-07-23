@@ -51,7 +51,8 @@ namespace Winged_Warfare
             return isRunning;
         }
 
-        public bool Restart()
+        // Returns true if the timer was restarted; false if it was still running
+        public bool RestartIfTimeElapsed()
         {
             if(isRunning) return false;
             milliseconds = initMilliseconds;

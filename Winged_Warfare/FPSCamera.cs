@@ -54,16 +54,16 @@ namespace Winged_Warfare
         static bool IsGrounded;
         static Vector3 _change;
         static float Velocity;
-        static float Gravity= -0.001f;
+        static float Gravity = -0.001f;
         public static bool IsSprinting;
         public static bool IsMoving;
         static float POVadjusted;
 
-        private float stepCooldown = 0.3f; // Zeitabstand zwischen zwei Schritten (in Sekunden)
-        private float currentStepTime = 0f;
+        private const int StepCooldown = 300; // Zeitabstand zwischen zwei Schritten (in MilliSekunden)
+        private Timer _stepTimer = new(StepCooldown);
 
         //Collision Corners
-        public Vector2 Corner1 = new Vector2(-2.9f,-2.4f);
+        public Vector2 Corner1 = new Vector2(-2.9f, -2.4f);
         public Vector2 Corner2 = new Vector2(-0.1f, 2.4f);
 
         //Standart Settings
@@ -85,7 +85,6 @@ namespace Winged_Warfare
             Mouse.SetPosition(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
             oldMouseState = Mouse.GetState();
             POVadjusted = POV;
-
         }
 
         /// <summary>
@@ -94,6 +93,7 @@ namespace Winged_Warfare
         /// <param name="gameTime">The current GameTime</param>
         public void Update(GameTime gameTime)
         {
+            _stepTimer.Update();
             var keyboard = Keyboard.GetState();
             var newMouseState = Mouse.GetState();
 
@@ -119,19 +119,12 @@ namespace Winged_Warfare
             // Adjust horizontal angle
             horizontalAngle += Sensitivity * (oldMouseState.X - newMouseState.X);
 
-            // stepsounds and cooldown for the movement
-            if (keyboard.IsKeyDown(Keys.W) ^ keyboard.IsKeyDown(Keys.S) ^ keyboard.IsKeyDown(Keys.A) ^ keyboard.IsKeyDown(Keys.D))
-
+            // SFX: steps while on ground
+            if (IsMoving && IsGrounded && _stepTimer.RestartIfTimeElapsed())
             {
-                if (currentStepTime <= 0f)
-                {
-                    Game1.HitMarker.Play(Game1.Volume, 0, 0);
-                    currentStepTime = stepCooldown;
-                }
-                // reduce the time between step-checks
-                currentStepTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                Game1.HitMarker.Play(Game1.Volume, 0, 0);
             }
-            
+
             // Adjust vertical angle 
             verticalAngle += Sensitivity * (oldMouseState.Y - newMouseState.Y);
             if (verticalAngle <= -1.56f) verticalAngle = -1.559f;
@@ -143,17 +136,17 @@ namespace Winged_Warfare
 
 
             //Smooth POV when starting to sprint/stoping to sprint
-            if (!IsSprinting || !IsMoving && POVadjusted>POV)
+            if (!IsSprinting || !IsMoving && POVadjusted > POV)
             {
-                POVadjusted = POVadjusted*0.99f;
+                POVadjusted = POVadjusted * 0.99f;
             }
 
-            if (IsSprinting && IsMoving && POVadjusted<=POV*1.1f)
+            if (IsSprinting && IsMoving && POVadjusted <= POV * 1.1f)
             {
-                POVadjusted = POVadjusted*1.01f;
+                POVadjusted = POVadjusted * 1.01f;
             }
             if (POVadjusted < POV) POVadjusted = POV;
-            if (POVadjusted > POV*1.1f) POVadjusted = POV*1.1f;
+            if (POVadjusted > POV * 1.1f) POVadjusted = POV * 1.1f;
 
             //Change POV when the Player is zooming (Right Mouse Button)
             if (Mouse.GetState().RightButton == ButtonState.Pressed && !(IsSprinting && IsMoving))
@@ -169,28 +162,36 @@ namespace Winged_Warfare
                 IsGrounded = false;
             }
 
-            //Createive Flight
+            //Creative Flight
             _change = new Vector3(0, 0, 0);
-            checkFlight();
+            CheckFlight();
             if (creativeFlight)
             {
+                IsGrounded = false;
                 if (keyboard.IsKeyDown(Keys.Space))
                 {
-                    _change.Y += 1*Speed;
+                    _change.Y += 1 * Speed;
                 }
 
                 if (keyboard.IsKeyDown(Keys.LeftControl))
                 {
-                    _change.Y -= 1*Speed;
+                    _change.Y -= 1 * Speed;
                 }
             }
             else
             {
+
                 position.Y += Velocity;
                 Velocity += Gravity;
 
                 if (position.Y <= 0.2f)
                 {
+                    // SFX: landing
+                    if (!IsGrounded && _stepTimer.RestartIfTimeElapsed())
+                    {
+                        Game1.HitMarker.Play(Game1.Volume, 0, 0);
+                    }
+
                     position.Y = 0.2f;
                     IsGrounded = true;
                 }
@@ -198,7 +199,8 @@ namespace Winged_Warfare
             position += _change;
 
             //Corner Collision
-            if (!creativeFlight) { 
+            if (!creativeFlight)
+            {
                 if (position.X < Corner1.X) position.X = Corner1.X;
                 if (position.Z < Corner1.Y) position.Z = Corner1.Y;
                 if (position.X > Corner2.X) position.X = Corner2.X;
@@ -214,7 +216,7 @@ namespace Winged_Warfare
             oldMouseState = Mouse.GetState();
         }
 
-        public static void checkFlight()
+        private static void CheckFlight()
         {
             if (Keyboard.GetState().IsKeyUp(Keys.F2) && flightButtonPressed)
                 flightButtonPressed = false;

@@ -19,25 +19,18 @@ namespace Winged_Warfare
         public static bool CloseGame = false;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        public static int Width = 1920;
-        public static int Height = 1080;
         private bool _wasUnfocused = false;
         public static float Fps = 0;
         
-        // Lautstärke Soundeffekte
-        public static float Volume = 1;
-        public static SoundEffect ShootEffect;
-        public static SoundEffect HitMarker;
-        public static SoundEffect BirdFlaps;
-        public static SoundEffect StepSound;
-        public static Song gameOverMusic;
-        public static Song startScreenMusic;
-        public static Song gameScreenMusic;
-        public static Song currentBackgroundMusic;
-     
+        // Game Settings
+        public static int Width = 1920;
+        public static int Height = 1080;
+        public static float SFXVolume = 1;
+        public static float MusicVolume = 0.1f;
 
         public bool isMusicPlaying = true;
-        private float musicVolume = 0.1f;
+     
+
 
 
 
@@ -61,6 +54,7 @@ namespace Winged_Warfare
             "8Ball_Net"
         };
         public static SpriteFont TestFont;
+
         public static Texture2D Button;
         public static Texture2D ButtonHover;
         public static Texture2D ButtonPressed;
@@ -68,7 +62,23 @@ namespace Winged_Warfare
         public static Texture2D HUDAmmo;
         public static Texture2D HUDAmmoEmpty;
         public static Texture2D HUDAmmoReloading;
+
+        public static SoundEffect BtnHoverSfx;
+        public static SoundEffect BtnClickSfx;
+        public static SoundEffect ShootEffect;
+        public static SoundEffect HitMarker;
+        public static SoundEffect BirdFlaps;
+        public static SoundEffect StepSound;
+
+        public static Song gameOverMusic;
+        public static Song startScreenMusic;
+        public static Song gameScreenMusic;
+        public static Song currentBackgroundMusic;
         //Assets end
+
+        //Audio
+        public static AudioListener Listener;
+
 
         //Level
         private Level _level;
@@ -102,7 +112,7 @@ namespace Winged_Warfare
         {
             base.Initialize();
             // TODO: Add your initialization logic here
-            // Initialize camera in Game1.cs because of "No Graphics Device Service" problem.
+            // Initialize camera in Game1.cs because of "No _graphics Device Service" problem.
             Player.CamPosition = new Vector3(-1f, 0.2f, -1f);
             Player.CamTarget = new Vector3(Player.CamPosition.X, Player.CamPosition.Y, Player.CamPosition.Z + 1);
             Player.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), GraphicsDevice.DisplayMode.AspectRatio, 0.01f, 1000f);
@@ -111,11 +121,11 @@ namespace Winged_Warfare
             // Initialize camera end
 
             //TODO: Replace textures with actual textures
-            _menuManager = new MenuManager(_spriteBatch, null, Content.Load<Texture2D>("testContent/button"), null, null);
+            _menuManager = new MenuManager(_graphics,_spriteBatch, null, Content.Load<Texture2D>("testContent/button"), null, null);
             // Initialize the camera 
             _camera = new FPSCamera(this, Player.CamPosition);
+            Listener = _camera.Listener;
 
-    
             //BirdHandler.CreateList();
             //BirdHandler._startPoints = _level.GetStartPoints();
 
@@ -143,6 +153,8 @@ namespace Winged_Warfare
 
 
             // SFX
+            //BtnHoverSfx = Content.Load<SoundEffect>("Audio/ButtonHover");
+            //BtnClickSfx = Content.Load<SoundEffect>("Audio/ButtonClick");
             ShootEffect = Content.Load<SoundEffect>("Audio/Shoot");
             HitMarker = Content.Load<SoundEffect>("Audio/Shoot");
             BirdFlaps = Content.Load<SoundEffect>("Audio/BirdFlaps1");
@@ -156,7 +168,7 @@ namespace Winged_Warfare
             currentBackgroundMusic = startScreenMusic;
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(currentBackgroundMusic);
-            MediaPlayer.Volume = musicVolume;
+            MediaPlayer.Volume = MusicVolume;
 
 
             LoadModels();

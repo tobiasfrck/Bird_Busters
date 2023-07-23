@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
@@ -20,7 +21,9 @@ namespace Winged_Warfare
         private static int _birdCount;
         private DrawableObject _drawableObject;
         public bool IsAlive = true;
+
         private readonly float _rndDirection = 15f; // in degree
+        private Random _random = new();
         public Vector3 _position;
 
         private int _scorePoints = 10;
@@ -35,16 +38,17 @@ namespace Winged_Warfare
 
         private float _minHeight;
         private float _maxHeight;
-        private Random _random = new();
 
         private Vector2 _offset;
 
         private Vector2 _currentTarget;
         private Vector3 _currentDirection;
-
         private float _targetTolerance;
-
         private PathPoint _pathPoint;
+
+        //Audio
+        private AudioEmitter Emitter;
+        private SoundEffectInstance FlapEffectInstance;
 
         public Bird(PathPoint p, float targetTolerance)
         {
@@ -80,6 +84,13 @@ namespace Winged_Warfare
 
             _targetTolerance = targetTolerance;
             GenerateCurrentTarget();
+
+            Emitter = new AudioEmitter();
+            Emitter.Up = new Vector3(0,0,1); //TODO: check if this is correct
+            Emitter.Position = _drawableObject.Position;
+            FlapEffectInstance = Game1.BirdFlaps.CreateInstance();
+            FlapEffectInstance.Volume = Game1.SFXVolume;
+            FlapEffectInstance.Apply3D(Game1.Listener, Emitter);
         }
 
         public void Update()
@@ -111,16 +122,21 @@ namespace Winged_Warfare
             //if Bird is alive, it will flap its wings -> change in speed, direction and height
             if (IsAlive && flap)
             {
+                /*
                 int index = _random.Next(0,150);
                 if (index < 1) {
                     float distance = Vector3.Distance(this._position,Player.GetCamPosition());
                     //Debug.WriteLine(distance);
                     distance = distance / 100;
-                    float FixedVolume = (Game1.Volume - distance);
+                    float FixedVolume = (Game1.SFXVolume - distance);
                     if(FixedVolume>0)
                         Game1.BirdFlaps.Play(FixedVolume, 0, 0);
                     //Debug.WriteLine(distance + " / "+FixedVolume);
                 }
+                */
+
+                FlapEffectInstance.Play();
+
                 FlapWings();
             }
 
@@ -142,6 +158,9 @@ namespace Winged_Warfare
             _drawableObject.Move(_currentDirection * _speed);
 
             _drawableObject.Rotation = GetLookAtRotation(_position, _drawableObject.Position);
+            Emitter.Position = _drawableObject.Position;
+            Emitter.Forward = _currentDirection; //TODO: check if this is correct
+            FlapEffectInstance.Apply3D(Game1.Listener, Emitter);
         }
 
         private void PrintPath()

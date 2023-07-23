@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -62,6 +63,9 @@ namespace Winged_Warfare
         private const int StepCooldown = 300; // Zeitabstand zwischen zwei Schritten (in MilliSekunden)
         private Timer _stepTimer = new(StepCooldown);
 
+        //Audio Listener
+        public AudioListener Listener = new AudioListener();
+
         //Collision Corners
         public Vector2 Corner1 = new Vector2(-2.9f, -2.4f);
         public Vector2 Corner2 = new Vector2(-0.1f, 2.4f);
@@ -85,6 +89,8 @@ namespace Winged_Warfare
             Mouse.SetPosition(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
             oldMouseState = Mouse.GetState();
             POVadjusted = POV;
+            Listener = new AudioListener();
+            Listener.Position = position;
         }
 
         /// <summary>
@@ -122,7 +128,7 @@ namespace Winged_Warfare
             // SFX: steps while on ground
             if (IsMoving && IsGrounded && _stepTimer.RestartIfTimeElapsed())
             {
-                Game1.HitMarker.Play(Game1.Volume, 0, 0);
+                Game1.HitMarker.Play(Game1.SFXVolume, 0, 0);
             }
 
             // Adjust vertical angle 
@@ -189,7 +195,7 @@ namespace Winged_Warfare
                     // SFX: landing
                     if (!IsGrounded && _stepTimer.RestartIfTimeElapsed())
                     {
-                        Game1.HitMarker.Play(Game1.Volume, 0, 0);
+                        Game1.HitMarker.Play(Game1.SFXVolume, 0, 0);
                     }
 
                     position.Y = 0.2f;
@@ -214,6 +220,8 @@ namespace Winged_Warfare
             // Reset mouse state 
             Mouse.SetPosition(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
             oldMouseState = Mouse.GetState();
+
+            Listener.Position = position;
         }
 
         private static void CheckFlight()

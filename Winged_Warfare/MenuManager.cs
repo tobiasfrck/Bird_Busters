@@ -21,6 +21,7 @@ namespace Winged_Warfare
     //Button actions are defined here
     internal class MenuManager
     {
+        private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private readonly Rectangle _fullScreen = new(0, 0, Game1.Width, Game1.Height);
         private Viewport Viewport = new(0, 0, Game1.Width, Game1.Height);
@@ -43,8 +44,9 @@ namespace Winged_Warfare
 
         private bool _gameNeedsReset = false;
 
-        public MenuManager(SpriteBatch spriteBatch, Texture2D menuBackground, Texture2D settingsBackground, Texture2D gameBackground, Texture2D gameEndedBackground)
+        public MenuManager(GraphicsDeviceManager graphics,SpriteBatch spriteBatch, Texture2D menuBackground, Texture2D settingsBackground, Texture2D gameBackground, Texture2D gameEndedBackground)
         {
+            _graphics = graphics;
             _spriteBatch = spriteBatch;
             _menuBackground = menuBackground;
             _settingsBackground = settingsBackground;
@@ -283,6 +285,18 @@ namespace Winged_Warfare
             Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();
             SetState(GameState.Game);
+        }
+
+        public void EnableFullscreen()
+        {
+            _graphics.IsFullScreen = true;
+            _graphics.ApplyChanges();
+        }
+
+        public void DisableFullscreen()
+        {
+            _graphics.IsFullScreen = false;
+            _graphics.ApplyChanges();
         }
 
         private void SetGameNeedsReset()

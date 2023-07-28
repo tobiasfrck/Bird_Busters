@@ -44,7 +44,7 @@ namespace Winged_Warfare
 
         private bool _gameNeedsReset = false;
 
-        public MenuManager(GraphicsDeviceManager graphics,SpriteBatch spriteBatch, Texture2D menuBackground, Texture2D settingsBackground, Texture2D gameBackground, Texture2D gameEndedBackground)
+        public MenuManager(GraphicsDeviceManager graphics, SpriteBatch spriteBatch, Texture2D menuBackground, Texture2D settingsBackground, Texture2D gameBackground, Texture2D gameEndedBackground)
         {
             _graphics = graphics;
             _spriteBatch = spriteBatch;
@@ -77,7 +77,7 @@ namespace Winged_Warfare
             _horizontalCenter = Game1.Width / 2f;
         }
 
-        
+
 
         public void Update()
         {
@@ -128,7 +128,7 @@ namespace Winged_Warfare
             switch (_state)
             {
                 case GameState.Menu:
-                    if (_menuBackground!=null)
+                    if (_menuBackground != null)
                     {
                         _spriteBatch.Draw(_menuBackground, _fullScreen, Color.White);
                     }
@@ -138,7 +138,7 @@ namespace Winged_Warfare
                     }
                     break;
                 case GameState.Settings:
-                    if (_settingsBackground!=null)
+                    if (_settingsBackground != null)
                     {
                         _spriteBatch.Draw(_settingsBackground, _fullScreen, Color.White);
                     }
@@ -160,22 +160,22 @@ namespace Winged_Warfare
                         _spriteBatch.Draw(_gameBackground, _fullScreen, Color.White);
                     }
                     DrawDebug();
-                    
+
                     // Draw Ammunition HUD
                     int magDisplaySize = 100;
                     int magDisplayYPosition = Game1.Height - 110;
                     for (int i = 0; i < BulletHandler.GetMagazinSize(); i++)
                     {
-                        int magDisplayXPosition = (i+1) * -110 + xOffset;
+                        int magDisplayXPosition = (i + 1) * -110 + xOffset;
                         //Draw unavailable bullets while reloading
                         if (BulletHandler.IsReloading() == true)
                         {
                             _spriteBatch.Draw(Game1.HUDAmmoReloading, new Rectangle(magDisplayXPosition, magDisplayYPosition, magDisplaySize, magDisplaySize), Color.White);
                         }
                         //Draw available bullets
-                        else if (i < BulletHandler.GetAvailableShots() && BulletHandler.IsReloading() == false) 
+                        else if (i < BulletHandler.GetAvailableShots() && BulletHandler.IsReloading() == false)
                         {
-                            _spriteBatch.Draw(Game1.HUDAmmo, new Rectangle(magDisplayXPosition, magDisplayYPosition, magDisplaySize, magDisplaySize),Color.White);
+                            _spriteBatch.Draw(Game1.HUDAmmo, new Rectangle(magDisplayXPosition, magDisplayYPosition, magDisplaySize, magDisplaySize), Color.White);
                         }
                         else //Draw unavailable bullets
                         {
@@ -191,7 +191,7 @@ namespace Winged_Warfare
                     // Draw Score HUD
                     float scoreTextSize = Game1.TestFont.MeasureString("Score: " + Score.GetScore()).X;
 
-                    _spriteBatch.DrawString(Game1.TestFont, "Score: " + Score.GetScore(), new Vector2(xOffset-scoreTextSize, 10 + highscoreTextYSize), Color.White);
+                    _spriteBatch.DrawString(Game1.TestFont, "Score: " + Score.GetScore(), new Vector2(xOffset - scoreTextSize, 10 + highscoreTextYSize), Color.White);
 
                     // TODO: Draw remaining time HUD
                     _spriteBatch.DrawString(Game1.TestFont, "Time: " + Game1._gameTimer?.GetSeconds(), new Vector2(10, 10), Color.White);
@@ -203,7 +203,7 @@ namespace Winged_Warfare
                     }
                     break;
                 case GameState.GameEnded:
-                    if (_gameEndedBackground!=null)
+                    if (_gameEndedBackground != null)
                     {
                         _spriteBatch.Draw(_gameEndedBackground, _fullScreen, Color.White);
                     }
@@ -270,13 +270,15 @@ namespace Winged_Warfare
         {
             Game1._gameTimer?.Pause();
             Button.ResetConflicts();
-            SetState(0);
+            SetState(GameState.Menu);
+            Debug.WriteLine("Switched to menu state.");
         }
 
         public void SwitchToSettings()
         {
             Button.ResetConflicts();
             SetState(GameState.Settings);
+            Debug.WriteLine("Switched to settings state.");
         }
 
         public void SwitchToGame()
@@ -285,6 +287,15 @@ namespace Winged_Warfare
             Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();
             SetState(GameState.Game);
+            Debug.WriteLine("Switched to game state.");
+        }
+
+        public void SwitchToEndscreen()
+        {
+            Game1._gameTimer?.Pause();
+            Button.ResetConflicts();
+            SetState(GameState.GameEnded);
+            Debug.WriteLine("Switched to endscreen state.");
         }
 
         public void EnableFullscreen()
@@ -314,12 +325,6 @@ namespace Winged_Warfare
             return false;
         }
 
-        public void SwitchToEndscreen()
-        {
-            Game1._gameTimer?.Pause();
-            Button.ResetConflicts();
-            SetState(GameState.GameEnded);
-        }
 
         public void CloseGame()
         {

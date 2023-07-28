@@ -25,8 +25,9 @@ namespace Winged_Warfare
         // Game Settings
         public static int Width = 1920;
         public static int Height = 1080;
-        public static float SFXVolume = 1;
         public static float MusicVolume = 0.1f;
+        public static float SFXVolume = 1;
+        public static float MenuSFXVolume = 0.1f;
 
         public bool isMusicPlaying = true;
      
@@ -153,8 +154,8 @@ namespace Winged_Warfare
 
 
             // SFX
-            //BtnHoverSfx = Content.Load<SoundEffect>("Audio/ButtonHover");
-            //BtnClickSfx = Content.Load<SoundEffect>("Audio/ButtonClick");
+            BtnHoverSfx = Content.Load<SoundEffect>("Audio/Hover_Button"); //TODO: Replace with actual sound
+            BtnClickSfx = Content.Load<SoundEffect>("Audio/Click_Button"); //TODO: Replace with actual sound
             ShootEffect = Content.Load<SoundEffect>("Audio/Shoot");
             HitMarker = Content.Load<SoundEffect>("Audio/Shoot");
             BirdFlaps = Content.Load<SoundEffect>("Audio/BirdFlaps1");
@@ -283,7 +284,7 @@ namespace Winged_Warfare
             GraphicsDevice.RasterizerState = rasterizerState;
 
             Fps = (float)(1000 / gameTime.ElapsedGameTime.TotalMilliseconds); //calculates FPS
-            Timer._fps = Fps;
+            Timer.Fps = Fps;
             //Debug.WriteLine("[FPS]: " + 1000/gameTime.ElapsedGameTime.TotalMilliseconds); //Outputs FPS to console
 
             //READ THIS!

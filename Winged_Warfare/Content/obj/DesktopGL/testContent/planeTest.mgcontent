@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/planeTest.fbx</SourceFile>
-  <SourceTime>2023-07-19T13:28:54.1184773+02:00</SourceTime>
-  <DestFile>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/planeTest.xnb</DestFile>
-  <DestTime>2023-07-19T13:41:05.2839886+02:00</DestTime>
+  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/planeTest.fbx</SourceFile>
+  <SourceTime>2023-05-22T18:12:40.3713751+02:00</SourceTime>
+  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/planeTest.xnb</DestFile>
+  <DestTime>2023-07-28T12:30:06.8952499+02:00</DestTime>
   <Importer>FbxImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>ModelProcessor</Processor>
@@ -66,7 +66,7 @@
   </Parameters>
   <Dependencies />
   <BuildAsset>
-    <string>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/planeTexture_0.xnb</string>
+    <string>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/planeTexture_0.xnb</string>
   </BuildAsset>
   <BuildOutput />
 </PipelineBuildEvent>

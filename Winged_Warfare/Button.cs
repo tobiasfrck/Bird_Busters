@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -34,6 +35,9 @@ namespace Winged_Warfare
         private Color _textPressedColor;
         private Vector2 _textDimension;
 
+        private SoundEffect _clickSound;
+        private SoundEffect _hoverSound;
+
         //Anchor Point of button:
         //_________
         //|   x   |
@@ -41,7 +45,7 @@ namespace Winged_Warfare
         //|       | 
         //|_______|
         //x = Anchor Point -> Center of the top of the button
-        
+
 
 
 
@@ -56,10 +60,19 @@ namespace Winged_Warfare
             _textColor = textColor;
             _textHoverColor = textHoverColor;
             _textPressedColor = textPressedColor;
-            _rectangle = new Rectangle((int)position.X-((int)textureDim.X/2), (int)position.Y, (int)textureDim.X, (int)textureDim.Y);
+            _rectangle = new Rectangle((int)position.X - ((int)textureDim.X / 2), (int)position.Y, (int)textureDim.X, (int)textureDim.Y);
             _textDimension = _font.MeasureString(_text);
             _buttonID = _buttonCount;
             _buttonCount++;
+
+            _clickSound = Game1.BtnClickSfx;
+            _hoverSound = Game1.BtnHoverSfx;
+
+            if (_rectangle.X < 0 || _rectangle.Y < 0 || _rectangle.X + _rectangle.Width > Game1.Width ||
+                _rectangle.Y + _rectangle.Height > Game1.Height)
+            {
+                Debug.WriteLine("Button "+ _buttonID +" is outside of the screen!");
+            }
         }
 
         /// <summary>
@@ -76,19 +89,16 @@ namespace Winged_Warfare
                 {
                     _interacted = true;
                     _activeButtons++;
+                    _hoverSound.Play(Game1.MenuSFXVolume, 0, 0);
                 }
                 return true;
             }
-            else
+            if (_interacted)
             {
-                if (_interacted)
-                {
-                    _interacted = false;
-                    _activeButtons--;
-                }
-                return false;
+                _interacted = false;
+                _activeButtons--;
             }
-
+            return false;
         }
 
         /// <summary>
@@ -118,8 +128,9 @@ namespace Winged_Warfare
             //Print button state with id
             //Debug.WriteLine("Button " + _buttonID + " is hovering: " + IsHovering(mousePosition) + " and pressed: " + IsPressed(mousePosition, isLeftButtonPressed));
             //Debug.WriteLine("Active buttons: " + _activeButtons);
-            if (IsClicked(mousePosition,wasLeftButtonPressed, isLeftButtonReleased))
+            if (IsClicked(mousePosition, wasLeftButtonPressed, isLeftButtonReleased))
             {
+                _clickSound.Play(Game1.MenuSFXVolume, 0, 0);
                 Debug.WriteLine("Button " + _buttonID + " was clicked.");
                 _click?.DynamicInvoke(); // execute click action if click is not null
             }
@@ -169,6 +180,6 @@ namespace Winged_Warfare
             return _activeButtons > 1;
         }
 
-        
+
     }
 }

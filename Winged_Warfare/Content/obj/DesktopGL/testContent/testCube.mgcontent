@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/testContent/testCube.fbx</SourceFile>
-  <SourceTime>2023-07-19T13:28:54.1184773+02:00</SourceTime>
-  <DestFile>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/testCube.xnb</DestFile>
-  <DestTime>2023-07-19T13:41:06.4140389+02:00</DestTime>
+  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testCube.fbx</SourceFile>
+  <SourceTime>2023-05-14T23:29:48.0760921+02:00</SourceTime>
+  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/testCube.xnb</DestFile>
+  <DestTime>2023-07-28T12:30:07.3362205+02:00</DestTime>
   <Importer>FbxImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>ModelProcessor</Processor>
@@ -66,7 +66,7 @@
   </Parameters>
   <Dependencies />
   <BuildAsset>
-    <string>C:/Users/donne/source/repos/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/cubeTexture_0.xnb</string>
+    <string>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/cubeTexture_0.xnb</string>
   </BuildAsset>
   <BuildOutput />
 </PipelineBuildEvent>

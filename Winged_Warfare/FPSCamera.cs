@@ -131,7 +131,7 @@ namespace Winged_Warfare
             {
                 int soundIndex = Game1.RandomGenerator.Next(Game1.StepSounds.Length);
                 _stepTimer.SetTimeNRun(_stepSounds[soundIndex].Duration.Milliseconds + StepCooldown);
-                _stepSounds[soundIndex].Play(Game1.SFXVolume * 0.125f, 0, 0);
+                _stepSounds[soundIndex].Play(Game1.SFXVolume * 0.075f, 0, 0);
             }
 
             // Adjust vertical angle 
@@ -200,7 +200,7 @@ namespace Winged_Warfare
                     {
                         int soundIndex = Game1.RandomGenerator.Next(Game1.StepSounds.Length);
                         _stepTimer.SetTimeNRun(_stepSounds[soundIndex].Duration.Milliseconds + StepCooldown);
-                        _stepSounds[soundIndex].Play(Game1.SFXVolume * 0.25f, 0, 0);
+                        _stepSounds[soundIndex].Play(Game1.SFXVolume * 0.075f, 0, 0);
                     }
 
                     position.Y = 0.2f;

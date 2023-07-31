@@ -80,17 +80,11 @@
 /processorParam:Quality=Best
 /build:Audio/Hover_Button.wav
 
-#begin Audio/netshot.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Audio/netshot.mp3
-
-#begin Audio/Shoot.mp3
+#begin Audio/shot.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/Shoot.mp3
+/build:Audio/shot.mp3
 
 #begin Audio/stepSFX/steps_1.mp3
 /importer:Mp3Importer

@@ -160,8 +160,8 @@ namespace Winged_Warfare
             // SFX
             BtnHoverSfx = Content.Load<SoundEffect>("Audio/Hover_Button"); //TODO: Replace with actual sound
             BtnClickSfx = Content.Load<SoundEffect>("Audio/Click_Button"); //TODO: Replace with actual sound
-            ShootEffect = Content.Load<SoundEffect>("Audio/Shoot");
-            HitMarker = Content.Load<SoundEffect>("Audio/Shoot");
+            ShootEffect = Content.Load<SoundEffect>("Audio/shot");
+            HitMarker = Content.Load<SoundEffect>("Audio/hitmarker");
             BirdFlaps = Content.Load<SoundEffect>("Audio/BirdFlaps1");
             StepSounds = new SoundEffect[4];
             for (int i = 0; i < StepSounds.Length; i++)

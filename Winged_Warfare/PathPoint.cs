@@ -19,7 +19,7 @@ namespace Winged_Warfare
         private List<PathPoint> _nextPoints;
         private Model _model;
         private List<int> _nextPointsId;
-        private static Random rnd = new Random();
+        private static Random rnd = Game1.RandomGenerator;
 
         public PathPoint(int pointID, Vector2 pos, int line) : base(new Vector3(pos.X, 4, pos.Y), Vector3.Zero, Vector3.One, line)
         {

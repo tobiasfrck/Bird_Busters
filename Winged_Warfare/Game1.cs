@@ -16,6 +16,8 @@ namespace Winged_Warfare
     //States: in menu, in settings, in game, game ended
     public class Game1 : Game
     {
+
+        public static Random RandomGenerator = new Random();
         public static bool CloseGame = false;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -69,6 +71,8 @@ namespace Winged_Warfare
         public static SoundEffect ShootEffect;
         public static SoundEffect HitMarker;
         public static SoundEffect BirdFlaps;
+
+        public static SoundEffect[] StepSounds;
         public static SoundEffect StepSound;
 
         public static Song gameOverMusic;
@@ -159,7 +163,11 @@ namespace Winged_Warfare
             ShootEffect = Content.Load<SoundEffect>("Audio/Shoot");
             HitMarker = Content.Load<SoundEffect>("Audio/Shoot");
             BirdFlaps = Content.Load<SoundEffect>("Audio/BirdFlaps1");
-            //stepSound = Content.Load<SoundEffect>("Audio/stepSound");
+            StepSounds = new SoundEffect[4];
+            for (int i = 0; i < StepSounds.Length; i++)
+            {
+                StepSounds[i] = Content.Load<SoundEffect>("Audio/stepSFX/steps_" + (i + 1));
+            }
 
 
             // Music
@@ -168,7 +176,8 @@ namespace Winged_Warfare
 
             currentBackgroundMusic = startScreenMusic;
             MediaPlayer.IsRepeating = true;
-            MediaPlayer.Play(currentBackgroundMusic);
+            //TODO: enable music, for testing purposes disabled
+            //MediaPlayer.Play(currentBackgroundMusic);
             MediaPlayer.Volume = MusicVolume;
 
 

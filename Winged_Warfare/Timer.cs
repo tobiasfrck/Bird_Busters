@@ -60,6 +60,23 @@ namespace Winged_Warfare
             return true;
         }
 
+        // Returns true if the timer was restarted and set to the new time; false if it was still running
+        public bool RestartIfTimeElapsed(int milliseconds)
+        {
+            if (isRunning) return false;
+            this.milliseconds = milliseconds;
+            this.initMilliseconds = milliseconds;
+            isRunning = true;
+            return true;
+        }
+
+        public void SetTimeNRun(int milliseconds)
+        {
+            this.milliseconds = milliseconds;
+            this.initMilliseconds = milliseconds;
+            isRunning = true;
+        }
+
         public void Pause()
         {
             isRunning = false;
@@ -79,5 +96,7 @@ namespace Winged_Warfare
         {
             return milliseconds / 1000;
         }
+
+        
     }
 }

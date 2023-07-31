@@ -23,7 +23,7 @@ namespace Winged_Warfare
         public bool IsAlive = true;
 
         private readonly float _rndDirection = 15f; // in degree
-        private Random _random = new();
+        private Random _random = Game1.RandomGenerator;
         public Vector3 _position;
 
         private int _scorePoints = 10;
@@ -135,7 +135,8 @@ namespace Winged_Warfare
                 }
                 */
 
-                FlapEffectInstance.Play();
+                //TODO: SFX is disabled and NEEDS to be enabled again
+                //FlapEffectInstance.Play();
 
                 FlapWings();
             }

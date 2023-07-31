@@ -60,8 +60,9 @@ namespace Winged_Warfare
         public static bool IsMoving;
         static float POVadjusted;
 
-        private const int StepCooldown = 300; // Zeitabstand zwischen zwei Schritten (in MilliSekunden)
+        private const int StepCooldown = 50; // Zeitabstand zwischen zwei Schrittsounds (in MilliSekunden)
         private Timer _stepTimer = new(StepCooldown);
+        private SoundEffect[] _stepSounds = Game1.StepSounds;
 
         //Audio Listener
         public AudioListener Listener = new AudioListener();
@@ -128,7 +129,9 @@ namespace Winged_Warfare
             // SFX: steps while on ground
             if (IsMoving && IsGrounded && _stepTimer.RestartIfTimeElapsed())
             {
-                Game1.HitMarker.Play(Game1.SFXVolume, 0, 0);
+                int soundIndex = Game1.RandomGenerator.Next(Game1.StepSounds.Length);
+                _stepTimer.SetTimeNRun(_stepSounds[soundIndex].Duration.Milliseconds + StepCooldown);
+                _stepSounds[soundIndex].Play(Game1.SFXVolume * 0.125f, 0, 0);
             }
 
             // Adjust vertical angle 
@@ -195,7 +198,9 @@ namespace Winged_Warfare
                     // SFX: landing
                     if (!IsGrounded && _stepTimer.RestartIfTimeElapsed())
                     {
-                        Game1.HitMarker.Play(Game1.SFXVolume, 0, 0);
+                        int soundIndex = Game1.RandomGenerator.Next(Game1.StepSounds.Length);
+                        _stepTimer.SetTimeNRun(_stepSounds[soundIndex].Duration.Milliseconds + StepCooldown);
+                        _stepSounds[soundIndex].Play(Game1.SFXVolume * 0.25f, 0, 0);
                     }
 
                     position.Y = 0.2f;

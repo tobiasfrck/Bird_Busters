@@ -19,6 +19,8 @@
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/stepSFX/steps_4.mp3</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/stepSound.mp3</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bld1.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Grey40.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Grey80.png</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Level_Concept.dae</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Net_HUD_Texture_reloading.png</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Net_HUD_Texture_transparent.png</File>
@@ -40,6 +42,8 @@
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

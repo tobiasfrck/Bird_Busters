@@ -153,6 +153,10 @@ namespace Winged_Warfare
 
         public static void Reset()
         {
+            Magazin = MagazinSize;
+            canShoot = true;
+            reloadTimer = -1;
+            _isReloading = false;
             bullets.Clear();
         }
     }

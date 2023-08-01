@@ -30,6 +30,7 @@ namespace Winged_Warfare
         private Texture2D _settingsBackground;
         private Texture2D _gameBackground;
         private Texture2D _gameEndedBackground;
+        private Texture2D _blankTexture;
 
         private List<Button> _menuButtons = new();
         private List<Button> _settingsButtons = new();
@@ -52,11 +53,13 @@ namespace Winged_Warfare
             _settingsBackground = settingsBackground;
             _gameBackground = gameBackground;
             _gameEndedBackground = gameEndedBackground;
+            _blankTexture = new Texture2D(_graphics.GraphicsDevice, 1, 1);
+            _horizontalCenter = Game1.Width / 2f;
 
             // Do NOT change the order of the buttons; This WILL break the code. lol
             CreateMainMenu();
             CreateSettingsMenu();
-            //CreateGameEndedMenu();
+            CreateGameEndedMenu();
 
             foreach (Button button in _menuButtons)
             {
@@ -74,7 +77,6 @@ namespace Winged_Warfare
             {
                 Debug.WriteLine(button.GetTextAndId());
             }
-            _horizontalCenter = Game1.Width / 2f;
         }
 
 
@@ -207,7 +209,14 @@ namespace Winged_Warfare
                     {
                         _spriteBatch.Draw(_gameEndedBackground, _fullScreen, Color.White);
                     }
-                    //_spriteBatch.DrawString(Game1.TestFont, "Game Ended", new Vector2(_horizontalCenter, 25), Color.White);
+
+                    Vector2 gameEndedDim = Game1.TestFont.MeasureString("Game Ended");
+                    _spriteBatch.DrawString(Game1.TestFont, "Game Ended", new Vector2(_horizontalCenter-gameEndedDim.X/2, 25), Color.White);
+                    Vector2 scoreDim = Game1.TestFont.MeasureString("Score: " + Score.GetScore());
+                    _spriteBatch.DrawString(Game1.TestFont, "Score: " + Score.GetScore(), new Vector2(_horizontalCenter - scoreDim.X / 2, 100), Color.White);
+                    Vector2 highscoreDim = Game1.TestFont.MeasureString("Highscore: " + Score.GetHighscore());
+                    _spriteBatch.DrawString(Game1.TestFont, "Highscore: " + Score.GetHighscore(), new Vector2(_horizontalCenter - highscoreDim.X / 2, 150), Color.White);
+
                     foreach (Button btn in _gameEndedButtons)
                     {
                         btn.Draw(_spriteBatch, _currentMouseState.Position.ToVector2(), _currentMouseState.LeftButton == ButtonState.Pressed);
@@ -246,15 +255,20 @@ namespace Winged_Warfare
 
         private void CreateSettingsMenu()
         {
-            Button toMenu = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.Green, Color.Red);
+            Button toMenu = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.Black, Color.Black);
             _settingsButtons.Add(toMenu);
             toMenu.SetClick(SwitchToMenu);
         }
 
         private void CreateGameEndedMenu()
         {
-            Button toMenu = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.Green, Color.Red);
-            Button restart = new Button(new Vector2(Game1.Width / 2f, 400), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Restart", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Vector2 backSize = Game1.TestFont.MeasureString("Return to menu");
+            Vector2 restartSize = Game1.TestFont.MeasureString("Play another round");
+            Vector2 backPadding = new Vector2(40, 40);
+            Vector2 restartPadding = new Vector2(40, 40);
+
+            Button toMenu = new Button(new Vector2(_horizontalCenter + backPadding.X, 880) - backPadding, backSize + backPadding, Game1.Grey80, Game1.Grey40, _blankTexture, "Return to menu", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button restart = new Button(new Vector2(_horizontalCenter + restartPadding.X, 1000) - restartPadding, restartSize + restartPadding, Game1.Grey80, Game1.Grey40, _blankTexture, "Play another round", Game1.TestFont, Color.Black, Color.Black, Color.Black);
             _gameEndedButtons.Add(toMenu);
             _gameEndedButtons.Add(restart);
             toMenu.SetClick(SwitchToMenu);
@@ -283,11 +297,12 @@ namespace Winged_Warfare
 
         public void SwitchToGame()
         {
-            Game1._gameTimer = new Timer(60000, SetGameNeedsReset);
+            Game1._gameTimer = new Timer(70000, SetGameNeedsReset);
             Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();
             SetState(GameState.Game);
             Debug.WriteLine("Switched to game state.");
+            Game1.Instance.ResetGame();
         }
 
         public void SwitchToEndscreen()

@@ -23,7 +23,7 @@ namespace Winged_Warfare
         private SpriteBatch _spriteBatch;
         private bool _wasUnfocused = false;
         public static float Fps = 0;
-        
+
         // Game Settings
         public static int Width = 1920;
         public static int Height = 1080;
@@ -32,7 +32,7 @@ namespace Winged_Warfare
         public static float MenuSFXVolume = 0.1f;
 
         public bool isMusicPlaying = true;
-     
+
 
 
 
@@ -61,6 +61,8 @@ namespace Winged_Warfare
         public static Texture2D Button;
         public static Texture2D ButtonHover;
         public static Texture2D ButtonPressed;
+        public static Texture2D Grey40;
+        public static Texture2D Grey80;
 
         public static Texture2D HUDAmmo;
         public static Texture2D HUDAmmoEmpty;
@@ -112,7 +114,7 @@ namespace Winged_Warfare
         }
 
 
-        
+
         protected override void Initialize()
         {
             base.Initialize();
@@ -126,7 +128,7 @@ namespace Winged_Warfare
             // Initialize camera end
 
             //TODO: Replace textures with actual textures
-            _menuManager = new MenuManager(_graphics,_spriteBatch, null, Content.Load<Texture2D>("testContent/button"), null, null);
+            _menuManager = new MenuManager(_graphics, _spriteBatch, null, Content.Load<Texture2D>("testContent/button"), null, Grey40);
             // Initialize the camera 
             _camera = new FPSCamera(this, Player.CamPosition);
             Listener = _camera.Listener;
@@ -150,6 +152,9 @@ namespace Winged_Warfare
             Button = Content.Load<Texture2D>("testContent/button");
             ButtonHover = Content.Load<Texture2D>("testContent/button_hover");
             ButtonPressed = Content.Load<Texture2D>("testContent/button_pressed");
+            Grey40 = Content.Load<Texture2D>("Grey40");
+            Grey80 = Content.Load<Texture2D>("Grey80");
+
 
             // Textures for HUD
             HUDAmmo = Content.Load<Texture2D>("Net_HUD_Texture");
@@ -191,7 +196,7 @@ namespace Winged_Warfare
             //create dictionary with all models
             foreach (var modelName in ModelNames)
             {
-               Models.Add(modelName, Content.Load<Model>(modelName));
+                Models.Add(modelName, Content.Load<Model>(modelName));
             }
         }
 
@@ -203,9 +208,9 @@ namespace Winged_Warfare
             {
                 if (!_wasUnfocused)
                 {
-                    IsMouseVisible=true; 
+                    IsMouseVisible = true;
                     _wasUnfocused = true;
-                    Debug.WriteLine("[LostFocus]: "+Mouse.GetState().Position);
+                    Debug.WriteLine("[LostFocus]: " + Mouse.GetState().Position);
                 }
                 return;
             }
@@ -214,10 +219,10 @@ namespace Winged_Warfare
             if (_wasUnfocused)
             {
                 _wasUnfocused = false;
-                
-                Debug.WriteLine("[GotFocus]: "+Mouse.GetState().Position);
+
+                Debug.WriteLine("[GotFocus]: " + Mouse.GetState().Position);
                 IsMouseVisible = false; //https://github.com/MonoGame/MonoGame/issues/7842#issuecomment-1191712378
-                Mouse.SetPosition(Width/2, Height/2);
+                Mouse.SetPosition(Width / 2, Height / 2);
                 return;
             }
 
@@ -235,11 +240,11 @@ namespace Winged_Warfare
 
             switch (_menuManager.GetState()) // 0 = menu, 1 = settings, 2 = game, 3 = game ended
             {
-                case GameState.Menu: 
+                case GameState.Menu:
                     break;
-                case GameState.Settings: 
+                case GameState.Settings:
                     break;
-                case GameState.Game: 
+                case GameState.Game:
                     _gameTimer?.Update();
                     _level.UpdateObjects();
                     Player.Update();
@@ -259,18 +264,11 @@ namespace Winged_Warfare
             //If Game has ended, restart level
             if (_menuManager.NeedsReset())
             {
-                _menuManager.SwitchToMenu(); //this needs to be changed to a win/lose screen
+                _menuManager.SwitchToEndscreen(); //TODO: this needs to be changed to a win/lose screen
                 Debug.WriteLine("--------");
                 Debug.WriteLine("You won!");
                 Debug.WriteLine("--------");
-                Score.ResetScore();
-                BirdSpawnpoint.Reset();
-                BulletHandler.Reset();
-                RestartLevel();
-                _camera.Reset();
             }
-
-           
 
             //Used to end the game with other classes
             if (CloseGame)
@@ -298,17 +296,17 @@ namespace Winged_Warfare
 
             //READ THIS!
             //DO NOT DRAW ANYTHING RELATED TO THE ACTUAL GAME OUTSIDE OF THE IF STATEMENT
-            if (_menuManager.GetState() == GameState.Game) //everything that should be drawn in game state
+            if (_menuManager.GetState() == GameState.Game || _menuManager.GetState() == GameState.GameEnded) //everything that should be drawn in game state
             {
                 //This fixed broken Models with SpriteBatch and 3D Models. 
                 GraphicsDevice.DepthStencilState = DepthStencilState.Default;
-                
+
                 _level.DrawModels();
                 BulletHandler.Draw();
                 //BirdHandler.Draw();
             }
 
-            
+
 
             _spriteBatch.Begin();
             _menuManager.Draw();
@@ -322,6 +320,15 @@ namespace Winged_Warfare
         {
             _level = new Level();
             _level.LoadLevel("Levels/sampleLevel.txt");
+        }
+
+        public void ResetGame()
+        {
+            Score.ResetScore();
+            BirdSpawnpoint.Reset();
+            BulletHandler.Reset();
+            RestartLevel();
+            _camera.Reset();
         }
     }
 

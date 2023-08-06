@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/8Ball_Net.fbx</SourceFile>
-  <SourceTime>2023-07-04T16:03:03.7716251+02:00</SourceTime>
-  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/8Ball_Net.xnb</DestFile>
-  <DestTime>2023-07-23T10:42:38.579888+02:00</DestTime>
+  <SourceFile>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/8Ball_Net.fbx</SourceFile>
+  <SourceTime>2023-07-05T10:43:18.0316564+02:00</SourceTime>
+  <DestFile>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/8Ball_Net.xnb</DestFile>
+  <DestTime>2023-08-06T21:01:02.3803128+02:00</DestTime>
   <Importer>FbxImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>ModelProcessor</Processor>
@@ -66,7 +66,7 @@
   </Parameters>
   <Dependencies />
   <BuildAsset>
-    <string>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/8balltexture_0.xnb</string>
+    <string>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/8balltexture_0.xnb</string>
   </BuildAsset>
   <BuildOutput />
 </PipelineBuildEvent>

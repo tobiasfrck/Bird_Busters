@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/game-jam.mp3</SourceFile>
-  <SourceTime>2023-07-19T20:59:18.0196491+02:00</SourceTime>
-  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/Audio/game-jam.xnb</DestFile>
-  <DestTime>2023-07-23T10:42:41.8889084+02:00</DestTime>
+  <SourceFile>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/Audio/game-jam.mp3</SourceFile>
+  <SourceTime>2023-08-04T19:38:56.0838481+02:00</SourceTime>
+  <DestFile>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/Audio/game-jam.xnb</DestFile>
+  <DestTime>2023-08-06T21:01:08.3755303+02:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/Audio/game-jam.ogg</string>
+    <string>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/Audio/game-jam.ogg</string>
   </BuildOutput>
 </PipelineBuildEvent>

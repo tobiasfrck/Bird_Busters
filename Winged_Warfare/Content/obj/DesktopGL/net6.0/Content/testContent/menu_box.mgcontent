@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/menu_box.png</SourceFile>
-  <SourceTime>2023-07-05T13:37:00.4425359+02:00</SourceTime>
-  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/testContent/menu_box.xnb</DestFile>
-  <DestTime>2023-07-23T10:42:43.2634568+02:00</DestTime>
+  <SourceFile>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/testContent/menu_box.png</SourceFile>
+  <SourceTime>2023-07-09T18:11:22.8429681+02:00</SourceTime>
+  <DestFile>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/testContent/menu_box.xnb</DestFile>
+  <DestTime>2023-08-06T21:01:11.4496205+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

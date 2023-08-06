@@ -50,11 +50,11 @@
 /processorParam:Quality=Best
 /build:Audio/BirdFlaps1.mp3
 
-#begin Audio/Click_Button.wav
-/importer:WavImporter
+#begin Audio/Click_Button.mp3
+/importer:Mp3Importer
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/Click_Button.wav
+/build:Audio/Click_Button.mp3
 
 #begin Audio/funk-jam.mp3
 /importer:Mp3Importer

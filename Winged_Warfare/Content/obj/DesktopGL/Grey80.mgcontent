@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Grey80.png</SourceFile>
-  <SourceTime>2023-08-01T22:14:39.260805+02:00</SourceTime>
-  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Grey80.xnb</DestFile>
-  <DestTime>2023-08-01T22:15:41.4952693+02:00</DestTime>
+  <SourceFile>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/Grey80.png</SourceFile>
+  <SourceTime>2023-08-04T19:38:56.087855+02:00</SourceTime>
+  <DestFile>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Grey80.xnb</DestFile>
+  <DestTime>2023-08-06T22:39:33.582269+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

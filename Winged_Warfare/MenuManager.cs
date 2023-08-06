@@ -164,11 +164,12 @@ namespace Winged_Warfare
                     DrawDebug();
 
                     // Draw Ammunition HUD
-                    int magDisplaySize = 100;
+                    int magDisplaySize = 100; //icon size
                     int magDisplayYPosition = Game1.Height - 110;
+                    int magDisplayDistanceBetween = -110; //distance between icons
                     for (int i = 0; i < BulletHandler.GetMagazinSize(); i++)
                     {
-                        int magDisplayXPosition = (i + 1) * -110 + xOffset;
+                        int magDisplayXPosition = (i + 1) * magDisplayDistanceBetween + xOffset;
                         //Draw unavailable bullets while reloading
                         if (BulletHandler.IsReloading() == true)
                         {

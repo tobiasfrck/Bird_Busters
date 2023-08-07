@@ -41,6 +41,9 @@ namespace Winged_Warfare
 
         private float _horizontalCenter = 0;
 
+        private Timer gameEndFadeTimer;
+        private Timer gameEndAppearTimer;
+
         private MouseState _currentMouseState;
         private MouseState _previousMouseState;
 
@@ -109,6 +112,8 @@ namespace Winged_Warfare
                     }
                     break;
                 case GameState.GameEnded:
+                    gameEndFadeTimer.Update();
+                    gameEndAppearTimer.Update();
                     foreach (Button btn in _gameEndedButtons)
                     {
                         btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
@@ -208,9 +213,15 @@ namespace Winged_Warfare
                     }
                     break;
                 case GameState.GameEnded:
+                    float backgroundAlpha = gameEndFadeTimer.GetProgress();
                     if (_gameEndedBackground != null)
                     {
-                        _spriteBatch.Draw(_gameEndedBackground, _fullScreen, Color.White);
+                        _spriteBatch.Draw(_gameEndedBackground, _fullScreen, new Color(Color.Transparent,gameEndFadeTimer.GetProgress()));
+                    }
+
+                    if (gameEndAppearTimer.IsRunning())
+                    {
+                        break;
                     }
 
                     Vector2 gameEndedDim = Game1.TestFont.MeasureString("Game Ended");
@@ -321,6 +332,10 @@ namespace Winged_Warfare
 
         public void SwitchToEndscreen()
         {
+            Game1.EndOfRoundSoundEffect.Play();
+            gameEndFadeTimer = new Timer(1236);
+            gameEndAppearTimer = new Timer(1660);
+            
             Game1._gameTimer?.Pause();
             Button.ResetConflicts();
             SetState(GameState.GameEnded);

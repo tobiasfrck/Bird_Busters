@@ -8,6 +8,7 @@
     <File>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/8balltexture.png</File>
     <File>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/Audio/BirdFlaps1.mp3</File>
     <File>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/Audio/Click_Button.mp3</File>
+    <File>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/Audio/end_of_round.mp3</File>
     <File>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/Audio/hitmarker.mp3</File>
     <File>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/Audio/Hover_Button.wav</File>
     <File>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/Audio/ingame_music.mp3</File>
@@ -42,6 +43,7 @@
     <File>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/testContent/testFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

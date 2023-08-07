@@ -97,6 +97,10 @@ namespace Winged_Warfare
             return (int)Math.Round(milliseconds / 1000,0,MidpointRounding.AwayFromZero);
         }
 
+        public float GetProgress()
+        {
+            return (initMilliseconds-milliseconds) / initMilliseconds;
+        }
         
     }
 }

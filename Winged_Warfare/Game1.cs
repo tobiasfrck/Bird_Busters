@@ -75,9 +75,8 @@ namespace Winged_Warfare
         public static SoundEffect BirdFlaps;
 
         public static SoundEffect[] StepSounds;
-        public static SoundEffect StepSound;
 
-        public static SoundEffect gameOverChime;
+        public static SoundEffect EndOfRoundSoundEffect;
         public static Song startScreenMusic;
         public static Song gameScreenMusic;
         //Assets end
@@ -167,6 +166,7 @@ namespace Winged_Warfare
             ShootEffect = Content.Load<SoundEffect>("Audio/shot");
             HitMarker = Content.Load<SoundEffect>("Audio/hitmarker");
             BirdFlaps = Content.Load<SoundEffect>("Audio/BirdFlaps1");
+            EndOfRoundSoundEffect = Content.Load<SoundEffect>("Audio/end_of_round");
             StepSounds = new SoundEffect[4];
             for (int i = 0; i < StepSounds.Length; i++)
             {
@@ -205,6 +205,7 @@ namespace Winged_Warfare
                     IsMouseVisible = true;
                     _wasUnfocused = true;
                     Debug.WriteLine("[LostFocus]: " + Mouse.GetState().Position);
+                    MediaPlayer.Pause();
                 }
                 return;
             }
@@ -213,7 +214,7 @@ namespace Winged_Warfare
             if (_wasUnfocused)
             {
                 _wasUnfocused = false;
-
+                MediaPlayer.Resume();
                 Debug.WriteLine("[GotFocus]: " + Mouse.GetState().Position);
                 IsMouseVisible = false; //https://github.com/MonoGame/MonoGame/issues/7842#issuecomment-1191712378
                 Mouse.SetPosition(Width / 2, Height / 2);

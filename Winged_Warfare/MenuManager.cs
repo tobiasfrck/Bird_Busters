@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace Winged_Warfare
 {
@@ -77,6 +78,7 @@ namespace Winged_Warfare
             {
                 Debug.WriteLine(button.GetTextAndId());
             }
+            SwitchToMenu();
         }
 
 
@@ -283,6 +285,13 @@ namespace Winged_Warfare
         //All actions for the buttons
         public void SwitchToMenu()
         {
+            if (_state != GameState.Settings)
+            {
+                MediaPlayer.Volume = Game1.MusicVolume;
+                MediaPlayer.IsRepeating = true;
+                MediaPlayer.Play(Game1.startScreenMusic);
+            }
+
             Game1._gameTimer?.Pause();
             Button.ResetConflicts();
             SetState(GameState.Menu);
@@ -298,6 +307,10 @@ namespace Winged_Warfare
 
         public void SwitchToGame()
         {
+            MediaPlayer.IsRepeating = false;
+            MediaPlayer.Play(Game1.gameScreenMusic);
+            MediaPlayer.Volume = Game1.MusicVolume;
+
             Game1._gameTimer = new Timer(70000, SetGameNeedsReset);
             Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();

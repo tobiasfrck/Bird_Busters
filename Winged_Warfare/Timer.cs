@@ -9,7 +9,7 @@ namespace Winged_Warfare
     public class Timer
     {
         public static float Fps;
-        private int milliseconds;
+        private float milliseconds;
         private int initMilliseconds;
         Delegate onTimerEnd;
         private bool isRunning = true;
@@ -30,7 +30,7 @@ namespace Winged_Warfare
         public void Update()
         {
             if (!isRunning) return;
-            milliseconds -= (int)(1000/Fps);
+            milliseconds -= (1000/Fps);
             if (milliseconds <= 0)
             {
                 onTimerEnd?.DynamicInvoke();
@@ -94,7 +94,7 @@ namespace Winged_Warfare
 
         public int GetSeconds()
         {
-            return milliseconds / 1000;
+            return (int)Math.Round(milliseconds / 1000,0,MidpointRounding.AwayFromZero);
         }
 
         

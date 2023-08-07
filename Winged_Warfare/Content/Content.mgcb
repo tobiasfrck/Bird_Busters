@@ -56,18 +56,6 @@
 /processorParam:Quality=Best
 /build:Audio/Click_Button.mp3
 
-#begin Audio/funk-jam.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Audio/funk-jam.mp3
-
-#begin Audio/game-jam.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:Audio/game-jam.mp3
-
 #begin Audio/hitmarker.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
@@ -79,6 +67,18 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Audio/Hover_Button.wav
+
+#begin Audio/ingame_music.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/ingame_music.mp3
+
+#begin Audio/menu_music.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/menu_music.mp3
 
 #begin Audio/shot.mp3
 /importer:Mp3Importer

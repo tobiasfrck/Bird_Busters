@@ -77,10 +77,9 @@ namespace Winged_Warfare
         public static SoundEffect[] StepSounds;
         public static SoundEffect StepSound;
 
-        public static Song gameOverMusic;
+        public static SoundEffect gameOverChime;
         public static Song startScreenMusic;
         public static Song gameScreenMusic;
-        public static Song currentBackgroundMusic;
         //Assets end
 
         //Audio
@@ -176,14 +175,9 @@ namespace Winged_Warfare
 
 
             // Music
-            startScreenMusic = Content.Load<Song>("Audio/funk-jam");
-            gameScreenMusic = Content.Load<Song>("Audio/game-jam");
-
-            currentBackgroundMusic = startScreenMusic;
-            MediaPlayer.IsRepeating = true;
-            //TODO: enable music, for testing purposes disabled
-            //MediaPlayer.Play(currentBackgroundMusic);
-            MediaPlayer.Volume = MusicVolume;
+            startScreenMusic = Content.Load<Song>("Audio/menu_music");
+            gameScreenMusic = Content.Load<Song>("Audio/ingame_music");
+            
 
 
             LoadModels();

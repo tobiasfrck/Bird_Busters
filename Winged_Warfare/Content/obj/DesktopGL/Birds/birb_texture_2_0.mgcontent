@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Birds/birb_texture_2.png</SourceFile>
-  <SourceTime>2023-08-13T20:48:18.7003828+02:00</SourceTime>
+  <SourceTime>2023-08-13T21:16:27.9649768+02:00</SourceTime>
   <DestFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Birds/birb_texture_2_0.xnb</DestFile>
-  <DestTime>2023-08-13T20:49:08.9596228+02:00</DestTime>
+  <DestTime>2023-08-13T21:20:24.1606874+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T11:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

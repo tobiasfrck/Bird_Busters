@@ -75,7 +75,7 @@ namespace Winged_Warfare
             position.Z += _offset.Y;
 
             //TODO: change to real model and texture
-            _drawableObject = new DrawableObject(position, rotation, scale, "testContent/testCube", -1);
+            _drawableObject = new DrawableObject(position, rotation, scale, "Birds/Birb", -1);
 
             //Bird bekommt random Stats
             _minSpeed = ((float)_random.NextDouble() + 0.2f) / 5;

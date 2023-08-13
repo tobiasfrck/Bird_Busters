@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Birds/Birb.fbx</SourceFile>
-  <SourceTime>2023-08-13T20:50:23.6168912+02:00</SourceTime>
+  <SourceTime>2023-08-13T21:13:40.6065756+02:00</SourceTime>
   <DestFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Birds/Birb.xnb</DestFile>
-  <DestTime>2023-08-13T20:50:41.2824575+02:00</DestTime>
+  <DestTime>2023-08-13T21:20:24.0515882+02:00</DestTime>
   <Importer>FbxImporter</Importer>
   <ImporterTime>2022-07-26T11:44:56+02:00</ImporterTime>
   <Processor>ModelProcessor</Processor>
@@ -54,7 +54,7 @@
   </Parameters>
   <Parameters>
     <Key>Scale</Key>
-    <Value>1</Value>
+    <Value>0.05</Value>
   </Parameters>
   <Parameters>
     <Key>SwapWindingOrder</Key>

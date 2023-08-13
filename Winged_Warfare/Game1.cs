@@ -55,7 +55,9 @@ namespace Winged_Warfare
             "testContent/planeTest",
             "testContent/Net",
             "Level_Concept",
-            "8Ball_Net"
+            "8Ball_Net",
+            "Birds/Birb",
+            "Birds/Birb2"
         };
         public static SpriteFont TestFont;
 

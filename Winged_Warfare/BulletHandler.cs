@@ -17,12 +17,14 @@ namespace Winged_Warfare
         public static List<Bird> birds;
         //Delay-Zeit zwischen Jedem Schuss
         private static int reloadTimerShot = 25;
+        private static Timer _reloadTimerShot = new(1);
         //Delay-Zeit beim Nachladen
         private static int reloadTimerMagazin = 200;
+        private static Timer _reloadTimerMagazin = new(1);
         //Timer der die Zeit runterechnent
         private static int reloadTimer = 0;
         //Magazin Größe
-        private const int MagazinSize = 5;
+        private const int MagazinSize = 7;
         //Munition im Magazin
         private static int Magazin = MagazinSize;       
         //Verhindert das schießen während dem Nachladen
@@ -37,7 +39,7 @@ namespace Winged_Warfare
         {
             
 //          Shoot Mechanic
-            if (Mouse.GetState().LeftButton == ButtonState.Pressed && canShoot && !(FPSCamera.IsMoving && FPSCamera.IsSprinting))
+/*            if (Mouse.GetState().LeftButton == ButtonState.Pressed && canShoot && !(FPSCamera.IsMoving && FPSCamera.IsSprinting))
             {
 
                 //Spawned ein neues Netz
@@ -49,19 +51,50 @@ namespace Winged_Warfare
                     Reload(reloadTimerMagazin, MagazinSize);
                 }
                 else Reload();
-            }
-
-            if (!canShoot) reloadTimer -= 1;
-            if (reloadTimer < 0)
+*///            }
+            if (Mouse.GetState().LeftButton == ButtonState.Pressed && !_reloadTimerMagazin.IsRunning() && !_reloadTimerShot.IsRunning() && !(FPSCamera.IsMoving && FPSCamera.IsSprinting))
             {
+
+                //Spawned ein neues Netz
+                Game1.ShootEffect.Play(Game1.SFXVolume, 0, 0);
+                bullets.Add(new Net(FPSCamera.position, Player.CamTarget));
+                //Schaut ob gerade die letzte Kugel verschossen wurde
                 canShoot = true;
                 _isReloading = false;
+                if (Magazin == 1 && useMagazin)
+                {
+                    _reloadTimerMagazin.SetTimeNRun(5000);
+                    _isReloading=true;
+                    canShoot = false;
+                    Magazin = MagazinSize;
+                }
+                else
+                {
+                    _reloadTimerShot.SetTimeNRun(500);
+                    Magazin -= 1;
+                }
+                
+            }
+            if (!_reloadTimerMagazin.IsRunning())
+            {
+                canShoot=true;
+                _isReloading=false;
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.R)&&canShoot)
+            _reloadTimerShot.Update();
+            _reloadTimerMagazin.Update();
+//            if (!canShoot) reloadTimer -= 1;
+/*            if (_reloadTimerMagazin.HasReached(0)&&_reloadTimerMagazin.IsRunning())
             {
-                Reload(reloadTimerMagazin, MagazinSize);
-            }
+                canShoot=true;
+                _isReloading = false;
+                Magazin = MagazinSize;
+*///            }
+
+//            if (Keyboard.GetState().IsKeyDown(Keys.R)&&canShoot)
+//            {
+//                Reload(reloadTimerMagazin, MagazinSize);
+//            }
 
             //TODO: frustrating, when mag shows its full but you cant shoot
             //Disables shooting when magazin is empty
@@ -120,21 +153,21 @@ namespace Winged_Warfare
         }
         
         //Magazin Nachladen
-        public static void Reload(int Time, int newMagazin)
+/*        public static void Reload(int Time, int newMagazin)
         {
             _isReloading = true;
             canShoot = false;
             reloadTimer = Time;
             Magazin = newMagazin;
-        }
+*///        }
 
         //"Nachladen" zwischen einzelnen Schüssen
-        public static void Reload()
+/*        public static void Reload()
         {
             canShoot = false;
             reloadTimer = reloadTimerShot;
             Magazin -= 1;
-        }
+*///        }
 
         public static int GetAvailableShots()
         {
@@ -155,7 +188,6 @@ namespace Winged_Warfare
         {
             Magazin = MagazinSize;
             canShoot = true;
-            reloadTimer = -1;
             _isReloading = false;
             bullets.Clear();
         }

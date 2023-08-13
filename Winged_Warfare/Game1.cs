@@ -23,6 +23,7 @@ namespace Winged_Warfare
         private SpriteBatch _spriteBatch;
         private bool _wasUnfocused = false;
         public static float Fps = 0;
+        private bool fullscreenbutton = false;
 
         // Game Settings
         public static int Width = 1920;
@@ -155,9 +156,9 @@ namespace Winged_Warfare
 
 
             // Textures for HUD
-            HUDAmmo = Content.Load<Texture2D>("Net_HUD_Texture");
-            HUDAmmoEmpty = Content.Load<Texture2D>("Net_HUD_Texture_transparent");
-            HUDAmmoReloading = Content.Load<Texture2D>("Net_HUD_Texture_reloading");
+            HUDAmmo = Content.Load<Texture2D>("Bullet");
+            HUDAmmoEmpty = Content.Load<Texture2D>("Bullet_G");
+            HUDAmmoReloading = Content.Load<Texture2D>("Bullet_B");
 
 
             // SFX
@@ -264,6 +265,25 @@ namespace Winged_Warfare
                 Debug.WriteLine("You won!");
                 Debug.WriteLine("--------");
             }
+
+            if (Keyboard.GetState().IsKeyUp(Keys.F11) && fullscreenbutton)
+                fullscreenbutton = false;
+            if (Keyboard.GetState().IsKeyDown(Keys.F11) && !fullscreenbutton)
+            {
+                if(_graphics.IsFullScreen == true)
+                {
+                    _graphics.IsFullScreen = false;
+                    Window.IsBorderless = false;
+                } else
+                {
+                    _graphics.IsFullScreen = true;
+                }
+                fullscreenbutton = true;
+                _graphics.ApplyChanges();
+            }
+
+
+
 
             //Used to end the game with other classes
             if (CloseGame)

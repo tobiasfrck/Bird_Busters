@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/Audio/hitmarker.mp3</SourceFile>
-  <SourceTime>2023-06-29T14:09:43.7099497+02:00</SourceTime>
-  <DestFile>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/Audio/hitmarker.xnb</DestFile>
-  <DestTime>2023-08-06T21:01:08.5133637+02:00</DestTime>
+  <SourceFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/hitmarker.mp3</SourceFile>
+  <SourceTime>2023-06-27T12:12:20.9544317+02:00</SourceTime>
+  <DestFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/Audio/hitmarker.xnb</DestFile>
+  <DestTime>2023-08-13T12:53:44.6568255+02:00</DestTime>
   <Importer>Mp3Importer</Importer>
-  <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
+  <ImporterTime>2022-07-26T11:44:56+02:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>
-  <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
+  <ProcessorTime>2022-07-26T11:44:56+02:00</ProcessorTime>
   <Parameters>
     <Key>Quality</Key>
     <Value>Best</Value>

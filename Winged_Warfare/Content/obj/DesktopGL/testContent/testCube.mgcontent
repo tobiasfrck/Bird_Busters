@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/testContent/testCube.fbx</SourceFile>
-  <SourceTime>2023-05-15T11:31:43.9790602+02:00</SourceTime>
-  <DestFile>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/testCube.xnb</DestFile>
-  <DestTime>2023-08-06T22:39:37.45604+02:00</DestTime>
+  <SourceFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/testCube.fbx</SourceFile>
+  <SourceTime>2023-06-10T23:48:24+02:00</SourceTime>
+  <DestFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/testCube.xnb</DestFile>
+  <DestTime>2023-08-13T14:26:12.015081+02:00</DestTime>
   <Importer>FbxImporter</Importer>
-  <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
+  <ImporterTime>2022-07-26T11:44:56+02:00</ImporterTime>
   <Processor>ModelProcessor</Processor>
-  <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
+  <ProcessorTime>2022-07-26T11:44:56+02:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>0,0,0,0</Value>
@@ -66,7 +66,7 @@
   </Parameters>
   <Dependencies />
   <BuildAsset>
-    <string>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/cubeTexture_0.xnb</string>
+    <string>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/cubeTexture_0.xnb</string>
   </BuildAsset>
   <BuildOutput />
 </PipelineBuildEvent>

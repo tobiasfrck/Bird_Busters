@@ -1,4 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/Audio/end_of_round.mp3","D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Audio/end_of_round.xnb","SoundEffectProcessor","SoundEffectContent",64700,534633,0,6568684
-"D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/Audio/ingame_music.mp3","D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Audio/ingame_music.xnb","SongProcessor","SongContent",886727,130,0,6607666
-"D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/Audio/menu_music.mp3","D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Audio/menu_music.xnb","SongProcessor","SongContent",2349470,128,1,0555215
+"F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Bullet_B.png","F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Bullet_B.xnb","TextureProcessor","Texture2DContent",180,5461,0,104202
+"F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Bullet_G.png","F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Bullet_G.xnb","TextureProcessor","Texture2DContent",260,5461,0,0014849
+"F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Bullet.png","F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Bullet.xnb","TextureProcessor","Texture2DContent",265,5461,0,0015061

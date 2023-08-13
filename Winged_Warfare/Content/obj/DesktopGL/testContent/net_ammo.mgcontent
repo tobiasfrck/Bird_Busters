@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/testContent/net_ammo.png</SourceFile>
-  <SourceTime>2023-06-06T22:52:40.7057264+02:00</SourceTime>
-  <DestFile>D:/Projekte/MonoGame/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/net_ammo.xnb</DestFile>
-  <DestTime>2023-08-06T22:39:35.5037461+02:00</DestTime>
+  <SourceFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/net_ammo.png</SourceFile>
+  <SourceTime>2023-06-10T23:48:24+02:00</SourceTime>
+  <DestFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/net_ammo.xnb</DestFile>
+  <DestTime>2023-08-13T14:26:10.4566667+02:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
+  <ImporterTime>2022-07-26T11:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
+  <ProcessorTime>2022-07-26T11:44:56+02:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

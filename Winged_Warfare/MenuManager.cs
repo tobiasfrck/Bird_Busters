@@ -172,24 +172,24 @@ namespace Winged_Warfare
 
                     // Draw Ammunition HUD
                     int magDisplaySize = 100; //icon size
-                    int magDisplayYPosition = Game1.Height - 110;
-                    int magDisplayDistanceBetween = -110; //distance between icons
+                    int magDisplayYPosition = Game1.Height - 80;
+                    int magDisplayDistanceBetween = -40; //distance between icons
                     for (int i = 0; i < BulletHandler.GetMagazinSize(); i++)
                     {
                         int magDisplayXPosition = (i + 1) * magDisplayDistanceBetween + xOffset;
                         //Draw unavailable bullets while reloading
                         if (BulletHandler.IsReloading() == true)
                         {
-                            _spriteBatch.Draw(Game1.HUDAmmoReloading, new Rectangle(magDisplayXPosition, magDisplayYPosition, magDisplaySize, magDisplaySize), Color.White);
+                            _spriteBatch.Draw(Game1.HUDAmmoReloading, new Rectangle(magDisplayXPosition, magDisplayYPosition, 24, 56), Color.White);
                         }
                         //Draw available bullets
                         else if (i < BulletHandler.GetAvailableShots() && BulletHandler.IsReloading() == false)
                         {
-                            _spriteBatch.Draw(Game1.HUDAmmo, new Rectangle(magDisplayXPosition, magDisplayYPosition, magDisplaySize, magDisplaySize), Color.White);
+                            _spriteBatch.Draw(Game1.HUDAmmo, new Rectangle(magDisplayXPosition, magDisplayYPosition, 24, 56), Color.White);
                         }
                         else //Draw unavailable bullets
                         {
-                            _spriteBatch.Draw(Game1.HUDAmmoEmpty, new Rectangle(magDisplayXPosition, magDisplayYPosition, magDisplaySize, magDisplaySize), Color.White);
+                            _spriteBatch.Draw(Game1.HUDAmmoEmpty, new Rectangle(magDisplayXPosition, magDisplayYPosition, 24, 56), Color.White);
                         }
                     }
 
@@ -256,9 +256,9 @@ namespace Winged_Warfare
 
         private void CreateMainMenu()
         {
-            Button startGame = new Button(new Vector2(Game1.Width / 2f, 25), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Start Game", Game1.TestFont, Color.Black, Color.Black, Color.Black);
-            Button settings = new Button(new Vector2(Game1.Width / 2f, 400), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Settings", Game1.TestFont, Color.Black, Color.Black, Color.Black);
-            Button exitGame = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Exit", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button startGame = new Button(new Vector2(Game1.Width / 2f, (Game1.Height/ 10f * 2) -125), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Start Game", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button settings = new Button(new Vector2(Game1.Width / 2f,  (Game1.Height/ 10f * 5) -125), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Settings", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button exitGame = new Button(new Vector2(Game1.Width / 2f,  (Game1.Height/ 10f * 8) -125), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Exit", Game1.TestFont, Color.Black, Color.Black, Color.Black);
             _menuButtons.Add(startGame);
             _menuButtons.Add(settings);
             _menuButtons.Add(exitGame);
@@ -269,7 +269,7 @@ namespace Winged_Warfare
 
         private void CreateSettingsMenu()
         {
-            Button toMenu = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(640, 360), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button toMenu = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.Black, Color.Black);
             _settingsButtons.Add(toMenu);
             toMenu.SetClick(SwitchToMenu);
         }

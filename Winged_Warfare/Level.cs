@@ -96,6 +96,7 @@ namespace Winged_Warfare
                 if (i == 0 && _levelContent[i].StartsWith("Highscore: "))
                 {
                     Score.SetHighscore(ParseInt(_levelContent[i].Substring(11)));
+                    continue;
                 }
 
                 LevelObject toAdd = LineToLevelObject(_levelContent[i], i);

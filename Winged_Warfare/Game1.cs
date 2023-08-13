@@ -28,7 +28,7 @@ namespace Winged_Warfare
         // Game Settings
         public static int Width = 1920;
         public static int Height = 1080;
-        public static float MusicVolume = 0.1f;
+        public static float MusicVolume = 0.0f;
         public static float SFXVolume = 1;
         public static float MenuSFXVolume = 0.1f;
 
@@ -166,7 +166,7 @@ namespace Winged_Warfare
             BtnClickSfx = Content.Load<SoundEffect>("Audio/Click_Button"); //TODO: Replace with actual sound
             ShootEffect = Content.Load<SoundEffect>("Audio/shot");
             HitMarker = Content.Load<SoundEffect>("Audio/hitmarker");
-            BirdFlaps = Content.Load<SoundEffect>("Audio/BirdFlaps1");
+            BirdFlaps = Content.Load<SoundEffect>("Audio/BirdFlaps1_to_remove");
             EndOfRoundSoundEffect = Content.Load<SoundEffect>("Audio/end_of_round");
             StepSounds = new SoundEffect[4];
             for (int i = 0; i < StepSounds.Length; i++)
@@ -178,7 +178,7 @@ namespace Winged_Warfare
             // Music
             startScreenMusic = Content.Load<Song>("Audio/menu_music");
             gameScreenMusic = Content.Load<Song>("Audio/ingame_music");
-            
+
 
 
             LoadModels();
@@ -197,7 +197,6 @@ namespace Winged_Warfare
 
         protected override void Update(GameTime gameTime)
         {
-
             //Disable update if window is not focused
             if (!IsActive)
             {
@@ -222,10 +221,12 @@ namespace Winged_Warfare
                 return;
             }
 
-
             //Escape to go back to menu, TODO: pause menu?
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+                 Keyboard.GetState().IsKeyDown(Keys.Escape)) && _menuManager.GetState() != GameState.Menu)
+            {
                 _menuManager.SwitchToMenu();
+            }
 
 
             _menuManager.Update();
@@ -245,8 +246,6 @@ namespace Winged_Warfare
                     _level.UpdateObjects();
                     Player.Update();
                     BulletHandler.Update();
-                    //BirdHandler.Update();
-                    // Update the camera
                     _camera.Update(gameTime);
                     break;
                 case GameState.GameEnded:
@@ -267,14 +266,18 @@ namespace Winged_Warfare
             }
 
             if (Keyboard.GetState().IsKeyUp(Keys.F11) && fullscreenbutton)
+            {
                 fullscreenbutton = false;
+            }
+
             if (Keyboard.GetState().IsKeyDown(Keys.F11) && !fullscreenbutton)
             {
-                if(_graphics.IsFullScreen == true)
+                if (_graphics.IsFullScreen == true)
                 {
                     _graphics.IsFullScreen = false;
                     Window.IsBorderless = false;
-                } else
+                }
+                else
                 {
                     _graphics.IsFullScreen = true;
                 }

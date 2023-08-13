@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Grey80.png</SourceFile>
-  <SourceTime>2023-08-13T12:36:54.9450427+02:00</SourceTime>
-  <DestFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Grey80.xnb</DestFile>
-  <DestTime>2023-08-13T14:26:09.0223659+02:00</DestTime>
+  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Grey80.png</SourceFile>
+  <SourceTime>2023-08-01T22:14:39.260805+02:00</SourceTime>
+  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Grey80.xnb</DestFile>
+  <DestTime>2023-08-13T18:58:48.0172966+02:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2022-07-26T11:44:56+02:00</ImporterTime>
+  <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2022-07-26T11:44:56+02:00</ProcessorTime>
+  <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

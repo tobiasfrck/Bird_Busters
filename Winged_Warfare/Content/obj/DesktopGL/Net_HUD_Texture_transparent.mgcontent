@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Net_HUD_Texture_transparent.png</SourceFile>
-  <SourceTime>2023-07-04T21:06:51.3263463+02:00</SourceTime>
-  <DestFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Net_HUD_Texture_transparent.xnb</DestFile>
-  <DestTime>2023-08-13T14:26:09.6849668+02:00</DestTime>
+  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Net_HUD_Texture_transparent.png</SourceFile>
+  <SourceTime>2023-07-04T20:20:31.7596923+02:00</SourceTime>
+  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Net_HUD_Texture_transparent.xnb</DestFile>
+  <DestTime>2023-08-13T18:58:48.5226774+02:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2022-07-26T11:44:56+02:00</ImporterTime>
+  <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2022-07-26T11:44:56+02:00</ProcessorTime>
+  <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

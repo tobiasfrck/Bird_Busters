@@ -227,6 +227,7 @@ namespace Winged_Warfare
             oldMouseState = Mouse.GetState();
 
             Listener.Position = position;
+            Listener.Forward = direction;
         }
 
         private static void CheckFlight()

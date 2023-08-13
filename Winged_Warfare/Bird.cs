@@ -39,6 +39,8 @@ namespace Winged_Warfare
         private float _minHeight;
         private float _maxHeight;
 
+        private float _distanceToPlayer;
+
         private Vector2 _offset;
 
         private Vector2 _currentTarget;
@@ -49,6 +51,7 @@ namespace Winged_Warfare
         //Audio
         private AudioEmitter Emitter;
         private SoundEffectInstance FlapEffectInstance;
+        public float _volumeMultiplier = 1f;
 
         public Bird(PathPoint p, float targetTolerance)
         {
@@ -71,6 +74,7 @@ namespace Winged_Warfare
             position.X += _offset.X;
             position.Z += _offset.Y;
 
+            //TODO: change to real model and texture
             _drawableObject = new DrawableObject(position, rotation, scale, "testContent/testCube", -1);
 
             //Bird bekommt random Stats
@@ -136,7 +140,8 @@ namespace Winged_Warfare
                 */
 
                 //TODO: SFX is disabled and NEEDS to be enabled again
-                //FlapEffectInstance.Play();
+
+                FlapEffectInstance.Play();
 
                 FlapWings();
             }
@@ -157,11 +162,17 @@ namespace Winged_Warfare
 
             //move to current direction
             _drawableObject.Move(_currentDirection * _speed);
-
             _drawableObject.Rotation = GetLookAtRotation(_position, _drawableObject.Position);
+
+            _distanceToPlayer = Vector3.Distance(_drawableObject.Position, Player.GetCamPosition());
+
             Emitter.Position = _drawableObject.Position;
             Emitter.Forward = _currentDirection; //TODO: check if this is correct
+            _volumeMultiplier = 1f - (_distanceToPlayer / 40f); //TODO: Fine tune this
+            _volumeMultiplier = MathHelper.Clamp(_volumeMultiplier, 0, 1);
+            FlapEffectInstance.Volume = Game1.SFXVolume * _volumeMultiplier;
             FlapEffectInstance.Apply3D(Game1.Listener, Emitter);
+
         }
 
         private void PrintPath()
@@ -262,6 +273,10 @@ namespace Winged_Warfare
         public int GetBirdScore()
         {
             return _scorePoints;
+        }
+        public float GetDistanceToPlayer()
+        {
+            return _distanceToPlayer;
         }
 
         private static Vector3 Rad2Deg(Vector3 rad)

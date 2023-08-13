@@ -59,6 +59,10 @@ namespace Winged_Warfare
         };
         public static SpriteFont TestFont;
 
+        public static Texture2D menuBackground;
+        public static Texture2D settingsBackground;
+        public static Texture2D gameBackground;
+
         public static Texture2D Button;
         public static Texture2D ButtonHover;
         public static Texture2D ButtonPressed;
@@ -127,7 +131,7 @@ namespace Winged_Warfare
             // Initialize camera end
 
             //TODO: Replace textures with actual textures
-            _menuManager = new MenuManager(_graphics, _spriteBatch, null, Content.Load<Texture2D>("testContent/button"), null, Grey40);
+            _menuManager = new MenuManager(_graphics, _spriteBatch, menuBackground, settingsBackground, gameBackground, Grey40);
             // Initialize the camera 
             _camera = new FPSCamera(this, Player.CamPosition);
             Listener = _camera.Listener;
@@ -148,6 +152,10 @@ namespace Winged_Warfare
 
 
             // Textures
+            //menuBackground = Content.Load<Texture2D>("testContent/menuBackground");
+            settingsBackground = Content.Load<Texture2D>("testContent/button");
+            //gameBackground = Content.Load<Texture2D>("testContent/gameBackground");
+
             Button = Content.Load<Texture2D>("testContent/button");
             ButtonHover = Content.Load<Texture2D>("testContent/button_hover");
             ButtonPressed = Content.Load<Texture2D>("testContent/button_pressed");

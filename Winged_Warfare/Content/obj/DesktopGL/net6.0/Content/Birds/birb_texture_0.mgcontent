@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Grey40.png</SourceFile>
-  <SourceTime>2023-08-01T22:01:35.0856653+02:00</SourceTime>
-  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/Grey40.xnb</DestFile>
-  <DestTime>2023-08-13T20:56:33.859069+02:00</DestTime>
+  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/birb_texture.png</SourceFile>
+  <SourceTime>2023-08-13T20:53:18.9215868+02:00</SourceTime>
+  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/Birds/birb_texture_0.xnb</DestFile>
+  <DestTime>2023-08-13T20:56:33.6403607+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
   <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
-    <Value>255,0,255,255</Value>
+    <Value>0,0,0,0</Value>
   </Parameters>
   <Parameters>
     <Key>ColorKeyEnabled</Key>
@@ -18,7 +18,7 @@
   </Parameters>
   <Parameters>
     <Key>GenerateMipmaps</Key>
-    <Value>False</Value>
+    <Value>True</Value>
   </Parameters>
   <Parameters>
     <Key>PremultiplyAlpha</Key>
@@ -29,12 +29,8 @@
     <Value>False</Value>
   </Parameters>
   <Parameters>
-    <Key>MakeSquare</Key>
-    <Value>False</Value>
-  </Parameters>
-  <Parameters>
     <Key>TextureFormat</Key>
-    <Value>Color</Value>
+    <Value>Compressed</Value>
   </Parameters>
   <Dependencies />
   <BuildAsset />

@@ -27,8 +27,7 @@ namespace Winged_Warfare
         private float _tempSpawnRateMultiplier = 0.2f; // used to store multipliers of special events
         private float _spawnTank = 0f; // the "tank" is filled each frame and when it reaches >1, n>=1 birds are spawned
 
-        private Stopwatch _spawnTimer;
-
+        private Random _random;
 
         private PathPoint _pathPoint;
         private Model _model;
@@ -45,22 +44,21 @@ namespace Winged_Warfare
                 _firstSpawnpointSpawned = true;
             }
             _spawnpointID = spawnpointId;
-            _spawnTimer = new Stopwatch();
             _spawnRate = spawnRate;
             _currSpawnRateMultiplier = SpawnRateMultiplier;
 
             if (!Game1.Models.TryGetValue("testContent/testCube", out _model))
             {
-                Debug.WriteLine("Model not found");
+                Debug.WriteLine("[Spawnpoint Bird]: Model not found");
             }
-        }
 
-        // TODO: Think of methods to spawn enemies
-        // Where do we draw the birds? Here?
+            _random = Game1.RandomGenerator;
+        }
 
         public override void Update()
         {
             float spawnAmount = (_spawnRate / Game1.Fps) * _tempSpawnRateMultiplier;
+            spawnAmount *= (float)(_random.NextDouble() * 1.5f + 0.5f);
             _spawnTank += spawnAmount;
             SpawnBird();
 

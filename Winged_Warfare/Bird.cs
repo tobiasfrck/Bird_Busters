@@ -300,6 +300,7 @@ namespace Winged_Warfare
                     _drawableObject = new DrawableObject(_position, rotation, scale, "testContent/testCube", -1);
                     break;
                 default:
+                    _drawableObject = new DrawableObject(_position, rotation, scale, "testContent/testCube", -1);
                     Debug.WriteLine("[Error]: BirdType not found");
                     break;
             }

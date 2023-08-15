@@ -199,7 +199,7 @@ namespace Winged_Warfare
                     if (!IsGrounded && _stepTimer.RestartIfTimeElapsed())
                     {
                         int soundIndex = Game1.RandomGenerator.Next(Game1.StepSounds.Length);
-                        _stepTimer.SetTimeNRun(_stepSounds[soundIndex].Duration.Milliseconds + StepCooldown);
+                        _stepTimer.SetTimeNRun((int)Math.Round(_stepSounds[soundIndex].Duration.TotalMilliseconds + StepCooldown, 0, MidpointRounding.AwayFromZero));
                         _stepSounds[soundIndex].Play(Game1.SFXVolume * 0.075f, 0, 0);
                     }
 

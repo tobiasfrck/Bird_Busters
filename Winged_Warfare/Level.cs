@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+
 namespace Winged_Warfare
 {
     //Does everything concerning the current run and level
@@ -52,7 +54,16 @@ namespace Winged_Warfare
             if (IsPressed(Keys.N))
             {
                 Debug.WriteLine("Debug mode toggled");
-                _debugMode = !_debugMode;
+                if (_debugMode)
+                {
+                    _debugMode = false;
+                    Game1._gameTimer?.Continue();
+                }
+                else
+                {
+                    Game1._gameTimer?.Pause();
+                    _debugMode = true;
+                }
             }
 
             if (_debugMode)

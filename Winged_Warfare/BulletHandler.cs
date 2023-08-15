@@ -76,7 +76,7 @@ namespace Winged_Warfare
                 
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.R) && canShoot)
+            if (Keyboard.GetState().IsKeyDown(Keys.R) && Magazin!=MagazinSize && canShoot)
             {
                 _reloadTimerMagazin.SetTimeNRun(3000);
                 _isReloading=true;

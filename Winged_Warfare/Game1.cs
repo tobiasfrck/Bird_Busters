@@ -28,7 +28,7 @@ namespace Winged_Warfare
         // Game Settings
         public static int Width = 1920;
         public static int Height = 1080;
-        public static float MusicVolume = 0.0f;
+        public static float MusicVolume = 0.1f;
         public static float SFXVolume = 1;
         public static float MenuSFXVolume = 0.1f;
 

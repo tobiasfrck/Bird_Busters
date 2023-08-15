@@ -110,6 +110,14 @@ namespace Winged_Warfare
                     {
                         btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
                     }
+
+                    if (!Game1._gameTimer.IsRunning())
+                    {
+                        MediaPlayer.Pause();
+                    } else if (MediaPlayer.State == MediaState.Paused)
+                    {
+                        MediaPlayer.Resume();
+                    }
                     break;
                 case GameState.GameEnded:
                     gameEndFadeTimer.Update();
@@ -322,7 +330,7 @@ namespace Winged_Warfare
             MediaPlayer.Play(Game1.gameScreenMusic);
             MediaPlayer.Volume = Game1.MusicVolume;
 
-            Game1._gameTimer = new Timer(70000, SetGameNeedsReset);
+            Game1._gameTimer = new Timer((int)Game1.gameScreenMusic.Duration.TotalMilliseconds, SetGameNeedsReset);
             Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();
             SetState(GameState.Game);

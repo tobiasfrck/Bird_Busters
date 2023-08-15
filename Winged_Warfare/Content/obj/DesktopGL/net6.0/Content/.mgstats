@@ -1,5 +1,1 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Birds/birb_texture_2.png","F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/Birds/birb_texture_2_0.xnb","TextureProcessor","Texture2DContent",10458,349673,0,113145
-"F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Birds/birb_texture.png","F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/Birds/birb_texture_0.xnb","TextureProcessor","Texture2DContent",10441,349673,0,1174628
-"F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Birds/Birb.fbx","F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/Birds/Birb.xnb","ModelProcessor","ModelContent",42289,7148,0,1963057
-"F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Birds/Birb2.fbx","F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/Birds/Birb2.xnb","ModelProcessor","ModelContent",42319,7150,0,1174972

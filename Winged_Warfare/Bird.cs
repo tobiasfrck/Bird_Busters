@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using static System.Formats.Asn1.AsnWriter;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 
@@ -30,7 +32,6 @@ namespace Winged_Warfare
 
         private float _speed;
         private float _minSpeed;
-        private float _maxSpeed;
 
         private float _acceleration;
         private float _airResistanceSpeed;
@@ -56,8 +57,6 @@ namespace Winged_Warfare
         public Bird(PathPoint p, float targetTolerance)
         {
             Vector3 position = p.Position;
-            Vector3 rotation = new Vector3(0, 0, 0);
-            Vector3 scale = new Vector3(0.2f, 0.2f, 0.2f);
 
             _birdID = _birdCount;
             _birdCount++;
@@ -73,18 +72,11 @@ namespace Winged_Warfare
 
             position.X += _offset.X;
             position.Z += _offset.Y;
+            _position = position;
 
-            //TODO: change to real model and texture
-            _drawableObject = new DrawableObject(position, rotation, scale, "Birds/Birb", -1);
+            
 
-            //Bird bekommt random Stats
-            _minSpeed = ((float)_random.NextDouble() + 0.2f) / 5;
-            _acceleration = _minSpeed;
-            _speed = _minSpeed * 2;
-            _maxSpeed = ((float)_random.NextDouble() + 0.5f) / 50;
-            _minHeight = 2.5f;
-            _maxHeight = 10f;
-            _airResistanceSpeed = _minSpeed / 10f;
+            SetBirdType(DetermineBirdType(_random.NextDouble()));
 
             _targetTolerance = targetTolerance;
             GenerateCurrentTarget();
@@ -126,26 +118,9 @@ namespace Winged_Warfare
             //if Bird is alive, it will flap its wings -> change in speed, direction and height
             if (IsAlive && flap)
             {
-                /*
-                int index = _random.Next(0,150);
-                if (index < 1) {
-                    float distance = Vector3.Distance(this._position,Player.GetCamPosition());
-                    //Debug.WriteLine(distance);
-                    distance = distance / 100;
-                    float FixedVolume = (Game1.SFXVolume - distance);
-                    if(FixedVolume>0)
-                        Game1.BirdFlaps.Play(FixedVolume, 0, 0);
-                    //Debug.WriteLine(distance + " / "+FixedVolume);
-                }
-                */
-
-                //TODO: SFX is disabled and NEEDS to be enabled again
-
                 FlapEffectInstance.Play();
-
                 FlapWings();
             }
-
 
 
             //apply air resistance
@@ -172,7 +147,6 @@ namespace Winged_Warfare
             _volumeMultiplier = MathHelper.Clamp(_volumeMultiplier, 0, 1);
             FlapEffectInstance.Volume = Game1.SFXVolume * _volumeMultiplier;
             FlapEffectInstance.Apply3D(Game1.Listener, Emitter);
-
         }
 
         private void PrintPath()
@@ -220,7 +194,7 @@ namespace Winged_Warfare
                 }
                 else
                 {
-                    //Debug.WriteLine("Bird " + _birdID + " couldn't find a new direction");
+                    //Debug.WriteLine("[Bird " + _birdID + "]: Couldn't find a new direction.");
                     //NewSubTarget
                     //Debug.WriteLine("CurrentSubTarget: " + currentSubTarget);
                     //Debug.WriteLine("CurrentTarget: " + _currentTarget);
@@ -231,7 +205,6 @@ namespace Winged_Warfare
 
             direction.Normalize();
             _currentDirection = direction;
-
         }
 
         //Generates a random target within the targetTolerance radius around the current target
@@ -277,6 +250,59 @@ namespace Winged_Warfare
         public float GetDistanceToPlayer()
         {
             return _distanceToPlayer;
+        }
+
+        private int DetermineBirdType(double rand) => rand switch
+        {
+            < 0.04 => 2,    // Legendary bird   Chance: 04%
+            < 0.20 => 1,    // Rare bird        Chance: 16%
+            _ => 0          // Common bird      Chance: 80%
+        };
+
+        private void SetBirdType(int type)
+        {
+            Vector3 rotation = new Vector3(0, 0, 0);
+            Vector3 scale = new Vector3(0.2f, 0.2f, 0.2f);
+            switch (type)
+            {
+                case 0:
+                    _minSpeed = ((float)_random.NextDouble() + 0.3f) / 5f;
+                    _acceleration = _minSpeed;
+                    _speed = _minSpeed * 2;
+                    _minHeight = 2.5f;
+                    _maxHeight = 10f;
+                    _airResistanceSpeed = _minSpeed / 10f;
+
+                    _drawableObject = new DrawableObject(_position, rotation, scale, "Birds/Birb", -1);
+                    break;
+                case 1:
+                    _minSpeed = ((float)_random.NextDouble() + 0.2f) / 4.5f;
+                    _acceleration = _minSpeed;
+                    _speed = _minSpeed * 2;
+                    _minHeight = 3.5f;
+                    _maxHeight = 10f;
+                    _airResistanceSpeed = _minSpeed / 10f;
+
+                    _scorePoints = 20;
+
+                    _drawableObject = new DrawableObject(_position, rotation, scale, "Birds/Birb2", -1);
+                    break;
+                case 2:
+                    _minSpeed = ((float)_random.NextDouble() + 0.5f) / 3f;
+                    _acceleration = _minSpeed;
+                    _speed = _minSpeed * 2;
+                    _minHeight = 4.5f;
+                    _maxHeight = 10f;
+                    _airResistanceSpeed = _minSpeed / 10f;
+
+                    _scorePoints = 60;
+
+                    _drawableObject = new DrawableObject(_position, rotation, scale, "testContent/testCube", -1);
+                    break;
+                default:
+                    Debug.WriteLine("[Error]: BirdType not found");
+                    break;
+            }
         }
 
         private static Vector3 Rad2Deg(Vector3 rad)

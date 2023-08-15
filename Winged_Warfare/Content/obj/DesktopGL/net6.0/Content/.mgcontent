@@ -4,50 +4,50 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/8Ball_Net.fbx</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/8balltexture.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/BirdFlaps1_to_remove.mp3</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/Click_Button.mp3</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/end_of_round.mp3</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/hitmarker.mp3</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/Hover_Button.wav</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/ingame_music.mp3</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/menu_music.mp3</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/shot.mp3</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/stepSFX/steps_1.mp3</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/stepSFX/steps_2.mp3</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/stepSFX/steps_3.mp3</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/stepSFX/steps_4.mp3</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Audio/stepSound.mp3</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Birds/birb_texture_2.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Birds/birb_texture.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Birds/Birb.fbx</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Birds/Birb2.fbx</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bld1.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Bullet_B.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Bullet_G.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Bullet.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Grey40.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Grey80.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Level_Concept.dae</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Net_HUD_Texture_reloading.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Net_HUD_Texture_transparent.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Net_HUD_Texture.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/button_hover.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/button_pressed.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/button.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/cubeTexture.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/menu_box.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/net_ammo.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/Net.fbx</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/NetTexture.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1_hover.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1_pressed.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/planeTest.fbx</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/planeTexture.png</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/testCube.fbx</File>
-    <File>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/testContent/testFont.spritefont</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/8Ball_Net.fbx</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/8balltexture.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/BirdFlaps1_to_remove.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/Click_Button.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/end_of_round.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/hitmarker.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/Hover_Button.wav</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/ingame_music.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/menu_music.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/shot.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/stepSFX/steps_1.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/stepSFX/steps_2.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/stepSFX/steps_3.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/stepSFX/steps_4.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/stepSound.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/birb_texture_2.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/birb_texture.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/Birb.fbx</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/Birb2.fbx</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bld1.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Bullet_B.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Bullet_G.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Bullet.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Grey40.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Grey80.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Level_Concept.dae</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Net_HUD_Texture_reloading.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Net_HUD_Texture_transparent.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Net_HUD_Texture.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/button_hover.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/button_pressed.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/button.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/cubeTexture.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/menu_box.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/net_ammo.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/Net.fbx</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/NetTexture.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1_hover.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1_pressed.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/placeholder1.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/planeTest.fbx</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/planeTexture.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testCube.fbx</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

@@ -292,7 +292,7 @@ namespace Winged_Warfare
 
         private void CreateSettingsMenu()
         {
-            Button toMenu = new Button(new Vector2(Game1.Width / 2f, 785), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button toMenu = new Button(new Vector2(Game1.Width / 2f, (Game1.Height / 10f * 8) - 125), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.Black, Color.Black);
             _settingsButtons.Add(toMenu);
             toMenu.SetClick(SwitchToMenu);
         }
@@ -304,8 +304,8 @@ namespace Winged_Warfare
             Vector2 backPadding = new Vector2(40, 40);
             Vector2 restartPadding = new Vector2(40, 40);
 
-            Button toMenu = new Button(new Vector2(_horizontalCenter + backPadding.X, 880) - backPadding, backSize + backPadding, Game1.Grey80, Game1.Grey40, _blankTexture, "Return to menu", Game1.TestFont, Color.Black, Color.Black, Color.Black);
-            Button restart = new Button(new Vector2(_horizontalCenter + restartPadding.X, 1000) - restartPadding, restartSize + restartPadding, Game1.Grey80, Game1.Grey40, _blankTexture, "Play another round", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button toMenu = new Button(new Vector2(_horizontalCenter + backPadding.X, (Game1.Height / 10f * 8) - 20) - backPadding, backSize + backPadding, Game1.Grey80, Game1.Grey40, _blankTexture, "Return to menu", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button restart = new Button(new Vector2(_horizontalCenter + restartPadding.X, (Game1.Height / 10f * 9) - 20) - restartPadding, restartSize + restartPadding, Game1.Grey80, Game1.Grey40, _blankTexture, "Play another round", Game1.TestFont, Color.Black, Color.Black, Color.Black);
             _gameEndedButtons.Add(toMenu);
             _gameEndedButtons.Add(restart);
             toMenu.SetClick(SwitchToMenu);
@@ -346,6 +346,8 @@ namespace Winged_Warfare
             MediaPlayer.Volume = Game1.MusicVolume;
 
             Game1._gameTimer = new Timer((int)Game1.gameScreenMusic.Duration.TotalMilliseconds, SetGameNeedsReset);
+            //uncomment for testing endscreen
+            //Game1._gameTimer = new Timer(1000, SetGameNeedsReset);
             Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();
             SetState(GameState.Game);
@@ -405,7 +407,7 @@ namespace Winged_Warfare
 
         public bool IsNotValidScreenPos(Vector2 pos)
         {
-            if(pos.X.Equals(-1) ||  pos.Y.Equals(-1))
+            if (pos.X.Equals(-1) || pos.Y.Equals(-1))
             {
                 Debug.WriteLine("Invalid screen position");
                 return true;

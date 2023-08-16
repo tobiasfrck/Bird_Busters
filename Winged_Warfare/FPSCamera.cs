@@ -65,7 +65,7 @@ namespace Winged_Warfare
         private SoundEffect[] _stepSounds = Game1.StepSounds;
 
         //Audio Listener
-        public AudioListener Listener = new AudioListener();
+        public AudioListener Listener = new();
 
         //Collision Corners
         public Vector2 Corner1 = new Vector2(-2.9f, -2.4f);
@@ -90,7 +90,7 @@ namespace Winged_Warfare
             Mouse.SetPosition(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
             oldMouseState = Mouse.GetState();
             POVadjusted = POV;
-            Listener = new AudioListener();
+            Listener = new();
             Listener.Position = position;
         }
 

@@ -33,7 +33,8 @@ namespace Winged_Warfare
         private static bool useMagazin = true;
 
         private static bool _isReloading = false;
-
+        
+        public static MenuManager _menuManager;
 
         public static void Update()
         {
@@ -128,7 +129,9 @@ namespace Winged_Warfare
                         Debug.WriteLine(birds[j].GetBirdStats());
                         Debug.WriteLine("hit from: "+ playerDistanceToBird);
                         Debug.WriteLine("volume: " + birds[j]._volumeMultiplier);
-                        Score.IncreaseScore((int)(birds[j].GetBirdScore() * bullets[i].GetScoreMultiplier() * distanceMultplier));
+                        int score = (int)(birds[j].GetBirdScore() * bullets[i].GetScoreMultiplier() * distanceMultplier);
+                        Score.IncreaseScore(score);
+                        _menuManager.AddScoreIndicator(birds[j]._position, score, birds[j].GetBirdType());
                         Debug.WriteLine("New Score:" + Score.GetScore());
                     }
                 }

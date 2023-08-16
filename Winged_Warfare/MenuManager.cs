@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
+using Vector3 = Microsoft.Xna.Framework.Vector3;
 
 namespace Winged_Warfare
 {
@@ -39,10 +37,12 @@ namespace Winged_Warfare
         private List<Button> _gameEndedButtons = new();
         public GameState _state = GameState.Menu; // Menu, Settings, Game, GameEnded
 
-        private float _horizontalCenter = 0;
+        private float _horizontalCenter;
 
         private Timer gameEndFadeTimer;
         private Timer gameEndAppearTimer;
+
+        private List<ScoreIndicator> _scoreIndicators = new();
 
         private MouseState _currentMouseState;
         private MouseState _previousMouseState;
@@ -111,10 +111,20 @@ namespace Winged_Warfare
                         btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
                     }
 
+                    for (int i = 0; i < _scoreIndicators.Count; i++)
+                    {
+                        _scoreIndicators[i].Update();
+                        if (_scoreIndicators[i].AnimationDone())
+                        {
+                            _scoreIndicators.RemoveAt(i);
+                        }
+                    }
+
                     if (!Game1._gameTimer.IsRunning())
                     {
                         MediaPlayer.Pause();
-                    } else if (MediaPlayer.State == MediaState.Paused)
+                    }
+                    else if (MediaPlayer.State == MediaState.Paused)
                     {
                         MediaPlayer.Resume();
                     }
@@ -165,8 +175,14 @@ namespace Winged_Warfare
                     }
                     break;
                 case GameState.Game:
-                    //Vector2 t = WorldToScreen(new Vector3(0, 0, 0));
-                    //_spriteBatch.Draw(Game1.HUDAmmoEmpty,t, Color.White);
+                    foreach (ScoreIndicator indicator in _scoreIndicators)
+                    {
+                        if (!IsNotValidScreenPos(indicator.GetScreenPosition()) && !indicator.AnimationDone())
+                        {
+                            _spriteBatch.DrawString(Game1.TestFont, indicator.GetScore().ToString(), indicator.GetScreenPosition(), indicator.GetScoreColor());
+                        }
+                    }
+
                     // Margin for all HUD elements on the right side of the screen
                     int xOffset = Game1.Width - 10;
 
@@ -179,7 +195,6 @@ namespace Winged_Warfare
                     DrawDebug();
 
                     // Draw Ammunition HUD
-                    int magDisplaySize = 100; //icon size
                     int magDisplayYPosition = Game1.Height - 80;
                     int magDisplayDistanceBetween = -40; //distance between icons
                     for (int i = 0; i < BulletHandler.GetMagazinSize(); i++)
@@ -224,7 +239,7 @@ namespace Winged_Warfare
                     float backgroundAlpha = gameEndFadeTimer.GetProgress();
                     if (_gameEndedBackground != null)
                     {
-                        _spriteBatch.Draw(_gameEndedBackground, _fullScreen, new Color(Color.Transparent,gameEndFadeTimer.GetProgress()));
+                        _spriteBatch.Draw(_gameEndedBackground, _fullScreen, new Color(Color.Transparent, gameEndFadeTimer.GetProgress()));
                     }
 
                     if (gameEndAppearTimer.IsRunning())
@@ -233,7 +248,7 @@ namespace Winged_Warfare
                     }
 
                     Vector2 gameEndedDim = Game1.TestFont.MeasureString("Game Ended");
-                    _spriteBatch.DrawString(Game1.TestFont, "Game Ended", new Vector2(_horizontalCenter-gameEndedDim.X/2, 25), Color.White);
+                    _spriteBatch.DrawString(Game1.TestFont, "Game Ended", new Vector2(_horizontalCenter - gameEndedDim.X / 2, 25), Color.White);
                     Vector2 scoreDim = Game1.TestFont.MeasureString("Score: " + Score.GetScore());
                     _spriteBatch.DrawString(Game1.TestFont, "Score: " + Score.GetScore(), new Vector2(_horizontalCenter - scoreDim.X / 2, 100), Color.White);
                     Vector2 highscoreDim = Game1.TestFont.MeasureString("Highscore: " + Score.GetHighscore());
@@ -264,9 +279,9 @@ namespace Winged_Warfare
 
         private void CreateMainMenu()
         {
-            Button startGame = new Button(new Vector2(Game1.Width / 2f, (Game1.Height/ 10f * 2) -125), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Start Game", Game1.TestFont, Color.Black, Color.Black, Color.Black);
-            Button settings = new Button(new Vector2(Game1.Width / 2f,  (Game1.Height/ 10f * 5) -125), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Settings", Game1.TestFont, Color.Black, Color.Black, Color.Black);
-            Button exitGame = new Button(new Vector2(Game1.Width / 2f,  (Game1.Height/ 10f * 8) -125), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Exit", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button startGame = new Button(new Vector2(Game1.Width / 2f, (Game1.Height / 10f * 2) - 125), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Start Game", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button settings = new Button(new Vector2(Game1.Width / 2f, (Game1.Height / 10f * 5) - 125), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Settings", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button exitGame = new Button(new Vector2(Game1.Width / 2f, (Game1.Height / 10f * 8) - 125), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Exit", Game1.TestFont, Color.Black, Color.Black, Color.Black);
             _menuButtons.Add(startGame);
             _menuButtons.Add(settings);
             _menuButtons.Add(exitGame);
@@ -343,7 +358,7 @@ namespace Winged_Warfare
             Game1.EndOfRoundSoundEffect.Play();
             gameEndFadeTimer = new Timer(1236);
             gameEndAppearTimer = new Timer(1660);
-            
+
             Game1._gameTimer?.Pause();
             Button.ResetConflicts();
             SetState(GameState.GameEnded);
@@ -383,20 +398,19 @@ namespace Winged_Warfare
             Game1.CloseGame = true;
         }
 
-        public static Vector2 WorldToScreen(Vector3 worldPosition)
+        public void AddScoreIndicator(Vector3 position, int score, BirdType birdType)
         {
-            // Transform the world position by the view and projection matrices
-            Vector3 transformedPosition = Vector3.Transform(worldPosition, Player.ViewMatrix * Player.ProjectionMatrix);
+            _scoreIndicators.Add(new ScoreIndicator(position, score, birdType));
+        }
 
-            // Normalize the transformed position
-            Vector2 normalizedPosition = new Vector2(transformedPosition.X / transformedPosition.Z, transformedPosition.Y / transformedPosition.Z);
-
-            // Convert the normalized position to screenspace
-            Vector2 screenspacePosition = new Vector2(
-                (normalizedPosition.X + 1) * 0.5f * Game1.Width,
-                (1 - normalizedPosition.Y) * 0.5f * Game1.Height);
-
-            return screenspacePosition;
+        public bool IsNotValidScreenPos(Vector2 pos)
+        {
+            if(pos.X.Equals(-1) ||  pos.Y.Equals(-1))
+            {
+                Debug.WriteLine("Invalid screen position");
+                return true;
+            }
+            return false;
         }
 
     }

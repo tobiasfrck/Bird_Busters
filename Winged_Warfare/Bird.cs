@@ -16,6 +16,12 @@ using Vector3 = Microsoft.Xna.Framework.Vector3;
 
 namespace Winged_Warfare
 {
+    public enum BirdType
+    {
+        Common = 0,
+        Rare = 1,
+        Legendary = 2
+    }
 
     internal class Bird
     {
@@ -29,6 +35,7 @@ namespace Winged_Warfare
         public Vector3 _position;
 
         private int _scorePoints = 10;
+        private BirdType _birdType;
 
         private float _speed;
         private float _minSpeed;
@@ -258,20 +265,30 @@ namespace Winged_Warfare
             return _distanceToPlayer;
         }
 
-        private int DetermineBirdType(double rand) => rand switch
+        public Vector3 GetPosition()
         {
-            < 0.04 => 2,    // Legendary bird   Chance: 04%
-            < 0.20 => 1,    // Rare bird        Chance: 16%
-            _ => 0          // Common bird      Chance: 80%
+            return _drawableObject.Position;
+        }
+
+        public BirdType GetBirdType()
+        {
+            return _birdType;
+        }
+
+        private BirdType DetermineBirdType(double rand) => rand switch
+        {
+            < 0.04 => BirdType.Legendary,   // Legendary bird   Chance: 04%
+            < 0.20 => BirdType.Rare,        // Rare bird        Chance: 16%
+            _ => BirdType.Common            // Common bird      Chance: 80%
         };
 
-        private void SetBirdType(int type)
+        private void SetBirdType(BirdType type)
         {
             Vector3 rotation = new Vector3(0, 0, 0);
             Vector3 scale = new Vector3(0.2f, 0.2f, 0.2f);
             switch (type)
             {
-                case 0:
+                case BirdType.Common:
                     _minSpeed = ((float)_random.NextDouble() + 0.3f) / 5f;
                     _acceleration = _minSpeed;
                     _speed = _minSpeed * 2;
@@ -279,9 +296,11 @@ namespace Winged_Warfare
                     _maxHeight = 10f;
                     _airResistanceSpeed = _minSpeed / 10f;
 
+                    _birdType = BirdType.Common;
+
                     _drawableObject = new DrawableObject(_position, rotation, scale, "Birds/Birb", -1);
                     break;
-                case 1:
+                case BirdType.Rare:
                     _minSpeed = ((float)_random.NextDouble() + 0.2f) / 4.5f;
                     _acceleration = _minSpeed;
                     _speed = _minSpeed * 2;
@@ -290,10 +309,11 @@ namespace Winged_Warfare
                     _airResistanceSpeed = _minSpeed / 10f;
 
                     _scorePoints = 20;
+                    _birdType = BirdType.Rare;
 
                     _drawableObject = new DrawableObject(_position, rotation, scale, "Birds/Birb2", -1);
                     break;
-                case 2:
+                case BirdType.Legendary:
                     _minSpeed = ((float)_random.NextDouble() + 0.5f) / 3f;
                     _acceleration = _minSpeed;
                     _speed = _minSpeed * 2;
@@ -302,6 +322,7 @@ namespace Winged_Warfare
                     _airResistanceSpeed = _minSpeed / 10f;
 
                     _scorePoints = 60;
+                    _birdType = BirdType.Legendary;
 
                     _drawableObject = new DrawableObject(_position, rotation, scale, "testContent/testCube", -1);
                     break;

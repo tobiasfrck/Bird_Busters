@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/Birds/Birb.fbx</SourceFile>
-  <SourceTime>2023-08-13T21:13:40.6065756+02:00</SourceTime>
-  <DestFile>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Birds/Birb.xnb</DestFile>
-  <DestTime>2023-08-13T21:20:24.0515882+02:00</DestTime>
+  <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/Birb.fbx</SourceFile>
+  <SourceTime>2023-08-13T21:25:06.8256177+02:00</SourceTime>
+  <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Birds/Birb.xnb</DestFile>
+  <DestTime>2023-08-16T16:53:50.4268218+02:00</DestTime>
   <Importer>FbxImporter</Importer>
-  <ImporterTime>2022-07-26T11:44:56+02:00</ImporterTime>
+  <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>ModelProcessor</Processor>
-  <ProcessorTime>2022-07-26T11:44:56+02:00</ProcessorTime>
+  <ProcessorTime>2022-07-26T13:44:56+02:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>0,0,0,0</Value>
@@ -66,7 +66,7 @@
   </Parameters>
   <Dependencies />
   <BuildAsset>
-    <string>F:/Visual Studio Projects/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Birds/birb_texture_0.xnb</string>
+    <string>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Birds/birb_texture_0.xnb</string>
   </BuildAsset>
   <BuildOutput />
 </PipelineBuildEvent>

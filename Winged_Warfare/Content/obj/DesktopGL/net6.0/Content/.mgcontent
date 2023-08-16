@@ -6,7 +6,10 @@
   <SourceFiles>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/8Ball_Net.fbx</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/8balltexture.png</File>
-    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/BirdFlaps1_to_remove.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/BirdFlaps/Flap_1_60143.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/BirdFlaps/Flap_2_60143.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/BirdFlaps/Flap_3_60143.mp3</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/BirdFlaps/Flap_4_60143.mp3</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/Click_Button.mp3</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/end_of_round.mp3</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/hitmarker.mp3</File>
@@ -50,6 +53,9 @@
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -79,7 +79,8 @@ namespace Winged_Warfare
         public static SoundEffect BtnClickSfx;
         public static SoundEffect ShootEffect;
         public static SoundEffect HitMarker;
-        public static SoundEffect BirdFlaps;
+
+        public static SoundEffect[] BirdFlaps;
 
         public static SoundEffect[] StepSounds;
 
@@ -176,8 +177,14 @@ namespace Winged_Warfare
             BtnClickSfx = Content.Load<SoundEffect>("Audio/Click_Button"); //TODO: Replace with actual sound
             ShootEffect = Content.Load<SoundEffect>("Audio/shot");
             HitMarker = Content.Load<SoundEffect>("Audio/hitmarker");
-            BirdFlaps = Content.Load<SoundEffect>("Audio/BirdFlaps1_to_remove");
             EndOfRoundSoundEffect = Content.Load<SoundEffect>("Audio/end_of_round");
+
+            BirdFlaps = new SoundEffect[4];
+            for (int i = 0; i < BirdFlaps.Length; i++)
+            {
+                BirdFlaps[i] = Content.Load<SoundEffect>("Audio/BirdFlaps/Flap_" + (i + 1) + "_60143");
+            }
+
             StepSounds = new SoundEffect[4];
             for (int i = 0; i < StepSounds.Length; i++)
             {

@@ -84,7 +84,8 @@ namespace Winged_Warfare
             Emitter = new AudioEmitter();
             Emitter.Up = new Vector3(0,0,1); //TODO: check if this is correct
             Emitter.Position = _drawableObject.Position;
-            FlapEffectInstance = Game1.BirdFlaps.CreateInstance();
+            int soundIndex = _random.Next(Game1.BirdFlaps.Length);
+            FlapEffectInstance = Game1.BirdFlaps[soundIndex].CreateInstance();
             FlapEffectInstance.Volume = Game1.SFXVolume;
             FlapEffectInstance.Apply3D(Game1.Listener, Emitter);
         }
@@ -118,7 +119,12 @@ namespace Winged_Warfare
             //if Bird is alive, it will flap its wings -> change in speed, direction and height
             if (IsAlive && flap)
             {
-                FlapEffectInstance.Play();
+                if (FlapEffectInstance.State != SoundState.Playing)
+                {
+                    int soundIndex = _random.Next(Game1.BirdFlaps.Length);
+                    FlapEffectInstance = Game1.BirdFlaps[soundIndex].CreateInstance();
+                    FlapEffectInstance.Play();
+                }
                 FlapWings();
             }
 

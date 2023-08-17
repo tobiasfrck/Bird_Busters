@@ -3,7 +3,7 @@
   <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testCube.fbx</SourceFile>
   <SourceTime>2023-05-14T23:29:48.0760921+02:00</SourceTime>
   <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/testCube.xnb</DestFile>
-  <DestTime>2023-08-17T15:24:51.5119606+02:00</DestTime>
+  <DestTime>2023-08-17T15:54:22.2474573+02:00</DestTime>
   <Importer>FbxImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>ModelProcessor</Processor>

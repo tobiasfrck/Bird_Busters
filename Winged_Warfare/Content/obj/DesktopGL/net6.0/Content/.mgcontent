@@ -22,7 +22,6 @@
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/stepSFX/steps_3.mp3</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/stepSFX/steps_4.mp3</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/stepSound.mp3</File>
-    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/Birb_fixed.fbx</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/birb_texture_2.png</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/birb_texture.png</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/Birb.fbx</File>
@@ -54,7 +53,6 @@
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

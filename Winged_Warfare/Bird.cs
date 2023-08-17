@@ -298,7 +298,7 @@ namespace Winged_Warfare
 
                     _birdType = BirdType.Common;
 
-                    _drawableObject = new DrawableObject(_position, rotation, scale, "Birds/Birb", -1);
+                    _drawableObject = new DrawableObject(_position, rotation, scale, "Birds/Birb_fixed", -1);
                     break;
                 case BirdType.Rare:
                     _minSpeed = ((float)_random.NextDouble() + 0.2f) / 4.5f;

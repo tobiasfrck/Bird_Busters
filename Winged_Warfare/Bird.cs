@@ -42,7 +42,8 @@ namespace Winged_Warfare
 
         private float _acceleration;
         private float _airResistanceSpeed;
-        private float _gravityAcceleration = 0.005f;
+        private const float Gravity = -0.0005f;
+        private float _yVelocity = -0.005f;
 
         private float _minHeight;
         private float _maxHeight;
@@ -140,7 +141,8 @@ namespace Winged_Warfare
             _speed -= _airResistanceSpeed;
 
             //Apply gravity
-            _drawableObject.Position = new Vector3(_drawableObject.Position.X, _drawableObject.Position.Y - _gravityAcceleration, _drawableObject.Position.Z);
+            _drawableObject.Position = new Vector3(_drawableObject.Position.X, _drawableObject.Position.Y + _yVelocity, _drawableObject.Position.Z);
+            _yVelocity += Gravity;
 
             if (_speed < 0.0001)
             {
@@ -180,7 +182,16 @@ namespace Winged_Warfare
             //if Bird is too low, it will flap to a random height between minHeight and maxHeight
             if (_drawableObject.Position.Y < _minHeight || (_random.NextDouble() >= 0.75 && (_minHeight + _maxHeight) / 2 > _drawableObject.Position.Y))
             {
-                currentSubTarget.Y = _minHeight + (float)(_random.NextDouble() * (_maxHeight - _minHeight));
+                float heightGoal = _minHeight + (float)(_random.NextDouble() * (_maxHeight - _minHeight));
+                float heightDifference = heightGoal - _drawableObject.Position.Y;
+                if (_yVelocity <= 0)
+                {
+                    _yVelocity = heightDifference / (100f-_speed*15f);
+                    if (_distanceToPlayer < 20f)
+                    {
+                        MenuManager.Instance.AddScoreIndicator(_drawableObject.Position, "Height added", _birdType);
+                    }
+                }
             }
 
 
@@ -249,6 +260,13 @@ namespace Winged_Warfare
             };
 
             return Rad2Deg(rotation);
+        }
+
+        public Vector3 GetLookAtRotationNoZ(Vector3 from, Vector3 to)
+        {
+            from.Z = 0;
+            to.Z = 0;
+            return GetLookAtRotation(from, to);
         }
 
         public String GetBirdStats()

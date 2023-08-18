@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -49,6 +50,9 @@ namespace Winged_Warfare
 
         private bool _gameNeedsReset = false;
 
+        //for testing purposes
+        public static MenuManager Instance;
+
         public MenuManager(GraphicsDeviceManager graphics, SpriteBatch spriteBatch, Texture2D menuBackground, Texture2D settingsBackground, Texture2D gameBackground, Texture2D gameEndedBackground)
         {
             _graphics = graphics;
@@ -82,6 +86,8 @@ namespace Winged_Warfare
                 Debug.WriteLine(button.GetTextAndId());
             }
             SwitchToMenu();
+
+            Instance = this;
         }
 
 
@@ -179,7 +185,7 @@ namespace Winged_Warfare
                     {
                         if (!IsNotValidScreenPos(indicator.GetScreenPosition()) && !indicator.AnimationDone())
                         {
-                            _spriteBatch.DrawString(Game1.TestFont, indicator.GetScore().ToString(), indicator.GetScreenPosition(), indicator.GetScoreColor());
+                            _spriteBatch.DrawString(Game1.TestFont, indicator.GetScore(), indicator.GetScreenPosition(), indicator.GetScoreColor());
                         }
                     }
 
@@ -400,7 +406,7 @@ namespace Winged_Warfare
             Game1.CloseGame = true;
         }
 
-        public void AddScoreIndicator(Vector3 position, int score, BirdType birdType)
+        public void AddScoreIndicator(Vector3 position, String score, BirdType birdType)
         {
             _scoreIndicators.Add(new ScoreIndicator(position, score, birdType));
         }

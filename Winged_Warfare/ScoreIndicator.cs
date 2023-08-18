@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
@@ -8,12 +9,12 @@ namespace Winged_Warfare
     internal class ScoreIndicator
     {
         private readonly Timer _timer;
-        private readonly int _score;
+        private readonly String _score;
         private readonly Color _scoreColor = Color.White;
         private readonly Vector3 _origin;
         private float _yOffset;
 
-        public ScoreIndicator(Vector3 origin, int score, BirdType birdType)
+        public ScoreIndicator(Vector3 origin, String score, BirdType birdType)
         {
             _timer = new Timer(1000);
             _score = score;
@@ -29,7 +30,7 @@ namespace Winged_Warfare
                     _scoreColor = Color.Red;
                     break;
                 case BirdType.Legendary:
-                    _scoreColor = Color.Orange;
+                    _scoreColor = Color.Gold;
                     break;
             }
         }
@@ -37,7 +38,7 @@ namespace Winged_Warfare
         public void Update()
         {
             _timer.Update();
-            _yOffset -= 0.05f;
+            _yOffset = _timer.GetProgress() * 20f;
         }
 
         private static Vector2 WorldToScreen(Vector3 worldPosition)
@@ -45,7 +46,6 @@ namespace Winged_Warfare
             // Transform the world position by the view and projection matrices
             Vector3 transformedPosition = Vector3.Transform(worldPosition, Player.ViewMatrix * Player.ProjectionMatrix);
 
-            Debug.WriteLine("Z: " + transformedPosition.Z);
             if (transformedPosition.Z < 0)
             {
                 return new Vector2(-1, -1);
@@ -67,14 +67,19 @@ namespace Winged_Warfare
             return WorldToScreen(_origin) + new Vector2(0, _yOffset);
         }
 
-        public int GetScore()
+        public String GetScore()
         {
             return _score;
         }
 
         public Color GetScoreColor()
         {
-            return new Color(_scoreColor* (1f - _timer.GetProgress()),1f-_timer.GetProgress());
+            return new Color(_scoreColor * (1f - EaseInOutQuart(_timer.GetProgress())), 1f - EaseInOutQuart(_timer.GetProgress()));
+        }
+
+        private static float EaseInOutQuart(float x)
+        {
+            return x < 0.5 ? 8 * x * x * x * x : 1 - (float)Math.Pow(-2 * x + 2, 4) / 2;
         }
 
         public bool AnimationDone()

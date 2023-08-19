@@ -72,7 +72,7 @@ namespace Winged_Warfare
         public Vector2 Corner2 = new Vector2(-0.1f, 2.4f);
 
         //Standart Settings
-        float POV = MathHelper.ToRadians(45);
+        float POV = MathHelper.ToRadians(70);
 
         /// <summary>
         /// Constructs a new FPS Camera
@@ -86,7 +86,7 @@ namespace Winged_Warfare
             StartPosition = position;
             this.horizontalAngle = 0;
             this.verticalAngle = 0;
-            Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), game.GraphicsDevice.DisplayMode.AspectRatio, 0.001f, 1000);
+            Projection = Matrix.CreatePerspectiveFieldOfView(POV, game.GraphicsDevice.DisplayMode.AspectRatio, 0.001f, 1000);
             Mouse.SetPosition(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
             oldMouseState = Mouse.GetState();
             POVadjusted = POV;
@@ -245,6 +245,6 @@ namespace Winged_Warfare
             position = StartPosition;
             this.horizontalAngle = 0;
             this.verticalAngle = 0;
-        }
+        }        
     }
 }

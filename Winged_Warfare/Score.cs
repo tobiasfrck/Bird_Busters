@@ -10,23 +10,22 @@ namespace Winged_Warfare
     {
         private static int _currentScore = 0;
         private static int _highscore;
+        private static int[] _birdsHit = new int[Enum.GetNames(typeof(BirdType)).Length]; // Breakdown of how many of each bird type has been hit
 
-        public static void IncreaseScore(int i)
+        public static void IncreaseScore(int i, BirdType type)
         {
             _currentScore += i;
+            _birdsHit[(int)type]++;
             if (_currentScore > _highscore)
             {
                 SetHighscore(_currentScore);
             }
         }
-        public static void IncreaseScore()
-        {
-            IncreaseScore(1);
-        }
 
         public static void ResetScore()
         {
             _currentScore = 0;
+            _birdsHit = new int[Enum.GetNames(typeof(BirdType)).Length];
         }
 
         public static int GetScore()

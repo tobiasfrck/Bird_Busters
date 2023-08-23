@@ -130,7 +130,7 @@ namespace Winged_Warfare
                         Debug.WriteLine("hit from: "+ playerDistanceToBird);
                         Debug.WriteLine("volume: " + birds[j]._volumeMultiplier);
                         int score = (int)(birds[j].GetBirdScore() * bullets[i].GetScoreMultiplier() * distanceMultplier);
-                        Score.IncreaseScore(score);
+                        Score.IncreaseScore(score, birds[j].GetBirdType());
                         _menuManager.AddScoreIndicator(birds[j]._position, score.ToString(), birds[j].GetBirdType());
                         Debug.WriteLine("New Score:" + Score.GetScore());
                     }

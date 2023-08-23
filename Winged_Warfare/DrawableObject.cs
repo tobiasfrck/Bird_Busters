@@ -54,8 +54,10 @@ namespace Winged_Warfare
                 _model.CopyAbsoluteBoneTransformsTo(transforms);
                 foreach (ModelMesh mesh in _model.Meshes)
                 {
-                    foreach (Effect effect in mesh.Effects)
+                    
+                    for (var i = 0; false &&i < mesh.Effects.Count; i++)
                     {
+                        var effect = mesh.Effects[i];
                         if (!(effect is IEffectMatrices effectMatrices))
                             throw new InvalidOperationException();
                         effectMatrices.World = transforms[mesh.ParentBone.Index] * WorldMatrix;
@@ -67,6 +69,17 @@ namespace Winged_Warfare
                         {
                             basicEffect.Alpha = 1f;
                         }
+                    }
+
+                    foreach (var meshPart in mesh.MeshParts)
+                    {
+                        meshPart.Effect = Game1.AmbientEffect;
+
+                        meshPart.Effect.Parameters["WorldMatrix"].SetValue(transforms[mesh.ParentBone.Index] * WorldMatrix);
+                        meshPart.Effect.Parameters["ViewMatrix"].SetValue(Player.ViewMatrix);
+                        meshPart.Effect.Parameters["ProjectionMatrix"].SetValue(Player.ProjectionMatrix);
+                        meshPart.Effect.Parameters["AmbienceColor"].SetValue(Color.Red.ToVector4());
+                        
                     }
                     mesh.Draw();
                 }

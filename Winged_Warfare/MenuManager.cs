@@ -415,7 +415,7 @@ namespace Winged_Warfare
         {
             if (pos.X.Equals(-1) || pos.Y.Equals(-1))
             {
-                Debug.WriteLine("Invalid screen position");
+                //Debug.WriteLine("Invalid screen position");
                 return true;
             }
             return false;

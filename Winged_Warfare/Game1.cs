@@ -59,6 +59,9 @@ namespace Winged_Warfare
             "Birds/Birb",
             "Birds/Birb2"
         };
+
+        public static Effect AmbientEffect;
+
         public static SpriteFont TestFont;
 
         public static Texture2D menuBackground;
@@ -198,7 +201,8 @@ namespace Winged_Warfare
             startScreenMusic = Content.Load<Song>("Audio/menu_music");
             gameScreenMusic = Content.Load<Song>("Audio/ingame_music");
 
-
+            //Shaders
+            AmbientEffect = Content.Load<Effect>("Shaders/ambient_shader");
 
             LoadModels();
             _level = new Level();
@@ -320,7 +324,7 @@ namespace Winged_Warfare
         protected override void Draw(GameTime gameTime)
         {
             // TODO: Delete testing code
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Transparent);
 
             //Uncomment to draw invisible faces of a model. Useful for debugging.
             RasterizerState rasterizerState = new RasterizerState();

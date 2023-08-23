@@ -329,6 +329,18 @@
 /processorParam:TextureFormat=Color
 /build:Net_HUD_Texture.png
 
+#begin Shaders/ambient_shader.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:Shaders/ambient_shader.fx
+
+#begin Shaders/blank.fx
+/importer:EffectImporter
+/processor:EffectProcessor
+/processorParam:DebugMode=Auto
+/build:Shaders/blank.fx
+
 #begin testContent/button_hover.png
 /importer:TextureImporter
 /processor:TextureProcessor

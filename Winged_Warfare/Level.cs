@@ -125,6 +125,7 @@ namespace Winged_Warfare
             CreateGraphForPaths();
 
 
+            _levelObjects.Add(new Skybox(new Vector3(1,1,1), Vector3.Zero, new Vector3(0.01f,0.1f,0.01f),50));
             Debug.WriteLine("Level loaded with " + _levelObjects.Count + " objects.");
         }
 

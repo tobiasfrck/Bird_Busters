@@ -124,7 +124,7 @@ namespace Winged_Warfare
             //When loading is done, create graph for bird paths.
             CreateGraphForPaths();
 
-
+            _levelObjects.Add(new Skybox(new Vector3(0, 0, 0), Vector3.Zero, new Vector3(0.01f, 0.1f, 0.01f)));
             Debug.WriteLine("Level loaded with " + _levelObjects.Count + " objects.");
         }
 

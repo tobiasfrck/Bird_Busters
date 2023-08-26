@@ -55,6 +55,7 @@ namespace Winged_Warfare
             "testContent/planeTest",
             "testContent/Net",
             "Level_Concept",
+            "Shaders/skyBoxCube",
             "8Ball_Net",
             "Birds/Birb",
             "Birds/Birb2"

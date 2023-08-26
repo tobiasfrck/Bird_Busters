@@ -20,7 +20,7 @@ namespace Winged_Warfare
             line)
         {
             _skyBoxEffect = Game1.Instance.Content.Load<Effect>("Shaders/skybox");
-            _skyBoxTexture = Game1.Instance.Content.Load<TextureCube>("Shaders/ocean_skybox_fixed");
+            _skyBoxTexture = Game1.Instance.Content.Load<TextureCube>("Shaders/cubemap");
             if (!Game1.Models.TryGetValue("testContent/testCube", out _model))
             {
                 Console.WriteLine("[SkyBox]: Model not found");
@@ -46,7 +46,7 @@ namespace Winged_Warfare
 
                             meshPart.Effect.Parameters["World"].SetValue(
                                 Matrix.CreateScale(_size) * Matrix.CreateTranslation(Player.GetCamPosition()));
-                            meshPart.Effect.Parameters["View"].SetValue(Matrix.CreateRotationX(MathHelper.ToRadians(-90))*Player.ViewMatrix);
+                            meshPart.Effect.Parameters["View"].SetValue(Matrix.CreateRotationX(MathHelper.ToRadians(-0))*Player.ViewMatrix);
                             meshPart.Effect.Parameters["Projection"].SetValue(Player.ProjectionMatrix);
                             meshPart.Effect.Parameters["SkyBoxTexture"].SetValue(_skyBoxTexture);
                             meshPart.Effect.Parameters["CameraPosition"].SetValue(Player.GetCamPosition());

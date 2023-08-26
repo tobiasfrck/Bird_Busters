@@ -38,6 +38,7 @@
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Net_HUD_Texture.png</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Shaders/ambient_shader.fx</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Shaders/blank.fx</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Shaders/cubemap.dds</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Shaders/ocean_skybox_fixed.dds</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Shaders/skybox.fx</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/button_hover.png</File>
@@ -57,6 +58,7 @@
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

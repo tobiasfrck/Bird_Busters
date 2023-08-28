@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Shaders/skyBoxCube.fbx</SourceFile>
-  <SourceTime>2023-08-26T12:33:30.19602+02:00</SourceTime>
+  <SourceTime>2023-08-27T13:48:57.6022756+02:00</SourceTime>
   <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/Content/Shaders/skyBoxCube.xnb</DestFile>
-  <DestTime>2023-08-26T12:35:45.4124096+02:00</DestTime>
+  <DestTime>2023-08-28T20:36:50.3963503+02:00</DestTime>
   <Importer>FbxImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>ModelProcessor</Processor>

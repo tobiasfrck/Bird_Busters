@@ -3,7 +3,7 @@
   <SourceFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/cubeTexture.png</SourceFile>
   <SourceTime>2023-05-14T23:00:55.3838164+02:00</SourceTime>
   <DestFile>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bin/DesktopGL/testContent/cubeTexture.xnb</DestFile>
-  <DestTime>2023-08-17T15:54:20.7003168+02:00</DestTime>
+  <DestTime>2023-08-28T21:04:36.0092873+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

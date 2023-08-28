@@ -58,7 +58,8 @@ namespace Winged_Warfare
             "Shaders/skyBoxCube",
             "8Ball_Net",
             "Birds/Birb",
-            "Birds/Birb2"
+            "Birds/Birb2",
+            "Birds/Birb3"
         };
         public static SpriteFont TestFont;
 

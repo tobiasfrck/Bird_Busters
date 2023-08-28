@@ -23,9 +23,11 @@
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/stepSFX/steps_4.mp3</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Audio/stepSound.mp3</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/birb_texture_2.png</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/birb_texture_3.png</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/birb_texture.png</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/Birb.fbx</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/Birb2.fbx</File>
+    <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Birds/Birb3.fbx</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/bld1.png</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Bullet_B.png</File>
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/Bullet_G.png</File>
@@ -59,6 +61,8 @@
     <File>D:/Projektdateien/Spiel-Projekte/Winged_Warfare/Winged_Warfare/Content/testContent/testFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

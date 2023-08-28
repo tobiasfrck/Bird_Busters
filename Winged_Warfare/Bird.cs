@@ -342,7 +342,7 @@ namespace Winged_Warfare
                     _scorePoints = 60;
                     _birdType = BirdType.Legendary;
 
-                    _drawableObject = new DrawableObject(_position, rotation, scale, "testContent/testCube", -1);
+                    _drawableObject = new DrawableObject(_position, rotation, scale, "Birds/Birb3", -1);
                     break;
                 default:
                     _drawableObject = new DrawableObject(_position, rotation, scale, "testContent/testCube", -1);

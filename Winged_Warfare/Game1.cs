@@ -76,6 +76,7 @@ namespace Winged_Warfare
         public static Texture2D HUDAmmo;
         public static Texture2D HUDAmmoEmpty;
         public static Texture2D HUDAmmoReloading;
+        public static Texture2D Crosshair;
 
         public static SoundEffect BtnHoverSfx;
         public static SoundEffect BtnClickSfx;
@@ -174,6 +175,7 @@ namespace Winged_Warfare
             HUDAmmo = Content.Load<Texture2D>("Bullet");
             HUDAmmoEmpty = Content.Load<Texture2D>("Bullet_G");
             HUDAmmoReloading = Content.Load<Texture2D>("Bullet_B");
+            Crosshair = Content.Load<Texture2D>("crosshair");
 
 
             // SFX

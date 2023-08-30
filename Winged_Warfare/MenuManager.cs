@@ -234,6 +234,9 @@ namespace Winged_Warfare
 
                     // TODO: Draw remaining time HUD
                     _spriteBatch.DrawString(Game1.TestFont, "Time: " + Game1._gameTimer?.GetSeconds(), new Vector2(10, 10), Color.White);
+                    Rectangle crosshairRect = new Rectangle((Game1.Width/2)-(Game1.Crosshair.Width/2), (Game1.Height / 2) - (Game1.Crosshair.Height / 2), Game1.Crosshair.Width, Game1.Crosshair.Height);
+                    _spriteBatch.Draw(Game1.Crosshair, crosshairRect, Color.White);
+                    
 
                     //Some kind of buttons during gameplay; currently not used
                     foreach (Button btn in _gameButtons)

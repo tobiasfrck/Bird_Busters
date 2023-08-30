@@ -329,7 +329,10 @@ namespace Winged_Warfare
             // save changes to selected object to level file
             if (IsPressed(Keys.RightControl))
             {
-                _levelContent[_selectedObject] = _levelObjects[_selectedObject].RegenerateLine();
+                Debug.WriteLine("Saving level change.");
+                Debug.WriteLine(_levelContent[_selectedObject+1]);
+                _levelContent[_selectedObject+1] = _levelObjects[_selectedObject].RegenerateLine();
+                Debug.WriteLine(_levelContent[_selectedObject+1]);
                 SaveLevel();
             }
 
@@ -436,7 +439,7 @@ namespace Winged_Warfare
             }
             */
 
-            levelContent += Score.GetHighscore() + "\n";
+            levelContent += "Highscore: " + Score.GetHighscore() + "\n";
 
             for (var index = 1; index < _levelContent.Length; index++)
             {

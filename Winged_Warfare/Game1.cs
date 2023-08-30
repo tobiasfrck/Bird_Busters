@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 
@@ -77,6 +78,10 @@ namespace Winged_Warfare
         public static Texture2D HUDAmmoEmpty;
         public static Texture2D HUDAmmoReloading;
         public static Texture2D Crosshair;
+        public static Texture2D[] GreenBirdVideo;
+        public static Texture2D[] RedBirdVideo;
+        public static Texture2D[] OrangeBirdVideo;
+
 
         public static SoundEffect BtnHoverSfx;
         public static SoundEffect BtnClickSfx;
@@ -139,7 +144,7 @@ namespace Winged_Warfare
             //TODO: Replace textures with actual textures
             _menuManager = new MenuManager(_graphics, _spriteBatch, menuBackground, settingsBackground, gameBackground, Grey40);
             BulletHandler._menuManager = _menuManager;
-            
+
             // Initialize the camera 
             _camera = new FPSCamera(this, Player.CamPosition);
             Listener = _camera.Listener;
@@ -176,6 +181,21 @@ namespace Winged_Warfare
             HUDAmmoEmpty = Content.Load<Texture2D>("Bullet_G");
             HUDAmmoReloading = Content.Load<Texture2D>("Bullet_B");
             Crosshair = Content.Load<Texture2D>("crosshair");
+            GreenBirdVideo = new Texture2D[60];
+            for (int i = 1; i < 61; i++)
+            {
+                GreenBirdVideo[i - 1] = Content.Load<Texture2D>("BirdAnimations/Green/" + i.ToString().PadLeft(4, '0'));
+            }
+            RedBirdVideo = new Texture2D[60];
+            for (int i = 1; i < 61; i++)
+            {
+                RedBirdVideo[i - 1] = Content.Load<Texture2D>("BirdAnimations/Red/" + i.ToString().PadLeft(4, '0'));
+            }
+            OrangeBirdVideo = new Texture2D[60];
+            for (int i = 1; i < 61; i++)
+            {
+                OrangeBirdVideo[i-1] = Content.Load<Texture2D>("BirdAnimations/Orange/" + i.ToString().PadLeft(4, '0'));
+            }
 
 
             // SFX

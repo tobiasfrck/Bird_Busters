@@ -42,6 +42,7 @@ namespace Winged_Warfare
 
         private Timer gameEndFadeTimer;
         private Timer gameEndAppearTimer;
+        private Timer birdAnimationTimer;
 
         private List<ScoreIndicator> _scoreIndicators = new();
 
@@ -138,6 +139,12 @@ namespace Winged_Warfare
                 case GameState.GameEnded:
                     gameEndFadeTimer.Update();
                     gameEndAppearTimer.Update();
+                    if (gameEndAppearTimer.IsRunning() == false && birdAnimationTimer == null)
+                    {
+                        birdAnimationTimer = new Timer(1000);
+                    }
+                    birdAnimationTimer?.Update();
+                    birdAnimationTimer?.RestartIfTimeElapsed();
                     foreach (Button btn in _gameEndedButtons)
                     {
                         btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
@@ -234,15 +241,17 @@ namespace Winged_Warfare
 
                     // TODO: Draw remaining time HUD
                     _spriteBatch.DrawString(Game1.TestFont, "Time: " + Game1._gameTimer?.GetSeconds(), new Vector2(10, 10), Color.White);
-                    Rectangle crosshairRect = new Rectangle((Game1.Width/2)-(Game1.Crosshair.Width/2), (Game1.Height / 2) - (Game1.Crosshair.Height / 2), Game1.Crosshair.Width, Game1.Crosshair.Height);
+                    Rectangle crosshairRect = new Rectangle((Game1.Width / 2) - (Game1.Crosshair.Width / 2), (Game1.Height / 2) - (Game1.Crosshair.Height / 2), Game1.Crosshair.Width, Game1.Crosshair.Height);
                     _spriteBatch.Draw(Game1.Crosshair, crosshairRect, Color.White);
-                    
+
 
                     //Some kind of buttons during gameplay; currently not used
                     foreach (Button btn in _gameButtons)
                     {
                         btn.Draw(_spriteBatch, _currentMouseState.Position.ToVector2(), _currentMouseState.LeftButton == ButtonState.Pressed);
                     }
+
+
                     break;
                 case GameState.GameEnded:
                     float backgroundAlpha = gameEndFadeTimer.GetProgress();
@@ -262,6 +271,14 @@ namespace Winged_Warfare
                     _spriteBatch.DrawString(Game1.TestFont, "Score: " + Score.GetScore(), new Vector2(_horizontalCenter - scoreDim.X / 2, 100), Color.White);
                     Vector2 highscoreDim = Game1.TestFont.MeasureString("Highscore: " + Score.GetHighscore());
                     _spriteBatch.DrawString(Game1.TestFont, "Highscore: " + Score.GetHighscore(), new Vector2(_horizontalCenter - highscoreDim.X / 2, 150), Color.White);
+
+                    if (birdAnimationTimer != null)
+                    {
+                        int frame = (int)(birdAnimationTimer.GetProgress() * 60);
+                        _spriteBatch.Draw(Game1.GreenBirdVideo[frame], new Rectangle(0, 0, Game1.GreenBirdVideo[frame].Width, Game1.GreenBirdVideo[frame].Height), Color.White);
+                        _spriteBatch.Draw(Game1.RedBirdVideo[frame], new Rectangle(Game1.RedBirdVideo[frame].Width * 1, 0, Game1.RedBirdVideo[frame].Width, Game1.RedBirdVideo[frame].Height), Color.White);
+                        _spriteBatch.Draw(Game1.OrangeBirdVideo[frame], new Rectangle(Game1.OrangeBirdVideo[frame].Width * 2, 0, Game1.OrangeBirdVideo[frame].Width, Game1.OrangeBirdVideo[frame].Height), Color.White);
+                    }
 
                     foreach (Button btn in _gameEndedButtons)
                     {
@@ -353,10 +370,9 @@ namespace Winged_Warfare
             MediaPlayer.IsRepeating = false;
             MediaPlayer.Play(Game1.gameScreenMusic);
             MediaPlayer.Volume = Game1.MusicVolume;
-
             Game1._gameTimer = new Timer((int)Game1.gameScreenMusic.Duration.TotalMilliseconds, SetGameNeedsReset);
             //uncomment for testing endscreen
-            //Game1._gameTimer = new Timer(1000, SetGameNeedsReset);
+            //Game1._gameTimer = new Timer(10000, SetGameNeedsReset);
             Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();
             SetState(GameState.Game);
@@ -369,7 +385,6 @@ namespace Winged_Warfare
             Game1.EndOfRoundSoundEffect.Play();
             gameEndFadeTimer = new Timer(1236);
             gameEndAppearTimer = new Timer(1660);
-
             Game1._gameTimer?.Pause();
             Button.ResetConflicts();
             SetState(GameState.GameEnded);
@@ -418,7 +433,7 @@ namespace Winged_Warfare
         {
             if (pos.X.Equals(-1) || pos.Y.Equals(-1))
             {
-                Debug.WriteLine("Invalid screen position");
+                //Debug.WriteLine("Invalid screen position");
                 return true;
             }
             return false;

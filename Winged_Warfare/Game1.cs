@@ -144,6 +144,7 @@ namespace Winged_Warfare
             //TODO: Replace textures with actual textures
             _menuManager = new MenuManager(_graphics, _spriteBatch, menuBackground, settingsBackground, gameBackground, Grey40);
             BulletHandler._menuManager = _menuManager;
+            BulletHandler.CreateDeletionZoneList();
 
             // Initialize the camera 
             _camera = new FPSCamera(this, Player.CamPosition);

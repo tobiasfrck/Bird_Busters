@@ -47,7 +47,7 @@ namespace Winged_Warfare
         /// <summary>
         /// The speed of the player while moving 
         /// </summary>
-        public float Speed { get; set; } = 0.009f;
+        public float Speed { get; set; } = 0.018f;
 
         //Gravity, Flight & Velocity
         static bool creativeFlight = false;
@@ -55,7 +55,7 @@ namespace Winged_Warfare
         static bool IsGrounded;
         static Vector3 _change;
         static float Velocity;
-        static float Gravity = -0.001f;
+        static float Gravity = -0.0025f;
         public static bool IsSprinting;
         public static bool IsMoving;
         static float POVadjusted;
@@ -69,7 +69,7 @@ namespace Winged_Warfare
 
         //Collision Corners
         public Vector2 Corner1 = new Vector2(-2.9f, -2.4f);
-        public Vector2 Corner2 = new Vector2(-0.1f, 2.4f);
+        public Vector2 Corner2 = new Vector2(12.128665f, 16.450724f);
 
         //Standart Settings
         float POV = MathHelper.ToRadians(70);
@@ -104,7 +104,7 @@ namespace Winged_Warfare
             var keyboard = Keyboard.GetState();
             var newMouseState = Mouse.GetState();
 
-            float Speed = 0.03f;
+            float Speed = 0.08f;
             IsMoving = false;
             IsSprinting = false;
 
@@ -112,7 +112,6 @@ namespace Winged_Warfare
             if (keyboard.IsKeyDown(Keys.LeftShift))
             {
                 Speed += Speed / 2;
-                Speed *= 2;
                 IsSprinting = true;
             }
 
@@ -168,7 +167,7 @@ namespace Winged_Warfare
             //Jumping
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && IsGrounded == true && !creativeFlight)
             {
-                Velocity = 0.025f;
+                Velocity = 0.040f;
                 IsGrounded = false;
             }
 

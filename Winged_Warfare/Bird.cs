@@ -187,10 +187,12 @@ namespace Winged_Warfare
                 if (_yVelocity <= 0)
                 {
                     _yVelocity = heightDifference / (100f-_speed*15f);
+                    /*
                     if (_distanceToPlayer < 20f)
                     {
                         MenuManager.Instance.AddScoreIndicator(_drawableObject.Position, "Height added", _birdType);
                     }
+                    */
                 }
             }
 

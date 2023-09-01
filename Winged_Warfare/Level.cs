@@ -54,6 +54,7 @@ namespace Winged_Warfare
             if (IsPressed(Keys.N))
             {
                 Debug.WriteLine("Debug mode toggled");
+                Debug.WriteLine("Current Position: " + Player.GetCamPosition().ToString());
                 if (_debugMode)
                 {
                     _debugMode = false;

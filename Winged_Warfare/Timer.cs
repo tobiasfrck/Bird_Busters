@@ -12,6 +12,7 @@ namespace Winged_Warfare
         private float milliseconds;
         private int initMilliseconds;
         Delegate onTimerEnd;
+        float delegateParam = -1;
         private bool isRunning = true;
         private bool isLooping = false;
 
@@ -26,6 +27,13 @@ namespace Winged_Warfare
             this.initMilliseconds = milliseconds;
             this.onTimerEnd = onTimerEnd;
         }
+        public Timer(int milliseconds, Delegate onTimerEnd, float param)
+        {
+            this.milliseconds = milliseconds;
+            this.initMilliseconds = milliseconds;
+            this.onTimerEnd = onTimerEnd;
+            this.delegateParam = param;
+        }
 
         public void Update()
         {
@@ -33,7 +41,17 @@ namespace Winged_Warfare
             milliseconds -= (1000/Fps);
             if (milliseconds <= 0)
             {
-                onTimerEnd?.DynamicInvoke();
+                if (onTimerEnd != null)
+                {
+                    if (delegateParam.Equals(-1))
+                    {
+                        onTimerEnd.DynamicInvoke();
+                    }
+                    else
+                    {
+                        onTimerEnd.DynamicInvoke(delegateParam);
+                    }
+                }
                 if (isLooping)
                 {
                     milliseconds = initMilliseconds;

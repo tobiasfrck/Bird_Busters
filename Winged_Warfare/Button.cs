@@ -23,11 +23,17 @@ namespace Winged_Warfare
         private int _buttonID = 0;
 
         private Delegate _click;
+        private Timer _hoverTweenTimer = new(0);
+        private Timer _hoverReleaseTweenTimer = new(0);
+        private Timer _pressTweenTimer = new(0);
 
         private Texture2D _texture;
         private Texture2D _hoverTexture;
         private Texture2D _pressedTexture;
         private Rectangle _rectangle;
+        private Rectangle _originalRectangle;
+        private float _scale = 1f;
+        private float _savedScale = 1f;
         private string _text;
         private SpriteFont _font;
         private Color _textColor;
@@ -61,6 +67,7 @@ namespace Winged_Warfare
             _textHoverColor = textHoverColor;
             _textPressedColor = textPressedColor;
             _rectangle = new Rectangle((int)position.X - ((int)textureDim.X / 2), (int)position.Y, (int)textureDim.X, (int)textureDim.Y);
+            _originalRectangle = _rectangle;
             _textDimension = _font.MeasureString(_text);
             _buttonID = _buttonCount;
             _buttonCount++;
@@ -83,19 +90,24 @@ namespace Winged_Warfare
         /// <returns></returns>
         private bool IsHovering(Vector2 mousePosition)
         {
-            if (_rectangle.Contains(mousePosition))
+            if (_originalRectangle.Contains(mousePosition))
             {
                 if (!_interacted)
                 {
                     _interacted = true;
                     _activeButtons++;
                     _hoverSound.Play(Game1.MenuSFXVolume, 0, 0);
+                    _hoverTweenTimer = new Timer(150,SaveScale);
                 }
                 return true;
             }
             if (_interacted)
             {
                 _interacted = false;
+                if (_scale>1f)
+                {
+                    _hoverReleaseTweenTimer = new Timer(150);
+                }
                 _activeButtons--;
             }
             return false;
@@ -120,7 +132,7 @@ namespace Winged_Warfare
         /// <returns>True if clicked, false if not clicked.</returns>
         private bool IsClicked(Vector2 currentMousePosition, bool wasLeftButtonPressed, bool isLeftButtonReleased)
         {
-            return _rectangle.Contains(currentMousePosition) && wasLeftButtonPressed && isLeftButtonReleased;
+            return _originalRectangle.Contains(currentMousePosition) && wasLeftButtonPressed && isLeftButtonReleased;
         }
 
         public void Update(Vector2 mousePosition, bool wasLeftButtonPressed, bool isLeftButtonReleased)
@@ -133,6 +145,33 @@ namespace Winged_Warfare
                 _clickSound.Play(Game1.MenuSFXVolume, 0, 0);
                 Debug.WriteLine("Button " + _buttonID + " was clicked.");
                 _click?.DynamicInvoke(); // execute click action if click is not null
+            }
+
+            _hoverTweenTimer.Update();
+            _hoverReleaseTweenTimer.Update();
+            _pressTweenTimer.Update();
+
+            if (_hoverTweenTimer.IsRunning())
+            {
+                SetRectangleScale(1 + easeOutBack(_hoverTweenTimer.GetProgress()*0.03f));
+            }
+
+            if (_hoverReleaseTweenTimer.IsRunning())
+            {
+                if (_hoverTweenTimer.IsRunning())
+                {
+                    _hoverTweenTimer.Pause();
+                    SaveScale();
+                }
+                SetRectangleScale(_savedScale - easeOutBack((_hoverTweenTimer.GetProgress()*_hoverReleaseTweenTimer.GetProgress()) * 0.03f));
+            }
+
+            if (IsHovering(mousePosition) && IsPressed(wasLeftButtonPressed))
+            {
+                SetRectangleScale(.95f);
+            } else if (_scale<1f)
+            {
+                SetRectangleScale(1f);
             }
         }
 
@@ -180,6 +219,26 @@ namespace Winged_Warfare
             return _activeButtons > 1;
         }
 
+        public void SetRectangleScale(float scale)
+        {
+            _scale = scale;
+            if (scale.Equals(1f))
+            {
+                _rectangle = _originalRectangle;
+                return;
+            }
+            _rectangle = new Rectangle((int)(_originalRectangle.X-(_originalRectangle.Width * scale - _originalRectangle.Width)/2), (int)(_originalRectangle.Y - (_originalRectangle.Height * scale - _originalRectangle.Height) / 2), (int)(_originalRectangle.Width * scale), (int)(_originalRectangle.Height * scale));
+        }
 
-    }
+        private void SaveScale()
+        {
+            _savedScale = _scale;
+        }
+
+        private float easeOutBack(float x) {
+            float c1 = 1.70158f;
+            float c3 = c1 + 1f;
+            return (float)(1 + c3* Math.Pow(x - 1, 3) + c1 * Math.Pow(x - 1, 2));
+        }
+}
 }

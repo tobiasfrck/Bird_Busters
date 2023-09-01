@@ -50,7 +50,7 @@ namespace Winged_Warfare
                 lvlObject.Update();
             }
 
-            #if DEBUG
+#if DEBUG
             if (IsPressed(Keys.N))
             {
                 Debug.WriteLine("Debug mode toggled");
@@ -70,7 +70,7 @@ namespace Winged_Warfare
             {
                 DebugMode();
             }
-            #endif
+#endif
 
 
             _previousKeyboardState = Keyboard.GetState();
@@ -330,9 +330,9 @@ namespace Winged_Warfare
             if (IsPressed(Keys.RightControl))
             {
                 Debug.WriteLine("Saving level change.");
-                Debug.WriteLine(_levelContent[_selectedObject+1]);
-                _levelContent[_selectedObject+1] = _levelObjects[_selectedObject].RegenerateLine();
-                Debug.WriteLine(_levelContent[_selectedObject+1]);
+                Debug.WriteLine(_levelContent[_selectedObject + 1]);
+                _levelContent[_selectedObject + 1] = _levelObjects[_selectedObject].RegenerateLine();
+                Debug.WriteLine(_levelContent[_selectedObject + 1]);
                 SaveLevel();
             }
 
@@ -401,7 +401,23 @@ namespace Winged_Warfare
                 2 => "Scale",
                 _ => "Error"
             };
-            _debugText = "Selected Object: " + _selectedObject + "\n" +
+            string debugObjectType = "";
+            string debugObjectInfo = "";
+            switch (_levelObjects[_selectedObject].GetType().ToString().Substring(15))
+            {
+                case "DrawableObject":
+                    debugObjectType += "DObj";
+                    debugObjectInfo = ((DrawableObject)_levelObjects[_selectedObject]).ModelName;
+                    break;
+                case "PathPoint":
+                    debugObjectType += "PP";
+                    debugObjectInfo = ((PathPoint)_levelObjects[_selectedObject]).GetPointID().ToString();
+                    break;
+                default:
+                    Debug.WriteLine(_levelObjects[_selectedObject].GetType().ToString());
+                    break;
+            }
+            _debugText = "Selected Object: " + _selectedObject + " of type " + debugObjectType + " with info: " + debugObjectInfo + "\n" +
                          "Tool: " + debugText + "\n" +
                          "Resolution: " + (float)Math.Round(DebugToolMinResolution * Math.Pow(10, _debugToolResolution), 3) + "\n" +
                          "Save: Right-CTRL, Recover: -";

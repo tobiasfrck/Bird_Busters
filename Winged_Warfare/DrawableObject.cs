@@ -17,9 +17,9 @@ namespace Winged_Warfare
         private Model _model;
         private readonly string _modelName;
 
-        public DrawableObject(Vector3 position, Vector3 rotation, Vector3 scale, int line) : base(position,rotation, scale, line)
+        public DrawableObject(Vector3 position, Vector3 rotation, Vector3 scale, int line) : base(position, rotation, scale, line)
         {
-            
+
         }
 
         public DrawableObject(Vector3 position, Vector3 rotation, Vector3 scale, String model) : base(position, rotation,
@@ -42,7 +42,7 @@ namespace Winged_Warfare
             _modelName = model;
         }
 
-         
+
         public override void Draw()
         {
             //Debug.WriteLine("DrawModel");
@@ -62,7 +62,12 @@ namespace Winged_Warfare
                         effectMatrices.View = Player.ViewMatrix;
                         effectMatrices.Projection = Player.ProjectionMatrix;
                         BasicEffect basicEffect = effect as BasicEffect;
-                        basicEffect?.EnableDefaultLighting();
+                        basicEffect.LightingEnabled = true;
+                        basicEffect.DirectionalLight0.Direction = new Vector3(0, -0.5f, -1f);
+                        basicEffect.DirectionalLight0.DiffuseColor = new Vector3(0.5f, 0.5f, 0.5f);
+                        basicEffect.DirectionalLight0.SpecularColor = new Vector3(0.5f, 0.5f, 0.5f);
+                        basicEffect.AmbientLightColor = new Vector3(0.42f, 0.4f, 0.45f);
+
                         if (basicEffect != null)
                         {
                             basicEffect.Alpha = 1f;
@@ -82,6 +87,11 @@ namespace Winged_Warfare
             };
             string line = "model," + Position.X.ToString(nfi) + "," + Position.Y.ToString(nfi) + "," + Position.Z.ToString(nfi) + "," + Rotation.X.ToString(nfi) + "," + Rotation.Y.ToString(nfi) + "," + Rotation.Z.ToString(nfi) + "," + Scale.X.ToString(nfi) + "," + Scale.Y.ToString(nfi) + "," + Scale.Z.ToString(nfi) + "," + _modelName;
             return line;
+        }
+
+        public string ModelName
+        {
+            get => _modelName;
         }
 
         public Model Model

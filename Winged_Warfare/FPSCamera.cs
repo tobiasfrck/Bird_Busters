@@ -112,6 +112,7 @@ namespace Winged_Warfare
             if (keyboard.IsKeyDown(Keys.LeftShift))
             {
                 Speed += Speed / 2;
+                Speed *= 2;
                 IsSprinting = true;
             }
 

@@ -41,7 +41,7 @@ namespace Winged_Warfare
 
                             meshPart.Effect.Parameters["World"].SetValue(
                                 Matrix.CreateScale(_size) * Matrix.CreateTranslation(Player.GetCamPosition()));
-                            meshPart.Effect.Parameters["View"].SetValue(Matrix.CreateRotationY(MathHelper.ToRadians(-120))*Player.ViewMatrix);
+                            meshPart.Effect.Parameters["View"].SetValue(Matrix.CreateRotationY(MathHelper.ToRadians(-35))*Player.ViewMatrix);
                             meshPart.Effect.Parameters["Projection"].SetValue(Player.ProjectionMatrix);
                             meshPart.Effect.Parameters["SkyBoxTexture"].SetValue(_skyBoxTexture);
                             meshPart.Effect.Parameters["CameraPosition"].SetValue(Player.GetCamPosition());

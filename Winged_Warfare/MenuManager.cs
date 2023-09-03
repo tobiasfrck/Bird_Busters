@@ -307,9 +307,9 @@ namespace Winged_Warfare
 
         private void CreateMainMenu()
         {
-            Button startGame = new Button(new Vector2(Game1.Width / 2f, (Game1.Height / 10f * 2) - 125), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Start Game", Game1.TestFont, Color.Black, Color.Black, Color.Black);
-            Button settings = new Button(new Vector2(Game1.Width / 2f, (Game1.Height / 10f * 5) - 125), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Settings", Game1.TestFont, Color.Black, Color.Black, Color.Black);
-            Button exitGame = new Button(new Vector2(Game1.Width / 2f, (Game1.Height / 10f * 8) - 125), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Exit", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button startGame = new Button(new Vector2(Game1.Width / 2f, (Game1.Height / 10f * 6) - 125), new Vector2(250, 125), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Start Game", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button settings = new Button(new Vector2(Game1.Width / 2.5f, (Game1.Height / 10f * 8) - 125), new Vector2(250, 125), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Settings", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button exitGame = new Button(new Vector2(Game1.Width / 2.5f + 330, (Game1.Height / 10f * 8) - 125), new Vector2(250, 125), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Exit", Game1.TestFont, Color.Black, Color.Black, Color.Black);
             _menuButtons.Add(startGame);
             _menuButtons.Add(settings);
             _menuButtons.Add(exitGame);
@@ -320,7 +320,7 @@ namespace Winged_Warfare
 
         private void CreateSettingsMenu()
         {
-            Button toMenu = new Button(new Vector2(Game1.Width / 2f, (Game1.Height / 10f * 8) - 125), new Vector2(500, 250), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button toMenu = new Button(new Vector2(Game1.Width / 18f, Game1.Height - 110), new Vector2(100, 60), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.White, Color.White);
             _settingsButtons.Add(toMenu);
             toMenu.SetClick(SwitchToMenu);
         }

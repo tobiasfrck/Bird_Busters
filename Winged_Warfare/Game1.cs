@@ -27,8 +27,8 @@ namespace Winged_Warfare
         private bool fullscreenbutton = false;
 
         // Game Settings
-        public static int Width = 1920;
-        public static int Height = 1080;
+        public static int Width = 1600;
+        public static int Height = 900;
         public static float MusicVolume = 0.1f;
         public static float SFXVolume = 1;
         public static float MenuSFXVolume = 0.1f;
@@ -53,7 +53,6 @@ namespace Winged_Warfare
         //contains all model names
         private static readonly string[] ModelNames = {
             "testContent/testCube",
-            "testContent/planeTest",
             "testContent/Net",
             "Level/City_Level",
             "Shaders/skyBoxCube",
@@ -87,6 +86,7 @@ namespace Winged_Warfare
         public static SoundEffect BtnClickSfx;
         public static SoundEffect ShootEffect;
         public static SoundEffect HitMarker;
+        public static SoundEffect Reload_Mag;
 
         public static SoundEffect[] BirdFlaps;
 
@@ -166,8 +166,8 @@ namespace Winged_Warfare
 
 
             // Textures
-            //menuBackground = Content.Load<Texture2D>("testContent/menuBackground");
-            settingsBackground = Content.Load<Texture2D>("testContent/button");
+            menuBackground = Content.Load<Texture2D>("testContent/menuBackground");
+            settingsBackground = Content.Load<Texture2D>("testContent/settingsBackground");
             //gameBackground = Content.Load<Texture2D>("testContent/gameBackground");
 
             Button = Content.Load<Texture2D>("testContent/button");
@@ -203,6 +203,7 @@ namespace Winged_Warfare
             BtnHoverSfx = Content.Load<SoundEffect>("Audio/Hover_Button"); //TODO: Replace with actual sound
             BtnClickSfx = Content.Load<SoundEffect>("Audio/Click_Button"); //TODO: Replace with actual sound
             ShootEffect = Content.Load<SoundEffect>("Audio/shot");
+            Reload_Mag = Content.Load<SoundEffect>("Audio/Reload");
             HitMarker = Content.Load<SoundEffect>("Audio/hitmarker");
             EndOfRoundSoundEffect = Content.Load<SoundEffect>("Audio/end_of_round");
 

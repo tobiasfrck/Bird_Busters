@@ -188,6 +188,8 @@ namespace Winged_Warfare
                     }
                     break;
                 case GameState.Game:
+                    if(Level.IsHUDDeactivated()) { break; }
+
                     foreach (ScoreIndicator indicator in _scoreIndicators)
                     {
                         if (!IsNotValidScreenPos(indicator.GetScreenPosition()) && !indicator.AnimationDone())
@@ -299,7 +301,7 @@ namespace Winged_Warfare
             {
                 Vector2 textDim = Game1.TestFont.MeasureString(Level.GetDebugText());
                 _spriteBatch.DrawString(Game1.TestFont, Level.GetDebugText(),
-                    new Vector2((Game1.Width / 2f) - (textDim.X / 2f), 900), Color.Red);
+                    new Vector2((Game1.Width / 2f) - (textDim.X / 2f), Game1.Height-textDim.Y), Color.Red);
             }
         }
 

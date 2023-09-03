@@ -188,6 +188,8 @@ namespace Winged_Warfare
                     }
                     break;
                 case GameState.Game:
+                    if(Level.IsHUDDeactivated()) { break; }
+
                     foreach (ScoreIndicator indicator in _scoreIndicators)
                     {
                         if (!IsNotValidScreenPos(indicator.GetScreenPosition()) && !indicator.AnimationDone())

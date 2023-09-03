@@ -25,6 +25,7 @@ namespace Winged_Warfare
 
         //debug-mode-variables
         private static bool _debugMode = false;
+        private static bool _deactivateHUD = false;
         private static string _debugText = "Standard-Debug-Text";
         private static int _debugTool = 0; //0 = move, 1 = rotate, 2 = scale
         private static int _debugToolResolution = 0; //0 = 0.1, 1 = 1, 2 = 10
@@ -263,6 +264,20 @@ namespace Winged_Warfare
                 _selectedObject = Mod((_selectedObject + 1), _levelObjects.Count);
             }
 
+            //Deactivate all HUD elements.
+            if (IsPressed(Keys.D0))
+            {
+                Debug.WriteLine("HUD deactivated.");
+                if (_deactivateHUD)
+                {
+                    _deactivateHUD = false;
+                }
+                else
+                {
+                    _deactivateHUD = true;
+                }
+            }
+
             //Switch the debug tool.
             if (IsPressed(Keys.M))
             {
@@ -475,6 +490,11 @@ namespace Winged_Warfare
                 return true;
             }
             return false;
+        }
+
+        public static bool IsHUDDeactivated()
+        {
+            return _deactivateHUD;
         }
 
         public static string GetDebugText()

@@ -104,6 +104,12 @@
 /processorParam:Quality=Best
 /build:Audio/menu_music.mp3
 
+#begin Audio/Reload.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Reload.mp3
+
 #begin Audio/shot.mp3
 /importer:Mp3Importer
 /processor:SoundEffectProcessor
@@ -2665,7 +2671,7 @@
 /processorParam:TextureFormat=Color
 /build:testContent/menu_box.png
 
-#begin testContent/net_ammo.png
+#begin testContent/menuBackground.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2675,7 +2681,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:testContent/net_ammo.png
+/build:testContent/menuBackground.png
 
 #begin testContent/Net.fbx
 /importer:FbxImporter
@@ -2708,7 +2714,7 @@
 /processorParam:TextureFormat=Color
 /build:testContent/NetTexture.png
 
-#begin testContent/placeholder1_hover.png
+#begin testContent/settingsBackground.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -2718,62 +2724,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:testContent/placeholder1_hover.png
-
-#begin testContent/placeholder1_pressed.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:testContent/placeholder1_pressed.png
-
-#begin testContent/placeholder1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:testContent/placeholder1.png
-
-#begin testContent/planeTest.fbx
-/importer:FbxImporter
-/processor:ModelProcessor
-/processorParam:ColorKeyColor=0,0,0,0
-/processorParam:ColorKeyEnabled=True
-/processorParam:DefaultEffect=BasicEffect
-/processorParam:GenerateMipmaps=True
-/processorParam:GenerateTangentFrames=False
-/processorParam:PremultiplyTextureAlpha=True
-/processorParam:PremultiplyVertexColors=True
-/processorParam:ResizeTexturesToPowerOfTwo=False
-/processorParam:RotationX=0
-/processorParam:RotationY=0
-/processorParam:RotationZ=0
-/processorParam:Scale=1
-/processorParam:SwapWindingOrder=False
-/processorParam:TextureFormat=Compressed
-/build:testContent/planeTest.fbx
-
-#begin testContent/planeTexture.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:testContent/planeTexture.png
+/build:testContent/settingsBackground.png
 
 #begin testContent/testCube.fbx
 /importer:FbxImporter

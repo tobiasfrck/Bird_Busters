@@ -65,9 +65,11 @@ namespace Winged_Warfare
                 if (Magazin == 1 && useMagazin)
                 {
                     _reloadTimerMagazin.SetTimeNRun(3000);
-                    _isReloading=true;
+                    _isReloading = true;
                     canShoot = false;
                     Magazin = MagazinSize;
+                    //Spielt Nachlade-Soundeffekt ab
+                    Game1.Reload_Mag.Play();
                 }
                 else
                 {

@@ -25,6 +25,11 @@ namespace Winged_Warfare
         public override void Draw()
         {
             UpdateWorldMatrix();
+
+            RasterizerState rasterizerState = new RasterizerState();
+            rasterizerState.CullMode = CullMode.None;
+            Game1.Instance.GraphicsDevice.RasterizerState = rasterizerState;
+
             if (Model != null)
             {
                 foreach (var pass in _skyBoxEffect.CurrentTechnique.Passes)

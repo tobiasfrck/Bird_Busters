@@ -27,8 +27,8 @@ namespace Winged_Warfare
         private bool fullscreenbutton = false;
 
         // Game Settings
-        public static int Width = 1600;
-        public static int Height = 900;
+        public static int Width = 1920;
+        public static int Height = 1080;
         public static float MusicVolume = 0.1f;
         public static float SFXVolume = 1;
         public static float MenuSFXVolume = 0.1f;
@@ -349,8 +349,12 @@ namespace Winged_Warfare
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             //Uncomment to draw invisible faces of a model. Useful for debugging.
+            //RasterizerState rasterizerState = new RasterizerState();
+            //rasterizerState.CullMode = CullMode.None;
+            //GraphicsDevice.RasterizerState = rasterizerState;
+
             RasterizerState rasterizerState = new RasterizerState();
-            rasterizerState.CullMode = CullMode.None;
+            rasterizerState.CullMode = CullMode.CullCounterClockwiseFace;
             GraphicsDevice.RasterizerState = rasterizerState;
 
             Fps = (float)(1000 / gameTime.ElapsedGameTime.TotalMilliseconds); //calculates FPS

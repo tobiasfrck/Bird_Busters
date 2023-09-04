@@ -106,7 +106,7 @@ namespace Winged_Warfare
                     canShoot = false;
                     Magazin = MagazinSize;
                     //Spielt Nachlade-Soundeffekt ab
-                    Game1.Reload_Mag.Play();
+                    Game1.Reload_Mag.Play(Game1.SFXVolume/2, 0, 0);
                 }
                 else
                 {
@@ -119,7 +119,8 @@ namespace Winged_Warfare
             if (Keyboard.GetState().IsKeyDown(Keys.R) && Magazin!=MagazinSize && canShoot)
             {
                 _reloadTimerMagazin.SetTimeNRun(3000);
-                _isReloading=true;
+                Game1.Reload_Mag.Play(Game1.SFXVolume / 2, 0, 0);
+                _isReloading = true;
                 canShoot = false;
                 Magazin = MagazinSize;
             }

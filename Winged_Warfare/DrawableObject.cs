@@ -49,6 +49,11 @@ namespace Winged_Warfare
             UpdateWorldMatrix();
             if (Model != null)
             {
+                Vector3 DiffuseColor = new Vector3(0.5f, 0.5f, 0.5f);
+                if (ModelName.Contains("Birb"))
+                {
+                    DiffuseColor = new Vector3(0.7f, 0.7f, 0.7f);
+                }
                 int count = _model.Bones.Count;
                 Matrix[] transforms = new Matrix[_model.Bones.Count];
                 _model.CopyAbsoluteBoneTransformsTo(transforms);
@@ -64,7 +69,7 @@ namespace Winged_Warfare
                         BasicEffect basicEffect = effect as BasicEffect;
                         basicEffect.LightingEnabled = true;
                         basicEffect.DirectionalLight0.Direction = new Vector3(0, -0.5f, -1f);
-                        basicEffect.DirectionalLight0.DiffuseColor = new Vector3(0.5f, 0.5f, 0.5f);
+                        basicEffect.DirectionalLight0.DiffuseColor = DiffuseColor;
                         basicEffect.DirectionalLight0.SpecularColor = new Vector3(0.5f, 0.5f, 0.5f);
                         basicEffect.AmbientLightColor = new Vector3(0.42f, 0.4f, 0.45f);
 

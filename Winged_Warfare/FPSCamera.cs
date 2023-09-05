@@ -51,8 +51,8 @@ namespace Winged_Warfare
         private static float Speed { get; set; } = 0f;
         private static Vector2 _speedVector = new Vector2(0, 0);
 
-        private static float _moveGainAccel = 0.03f;
-        private static float _moveLossAccel = 0.05f;
+        private static float _moveGainAccel = 0.02f;
+        private static float _moveLossAccel = 0.016f;
 
         //Gravity, Flight & Velocity
         static bool creativeFlight = false;
@@ -155,17 +155,6 @@ namespace Winged_Warfare
                 IsMoving = true;
             }
 
-            if (_speedVector.X > 0)
-            {
-                position += facing * _speedVector.X;
-            }
-
-            if (_speedVector.X < 0)
-            {
-                position -= facing * -1 * _speedVector.X;
-            }
-
-
             // Strifing movement
             if (keyboard.IsKeyDown(Keys.A))
             {
@@ -193,15 +182,7 @@ namespace Winged_Warfare
                 IsMoving = true;
             }
 
-            if (_speedVector.Y > 0)
-            {
-                position += Vector3.Cross(Vector3.Up, facing) * _speedVector.Y;
-            }
 
-            if (_speedVector.Y < 0)
-            {
-                position -= Vector3.Cross(Vector3.Up, facing) * -1 * _speedVector.Y;
-            }
 
 
             // Adjust horizontal angle
@@ -232,7 +213,7 @@ namespace Winged_Warfare
                 LimitSpeed(1.3f);
 
             }
-            else if (IsMoving && !IsSprinting && !_wasSprinting) // Is moving but not sprinting and was not sprinting before
+            if (IsMoving && !IsSprinting && !_wasSprinting) // Is moving but not sprinting and was not sprinting before
             {
                 if (_speedVector.X > MaxSpeed)
                 {
@@ -255,9 +236,8 @@ namespace Winged_Warfare
                 }
 
                 LimitSpeed(1f);
-
             }
-            else if (IsMoving && _wasSprinting)
+            if (IsMoving && _wasSprinting)
             {
                 if (_speedVector.X > MaxSpeed)
                 {
@@ -285,29 +265,16 @@ namespace Winged_Warfare
 
                 LimitSpeed(1f);
             }
-            else // Is not moving
+            bool xSlowDown = false;
+            bool ySlowDown = false;
+            bool xSpeedUp = false;
+            bool ySpeedUp = false;
+            if (keyboard.IsKeyUp(Keys.A) && keyboard.IsKeyUp(Keys.D)) // Is not moving
             {
-                bool xSlowDown = false;
-                bool ySlowDown = false;
-                bool xSpeedUp = false;
-                bool ySpeedUp = false;
-
-                if (_speedVector.X > 0)
-                {
-                    _speedVector.X -= _moveLossAccel;
-                    xSlowDown = true;
-                }
-
                 if (_speedVector.Y > 0)
                 {
                     _speedVector.Y -= _moveLossAccel;
                     ySlowDown = true;
-                }
-
-                if (_speedVector.X < 0)
-                {
-                    _speedVector.X += _moveLossAccel;
-                    xSpeedUp = true;
                 }
 
                 if (_speedVector.Y < 0)
@@ -316,25 +283,53 @@ namespace Winged_Warfare
                     ySpeedUp = true;
                 }
 
-                if (xSlowDown && xSpeedUp)
-                {
-                    _speedVector.X = 0;
-                }
-
                 if (ySlowDown && ySpeedUp)
                 {
                     _speedVector.Y = 0;
                 }
+            }
 
-                if (ySlowDown && ySpeedUp && xSlowDown && xSpeedUp)
+            if (keyboard.IsKeyUp(Keys.W) && keyboard.IsKeyUp(Keys.S))
+            {
+                if (_speedVector.X > 0)
                 {
-                    IsMoving = false;
+                    _speedVector.X -= _moveLossAccel;
+                    xSlowDown = true;
+                }
+                if (_speedVector.X < 0)
+                {
+                    _speedVector.X += _moveLossAccel;
+                    xSpeedUp = true;
+                }
+                if (xSlowDown && xSpeedUp)
+                {
+                    _speedVector.X = 0;
                 }
             }
 
-            if (IsSprinting && IsMoving)
+            if (ySlowDown && ySpeedUp && xSlowDown && xSpeedUp)
             {
+                IsMoving = false;
+            }
 
+            if (_speedVector.X > 0)
+            {
+                position += facing * _speedVector.X;
+            }
+
+            if (_speedVector.X < 0)
+            {
+                position -= facing * -1 * _speedVector.X;
+            }
+
+            if (_speedVector.Y > 0)
+            {
+                position += Vector3.Cross(Vector3.Up, facing) * _speedVector.Y;
+            }
+
+            if (_speedVector.Y < 0)
+            {
+                position -= Vector3.Cross(Vector3.Up, facing) * -1 * _speedVector.Y;
             }
 
             // SFX: steps while on ground
@@ -351,8 +346,6 @@ namespace Winged_Warfare
             if (verticalAngle >= 1.56f) verticalAngle = 1.559f;
             direction = Vector3.Transform(Vector3.Forward, Matrix.CreateRotationX(verticalAngle) * Matrix.CreateRotationY(horizontalAngle));
             // Debug.WriteLine("verticalAngle= " + verticalAngle);
-
-
 
 
             //Smooth POV when starting to sprint/stoping to sprint

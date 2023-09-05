@@ -279,7 +279,7 @@ namespace Winged_Warfare
                         int frame = (int)(birdAnimationTimer.GetProgress() * 60);
                         _spriteBatch.Draw(Game1.GreenBirdVideo[frame], new Rectangle(0, 0, Game1.GreenBirdVideo[frame].Width, Game1.GreenBirdVideo[frame].Height), Color.White);
                         _spriteBatch.Draw(Game1.RedBirdVideo[frame], new Rectangle(Game1.RedBirdVideo[frame].Width * 1, 0, Game1.RedBirdVideo[frame].Width, Game1.RedBirdVideo[frame].Height), Color.White);
-                        _spriteBatch.Draw(Game1.OrangeBirdVideo[frame], new Rectangle(Game1.OrangeBirdVideo[frame].Width * 2, 0, Game1.OrangeBirdVideo[frame].Width, Game1.OrangeBirdVideo[frame].Height), Color.White);
+                        _spriteBatch.Draw(Game1.OrangeBirdVideo[frame], new Rectangle(Game1.OrangeBirdVideo[frame].Width * 1, 0, Game1.OrangeBirdVideo[frame].Width, Game1.OrangeBirdVideo[frame].Height), Color.White);
                     }
 
                     foreach (Button btn in _gameEndedButtons)

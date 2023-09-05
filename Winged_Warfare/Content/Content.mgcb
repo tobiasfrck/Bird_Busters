@@ -39,9 +39,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:8balltexture.png
 
 #begin Audio/BirdFlaps/Flap_1_60143.mp3
@@ -153,9 +153,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0001.png
 
 #begin BirdAnimations/Green/0002.png
@@ -165,9 +165,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0002.png
 
 #begin BirdAnimations/Green/0003.png
@@ -177,9 +177,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0003.png
 
 #begin BirdAnimations/Green/0004.png
@@ -189,9 +189,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0004.png
 
 #begin BirdAnimations/Green/0005.png
@@ -201,9 +201,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0005.png
 
 #begin BirdAnimations/Green/0006.png
@@ -213,9 +213,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0006.png
 
 #begin BirdAnimations/Green/0007.png
@@ -225,9 +225,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0007.png
 
 #begin BirdAnimations/Green/0008.png
@@ -237,9 +237,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0008.png
 
 #begin BirdAnimations/Green/0009.png
@@ -249,9 +249,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0009.png
 
 #begin BirdAnimations/Green/0010.png
@@ -261,9 +261,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0010.png
 
 #begin BirdAnimations/Green/0011.png
@@ -273,9 +273,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0011.png
 
 #begin BirdAnimations/Green/0012.png
@@ -285,9 +285,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0012.png
 
 #begin BirdAnimations/Green/0013.png
@@ -297,9 +297,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0013.png
 
 #begin BirdAnimations/Green/0014.png
@@ -309,9 +309,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0014.png
 
 #begin BirdAnimations/Green/0015.png
@@ -321,9 +321,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0015.png
 
 #begin BirdAnimations/Green/0016.png
@@ -333,9 +333,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0016.png
 
 #begin BirdAnimations/Green/0017.png
@@ -345,9 +345,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0017.png
 
 #begin BirdAnimations/Green/0018.png
@@ -357,9 +357,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0018.png
 
 #begin BirdAnimations/Green/0019.png
@@ -369,9 +369,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0019.png
 
 #begin BirdAnimations/Green/0020.png
@@ -381,9 +381,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0020.png
 
 #begin BirdAnimations/Green/0021.png
@@ -393,9 +393,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0021.png
 
 #begin BirdAnimations/Green/0022.png
@@ -405,9 +405,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0022.png
 
 #begin BirdAnimations/Green/0023.png
@@ -417,9 +417,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0023.png
 
 #begin BirdAnimations/Green/0024.png
@@ -429,9 +429,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0024.png
 
 #begin BirdAnimations/Green/0025.png
@@ -441,9 +441,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0025.png
 
 #begin BirdAnimations/Green/0026.png
@@ -453,9 +453,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0026.png
 
 #begin BirdAnimations/Green/0027.png
@@ -465,9 +465,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0027.png
 
 #begin BirdAnimations/Green/0028.png
@@ -477,9 +477,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0028.png
 
 #begin BirdAnimations/Green/0029.png
@@ -489,9 +489,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0029.png
 
 #begin BirdAnimations/Green/0030.png
@@ -501,9 +501,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0030.png
 
 #begin BirdAnimations/Green/0031.png
@@ -513,9 +513,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0031.png
 
 #begin BirdAnimations/Green/0032.png
@@ -525,9 +525,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0032.png
 
 #begin BirdAnimations/Green/0033.png
@@ -537,9 +537,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0033.png
 
 #begin BirdAnimations/Green/0034.png
@@ -549,9 +549,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0034.png
 
 #begin BirdAnimations/Green/0035.png
@@ -561,9 +561,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0035.png
 
 #begin BirdAnimations/Green/0036.png
@@ -573,9 +573,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0036.png
 
 #begin BirdAnimations/Green/0037.png
@@ -585,9 +585,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0037.png
 
 #begin BirdAnimations/Green/0038.png
@@ -597,9 +597,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0038.png
 
 #begin BirdAnimations/Green/0039.png
@@ -609,9 +609,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0039.png
 
 #begin BirdAnimations/Green/0040.png
@@ -621,9 +621,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0040.png
 
 #begin BirdAnimations/Green/0041.png
@@ -633,9 +633,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0041.png
 
 #begin BirdAnimations/Green/0042.png
@@ -645,9 +645,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0042.png
 
 #begin BirdAnimations/Green/0043.png
@@ -657,9 +657,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0043.png
 
 #begin BirdAnimations/Green/0044.png
@@ -669,9 +669,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0044.png
 
 #begin BirdAnimations/Green/0045.png
@@ -681,9 +681,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0045.png
 
 #begin BirdAnimations/Green/0046.png
@@ -693,9 +693,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0046.png
 
 #begin BirdAnimations/Green/0047.png
@@ -705,9 +705,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0047.png
 
 #begin BirdAnimations/Green/0048.png
@@ -717,9 +717,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0048.png
 
 #begin BirdAnimations/Green/0049.png
@@ -729,9 +729,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0049.png
 
 #begin BirdAnimations/Green/0050.png
@@ -741,9 +741,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0050.png
 
 #begin BirdAnimations/Green/0051.png
@@ -753,9 +753,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0051.png
 
 #begin BirdAnimations/Green/0052.png
@@ -765,9 +765,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0052.png
 
 #begin BirdAnimations/Green/0053.png
@@ -777,9 +777,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0053.png
 
 #begin BirdAnimations/Green/0054.png
@@ -789,9 +789,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0054.png
 
 #begin BirdAnimations/Green/0055.png
@@ -801,9 +801,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0055.png
 
 #begin BirdAnimations/Green/0056.png
@@ -813,9 +813,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0056.png
 
 #begin BirdAnimations/Green/0057.png
@@ -825,9 +825,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0057.png
 
 #begin BirdAnimations/Green/0058.png
@@ -837,9 +837,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0058.png
 
 #begin BirdAnimations/Green/0059.png
@@ -849,9 +849,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0059.png
 
 #begin BirdAnimations/Green/0060.png
@@ -861,9 +861,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Green/0060.png
 
 #begin BirdAnimations/Orange/0001.png
@@ -873,9 +873,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0001.png
 
 #begin BirdAnimations/Orange/0002.png
@@ -885,9 +885,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0002.png
 
 #begin BirdAnimations/Orange/0003.png
@@ -897,9 +897,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0003.png
 
 #begin BirdAnimations/Orange/0004.png
@@ -909,9 +909,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0004.png
 
 #begin BirdAnimations/Orange/0005.png
@@ -921,9 +921,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0005.png
 
 #begin BirdAnimations/Orange/0006.png
@@ -933,9 +933,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0006.png
 
 #begin BirdAnimations/Orange/0007.png
@@ -945,9 +945,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0007.png
 
 #begin BirdAnimations/Orange/0008.png
@@ -957,9 +957,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0008.png
 
 #begin BirdAnimations/Orange/0009.png
@@ -969,9 +969,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0009.png
 
 #begin BirdAnimations/Orange/0010.png
@@ -981,9 +981,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0010.png
 
 #begin BirdAnimations/Orange/0011.png
@@ -993,9 +993,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0011.png
 
 #begin BirdAnimations/Orange/0012.png
@@ -1005,9 +1005,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0012.png
 
 #begin BirdAnimations/Orange/0013.png
@@ -1017,9 +1017,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0013.png
 
 #begin BirdAnimations/Orange/0014.png
@@ -1029,9 +1029,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0014.png
 
 #begin BirdAnimations/Orange/0015.png
@@ -1041,9 +1041,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0015.png
 
 #begin BirdAnimations/Orange/0016.png
@@ -1053,9 +1053,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0016.png
 
 #begin BirdAnimations/Orange/0017.png
@@ -1065,9 +1065,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0017.png
 
 #begin BirdAnimations/Orange/0018.png
@@ -1077,9 +1077,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0018.png
 
 #begin BirdAnimations/Orange/0019.png
@@ -1089,9 +1089,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0019.png
 
 #begin BirdAnimations/Orange/0020.png
@@ -1101,9 +1101,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0020.png
 
 #begin BirdAnimations/Orange/0021.png
@@ -1113,9 +1113,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0021.png
 
 #begin BirdAnimations/Orange/0022.png
@@ -1125,9 +1125,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0022.png
 
 #begin BirdAnimations/Orange/0023.png
@@ -1137,9 +1137,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0023.png
 
 #begin BirdAnimations/Orange/0024.png
@@ -1149,9 +1149,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0024.png
 
 #begin BirdAnimations/Orange/0025.png
@@ -1161,9 +1161,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0025.png
 
 #begin BirdAnimations/Orange/0026.png
@@ -1173,9 +1173,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0026.png
 
 #begin BirdAnimations/Orange/0027.png
@@ -1185,9 +1185,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0027.png
 
 #begin BirdAnimations/Orange/0028.png
@@ -1197,9 +1197,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0028.png
 
 #begin BirdAnimations/Orange/0029.png
@@ -1209,9 +1209,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0029.png
 
 #begin BirdAnimations/Orange/0030.png
@@ -1221,9 +1221,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0030.png
 
 #begin BirdAnimations/Orange/0031.png
@@ -1233,9 +1233,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0031.png
 
 #begin BirdAnimations/Orange/0032.png
@@ -1245,9 +1245,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0032.png
 
 #begin BirdAnimations/Orange/0033.png
@@ -1257,9 +1257,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0033.png
 
 #begin BirdAnimations/Orange/0034.png
@@ -1269,9 +1269,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0034.png
 
 #begin BirdAnimations/Orange/0035.png
@@ -1281,9 +1281,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0035.png
 
 #begin BirdAnimations/Orange/0036.png
@@ -1293,9 +1293,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0036.png
 
 #begin BirdAnimations/Orange/0037.png
@@ -1305,9 +1305,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0037.png
 
 #begin BirdAnimations/Orange/0038.png
@@ -1317,9 +1317,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0038.png
 
 #begin BirdAnimations/Orange/0039.png
@@ -1329,9 +1329,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0039.png
 
 #begin BirdAnimations/Orange/0040.png
@@ -1341,9 +1341,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0040.png
 
 #begin BirdAnimations/Orange/0041.png
@@ -1353,9 +1353,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0041.png
 
 #begin BirdAnimations/Orange/0042.png
@@ -1365,9 +1365,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0042.png
 
 #begin BirdAnimations/Orange/0043.png
@@ -1377,9 +1377,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0043.png
 
 #begin BirdAnimations/Orange/0044.png
@@ -1389,9 +1389,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0044.png
 
 #begin BirdAnimations/Orange/0045.png
@@ -1401,9 +1401,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0045.png
 
 #begin BirdAnimations/Orange/0046.png
@@ -1413,9 +1413,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0046.png
 
 #begin BirdAnimations/Orange/0047.png
@@ -1425,9 +1425,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0047.png
 
 #begin BirdAnimations/Orange/0048.png
@@ -1437,9 +1437,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0048.png
 
 #begin BirdAnimations/Orange/0049.png
@@ -1449,9 +1449,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0049.png
 
 #begin BirdAnimations/Orange/0050.png
@@ -1461,9 +1461,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0050.png
 
 #begin BirdAnimations/Orange/0051.png
@@ -1473,9 +1473,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0051.png
 
 #begin BirdAnimations/Orange/0052.png
@@ -1485,9 +1485,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0052.png
 
 #begin BirdAnimations/Orange/0053.png
@@ -1497,9 +1497,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0053.png
 
 #begin BirdAnimations/Orange/0054.png
@@ -1509,9 +1509,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0054.png
 
 #begin BirdAnimations/Orange/0055.png
@@ -1521,9 +1521,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0055.png
 
 #begin BirdAnimations/Orange/0056.png
@@ -1533,9 +1533,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0056.png
 
 #begin BirdAnimations/Orange/0057.png
@@ -1545,9 +1545,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0057.png
 
 #begin BirdAnimations/Orange/0058.png
@@ -1557,9 +1557,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0058.png
 
 #begin BirdAnimations/Orange/0059.png
@@ -1569,9 +1569,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0059.png
 
 #begin BirdAnimations/Orange/0060.png
@@ -1581,9 +1581,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Orange/0060.png
 
 #begin BirdAnimations/Red/0001.png
@@ -1593,9 +1593,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0001.png
 
 #begin BirdAnimations/Red/0002.png
@@ -1605,9 +1605,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0002.png
 
 #begin BirdAnimations/Red/0003.png
@@ -1617,9 +1617,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0003.png
 
 #begin BirdAnimations/Red/0004.png
@@ -1629,9 +1629,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0004.png
 
 #begin BirdAnimations/Red/0005.png
@@ -1641,9 +1641,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0005.png
 
 #begin BirdAnimations/Red/0006.png
@@ -1653,9 +1653,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0006.png
 
 #begin BirdAnimations/Red/0007.png
@@ -1665,9 +1665,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0007.png
 
 #begin BirdAnimations/Red/0008.png
@@ -1677,9 +1677,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0008.png
 
 #begin BirdAnimations/Red/0009.png
@@ -1689,9 +1689,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0009.png
 
 #begin BirdAnimations/Red/0010.png
@@ -1701,9 +1701,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0010.png
 
 #begin BirdAnimations/Red/0011.png
@@ -1713,9 +1713,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0011.png
 
 #begin BirdAnimations/Red/0012.png
@@ -1725,9 +1725,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0012.png
 
 #begin BirdAnimations/Red/0013.png
@@ -1737,9 +1737,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0013.png
 
 #begin BirdAnimations/Red/0014.png
@@ -1749,9 +1749,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0014.png
 
 #begin BirdAnimations/Red/0015.png
@@ -1761,9 +1761,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0015.png
 
 #begin BirdAnimations/Red/0016.png
@@ -1773,9 +1773,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0016.png
 
 #begin BirdAnimations/Red/0017.png
@@ -1785,9 +1785,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0017.png
 
 #begin BirdAnimations/Red/0018.png
@@ -1797,9 +1797,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0018.png
 
 #begin BirdAnimations/Red/0019.png
@@ -1809,9 +1809,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0019.png
 
 #begin BirdAnimations/Red/0020.png
@@ -1821,9 +1821,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0020.png
 
 #begin BirdAnimations/Red/0021.png
@@ -1833,9 +1833,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0021.png
 
 #begin BirdAnimations/Red/0022.png
@@ -1845,9 +1845,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0022.png
 
 #begin BirdAnimations/Red/0023.png
@@ -1857,9 +1857,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0023.png
 
 #begin BirdAnimations/Red/0024.png
@@ -1869,9 +1869,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0024.png
 
 #begin BirdAnimations/Red/0025.png
@@ -1881,9 +1881,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0025.png
 
 #begin BirdAnimations/Red/0026.png
@@ -1893,9 +1893,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0026.png
 
 #begin BirdAnimations/Red/0027.png
@@ -1905,9 +1905,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0027.png
 
 #begin BirdAnimations/Red/0028.png
@@ -1917,9 +1917,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0028.png
 
 #begin BirdAnimations/Red/0029.png
@@ -1929,9 +1929,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0029.png
 
 #begin BirdAnimations/Red/0030.png
@@ -1941,9 +1941,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0030.png
 
 #begin BirdAnimations/Red/0031.png
@@ -1953,9 +1953,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0031.png
 
 #begin BirdAnimations/Red/0032.png
@@ -1965,9 +1965,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0032.png
 
 #begin BirdAnimations/Red/0033.png
@@ -1977,9 +1977,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0033.png
 
 #begin BirdAnimations/Red/0034.png
@@ -1989,9 +1989,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0034.png
 
 #begin BirdAnimations/Red/0035.png
@@ -2001,9 +2001,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0035.png
 
 #begin BirdAnimations/Red/0036.png
@@ -2013,9 +2013,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0036.png
 
 #begin BirdAnimations/Red/0037.png
@@ -2025,9 +2025,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0037.png
 
 #begin BirdAnimations/Red/0038.png
@@ -2037,9 +2037,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0038.png
 
 #begin BirdAnimations/Red/0039.png
@@ -2049,9 +2049,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0039.png
 
 #begin BirdAnimations/Red/0040.png
@@ -2061,9 +2061,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0040.png
 
 #begin BirdAnimations/Red/0041.png
@@ -2073,9 +2073,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0041.png
 
 #begin BirdAnimations/Red/0042.png
@@ -2085,9 +2085,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0042.png
 
 #begin BirdAnimations/Red/0043.png
@@ -2097,9 +2097,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0043.png
 
 #begin BirdAnimations/Red/0044.png
@@ -2109,9 +2109,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0044.png
 
 #begin BirdAnimations/Red/0045.png
@@ -2121,9 +2121,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0045.png
 
 #begin BirdAnimations/Red/0046.png
@@ -2133,9 +2133,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0046.png
 
 #begin BirdAnimations/Red/0047.png
@@ -2145,9 +2145,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0047.png
 
 #begin BirdAnimations/Red/0048.png
@@ -2157,9 +2157,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0048.png
 
 #begin BirdAnimations/Red/0049.png
@@ -2169,9 +2169,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0049.png
 
 #begin BirdAnimations/Red/0050.png
@@ -2181,9 +2181,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0050.png
 
 #begin BirdAnimations/Red/0051.png
@@ -2193,9 +2193,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0051.png
 
 #begin BirdAnimations/Red/0052.png
@@ -2205,9 +2205,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0052.png
 
 #begin BirdAnimations/Red/0053.png
@@ -2217,9 +2217,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0053.png
 
 #begin BirdAnimations/Red/0054.png
@@ -2229,9 +2229,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0054.png
 
 #begin BirdAnimations/Red/0055.png
@@ -2241,9 +2241,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0055.png
 
 #begin BirdAnimations/Red/0056.png
@@ -2253,9 +2253,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0056.png
 
 #begin BirdAnimations/Red/0057.png
@@ -2265,9 +2265,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0057.png
 
 #begin BirdAnimations/Red/0058.png
@@ -2277,9 +2277,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0058.png
 
 #begin BirdAnimations/Red/0059.png
@@ -2289,9 +2289,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0059.png
 
 #begin BirdAnimations/Red/0060.png
@@ -2301,9 +2301,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:BirdAnimations/Red/0060.png
 
 #begin Birds/birb_texture_2.png
@@ -2406,9 +2406,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:bld1.png
 
 #begin Bullet_B.png
@@ -2418,9 +2418,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:Bullet_B.png
 
 #begin Bullet_G.png
@@ -2430,9 +2430,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:Bullet_G.png
 
 #begin Bullet.png
@@ -2442,9 +2442,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:Bullet.png
 
 #begin crosshair.png
@@ -2454,9 +2454,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:crosshair.png
 
 #begin Grey40.png
@@ -2466,9 +2466,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:Grey40.png
 
 #begin Grey80.png
@@ -2478,9 +2478,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:Grey80.png
 
 #begin Level/City_Level.dae
@@ -2545,9 +2545,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:Net_HUD_Texture_reloading.png
 
 #begin Net_HUD_Texture_transparent.png
@@ -2557,9 +2557,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:Net_HUD_Texture_transparent.png
 
 #begin Net_HUD_Texture.png
@@ -2569,9 +2569,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:Net_HUD_Texture.png
 
 #begin Shaders/skybox_cubemap.dds
@@ -2618,9 +2618,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:testContent/button_hover.png
 
 #begin testContent/button_pressed.png
@@ -2630,9 +2630,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:testContent/button_pressed.png
 
 #begin testContent/button.png
@@ -2642,9 +2642,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:testContent/button.png
 
 #begin testContent/cubeTexture.png
@@ -2654,9 +2654,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:testContent/cubeTexture.png
 
 #begin testContent/menu_box.png
@@ -2666,9 +2666,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:testContent/menu_box.png
 
 #begin testContent/menuBackground.png
@@ -2678,9 +2678,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:testContent/menuBackground.png
 
 #begin testContent/Net.fbx
@@ -2711,7 +2711,7 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=True
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:testContent/NetTexture.png
 
 #begin testContent/settingsBackground.png
@@ -2721,9 +2721,9 @@
 /processorParam:ColorKeyEnabled=True
 /processorParam:GenerateMipmaps=False
 /processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
+/processorParam:ResizeToPowerOfTwo=True
 /processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
+/processorParam:TextureFormat=Compressed
 /build:testContent/settingsBackground.png
 
 #begin testContent/testCube.fbx

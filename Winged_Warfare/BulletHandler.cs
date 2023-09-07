@@ -165,7 +165,7 @@ namespace Winged_Warfare
                         birds[j].IsAlive = false;
                         bullets[i].HitCount++;
                         float playerDistanceToBird = birds[j].GetDistanceToPlayer();
-                        float distanceMultplier = (float)Math.Pow(1.0155f, playerDistanceToBird);
+                        float distanceMultplier = (float)Math.Pow(1.0172f, playerDistanceToBird);
                         Debug.WriteLine(birds[j].GetBirdStats());
                         Debug.WriteLine("hit from: "+ playerDistanceToBird);
                         Debug.WriteLine("volume: " + birds[j]._volumeMultiplier);

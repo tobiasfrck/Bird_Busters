@@ -15,7 +15,7 @@ namespace Winged_Warfare
     public class FPSCamera
     {
         // The angle of rotation about the Y-axis
-        float horizontalAngle;
+        private float horizontalAngle;
         // The angle of rotation about the X-axis
         float verticalAngle;
         // The camera's position in the world 
@@ -84,7 +84,7 @@ namespace Winged_Warfare
             this.game = _game;
             position = _position;
             StartPosition = position;
-            this.horizontalAngle = 0;
+            this.horizontalAngle = MathHelper.ToRadians(90f);
             this.verticalAngle = 0;
             Projection = Matrix.CreatePerspectiveFieldOfView(POV, game.GraphicsDevice.DisplayMode.AspectRatio, 0.001f, 1000);
             Mouse.SetPosition(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
@@ -104,7 +104,7 @@ namespace Winged_Warfare
             var keyboard = Keyboard.GetState();
             var newMouseState = Mouse.GetState();
 
-            float Speed = 0.08f;
+            float Speed = 0.13f;
             IsMoving = false;
             IsSprinting = false;
 
@@ -115,8 +115,10 @@ namespace Winged_Warfare
                 IsSprinting = true;
             }
 
+            ;
+
             // Get the direction the player is currently facing
-            var facing = Vector3.Transform(Vector3.Forward, Matrix.CreateRotationY(horizontalAngle));
+            var facing = Vector3.Transform(Vector3.Forward, Matrix.CreateRotationY(horizontalAngle + MathHelper.ToRadians(180f)));
             // Forward and backward movement
             if (keyboard.IsKeyDown(Keys.W)) { position += facing * Speed; IsMoving = true; }
             if (keyboard.IsKeyDown(Keys.S)) { position -= facing * Speed; IsMoving = true; }
@@ -138,7 +140,7 @@ namespace Winged_Warfare
             verticalAngle += Sensitivity * (oldMouseState.Y - newMouseState.Y);
             if (verticalAngle <= -1.56f) verticalAngle = -1.559f;
             if (verticalAngle >= 1.56f) verticalAngle = 1.559f;
-            direction = Vector3.Transform(Vector3.Forward, Matrix.CreateRotationX(verticalAngle) * Matrix.CreateRotationY(horizontalAngle));
+            direction = Vector3.Transform(Vector3.Forward, Matrix.CreateRotationX(verticalAngle) * Matrix.CreateRotationY(horizontalAngle + MathHelper.ToRadians(180f)));
             // Debug.WriteLine("verticalAngle= " + verticalAngle);
 
 

@@ -134,7 +134,7 @@ namespace Winged_Warfare
             base.Initialize();
             // TODO: Add your initialization logic here
             // Initialize camera in Game1.cs because of "No _graphics Device Service" problem.
-            Player.CamPosition = new Vector3(-1f, 0.2f, -1f);
+            Player.CamPosition = new Vector3(3.94f, 0.2f, 7.71f);
             Player.CamTarget = new Vector3(Player.CamPosition.X, Player.CamPosition.Y, Player.CamPosition.Z + 1);
             Player.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), GraphicsDevice.DisplayMode.AspectRatio, 0.01f, 1000f);
             Player.ViewMatrix = Matrix.CreateLookAt(Player.CamPosition, Player.CamTarget, Vector3.Up);

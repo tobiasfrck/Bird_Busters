@@ -31,7 +31,9 @@ namespace Winged_Warfare
         private Texture2D _gameBackground;
         private Texture2D _gameEndedBackground;
         private Texture2D _blankTexture;
+        private Texture2D _menuBar;
 
+        private List<Texture2D> _menuTextures = new ();
         private List<Button> _menuButtons = new();
         private List<Button> _settingsButtons = new();
         public List<Button> _gameButtons = new();
@@ -50,6 +52,8 @@ namespace Winged_Warfare
         private MouseState _previousMouseState;
 
         private bool _gameNeedsReset = false;
+        private bool _isFullscreen = false;
+
 
         //for testing purposes
         public static MenuManager Instance;
@@ -307,9 +311,19 @@ namespace Winged_Warfare
 
         private void CreateMainMenu()
         {
-            Button startGame = new Button(new Vector2(Game1.Width / 2f, (Game1.Height / 10f * 6) - 125), new Vector2(250, 125), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Start Game", Game1.TestFont, Color.Black, Color.Black, Color.Black);
-            Button settings = new Button(new Vector2(Game1.Width / 2.5f, (Game1.Height / 10f * 8) - 125), new Vector2(250, 125), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Settings", Game1.TestFont, Color.Black, Color.Black, Color.Black);
-            Button exitGame = new Button(new Vector2(Game1.Width / 2.5f + 330, (Game1.Height / 10f * 8) - 125), new Vector2(250, 125), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Exit", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            float XFractionStart = 1f / 2f;
+            float YFractionStart = 6f / 10f; 
+
+            float XFractionSettings = 4f / 10f;
+            float YFractionSettings = 8f / 10f; 
+
+            float XFractionExit = 1 - XFractionSettings; 
+            float YFractionExit = 8f / 10f; 
+
+            Button startGame = new Button(new Vector2(Game1.Width * XFractionStart, Game1.Height * YFractionStart), new Vector2(250, 125), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Start Game", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button settings = new Button(new Vector2(Game1.Width * XFractionSettings, Game1.Height * YFractionSettings), new Vector2(250, 125), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Settings", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button exitGame = new Button(new Vector2(Game1.Width * XFractionExit, Game1.Height * YFractionExit), new Vector2(250, 125), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Exit", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+
             _menuButtons.Add(startGame);
             _menuButtons.Add(settings);
             _menuButtons.Add(exitGame);
@@ -320,9 +334,90 @@ namespace Winged_Warfare
 
         private void CreateSettingsMenu()
         {
-            Button toMenu = new Button(new Vector2(Game1.Width / 18f, Game1.Height - 110), new Vector2(100, 60), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.White, Color.White);
+            float XFraction = 1f / 18f; 
+            float YFraction = 9f / 10f; 
+
+            Button toMenu = new Button(new Vector2(Game1.Width * XFraction, Game1.Height * YFraction), new Vector2(100, 60), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.White, Color.White);
             _settingsButtons.Add(toMenu);
             toMenu.SetClick(SwitchToMenu);
+
+             void CreateSettingsMenu(Texture2D _menuBar, Vector2 _menuBarPosition, Vector2 _menuBarSize)
+            {
+               
+                Texture2D menuBoxTexture = _menuBar; 
+                Vector2 menuBoxPosition = _menuBarPosition; 
+                Vector2 menuBoxSize = _menuBarSize; 
+
+                
+            }
+
+            // Button, um in den Vollbildmodus zu wechseln
+            Button fullscreenButton = new Button(new Vector2(Game1.Width * 0.5f, Game1.Height * 0.5f), new Vector2(200, 50), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Fullscreen", Game1.TestFont, Color.Black, Color.White, Color.White);
+            fullscreenButton.SetClick(ToggleFullscreen);
+            _settingsButtons.Add(fullscreenButton);
+
+            // Methode zum Wechseln zwischen Vollbild- und Fenstermodus
+            void ToggleFullscreen()
+            {
+                _isFullscreen = !_isFullscreen; // Zustand umschalten
+
+                if (_isFullscreen)
+                {
+                    _graphics.IsFullScreen = true;
+                    
+                    fullscreenButton.SetText("Window"); // Ändere den Text auf "Fenstermodus"
+                }
+                else
+                {
+                    _graphics.IsFullScreen = false;
+                    fullscreenButton.SetText("Fullscreen"); // Ändere den Text auf "Vollbild"
+                }
+
+                // Wende die Änderungen an
+                _graphics.ApplyChanges();
+            }
+
+            void IncreaseVolume()
+            {
+                // Erhöhung der Lautstärke
+                MediaPlayer.Volume += 0.1f;
+            }
+
+            void DecreaseVolume()
+            {
+                // Reduzieren der Lautstärke
+                MediaPlayer.Volume -= 0.1f;
+
+                // fällt nicht unter 0
+                if (MediaPlayer.Volume < 0)
+                {
+                    MediaPlayer.Volume = 0;
+                }
+            }
+          
+            // Lautstärke erhöhen Button
+            float volumeUpButtonX = Game1.Width * 0.3f;
+            float volumeUpButtonY = Game1.Height * 0.7f;
+            Button volumeUpButton = new Button(
+                new Vector2(volumeUpButtonX, volumeUpButtonY),
+                new Vector2(50, 50),
+                Game1.Button, Game1.ButtonHover, Game1.ButtonPressed,
+                "+", Game1.TestFont, Color.Black, Color.Black, Color.Black
+            );
+            volumeUpButton.SetClick(IncreaseVolume); 
+            _settingsButtons.Add(volumeUpButton);
+
+            // Lautstärke reduzieren Button
+            float volumeDownButtonX = Game1.Width * 0.4f;
+            float volumeDownButtonY = Game1.Height * 0.8f;
+            Button volumeDownButton = new Button(
+                new Vector2(volumeDownButtonX, volumeDownButtonY),
+                new Vector2(50, 50),
+                Game1.Button, Game1.ButtonHover, Game1.ButtonPressed,
+                "-", Game1.TestFont, Color.Black, Color.Black, Color.Black
+            );
+            volumeDownButton.SetClick(DecreaseVolume); 
+            _settingsButtons.Add(volumeDownButton);
         }
 
         private void CreateGameEndedMenu()

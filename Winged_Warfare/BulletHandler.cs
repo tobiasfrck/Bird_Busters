@@ -68,28 +68,69 @@ namespace Winged_Warfare
         private static bool useMagazin = true;
 
         private static bool _isReloading = false;
-        
+
+        private static string cheatCode = "";
+
+
         public static MenuManager _menuManager;
 
         private static List<VectorCube> _deletionZones = new List<VectorCube>();
-
+         
         public static void Update()
         {
             
-//          Shoot Mechanic
-/*            if (Mouse.GetState().LeftButton == ButtonState.Pressed && canShoot && !(FPSCamera.IsMoving && FPSCamera.IsSprinting))
-            {
+            bool cheatActivated = false; // Variable, um den Cheat-Code-Status zu verfolgen
 
-                //Spawned ein neues Netz
-                Game1.ShootEffect.Play(Game1.SFXVolume,0,0);
-                bullets.Add(new Net(FPSCamera.position, Player.CamTarget));                
-                //Schaut ob gerade die letzte Kugel verschossen wurde
-                if (Magazin == 1 && useMagazin)
-                {
-                    Reload(reloadTimerMagazin, MagazinSize);
-                }
-                else Reload();
-*///            }
+            // Überprüfe, ob die Tasten K, I, L, L in der richtigen Reihenfolge nacheinander gedrückt werden
+            if (Keyboard.GetState().IsKeyDown(Keys.K))
+            {
+                cheatCode = "K"; // Setze den Cheat-Code auf "K", wenn die Taste K gedrückt wird
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.I) && cheatCode == "K")
+            {
+                cheatCode = "KI"; // Setze den Cheat-Code auf "KI", wenn die Taste I nach K gedrückt wird
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.L) && cheatCode == "KI")
+            {
+                cheatCode = "KIL"; // Setze den Cheat-Code auf "KIL", wenn die Taste L nach KI gedrückt wird
+            }
+            else if (Keyboard.GetState().IsKeyDown(Keys.L) && cheatCode == "KIL")
+            {
+                cheatActivated = true; // Cheat-Code korrekt und aktiviert
+            }
+
+            // Überprüfe den Cheat-Code
+            if (cheatActivated)
+            {
+                // Schussverzögerung reduzieren
+                reloadTimerShot = 5;
+
+                // Schussrate erhöhen 
+                reloadTimerMagazin = 5;
+
+                // Setze den Cheat-Code-Status zurück
+                cheatActivated = false;
+
+                // Benachrichtigung ausgeben
+                Console.WriteLine("Cheat aktiviert!");
+            }
+
+
+
+            //          Shoot Mechanic
+            /*            if (Mouse.GetState().LeftButton == ButtonState.Pressed && canShoot && !(FPSCamera.IsMoving && FPSCamera.IsSprinting))
+                        {
+
+                            //Spawned ein neues Netz
+                            Game1.ShootEffect.Play(Game1.SFXVolume,0,0);
+                            bullets.Add(new Net(FPSCamera.position, Player.CamTarget));                
+                            //Schaut ob gerade die letzte Kugel verschossen wurde
+                            if (Magazin == 1 && useMagazin)
+                            {
+                                Reload(reloadTimerMagazin, MagazinSize);
+                            }
+                            else Reload();
+            *///            }
             if (Mouse.GetState().LeftButton == ButtonState.Pressed && !_reloadTimerMagazin.IsRunning() && !_reloadTimerShot.IsRunning() && !(FPSCamera.IsMoving && FPSCamera.IsSprinting))
             {
 
@@ -115,7 +156,7 @@ namespace Winged_Warfare
                 }
                 
             }
-
+            
             if (Keyboard.GetState().IsKeyDown(Keys.R) && Magazin!=MagazinSize && canShoot)
             {
                 _reloadTimerMagazin.SetTimeNRun(3000);

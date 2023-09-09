@@ -27,8 +27,8 @@ namespace Winged_Warfare
         private bool fullscreenbutton = false;
 
         // Game Settings
-        public static int Width = 1920;
-        public static int Height = 1080;
+        public static int Width = 1600;
+        public static int Height = 900;
         public static float MusicVolume = 0.1f;
         public static float SFXVolume = 1;
         public static float MenuSFXVolume = 0.1f;
@@ -36,6 +36,7 @@ namespace Winged_Warfare
         public bool isMusicPlaying = true;
 
 
+        public TextureItem MenuBoxTextureItem { get; private set; }
 
 
 
@@ -168,6 +169,8 @@ namespace Winged_Warfare
             // Textures
             menuBackground = Content.Load<Texture2D>("testContent/menuBackground");
             settingsBackground = Content.Load<Texture2D>("testContent/settingsBackground");
+            Texture2D menuBoxTexture = Content.Load<Texture2D>("testContent/menu_box");
+            MenuBoxTextureItem = new TextureItem(menuBoxTexture, new Vector2(100, 100), new Vector2(200, 150));
             //gameBackground = Content.Load<Texture2D>("testContent/gameBackground");
 
             Button = Content.Load<Texture2D>("testContent/button");

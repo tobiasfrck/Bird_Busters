@@ -16,7 +16,7 @@ namespace Winged_Warfare
         {
             _currentScore += i;
             _birdsHit[(int)type]++;
-            if (_currentScore > _highscore)
+            if (_currentScore > _highscore && !BulletHandler.isCheatActivated())
             {
                 SetHighscore(_currentScore);
             }

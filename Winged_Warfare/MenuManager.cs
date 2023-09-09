@@ -186,6 +186,9 @@ namespace Winged_Warfare
                     {
                         _spriteBatch.Draw(_settingsBackground, _fullScreen, Color.White);
                     }
+
+                    _spriteBatch.Draw(Game1.menuBoxTexture,new Rectangle(100,100,250,100),Color.White);
+
                     foreach (Button btn in _settingsButtons)
                     {
                         btn.Draw(_spriteBatch, _currentMouseState.Position.ToVector2(), _currentMouseState.LeftButton == ButtonState.Pressed);

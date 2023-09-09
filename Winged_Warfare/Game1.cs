@@ -67,6 +67,7 @@ namespace Winged_Warfare
         public static Texture2D menuBackground;
         public static Texture2D settingsBackground;
         public static Texture2D gameBackground;
+        public static Texture2D menuBoxTexture;
 
         public static Texture2D Button;
         public static Texture2D ButtonHover;
@@ -169,7 +170,7 @@ namespace Winged_Warfare
             // Textures
             menuBackground = Content.Load<Texture2D>("testContent/menuBackground");
             settingsBackground = Content.Load<Texture2D>("testContent/settingsBackground");
-            Texture2D menuBoxTexture = Content.Load<Texture2D>("testContent/menu_box");
+            menuBoxTexture = Content.Load<Texture2D>("testContent/menu_box");
             MenuBoxTextureItem = new TextureItem(menuBoxTexture, new Vector2(100, 100), new Vector2(200, 150));
             //gameBackground = Content.Load<Texture2D>("testContent/gameBackground");
 

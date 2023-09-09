@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Numerics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -216,6 +217,27 @@ namespace Winged_Warfare
                     }
                     DrawDebug();
 
+                    //Draw HUD Backgrounds
+                    _spriteBatch.Draw(Game1.HUDTimerBG,new Rectangle(10,10,Game1.HUDTimerBG.Width,Game1.HUDTimerBG.Height), new Color(Color.White, 0.35f));
+                    _spriteBatch.Draw(Game1.HUDScoreBG, new Rectangle(xOffset-Game1.HUDScoreBG.Width, 10, Game1.HUDScoreBG.Width, Game1.HUDScoreBG.Height), new Color(Color.White, 0.35f));
+                    _spriteBatch.Draw(Game1.HUDAmmoBG, new Rectangle(xOffset - Game1.HUDAmmoBG.Width, Game1.Height - Game1.HUDAmmoBG.Height - 10, Game1.HUDAmmoBG.Width, Game1.HUDAmmoBG.Height), new Color(Color.White,0.35f));
+                    Vector2 timeTextSize = Game1.TestFont.MeasureString(Game1._gameTimer.GetSeconds().ToString());
+                    _spriteBatch.DrawString(Game1.TestFont, Game1._gameTimer.GetSeconds().ToString(), new Vector2(10 + (Game1.HUDTimerBG.Width/2f) - (timeTextSize.X/2f), 10 + (Game1.HUDTimerBG.Height / 2f) - (timeTextSize.Y / 2f)), Color.White);
+
+                    float distanceBetweenScoreAndHighscore = 10;
+                    float ScoreYOffset = 30;
+                    Vector2 highscoreTextSize = Game1.TestFont.MeasureString("HIGHSCORE");
+                    Vector2 scoreTextSize = Game1.TestFont.MeasureString("SCORE");
+                    Vector2 scoreNumberTextSize = Game1.TestFont.MeasureString(Score.GetScore().ToString());
+                    Vector2 highscoreNumberTextSize = Game1.TestFont.MeasureString(Score.GetHighscore().ToString());
+                    _spriteBatch.DrawString(Game1.TestFont, "HIGHSCORE", new Vector2(xOffset - highscoreTextSize.X, ScoreYOffset+highscoreNumberTextSize.Y), Color.White);
+                    _spriteBatch.DrawString(Game1.TestFont, "SCORE", new Vector2(xOffset - scoreTextSize.X - distanceBetweenScoreAndHighscore - highscoreTextSize.X, ScoreYOffset + scoreNumberTextSize.Y), Color.White);
+                    _spriteBatch.DrawString(Game1.TestFont, Score.GetScore().ToString(), new Vector2(xOffset - scoreNumberTextSize.X/2f - distanceBetweenScoreAndHighscore - highscoreTextSize.X - scoreTextSize.X/2f, ScoreYOffset), Color.White);
+                    _spriteBatch.DrawString(Game1.TestFont, Score.GetHighscore().ToString(), new Vector2(xOffset - highscoreTextSize.X/2f - highscoreNumberTextSize.X/2f, ScoreYOffset), Color.White);
+
+
+
+
                     // Draw Ammunition HUD
                     int magDisplayYPosition = Game1.Height - 80;
                     int magDisplayDistanceBetween = -40; //distance between icons
@@ -238,21 +260,12 @@ namespace Winged_Warfare
                         }
                     }
 
-                    //Draw Highscore HUD
-                    float highscoreTextXSize = Game1.TestFont.MeasureString("Highscore: " + Score.GetHighscore()).X;
-                    float highscoreTextYSize = Game1.TestFont.MeasureString("Highscore: " + Score.GetHighscore()).Y;
-                    _spriteBatch.DrawString(Game1.TestFont, "Highscore: " + Score.GetHighscore(), new Vector2(xOffset - highscoreTextXSize, 10), Color.White);
-
-                    // Draw Score HUD
-                    float scoreTextSize = Game1.TestFont.MeasureString("Score: " + Score.GetScore()).X;
-
-                    _spriteBatch.DrawString(Game1.TestFont, "Score: " + Score.GetScore(), new Vector2(xOffset - scoreTextSize, 10 + highscoreTextYSize), Color.White);
 
                     // TODO: Draw remaining time HUD
-                    _spriteBatch.DrawString(Game1.TestFont, "Time: " + Game1._gameTimer?.GetSeconds(), new Vector2(10, 10), Color.White);
                     Rectangle crosshairRect = new Rectangle((Game1.Width / 2) - (Game1.Crosshair.Width / 2), (Game1.Height / 2) - (Game1.Crosshair.Height / 2), Game1.Crosshair.Width, Game1.Crosshair.Height);
                     _spriteBatch.Draw(Game1.Crosshair, crosshairRect, Color.White);
 
+                    
 
                     //Some kind of buttons during gameplay; currently not used
                     foreach (Button btn in _gameButtons)

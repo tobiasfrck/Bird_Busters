@@ -75,6 +75,9 @@ namespace Winged_Warfare
         public static Texture2D Grey40;
         public static Texture2D Grey80;
 
+        public static Texture2D HUDTimerBG;
+        public static Texture2D HUDAmmoBG;
+        public static Texture2D HUDScoreBG;
         public static Texture2D HUDAmmo;
         public static Texture2D HUDAmmoEmpty;
         public static Texture2D HUDAmmoReloading;
@@ -182,6 +185,9 @@ namespace Winged_Warfare
 
 
             // Textures for HUD
+            HUDTimerBG = Content.Load<Texture2D>("HUD_BG/Time_HUD");
+            HUDAmmoBG = Content.Load<Texture2D>("HUD_BG/Ammo_HUD");
+            HUDScoreBG = Content.Load<Texture2D>("HUD_BG/Score_HUD");
             HUDAmmo = Content.Load<Texture2D>("Bullet");
             HUDAmmoEmpty = Content.Load<Texture2D>("Bullet_G");
             HUDAmmoReloading = Content.Load<Texture2D>("Bullet_B");

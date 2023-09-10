@@ -2459,6 +2459,41 @@
 /processorParam:TextureFormat=Compressed
 /build:crosshair.png
 
+#begin Font_SS3_Bold_24.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font_SS3_Bold_24.spritefont
+
+#begin Font_SS3_Bold_48.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font_SS3_Bold_48.spritefont
+
+#begin Font_SS3_Bold_AmmoText.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font_SS3_Bold_AmmoText.spritefont
+
+#begin Font_SS3_Bold_ScoreNumber.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font_SS3_Bold_ScoreNumber.spritefont
+
+#begin Font_SS3_Bold_ScoreText.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Font_SS3_Bold_ScoreText.spritefont
+
 #begin Grey40.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2482,6 +2517,42 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Compressed
 /build:Grey80.png
+
+#begin HUD_BG/Ammo_HUD.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:HUD_BG/Ammo_HUD.png
+
+#begin HUD_BG/Score_HUD.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:HUD_BG/Score_HUD.png
+
+#begin HUD_BG/Time_HUD.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:HUD_BG/Time_HUD.png
 
 #begin Level/City_Level.dae
 /importer:FbxImporter

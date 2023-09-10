@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +15,7 @@ namespace Winged_Warfare
     public class FPSCamera
     {
         // The angle of rotation about the Y-axis
-        float horizontalAngle;
+        private float horizontalAngle;
         // The angle of rotation about the X-axis
         float verticalAngle;
         // The camera's position in the world 
@@ -90,7 +90,7 @@ namespace Winged_Warfare
             this.game = _game;
             position = _position;
             StartPosition = position;
-            this.horizontalAngle = 0;
+            this.horizontalAngle = MathHelper.ToRadians(90f);
             this.verticalAngle = 0;
             Projection = Matrix.CreatePerspectiveFieldOfView(POV, game.GraphicsDevice.DisplayMode.AspectRatio, 0.001f, 1000);
             Mouse.SetPosition(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
@@ -127,8 +127,10 @@ namespace Winged_Warfare
                 IsSprinting = false;
             }
 
+            ;
+
             // Get the direction the player is currently facing
-            var facing = Vector3.Transform(Vector3.Forward, Matrix.CreateRotationY(horizontalAngle));
+            var facing = Vector3.Transform(Vector3.Forward, Matrix.CreateRotationY(horizontalAngle + MathHelper.ToRadians(180f)));
             // Forward and backward movement
             if (keyboard.IsKeyDown(Keys.W))
             {
@@ -344,7 +346,7 @@ namespace Winged_Warfare
             verticalAngle += Sensitivity * (oldMouseState.Y - newMouseState.Y);
             if (verticalAngle <= -1.56f) verticalAngle = -1.559f;
             if (verticalAngle >= 1.56f) verticalAngle = 1.559f;
-            direction = Vector3.Transform(Vector3.Forward, Matrix.CreateRotationX(verticalAngle) * Matrix.CreateRotationY(horizontalAngle));
+            direction = Vector3.Transform(Vector3.Forward, Matrix.CreateRotationX(verticalAngle) * Matrix.CreateRotationY(horizontalAngle + MathHelper.ToRadians(180f)));
             // Debug.WriteLine("verticalAngle= " + verticalAngle);
 
 

@@ -40,6 +40,8 @@ namespace Winged_Warfare
         private Color _textHoverColor;
         private Color _textPressedColor;
         private Vector2 _textDimension;
+        private float textScale = 1.0f; 
+
 
         private SoundEffect _clickSound;
         private SoundEffect _hoverSound;
@@ -195,7 +197,7 @@ namespace Winged_Warfare
             else
             {
                 spriteBatch.Draw(_texture, _rectangle, Color.White);
-                spriteBatch.DrawString(_font, _text, position, _textColor);
+                spriteBatch.DrawString(_font, _text, position, _textColor, 0f, Vector2.Zero, textScale, SpriteEffects.None, 0f);
             }
         }
 
@@ -240,5 +242,16 @@ namespace Winged_Warfare
             float c3 = c1 + 1f;
             return (float)(1 + c3* Math.Pow(x - 1, 3) + c1 * Math.Pow(x - 1, 2));
         }
-}
+
+        public void SetText(string text)
+        {
+            _text = text;
+            _textDimension = _font.MeasureString(_text);
+        }
+
+        public void SetButtonTextScale(float scale)
+        {
+            textScale = scale;
+        }
+    }
 }

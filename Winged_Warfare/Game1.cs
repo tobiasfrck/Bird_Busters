@@ -36,6 +36,7 @@ namespace Winged_Warfare
         public bool isMusicPlaying = true;
 
 
+        public TextureItem MenuBoxTextureItem { get; private set; }
 
 
 
@@ -62,10 +63,16 @@ namespace Winged_Warfare
             "Birds/Birb3"
         };
         public static SpriteFont TestFont;
+        public static SpriteFont HUDTimerFont;
+        public static SpriteFont HUDScoreTextFont;
+        public static SpriteFont HUDScoreNumFont;
+        public static SpriteFont HUDAmmoFont;
+
 
         public static Texture2D menuBackground;
         public static Texture2D settingsBackground;
         public static Texture2D gameBackground;
+        public static Texture2D menuBoxTexture;
 
         public static Texture2D Button;
         public static Texture2D ButtonHover;
@@ -73,6 +80,9 @@ namespace Winged_Warfare
         public static Texture2D Grey40;
         public static Texture2D Grey80;
 
+        public static Texture2D HUDTimerBG;
+        public static Texture2D HUDAmmoBG;
+        public static Texture2D HUDScoreBG;
         public static Texture2D HUDAmmo;
         public static Texture2D HUDAmmoEmpty;
         public static Texture2D HUDAmmoReloading;
@@ -134,7 +144,7 @@ namespace Winged_Warfare
             base.Initialize();
             // TODO: Add your initialization logic here
             // Initialize camera in Game1.cs because of "No _graphics Device Service" problem.
-            Player.CamPosition = new Vector3(-1f, 0.2f, -1f);
+            Player.CamPosition = new Vector3(3.94f, 0.2f, 7.71f);
             Player.CamTarget = new Vector3(Player.CamPosition.X, Player.CamPosition.Y, Player.CamPosition.Z + 1);
             Player.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), GraphicsDevice.DisplayMode.AspectRatio, 0.01f, 1000f);
             Player.ViewMatrix = Matrix.CreateLookAt(Player.CamPosition, Player.CamTarget, Vector3.Up);
@@ -162,12 +172,17 @@ namespace Winged_Warfare
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Fonts
-            TestFont = Content.Load<SpriteFont>("testContent/testFont");
-
+            TestFont = Content.Load<SpriteFont>("Font_SS3_Bold_24");
+            HUDTimerFont = Content.Load<SpriteFont>("Font_SS3_Bold_48");
+            HUDScoreTextFont = Content.Load<SpriteFont>("Font_SS3_Bold_ScoreText");
+            HUDScoreNumFont = Content.Load<SpriteFont>("Font_SS3_Bold_ScoreNumber");
+            HUDAmmoFont = Content.Load<SpriteFont>("Font_SS3_Bold_AmmoText");
 
             // Textures
             menuBackground = Content.Load<Texture2D>("testContent/menuBackground");
             settingsBackground = Content.Load<Texture2D>("testContent/settingsBackground");
+            menuBoxTexture = Content.Load<Texture2D>("testContent/menu_box");
+            MenuBoxTextureItem = new TextureItem(menuBoxTexture, new Vector2(100, 100), new Vector2(200, 150));
             //gameBackground = Content.Load<Texture2D>("testContent/gameBackground");
 
             Button = Content.Load<Texture2D>("testContent/button");
@@ -178,6 +193,9 @@ namespace Winged_Warfare
 
 
             // Textures for HUD
+            HUDTimerBG = Content.Load<Texture2D>("HUD_BG/Time_HUD");
+            HUDAmmoBG = Content.Load<Texture2D>("HUD_BG/Ammo_HUD");
+            HUDScoreBG = Content.Load<Texture2D>("HUD_BG/Score_HUD");
             HUDAmmo = Content.Load<Texture2D>("Bullet");
             HUDAmmoEmpty = Content.Load<Texture2D>("Bullet_G");
             HUDAmmoReloading = Content.Load<Texture2D>("Bullet_B");

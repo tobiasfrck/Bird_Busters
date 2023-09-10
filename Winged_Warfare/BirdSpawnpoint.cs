@@ -25,7 +25,7 @@ namespace Winged_Warfare
         private float _spawnRate; // birds per second
         private float _currSpawnRateMultiplier = 0.3f; // used to store multiplier that increases spawn rate over time
         private float _tempSpawnRateMultiplier = 0.2f; // used to store multipliers of special events
-        private float _spawnTank = 0f; // the "tank" is filled each frame and when it reaches >1, n>=1 birds are spawned
+        private float _spawnTank = 2f; // the "tank" is filled each frame and when it reaches >1, n>=1 birds are spawned
 
         private Random _random;
 

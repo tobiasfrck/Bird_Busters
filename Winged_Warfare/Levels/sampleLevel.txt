@@ -1,10 +1,10 @@
 Highscore: 686
 model,-25,-2,17,0,0,0,1,1,1,Level/City_Level
 model,0,-5,0,0,0,0,1,1,1,testContent/Net
-pathpoint,1,-40,67,5,6
-pathpoint,2,-40,60,5,6
-pathpoint,3,50,67,7,8
-pathpoint,4,50,60,7,8
+pathpoint,1,-12,67,5,6
+pathpoint,2,-12,60,5,6
+pathpoint,3,23,67,7,8
+pathpoint,4,20,60,7,8
 pathpoint,5,1,66,9
 pathpoint,6,-1,59,9
 pathpoint,7,6,66,9
@@ -19,8 +19,8 @@ pathpoint,16,43,-18
 pathpoint,17,-47,-18
 pathpoint,18,9,31,10
 pathpoint,19,1,31,10
-pathpoint,20,63,32,18
-pathpoint,21,-47,32,19
+pathpoint,20,57,32,18
+pathpoint,21,-19,32,19
 spawnpoint,1,1.25,1.0
 spawnpoint,2,1.25,1.0
 spawnpoint,3,1.25,1.0

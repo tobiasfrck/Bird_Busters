@@ -43,5 +43,10 @@ namespace Winged_Warfare
         {
             return _highscore;
         }
+
+        public static int GetBirdsHit(BirdType type)
+        {
+            return _birdsHit[(int)type];
+        }
     }
 }

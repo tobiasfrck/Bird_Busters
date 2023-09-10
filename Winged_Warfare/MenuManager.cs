@@ -349,10 +349,12 @@ namespace Winged_Warfare
                     if (birdAnimationTimer != null)
                     {
                         int frame = (int)(birdAnimationTimer.GetProgress() * 60);
-                        _spriteBatch.Draw(Game1.GreenBirdVideo[frame], new Rectangle(0, 0, Game1.GreenBirdVideo[frame].Width, Game1.GreenBirdVideo[frame].Height), Color.White);
-                        _spriteBatch.Draw(Game1.RedBirdVideo[frame], new Rectangle(Game1.RedBirdVideo[frame].Width * 1, 0, Game1.RedBirdVideo[frame].Width, Game1.RedBirdVideo[frame].Height), Color.White);
-                        _spriteBatch.Draw(Game1.OrangeBirdVideo[frame], new Rectangle(Game1.OrangeBirdVideo[frame].Width * 1, 0, Game1.OrangeBirdVideo[frame].Width, Game1.OrangeBirdVideo[frame].Height), Color.White);
+                        frame = 1;
+                        _spriteBatch.Draw(Game1.GreenBirdVideo[frame], new Rectangle(30, 200, Game1.GreenBirdVideo[frame].Width / 2, Game1.GreenBirdVideo[frame].Height / 2), Color.White);
+                        _spriteBatch.Draw(Game1.RedBirdVideo[frame], new Rectangle(716, 200, Game1.RedBirdVideo[frame].Width / 2, Game1.RedBirdVideo[frame].Height / 2), Color.White);
+                        _spriteBatch.Draw(Game1.OrangeBirdVideo[frame], new Rectangle(1400, 200, Game1.OrangeBirdVideo[frame].Width / 2, Game1.OrangeBirdVideo[frame].Height / 2), Color.White);
                     }
+
 
                     foreach (Button btn in _gameEndedButtons)
                     {
@@ -627,8 +629,8 @@ namespace Winged_Warfare
             Vector2 backPadding = new Vector2(40, 40);
             Vector2 restartPadding = new Vector2(40, 40);
 
-            Button toMenu = new Button(new Vector2(_horizontalCenter + backPadding.X, (Game1.Height / 10f * 8) - 20) - backPadding, backSize + backPadding, Game1.Grey80, Game1.Grey40, _blankTexture, "Return to menu", Game1.TestFont, Color.Black, Color.Black, Color.Black);
-            Button restart = new Button(new Vector2(_horizontalCenter + restartPadding.X, (Game1.Height / 10f * 9) - 20) - restartPadding, restartSize + restartPadding, Game1.Grey80, Game1.Grey40, _blankTexture, "Play another round", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button toMenu = new Button(new Vector2(270 + backPadding.X, (Game1.Height - 100))-backPadding, backSize + backPadding, Game1.Grey80, Game1.Grey40, _blankTexture, "Return to menu", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button restart = new Button(new Vector2(1650 + restartPadding.X, (Game1.Height - 100)) - restartPadding, restartSize + restartPadding, Game1.Grey80, Game1.Grey40, _blankTexture, "Play another round", Game1.TestFont, Color.Black, Color.Black, Color.Black);
             _gameEndedButtons.Add(toMenu);
             _gameEndedButtons.Add(restart);
             toMenu.SetClick(SwitchToMenu);
@@ -669,7 +671,7 @@ namespace Winged_Warfare
             MediaPlayer.Volume = Game1.MusicVolume;
             Game1._gameTimer = new Timer((int)Game1.gameScreenMusic.Duration.TotalMilliseconds, SetGameNeedsReset);
             //uncomment for testing endscreen
-            //Game1._gameTimer = new Timer(10000, SetGameNeedsReset);
+            Game1._gameTimer = new Timer(1, SetGameNeedsReset);
             Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();
             SetState(GameState.Game);

@@ -2766,6 +2766,30 @@
 /processorParam:TextureFormat=Compressed
 /build:testContent/button.png
 
+#begin testContent/ControlBox.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:testContent/ControlBox.png
+
+#begin testContent/CreditBox.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:testContent/CreditBox.png
+
 #begin testContent/cubeTexture.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2833,6 +2857,18 @@
 /processorParam:TextureFormat=Compressed
 /build:testContent/NetTexture.png
 
+#begin testContent/OptionsBox.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:testContent/OptionsBox.png
+
 #begin testContent/settingsBackground.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -2844,6 +2880,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Compressed
 /build:testContent/settingsBackground.png
+
+#begin testContent/SoundAnzeige.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:testContent/SoundAnzeige.png
 
 #begin testContent/testCube.fbx
 /importer:FbxImporter
@@ -2870,4 +2918,16 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:testContent/testFont.spritefont
+
+#begin testContent/TutorialBox.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:testContent/TutorialBox.png
 

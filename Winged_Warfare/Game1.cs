@@ -27,8 +27,8 @@ namespace Winged_Warfare
         private bool fullscreenbutton = false;
 
         // Game Settings
-        public static int Width = 1600;
-        public static int Height = 900;
+        public static int Width = 1920;
+        public static int Height = 1080;
         public static float MusicVolume = 0.1f;
         public static float SFXVolume = 1;
         public static float MenuSFXVolume = 0.1f;
@@ -63,6 +63,11 @@ namespace Winged_Warfare
             "Birds/Birb3"
         };
         public static SpriteFont TestFont;
+        public static SpriteFont HUDTimerFont;
+        public static SpriteFont HUDScoreTextFont;
+        public static SpriteFont HUDScoreNumFont;
+        public static SpriteFont HUDAmmoFont;
+
 
         public static Texture2D menuBackground;
         public static Texture2D settingsBackground;
@@ -167,8 +172,11 @@ namespace Winged_Warfare
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Fonts
-            TestFont = Content.Load<SpriteFont>("testContent/testFont");
-
+            TestFont = Content.Load<SpriteFont>("Font_SS3_Bold_24");
+            HUDTimerFont = Content.Load<SpriteFont>("Font_SS3_Bold_48");
+            HUDScoreTextFont = Content.Load<SpriteFont>("Font_SS3_Bold_ScoreText");
+            HUDScoreNumFont = Content.Load<SpriteFont>("Font_SS3_Bold_ScoreNumber");
+            HUDAmmoFont = Content.Load<SpriteFont>("Font_SS3_Bold_AmmoText");
 
             // Textures
             menuBackground = Content.Load<Texture2D>("testContent/menuBackground");

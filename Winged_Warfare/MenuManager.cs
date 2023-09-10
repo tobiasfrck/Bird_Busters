@@ -25,7 +25,6 @@ namespace Winged_Warfare
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private readonly Rectangle _fullScreen = new(0, 0, Game1.Width, Game1.Height);
-        private Viewport Viewport = new(0, 0, Game1.Width, Game1.Height);
 
         private Texture2D _menuBackground;
         private Texture2D _settingsBackground;
@@ -34,7 +33,7 @@ namespace Winged_Warfare
         private Texture2D _blankTexture;
         private Texture2D _menuBar;
 
-        private List<Texture2D> _menuTextures = new ();
+        private List<Texture2D> _menuTextures = new();
         private List<Button> _menuButtons = new();
         private List<Button> _settingsButtons = new();
         public List<Button> _gameButtons = new();
@@ -54,6 +53,24 @@ namespace Winged_Warfare
 
         private bool _gameNeedsReset = false;
         private bool _isFullscreen = false;
+
+        //HUD Layout Constants
+        private const int borderPadding = 15;
+        private const float ScoreXOffset = 15;
+        private Vector2 highscoreTextSize;
+        private Vector2 scoreTextSize;
+        private Vector2 scoreNumberTextSize;
+        private Vector2 highscoreNumberTextSize;
+        private int remainingScoreYSpace;
+        private Vector2 timeNumberSize;
+        private Vector2 timeTextSize;
+        private int xOffset;
+        private int yOffset;
+        private float ammoX;
+        private int magDisplayXPosition;
+        private int magDisplayDistanceBetween; //distance between ammo icons
+        private Rectangle crosshairRect;
+
 
 
         //for testing purposes
@@ -94,6 +111,19 @@ namespace Winged_Warfare
             SwitchToMenu();
 
             Instance = this;
+
+            // Margin for all HUD elements on the right side of the screen
+            xOffset = Game1.Width - borderPadding;
+
+            timeTextSize = Game1.HUDScoreTextFont.MeasureString("TIME");
+            highscoreTextSize = Game1.HUDScoreTextFont.MeasureString("HIGHSCORE");
+            scoreTextSize = Game1.HUDScoreTextFont.MeasureString("SCORE");
+            yOffset = Game1.Height - borderPadding - 36;
+            magDisplayXPosition = (int)(xOffset - Game1.HUDAmmoBG.Width / 2f - Game1.HUDAmmo.Width / 2f);
+            magDisplayDistanceBetween = -7 - Game1.HUDAmmo.Height;
+            ammoX = Game1.HUDAmmoFont.MeasureString("AMMO").X;
+            crosshairRect = new Rectangle((Game1.Width / 2) - (Game1.Crosshair.Width / 2), (Game1.Height / 2) - (Game1.Crosshair.Height / 2), Game1.Crosshair.Width, Game1.Crosshair.Height);
+
         }
 
 
@@ -188,7 +218,7 @@ namespace Winged_Warfare
                         _spriteBatch.Draw(_settingsBackground, _fullScreen, Color.White);
                     }
 
-                    _spriteBatch.Draw(Game1.menuBoxTexture,new Rectangle(100,100,250,100),Color.White);
+                    _spriteBatch.Draw(Game1.menuBoxTexture, new Rectangle(100, 100, 250, 100), Color.White);
 
                     foreach (Button btn in _settingsButtons)
                     {
@@ -196,7 +226,7 @@ namespace Winged_Warfare
                     }
                     break;
                 case GameState.Game:
-                    if(Level.IsHUDDeactivated()) { break; }
+                    if (Level.IsHUDDeactivated()) { break; }
 
                     foreach (ScoreIndicator indicator in _scoreIndicators)
                     {
@@ -206,8 +236,6 @@ namespace Winged_Warfare
                         }
                     }
 
-                    // Margin for all HUD elements on the right side of the screen
-                    int xOffset = Game1.Width - 10;
 
                     //TODO: Clean unused code if you are sure it is not needed! So probably later.
                     // Would draw the game background here but currently not used
@@ -217,63 +245,48 @@ namespace Winged_Warfare
                     }
                     DrawDebug();
 
+                    timeNumberSize = Game1.HUDTimerFont.MeasureString(Game1._gameTimer.GetSeconds().ToString());
+                    scoreNumberTextSize = Game1.HUDScoreNumFont.MeasureString(Score.GetScore().ToString());
+                    highscoreNumberTextSize = Game1.HUDScoreNumFont.MeasureString(Score.GetHighscore().ToString());
+                    remainingScoreYSpace = (int)((Game1.HUDScoreBG.Height - highscoreNumberTextSize.Y - highscoreTextSize.Y) / 2f + 10);
+
+
                     //Draw HUD Backgrounds
-                    _spriteBatch.Draw(Game1.HUDTimerBG,new Rectangle(10,10,Game1.HUDTimerBG.Width,Game1.HUDTimerBG.Height), new Color(Color.White, 0.35f));
-                    _spriteBatch.Draw(Game1.HUDScoreBG, new Rectangle(xOffset-Game1.HUDScoreBG.Width, 10, Game1.HUDScoreBG.Width, Game1.HUDScoreBG.Height), new Color(Color.White, 0.35f));
-                    _spriteBatch.Draw(Game1.HUDAmmoBG, new Rectangle(xOffset - Game1.HUDAmmoBG.Width, Game1.Height - Game1.HUDAmmoBG.Height - 10, Game1.HUDAmmoBG.Width, Game1.HUDAmmoBG.Height), new Color(Color.White,0.35f));
-                    Vector2 timeTextSize = Game1.TestFont.MeasureString(Game1._gameTimer.GetSeconds().ToString());
-                    _spriteBatch.DrawString(Game1.TestFont, Game1._gameTimer.GetSeconds().ToString(), new Vector2(10 + (Game1.HUDTimerBG.Width/2f) - (timeTextSize.X/2f), 10 + (Game1.HUDTimerBG.Height / 2f) - (timeTextSize.Y / 2f)), Color.White);
-
-                    float distanceBetweenScoreAndHighscore = 10;
-                    float ScoreYOffset = 30;
-                    Vector2 highscoreTextSize = Game1.TestFont.MeasureString("HIGHSCORE");
-                    Vector2 scoreTextSize = Game1.TestFont.MeasureString("SCORE");
-                    Vector2 scoreNumberTextSize = Game1.TestFont.MeasureString(Score.GetScore().ToString());
-                    Vector2 highscoreNumberTextSize = Game1.TestFont.MeasureString(Score.GetHighscore().ToString());
-                    _spriteBatch.DrawString(Game1.TestFont, "HIGHSCORE", new Vector2(xOffset - highscoreTextSize.X, ScoreYOffset+highscoreNumberTextSize.Y), Color.White);
-                    _spriteBatch.DrawString(Game1.TestFont, "SCORE", new Vector2(xOffset - scoreTextSize.X - distanceBetweenScoreAndHighscore - highscoreTextSize.X, ScoreYOffset + scoreNumberTextSize.Y), Color.White);
-                    _spriteBatch.DrawString(Game1.TestFont, Score.GetScore().ToString(), new Vector2(xOffset - scoreNumberTextSize.X/2f - distanceBetweenScoreAndHighscore - highscoreTextSize.X - scoreTextSize.X/2f, ScoreYOffset), Color.White);
-                    _spriteBatch.DrawString(Game1.TestFont, Score.GetHighscore().ToString(), new Vector2(xOffset - highscoreTextSize.X/2f - highscoreNumberTextSize.X/2f, ScoreYOffset), Color.White);
-
-
+                    _spriteBatch.Draw(Game1.HUDTimerBG, new Rectangle(borderPadding, borderPadding, Game1.HUDTimerBG.Width, Game1.HUDTimerBG.Height), new Color(Color.White, 0.35f));
+                    _spriteBatch.Draw(Game1.HUDScoreBG, new Rectangle(xOffset - Game1.HUDScoreBG.Width, borderPadding, Game1.HUDScoreBG.Width, Game1.HUDScoreBG.Height), new Color(Color.White, 0.35f));
+                    _spriteBatch.Draw(Game1.HUDAmmoBG, new Rectangle(xOffset - Game1.HUDAmmoBG.Width, Game1.Height - Game1.HUDAmmoBG.Height - borderPadding, Game1.HUDAmmoBG.Width, Game1.HUDAmmoBG.Height), new Color(Color.White, 0.35f));
+                    _spriteBatch.DrawString(Game1.HUDTimerFont, Game1._gameTimer.GetSeconds().ToString(), new Vector2(borderPadding + (Game1.HUDTimerBG.Width / 2f) - (timeNumberSize.X / 2f), borderPadding + (Game1.HUDTimerBG.Height / 2f) - (timeNumberSize.Y / 2f)), Color.White);
+                    _spriteBatch.DrawString(Game1.HUDScoreTextFont, "TIME", new Vector2(borderPadding + (Game1.HUDTimerBG.Width / 2f) - (timeTextSize.X / 2f),borderPadding + Game1.HUDTimerBG.Height - 2),Color.White);
+                    _spriteBatch.DrawString(Game1.HUDScoreTextFont, "HIGHSCORE", new Vector2(xOffset - highscoreTextSize.X - ScoreXOffset, borderPadding + Game1.HUDScoreBG.Height - remainingScoreYSpace - highscoreTextSize.Y), new Color(207, 167, 46));
+                    _spriteBatch.DrawString(Game1.HUDScoreTextFont, "SCORE", new Vector2(xOffset - Game1.HUDScoreBG.Width + ScoreXOffset, borderPadding + Game1.HUDScoreBG.Height - remainingScoreYSpace - scoreTextSize.Y), new Color(180, 76, 75));
+                    _spriteBatch.DrawString(Game1.HUDScoreNumFont, Score.GetScore().ToString(), new Vector2(xOffset - Game1.HUDScoreBG.Width + ScoreXOffset + scoreTextSize.X / 2f - scoreNumberTextSize.X / 2f, borderPadding + remainingScoreYSpace), Color.White);
+                    _spriteBatch.DrawString(Game1.HUDScoreNumFont, Score.GetHighscore().ToString(), new Vector2(xOffset - highscoreNumberTextSize.X / 2f - highscoreTextSize.X / 2f - ScoreXOffset, borderPadding + remainingScoreYSpace), Color.White);
 
 
                     // Draw Ammunition HUD
-                    int magDisplayYPosition = Game1.Height - 80;
-                    int magDisplayDistanceBetween = -40; //distance between icons
                     for (int i = 0; i < BulletHandler.GetMagazinSize(); i++)
                     {
-                        int magDisplayXPosition = (i + 1) * magDisplayDistanceBetween + xOffset;
+                        int magDisplayYPosition = (i + 1) * magDisplayDistanceBetween + (yOffset+1);
                         //Draw unavailable bullets while reloading
                         if (BulletHandler.IsReloading() == true)
                         {
-                            _spriteBatch.Draw(Game1.HUDAmmoReloading, new Rectangle(magDisplayXPosition, magDisplayYPosition, 24, 56), Color.White);
+                            _spriteBatch.Draw(Game1.HUDAmmoReloading, new Rectangle(magDisplayXPosition, magDisplayYPosition, Game1.HUDAmmoReloading.Width, Game1.HUDAmmoReloading.Height), Color.White);
                         }
                         //Draw available bullets
                         else if (i < BulletHandler.GetAvailableShots() && BulletHandler.IsReloading() == false)
                         {
-                            _spriteBatch.Draw(Game1.HUDAmmo, new Rectangle(magDisplayXPosition, magDisplayYPosition, 24, 56), Color.White);
+                            _spriteBatch.Draw(Game1.HUDAmmo, new Rectangle(magDisplayXPosition, magDisplayYPosition, Game1.HUDAmmo.Width, Game1.HUDAmmo.Height), Color.White);
                         }
                         else //Draw unavailable bullets
                         {
-                            _spriteBatch.Draw(Game1.HUDAmmoEmpty, new Rectangle(magDisplayXPosition, magDisplayYPosition, 24, 56), Color.White);
+                            _spriteBatch.Draw(Game1.HUDAmmoEmpty, new Rectangle(magDisplayXPosition, magDisplayYPosition, Game1.HUDAmmoEmpty.Width, Game1.HUDAmmoEmpty.Height), Color.White);
                         }
                     }
+                    _spriteBatch.DrawString(Game1.HUDAmmoFont,"AMMO",new Vector2((xOffset - Game1.HUDAmmoBG.Width / 2f - ammoX/ 2f), yOffset-3),Color.White);
 
 
-                    // TODO: Draw remaining time HUD
-                    Rectangle crosshairRect = new Rectangle((Game1.Width / 2) - (Game1.Crosshair.Width / 2), (Game1.Height / 2) - (Game1.Crosshair.Height / 2), Game1.Crosshair.Width, Game1.Crosshair.Height);
+                    //Draw crosshair
                     _spriteBatch.Draw(Game1.Crosshair, crosshairRect, Color.White);
-
-                    
-
-                    //Some kind of buttons during gameplay; currently not used
-                    foreach (Button btn in _gameButtons)
-                    {
-                        btn.Draw(_spriteBatch, _currentMouseState.Position.ToVector2(), _currentMouseState.LeftButton == ButtonState.Pressed);
-                    }
-
-
                     break;
                 case GameState.GameEnded:
                     float backgroundAlpha = gameEndFadeTimer.GetProgress();
@@ -321,20 +334,20 @@ namespace Winged_Warfare
             {
                 Vector2 textDim = Game1.TestFont.MeasureString(Level.GetDebugText());
                 _spriteBatch.DrawString(Game1.TestFont, Level.GetDebugText(),
-                    new Vector2((Game1.Width / 2f) - (textDim.X / 2f), Game1.Height-textDim.Y), Color.Red);
+                    new Vector2((Game1.Width / 2f) - (textDim.X / 2f), Game1.Height - textDim.Y), Color.Red);
             }
         }
 
         private void CreateMainMenu()
         {
             float XFractionStart = 1f / 2f;
-            float YFractionStart = 6f / 10f; 
+            float YFractionStart = 6f / 10f;
 
             float XFractionSettings = 4f / 10f;
-            float YFractionSettings = 8f / 10f; 
+            float YFractionSettings = 8f / 10f;
 
-            float XFractionExit = 1 - XFractionSettings; 
-            float YFractionExit = 8f / 10f; 
+            float XFractionExit = 1 - XFractionSettings;
+            float YFractionExit = 8f / 10f;
 
             Button startGame = new Button(new Vector2(Game1.Width * XFractionStart, Game1.Height * YFractionStart), new Vector2(250, 125), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Start Game", Game1.TestFont, Color.Black, Color.Black, Color.Black);
             Button settings = new Button(new Vector2(Game1.Width * XFractionSettings, Game1.Height * YFractionSettings), new Vector2(250, 125), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Settings", Game1.TestFont, Color.Black, Color.Black, Color.Black);
@@ -350,21 +363,21 @@ namespace Winged_Warfare
 
         private void CreateSettingsMenu()
         {
-            float XFraction = 1f / 18f; 
-            float YFraction = 9f / 10f; 
+            float XFraction = 1f / 18f;
+            float YFraction = 9f / 10f;
 
             Button toMenu = new Button(new Vector2(Game1.Width * XFraction, Game1.Height * YFraction), new Vector2(100, 60), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Back", Game1.TestFont, Color.Black, Color.White, Color.White);
             _settingsButtons.Add(toMenu);
             toMenu.SetClick(SwitchToMenu);
 
-             void CreateSettingsMenu(Texture2D _menuBar, Vector2 _menuBarPosition, Vector2 _menuBarSize)
+            void CreateSettingsMenu(Texture2D _menuBar, Vector2 _menuBarPosition, Vector2 _menuBarSize)
             {
-               
-                Texture2D menuBoxTexture = _menuBar; 
-                Vector2 menuBoxPosition = _menuBarPosition; 
-                Vector2 menuBoxSize = _menuBarSize; 
 
-                
+                Texture2D menuBoxTexture = _menuBar;
+                Vector2 menuBoxPosition = _menuBarPosition;
+                Vector2 menuBoxSize = _menuBarSize;
+
+
             }
 
             // Button, um in den Vollbildmodus zu wechseln
@@ -380,7 +393,7 @@ namespace Winged_Warfare
                 if (_isFullscreen)
                 {
                     _graphics.IsFullScreen = true;
-                    
+
                     fullscreenButton.SetText("Window"); // Ändere den Text auf "Fenstermodus"
                 }
                 else
@@ -410,7 +423,7 @@ namespace Winged_Warfare
                     MediaPlayer.Volume = 0;
                 }
             }
-          
+
             // Lautstärke erhöhen Button
             float volumeUpButtonX = Game1.Width * 0.3f;
             float volumeUpButtonY = Game1.Height * 0.7f;
@@ -420,7 +433,7 @@ namespace Winged_Warfare
                 Game1.Button, Game1.ButtonHover, Game1.ButtonPressed,
                 "+", Game1.TestFont, Color.Black, Color.Black, Color.Black
             );
-            volumeUpButton.SetClick(IncreaseVolume); 
+            volumeUpButton.SetClick(IncreaseVolume);
             _settingsButtons.Add(volumeUpButton);
 
             // Lautstärke reduzieren Button
@@ -432,7 +445,7 @@ namespace Winged_Warfare
                 Game1.Button, Game1.ButtonHover, Game1.ButtonPressed,
                 "-", Game1.TestFont, Color.Black, Color.Black, Color.Black
             );
-            volumeDownButton.SetClick(DecreaseVolume); 
+            volumeDownButton.SetClick(DecreaseVolume);
             _settingsButtons.Add(volumeDownButton);
         }
 

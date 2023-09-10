@@ -234,14 +234,14 @@ namespace Winged_Warfare
 
                     }
 
-                    _spriteBatch.Draw(Game1.menuBoxLeft, new Rectangle(30,70,400,500),Color.White); //linke Menu-Box
-                    _spriteBatch.Draw(Game1.menuBoxRight, new Rectangle(1170, 70, 400, 500), Color.White); //rechte Menu-Box
-                    _spriteBatch.Draw(Game1.menuBoxLow, new Rectangle(430, 670, 750, 200), Color.White); //untere Menu-Box
-                    _spriteBatch.Draw(Game1.menuBoxCenter, new Rectangle(500, 30, 600, 630), Color.White); //mittlere Menu-Box
-                    _spriteBatch.Draw(Game1.menuBoxCenter, new Rectangle(500, 30, 600, 630), Color.White); //mittlere Menu-Box
-                    _spriteBatch.Draw(Game1.Soundbar, new Rectangle(822, 153, 195, 40), Color.White); //SoundbarMusic
-                    _spriteBatch.Draw(Game1.Soundbar, new Rectangle(822, 210, 195, 40), Color.White); //SoundbarMusicSFX
-                    _spriteBatch.Draw(Game1.Soundbar, new Rectangle(822, 262, 195, 40), Color.White); //SoundbarMusic
+                    _spriteBatch.Draw(Game1.menuBoxLeft, new Rectangle(30,70,550,700),Color.White); //linke Menu-Box
+                    _spriteBatch.Draw(Game1.menuBoxRight, new Rectangle(1334, 70, 550, 700), Color.White); //rechte Menu-Box
+                    _spriteBatch.Draw(Game1.menuBoxLow, new Rectangle(516, 804, 900, 240), Color.White); //untere Menu-Box
+                    _spriteBatch.Draw(Game1.menuBoxCenter, new Rectangle(600, 30, 720, 756), Color.White); //mittlere Menu-Box
+                    _spriteBatch.Draw(Game1.menuBoxCenter, new Rectangle(600, 30, 720, 756), Color.White); //mittlere Menu-Box
+                    _spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 183, 234, 48), Color.White); //SoundbarMusic
+                    _spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 252, 234, 48), Color.White); //SoundbarMusicSFX
+                    _spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 314, 234, 48), Color.White); //SoundbarMusic
 
 
                     string cheatStatusText = IsCheatActivated() ? "Cheat aktiviert!" : "Cheat deaktiviert";

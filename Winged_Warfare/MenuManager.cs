@@ -72,6 +72,8 @@ namespace Winged_Warfare
         private Rectangle crosshairRect;
 
 
+        public static bool IsGunRecoiled = false;
+
 
         //for testing purposes
         public static MenuManager Instance;
@@ -152,6 +154,10 @@ namespace Winged_Warfare
                     {
                         btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
                     }
+
+
+
+
 
                     for (int i = 0; i < _scoreIndicators.Count; i++)
                     {
@@ -243,6 +249,30 @@ namespace Winged_Warfare
                     {
                         _spriteBatch.Draw(_gameBackground, _fullScreen, Color.White);
                     }
+
+                    if (FPSCamera.isSprinting() == false && FPSCamera.IsScoped() == false)
+                    {
+                        if (IsGunRecoiled)
+                        {
+                            _spriteBatch.Draw(Game1.RecoiledGun, new Rectangle(0, 0, Game1.Width, Game1.Height), Color.White);
+                        }
+                        else
+                        {
+                            _spriteBatch.Draw(Game1.NormalGun, new Rectangle(0, 0, Game1.Width, Game1.Height), Color.White);
+                        }
+                    }
+                    else if (FPSCamera.IsScoped() == true && FPSCamera.isSprinting() == false)
+                    {
+                        if (IsGunRecoiled)
+                        {
+                            _spriteBatch.Draw(Game1.ScopedRecoiledGun, new Rectangle(0, 0, Game1.Width, Game1.Height), Color.White);
+                        }
+                        else
+                        {
+                            _spriteBatch.Draw(Game1.ScopedGun, new Rectangle(0, 0, Game1.Width, Game1.Height), Color.White);
+                        }
+                    }
+
                     DrawDebug();
 
                     timeNumberSize = Game1.HUDTimerFont.MeasureString(Game1._gameTimer.GetSeconds().ToString());
@@ -256,7 +286,7 @@ namespace Winged_Warfare
                     _spriteBatch.Draw(Game1.HUDScoreBG, new Rectangle(xOffset - Game1.HUDScoreBG.Width, borderPadding, Game1.HUDScoreBG.Width, Game1.HUDScoreBG.Height), new Color(Color.White, 0.35f));
                     _spriteBatch.Draw(Game1.HUDAmmoBG, new Rectangle(xOffset - Game1.HUDAmmoBG.Width, Game1.Height - Game1.HUDAmmoBG.Height - borderPadding, Game1.HUDAmmoBG.Width, Game1.HUDAmmoBG.Height), new Color(Color.White, 0.35f));
                     _spriteBatch.DrawString(Game1.HUDTimerFont, Game1._gameTimer.GetSeconds().ToString(), new Vector2(borderPadding + (Game1.HUDTimerBG.Width / 2f) - (timeNumberSize.X / 2f), borderPadding + (Game1.HUDTimerBG.Height / 2f) - (timeNumberSize.Y / 2f)), Color.White);
-                    _spriteBatch.DrawString(Game1.HUDScoreTextFont, "TIME", new Vector2(borderPadding + (Game1.HUDTimerBG.Width / 2f) - (timeTextSize.X / 2f),borderPadding + Game1.HUDTimerBG.Height - 2),Color.White);
+                    _spriteBatch.DrawString(Game1.HUDScoreTextFont, "TIME", new Vector2(borderPadding + (Game1.HUDTimerBG.Width / 2f) - (timeTextSize.X / 2f), borderPadding + Game1.HUDTimerBG.Height - 2), Color.White);
                     _spriteBatch.DrawString(Game1.HUDScoreTextFont, "HIGHSCORE", new Vector2(xOffset - highscoreTextSize.X - ScoreXOffset, borderPadding + Game1.HUDScoreBG.Height - remainingScoreYSpace - highscoreTextSize.Y), new Color(207, 167, 46));
                     _spriteBatch.DrawString(Game1.HUDScoreTextFont, "SCORE", new Vector2(xOffset - Game1.HUDScoreBG.Width + ScoreXOffset, borderPadding + Game1.HUDScoreBG.Height - remainingScoreYSpace - scoreTextSize.Y), new Color(180, 76, 75));
                     _spriteBatch.DrawString(Game1.HUDScoreNumFont, Score.GetScore().ToString(), new Vector2(xOffset - Game1.HUDScoreBG.Width + ScoreXOffset + scoreTextSize.X / 2f - scoreNumberTextSize.X / 2f, borderPadding + remainingScoreYSpace), Color.White);
@@ -266,7 +296,7 @@ namespace Winged_Warfare
                     // Draw Ammunition HUD
                     for (int i = 0; i < BulletHandler.GetMagazinSize(); i++)
                     {
-                        int magDisplayYPosition = (i + 1) * magDisplayDistanceBetween + (yOffset+1);
+                        int magDisplayYPosition = (i + 1) * magDisplayDistanceBetween + (yOffset + 1);
                         //Draw unavailable bullets while reloading
                         if (BulletHandler.IsReloading() == true)
                         {
@@ -282,7 +312,7 @@ namespace Winged_Warfare
                             _spriteBatch.Draw(Game1.HUDAmmoEmpty, new Rectangle(magDisplayXPosition, magDisplayYPosition, Game1.HUDAmmoEmpty.Width, Game1.HUDAmmoEmpty.Height), Color.White);
                         }
                     }
-                    _spriteBatch.DrawString(Game1.HUDAmmoFont,"AMMO",new Vector2((xOffset - Game1.HUDAmmoBG.Width / 2f - ammoX/ 2f), yOffset-3),Color.White);
+                    _spriteBatch.DrawString(Game1.HUDAmmoFont, "AMMO", new Vector2((xOffset - Game1.HUDAmmoBG.Width / 2f - ammoX / 2f), yOffset - 3), Color.White);
 
 
                     //Draw crosshair

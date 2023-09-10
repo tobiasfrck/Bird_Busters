@@ -135,6 +135,7 @@ namespace Winged_Warfare
                 if (!cheatActivated)
                 {
                     Game1.ShootEffect.Play(Game1.SFXVolume, 0, 0);
+                    MenuManager.IsGunRecoiled = true;
                 }
                 bullets.Add(new Net(FPSCamera.position, Player.CamTarget));
                 //Schaut ob gerade die letzte Kugel verschossen wurde
@@ -157,7 +158,11 @@ namespace Winged_Warfare
                     _reloadTimerShot.SetTimeNRun(reloadTimerShot);
                     Magazin -= 1;
                 }
+            }
 
+            if (_reloadTimerShot.IsRunning() == false && IsReloading()==false)
+            {
+                MenuManager.IsGunRecoiled = false;
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.R) && Magazin != MagazinSize && canShoot)

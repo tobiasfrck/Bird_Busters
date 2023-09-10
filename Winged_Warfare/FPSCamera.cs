@@ -27,6 +27,7 @@ namespace Winged_Warfare
         Game game;
         public static Vector3 direction;
         public static Vector3 lookAt;
+        public static bool isScoping = false;
 
         /// <summary>
         /// The view matrix for this camera
@@ -78,7 +79,7 @@ namespace Winged_Warfare
         public Vector2 Corner2 = new Vector2(12.128665f, 16.450724f);
 
         //Standart Settings
-        float POV = MathHelper.ToRadians(70);
+        private static float POV = MathHelper.ToRadians(70);
 
         /// <summary>
         /// Constructs a new FPS Camera
@@ -369,6 +370,11 @@ namespace Winged_Warfare
             if (Mouse.GetState().RightButton == ButtonState.Pressed && !(IsSprinting && IsMoving))
             {
                 POVadjusted = POV * 0.5f;
+                isScoping = true;
+            }
+            else
+            {
+                isScoping = false;
             }
 
 
@@ -436,6 +442,16 @@ namespace Winged_Warfare
 
             Listener.Position = position;
             Listener.Forward = direction;
+        }
+
+        public static bool IsScoped()
+        {
+            return isScoping;
+        }
+
+        public static bool isSprinting()
+        {
+            return IsSprinting;
         }
 
         private void LimitSpeed(float factor)

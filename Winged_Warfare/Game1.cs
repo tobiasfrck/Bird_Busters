@@ -63,6 +63,11 @@ namespace Winged_Warfare
             "Birds/Birb3"
         };
         public static SpriteFont TestFont;
+        public static SpriteFont HUDTimerFont;
+        public static SpriteFont HUDScoreTextFont;
+        public static SpriteFont HUDScoreNumFont;
+        public static SpriteFont HUDAmmoFont;
+
 
         public static Texture2D menuBackground;
         public static Texture2D settingsBackground;
@@ -81,6 +86,10 @@ namespace Winged_Warfare
         public static Texture2D Grey40;
         public static Texture2D Grey80;
 
+        public static Texture2D NormalGun;
+        public static Texture2D RecoiledGun;
+        public static Texture2D ScopedGun;
+        public static Texture2D ScopedRecoiledGun;
         public static Texture2D HUDTimerBG;
         public static Texture2D HUDAmmoBG;
         public static Texture2D HUDScoreBG;
@@ -173,8 +182,11 @@ namespace Winged_Warfare
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Fonts
-            TestFont = Content.Load<SpriteFont>("testContent/testFont");
-
+            TestFont = Content.Load<SpriteFont>("Font_SS3_Bold_24");
+            HUDTimerFont = Content.Load<SpriteFont>("Font_SS3_Bold_48");
+            HUDScoreTextFont = Content.Load<SpriteFont>("Font_SS3_Bold_ScoreText");
+            HUDScoreNumFont = Content.Load<SpriteFont>("Font_SS3_Bold_ScoreNumber");
+            HUDAmmoFont = Content.Load<SpriteFont>("Font_SS3_Bold_AmmoText");
 
             // Textures
             menuBackground = Content.Load<Texture2D>("testContent/menuBackground");
@@ -196,6 +208,10 @@ namespace Winged_Warfare
 
 
             // Textures for HUD
+            NormalGun = Content.Load<Texture2D>("HUD_BG/Gun_Normal");
+            RecoiledGun = Content.Load<Texture2D>("HUD_BG/Gun_Recoil");
+            ScopedGun = Content.Load<Texture2D>("HUD_BG/Gun_Scoped");
+            ScopedRecoiledGun = Content.Load<Texture2D>("HUD_BG/Gun_Scoped_Recoil");
             HUDTimerBG = Content.Load<Texture2D>("HUD_BG/Time_HUD");
             HUDAmmoBG = Content.Load<Texture2D>("HUD_BG/Ammo_HUD");
             HUDScoreBG = Content.Load<Texture2D>("HUD_BG/Score_HUD");
@@ -216,7 +232,7 @@ namespace Winged_Warfare
             OrangeBirdVideo = new Texture2D[60];
             for (int i = 1; i < 61; i++)
             {
-                OrangeBirdVideo[i-1] = Content.Load<Texture2D>("BirdAnimations/Orange/" + i.ToString().PadLeft(4, '0'));
+                OrangeBirdVideo[i - 1] = Content.Load<Texture2D>("BirdAnimations/Orange/" + i.ToString().PadLeft(4, '0'));
             }
 
 

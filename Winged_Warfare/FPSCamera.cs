@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,6 +27,7 @@ namespace Winged_Warfare
         Game game;
         public static Vector3 direction;
         public static Vector3 lookAt;
+        public static bool isScoping = false;
 
         /// <summary>
         /// The view matrix for this camera
@@ -47,7 +48,12 @@ namespace Winged_Warfare
         /// <summary>
         /// The speed of the player while moving 
         /// </summary>
-        public float Speed { get; set; } = 0.018f;
+        private static float MaxSpeed { get; set; } = 0.13f;
+        private static float Speed { get; set; } = 0f;
+        private static Vector2 _speedVector = new Vector2(0, 0);
+
+        private static float _moveGainAccel = 0.02f;
+        private static float _moveLossAccel = 0.016f;
 
         //Gravity, Flight & Velocity
         static bool creativeFlight = false;
@@ -57,6 +63,7 @@ namespace Winged_Warfare
         static float Velocity;
         static float Gravity = -0.0025f;
         public static bool IsSprinting;
+        private static bool _wasSprinting;
         public static bool IsMoving;
         static float POVadjusted;
 
@@ -72,7 +79,7 @@ namespace Winged_Warfare
         public Vector2 Corner2 = new Vector2(12.128665f, 16.450724f);
 
         //Standart Settings
-        float POV = MathHelper.ToRadians(70);
+        private static float POV = MathHelper.ToRadians(70);
 
         /// <summary>
         /// Constructs a new FPS Camera
@@ -103,16 +110,22 @@ namespace Winged_Warfare
             _stepTimer.Update();
             var keyboard = Keyboard.GetState();
             var newMouseState = Mouse.GetState();
+            //Debug.WriteLine("Speed:" + Speed);
 
-            float Speed = 0.13f;
             IsMoving = false;
-            IsSprinting = false;
 
             //Sprinting
             if (keyboard.IsKeyDown(Keys.LeftShift))
             {
-                Speed += Speed / 2;
                 IsSprinting = true;
+            }
+            else
+            {
+                if (IsSprinting)
+                {
+                    _wasSprinting = true;
+                }
+                IsSprinting = false;
             }
 
             ;
@@ -120,19 +133,213 @@ namespace Winged_Warfare
             // Get the direction the player is currently facing
             var facing = Vector3.Transform(Vector3.Forward, Matrix.CreateRotationY(horizontalAngle + MathHelper.ToRadians(180f)));
             // Forward and backward movement
-            if (keyboard.IsKeyDown(Keys.W)) { position += facing * Speed; IsMoving = true; }
-            if (keyboard.IsKeyDown(Keys.S)) { position -= facing * Speed; IsMoving = true; }
+            if (keyboard.IsKeyDown(Keys.W))
+            {
+                if (IsSprinting)
+                {
+                    _speedVector.X += _moveGainAccel * 1.5f;
+                }
+                else
+                {
+                    _speedVector.X += _moveGainAccel;
+                }
+                IsMoving = true;
+            }
+            if (keyboard.IsKeyDown(Keys.S))
+            {
+                if (IsSprinting)
+                {
+                    _speedVector.X -= _moveGainAccel * 1.5f;
+                }
+                else
+                {
+                    _speedVector.X -= _moveGainAccel;
+                }
+                IsMoving = true;
+            }
+
             // Strifing movement
-            if (keyboard.IsKeyDown(Keys.A)) { position += Vector3.Cross(Vector3.Up, facing) * Speed; IsMoving = true; }
-            if (keyboard.IsKeyDown(Keys.D)) { position -= Vector3.Cross(Vector3.Up, facing) * Speed; IsMoving = true; }
+            if (keyboard.IsKeyDown(Keys.A))
+            {
+                if (IsSprinting)
+                {
+                    _speedVector.Y += _moveGainAccel * 1.5f;
+                }
+                else
+                {
+                    _speedVector.Y += _moveGainAccel;
+                }
+                IsMoving = true;
+            }
+
+            if (keyboard.IsKeyDown(Keys.D))
+            {
+                if (IsSprinting)
+                {
+                    _speedVector.Y -= _moveGainAccel * 1.5f;
+                }
+                else
+                {
+                    _speedVector.Y -= _moveGainAccel;
+                }
+                IsMoving = true;
+            }
+
+
+
+
             // Adjust horizontal angle
             horizontalAngle += Sensitivity * (oldMouseState.X - newMouseState.X);
+
+            if (IsMoving && IsSprinting)
+            {
+                if (_speedVector.X > MaxSpeed * 1.5f)
+                {
+                    _speedVector.X = MaxSpeed * 1.5f;
+                }
+
+                if (_speedVector.Y > MaxSpeed * 1.5f)
+                {
+                    _speedVector.Y = MaxSpeed * 1.5f;
+                }
+
+                if (_speedVector.X < MaxSpeed * -1.5f)
+                {
+                    _speedVector.X = MaxSpeed * -1.5f;
+                }
+
+                if (_speedVector.Y < MaxSpeed * -1.5f)
+                {
+                    _speedVector.Y = MaxSpeed * -1.5f;
+                }
+
+                LimitSpeed(1.3f);
+
+            }
+            if (IsMoving && !IsSprinting && !_wasSprinting) // Is moving but not sprinting and was not sprinting before
+            {
+                if (_speedVector.X > MaxSpeed)
+                {
+                    _speedVector.X = MaxSpeed;
+                }
+
+                if (_speedVector.Y > MaxSpeed)
+                {
+                    _speedVector.Y = MaxSpeed;
+                }
+
+                if (_speedVector.X < MaxSpeed * -1)
+                {
+                    _speedVector.X = MaxSpeed * -1;
+                }
+
+                if (_speedVector.Y < MaxSpeed * -1)
+                {
+                    _speedVector.Y = MaxSpeed * -1;
+                }
+
+                LimitSpeed(1f);
+            }
+            if (IsMoving && _wasSprinting)
+            {
+                if (_speedVector.X > MaxSpeed)
+                {
+                    _speedVector.X = MaxSpeed;
+                }
+                else if (_speedVector.X < MaxSpeed * -1)
+                {
+                    _speedVector.X = MaxSpeed * -1;
+                }
+
+                if (_speedVector.Y > MaxSpeed)
+                {
+                    _speedVector.Y = MaxSpeed;
+                }
+                else if (_speedVector.Y < MaxSpeed * -1)
+                {
+                    _speedVector.Y = MaxSpeed * -1;
+                }
+
+
+                if ((_speedVector.X < MaxSpeed && _speedVector.X > 0 && _speedVector.Y < MaxSpeed && _speedVector.Y > 0) || (_speedVector.X > MaxSpeed * -1 && _speedVector.X < 0 && _speedVector.Y > MaxSpeed * -1 && _speedVector.Y < 0))
+                {
+                    _wasSprinting = false;
+                }
+
+                LimitSpeed(1f);
+            }
+            bool xSlowDown = false;
+            bool ySlowDown = false;
+            bool xSpeedUp = false;
+            bool ySpeedUp = false;
+            if (keyboard.IsKeyUp(Keys.A) && keyboard.IsKeyUp(Keys.D)) // Is not moving
+            {
+                if (_speedVector.Y > 0)
+                {
+                    _speedVector.Y -= _moveLossAccel;
+                    ySlowDown = true;
+                }
+
+                if (_speedVector.Y < 0)
+                {
+                    _speedVector.Y += _moveLossAccel;
+                    ySpeedUp = true;
+                }
+
+                if (ySlowDown && ySpeedUp)
+                {
+                    _speedVector.Y = 0;
+                }
+            }
+
+            if (keyboard.IsKeyUp(Keys.W) && keyboard.IsKeyUp(Keys.S))
+            {
+                if (_speedVector.X > 0)
+                {
+                    _speedVector.X -= _moveLossAccel;
+                    xSlowDown = true;
+                }
+                if (_speedVector.X < 0)
+                {
+                    _speedVector.X += _moveLossAccel;
+                    xSpeedUp = true;
+                }
+                if (xSlowDown && xSpeedUp)
+                {
+                    _speedVector.X = 0;
+                }
+            }
+
+            if (ySlowDown && ySpeedUp && xSlowDown && xSpeedUp)
+            {
+                IsMoving = false;
+            }
+
+            if (_speedVector.X > 0)
+            {
+                position += facing * _speedVector.X;
+            }
+
+            if (_speedVector.X < 0)
+            {
+                position -= facing * -1 * _speedVector.X;
+            }
+
+            if (_speedVector.Y > 0)
+            {
+                position += Vector3.Cross(Vector3.Up, facing) * _speedVector.Y;
+            }
+
+            if (_speedVector.Y < 0)
+            {
+                position -= Vector3.Cross(Vector3.Up, facing) * -1 * _speedVector.Y;
+            }
 
             // SFX: steps while on ground
             if (IsMoving && IsGrounded && _stepTimer.RestartIfTimeElapsed())
             {
                 int soundIndex = Game1.RandomGenerator.Next(Game1.StepSounds.Length);
-                _stepTimer.SetTimeNRun((int)Math.Round(_stepSounds[soundIndex].Duration.TotalMilliseconds + StepCooldown,0,MidpointRounding.AwayFromZero));
+                _stepTimer.SetTimeNRun((int)Math.Round(_stepSounds[soundIndex].Duration.TotalMilliseconds + StepCooldown, 0, MidpointRounding.AwayFromZero));
                 _stepSounds[soundIndex].Play(Game1.SFXVolume * 0.075f, 0, 0);
             }
 
@@ -142,8 +349,6 @@ namespace Winged_Warfare
             if (verticalAngle >= 1.56f) verticalAngle = 1.559f;
             direction = Vector3.Transform(Vector3.Forward, Matrix.CreateRotationX(verticalAngle) * Matrix.CreateRotationY(horizontalAngle + MathHelper.ToRadians(180f)));
             // Debug.WriteLine("verticalAngle= " + verticalAngle);
-
-
 
 
             //Smooth POV when starting to sprint/stoping to sprint
@@ -156,6 +361,8 @@ namespace Winged_Warfare
             {
                 POVadjusted = POVadjusted * 1.01f;
             }
+
+
             if (POVadjusted < POV) POVadjusted = POV;
             if (POVadjusted > POV * 1.1f) POVadjusted = POV * 1.1f;
 
@@ -163,6 +370,11 @@ namespace Winged_Warfare
             if (Mouse.GetState().RightButton == ButtonState.Pressed && !(IsSprinting && IsMoving))
             {
                 POVadjusted = POV * 0.5f;
+                isScoping = true;
+            }
+            else
+            {
+                isScoping = false;
             }
 
 
@@ -232,6 +444,40 @@ namespace Winged_Warfare
             Listener.Forward = direction;
         }
 
+        public static bool IsScoped()
+        {
+            return isScoping;
+        }
+
+        public static bool isSprinting()
+        {
+            return IsSprinting;
+        }
+
+        private void LimitSpeed(float factor)
+        {
+            if (_speedVector.X * _speedVector.X + _speedVector.Y * _speedVector.Y > MaxSpeed * factor)
+            {
+                if (_speedVector.X > 0)
+                {
+                    _speedVector.X = (float)Math.Sqrt(MaxSpeed * factor);
+                }
+                else
+                {
+                    _speedVector.X = (float)Math.Sqrt(MaxSpeed * factor) * -1;
+                }
+
+                if (_speedVector.Y > 0)
+                {
+                    _speedVector.Y = (float)Math.Sqrt(MaxSpeed * factor);
+                }
+                else
+                {
+                    _speedVector.Y = (float)Math.Sqrt(MaxSpeed * factor) * -1;
+                }
+            }
+        }
+
         private static void CheckFlight()
         {
             if (Keyboard.GetState().IsKeyUp(Keys.F2) && flightButtonPressed)
@@ -247,6 +493,6 @@ namespace Winged_Warfare
             position = StartPosition;
             this.horizontalAngle = 0;
             this.verticalAngle = 0;
-        }        
+        }
     }
 }

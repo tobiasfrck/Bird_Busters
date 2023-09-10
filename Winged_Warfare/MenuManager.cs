@@ -186,9 +186,18 @@ namespace Winged_Warfare
                     if (_settingsBackground != null)
                     {
                         _spriteBatch.Draw(_settingsBackground, _fullScreen, Color.White);
+
                     }
 
-                    _spriteBatch.Draw(Game1.menuBoxTexture,new Rectangle(100,100,250,100),Color.White);
+                    _spriteBatch.Draw(Game1.menuBoxLeft, new Rectangle(30,70,400,500),Color.White); //linke Menu-Box
+                    _spriteBatch.Draw(Game1.menuBoxRight, new Rectangle(1170, 70, 400, 500), Color.White); //rechte Menu-Box
+                    _spriteBatch.Draw(Game1.menuBoxLow, new Rectangle(430, 670, 750, 200), Color.White); //untere Menu-Box
+                    _spriteBatch.Draw(Game1.menuBoxCenter, new Rectangle(500, 30, 600, 630), Color.White); //mittlere Menu-Box
+                    _spriteBatch.Draw(Game1.menuBoxCenter, new Rectangle(500, 30, 600, 630), Color.White); //mittlere Menu-Box
+                    _spriteBatch.Draw(Game1.Soundbar, new Rectangle(822, 153, 195, 40), Color.White); //SoundbarMusic
+                   // Berechne die Breite der Soundleiste basierend auf der aktuellen Gesamtlautstärke
+                    int soundbarWidth = (int)(Game1.SFXVolume * 195);
+                    
 
                     foreach (Button btn in _settingsButtons)
                     {
@@ -357,18 +366,61 @@ namespace Winged_Warfare
             _settingsButtons.Add(toMenu);
             toMenu.SetClick(SwitchToMenu);
 
-             void CreateSettingsMenu(Texture2D _menuBar, Vector2 _menuBarPosition, Vector2 _menuBarSize)
-            {
-               
-                Texture2D menuBoxTexture = _menuBar; 
-                Vector2 menuBoxPosition = _menuBarPosition; 
-                Vector2 menuBoxSize = _menuBarSize; 
+           /*
+            // Erstelle den "UHD" Button (3840x2160)
+            Button UHD = new Button(new Vector2(Game1.Width * 0.63f, Game1.Height * 0.41f), new Vector2(130, 40), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "UHD", Game1.TestFont, Color.Black, Color.White, Color.White);
 
-                
+            _settingsButtons.Add(UHD);
+            UHD.SetClick(SetResolutionToUHD);
+
+            void SetResolutionToUHD()
+            {
+                _graphics.PreferredBackBufferWidth = 3840;
+                _graphics.PreferredBackBufferHeight = 2160;
+                _graphics.ApplyChanges();
             }
 
+            // Erstelle den "Full HD" Button (1920x1080)
+            Button fullHD = new Button(new Vector2(Game1.Width * 0.53f, Game1.Height * 0.41f), new Vector2(130, 40), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Full-HD", Game1.TestFont, Color.Black, Color.White, Color.White);
+
+            _settingsButtons.Add(fullHD);
+            fullHD.SetClick(SetResolutionToFullHD);
+
+            void SetResolutionToFullHD()
+            {
+                _graphics.PreferredBackBufferWidth = 1920;
+                _graphics.PreferredBackBufferHeight = 1080;
+                _graphics.ApplyChanges();
+            }
+
+            // Erstelle den "HD" Button(1280x720)
+            Button HDbutton = new Button(new Vector2(Game1.Width * 0.53f, Game1.Height * 0.47f), new Vector2(130, 40), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "HD", Game1.TestFont, Color.Black, Color.White, Color.White);
+
+            _settingsButtons.Add(HDbutton);
+            HDbutton.SetClick(SetResolutionToHD);
+
+            void SetResolutionToHD()
+            {
+                _graphics.PreferredBackBufferWidth = 1280;
+                _graphics.PreferredBackBufferHeight = 720;
+                _graphics.ApplyChanges();
+            }
+
+            // Erstelle den "HD-Plus" Button (1600x900)
+            Button HDplus = new Button(new Vector2(Game1.Width * 0.63f, Game1.Height * 0.47f), new Vector2(130, 40), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "HD+", Game1.TestFont, Color.Black, Color.White, Color.White);
+
+            _settingsButtons.Add(HDplus);
+            HDplus.SetClick(SetResolutionToHDplus);
+
+            void SetResolutionToHDplus()
+            {
+                _graphics.PreferredBackBufferWidth = 1600;
+                _graphics.PreferredBackBufferHeight = 900;
+                _graphics.ApplyChanges();
+            }
+           */
             // Button, um in den Vollbildmodus zu wechseln
-            Button fullscreenButton = new Button(new Vector2(Game1.Width * 0.5f, Game1.Height * 0.5f), new Vector2(200, 50), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Fullscreen", Game1.TestFont, Color.Black, Color.White, Color.White);
+            Button fullscreenButton = new Button(new Vector2(Game1.Width * 0.544f, Game1.Height * 0.43f), new Vector2(175, 50), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Fullscreen", Game1.TestFont, Color.Black, Color.White, Color.White);
             fullscreenButton.SetClick(ToggleFullscreen);
             _settingsButtons.Add(fullscreenButton);
 
@@ -411,29 +463,118 @@ namespace Winged_Warfare
                 }
             }
           
-            // Lautstärke erhöhen Button
-            float volumeUpButtonX = Game1.Width * 0.3f;
-            float volumeUpButtonY = Game1.Height * 0.7f;
+            // Gesamt-Lautstärke erhöhen Button 
+            float volumeUpButtonX = Game1.Width * 0.65f;
+            float volumeUpButtonY = Game1.Height * 0.17f;
             Button volumeUpButton = new Button(
                 new Vector2(volumeUpButtonX, volumeUpButtonY),
-                new Vector2(50, 50),
+                new Vector2(40, 40),
                 Game1.Button, Game1.ButtonHover, Game1.ButtonPressed,
                 "+", Game1.TestFont, Color.Black, Color.Black, Color.Black
             );
             volumeUpButton.SetClick(IncreaseVolume); 
             _settingsButtons.Add(volumeUpButton);
 
-            // Lautstärke reduzieren Button
-            float volumeDownButtonX = Game1.Width * 0.4f;
-            float volumeDownButtonY = Game1.Height * 0.8f;
+            // Gesamt-Lautstärke reduzieren Button
+            float volumeDownButtonX = Game1.Width * 0.5f;
+            float volumeDownButtonY = Game1.Height * 0.17f;
             Button volumeDownButton = new Button(
                 new Vector2(volumeDownButtonX, volumeDownButtonY),
-                new Vector2(50, 50),
+                new Vector2(40, 40),
                 Game1.Button, Game1.ButtonHover, Game1.ButtonPressed,
                 "-", Game1.TestFont, Color.Black, Color.Black, Color.Black
             );
             volumeDownButton.SetClick(DecreaseVolume); 
             _settingsButtons.Add(volumeDownButton);
+
+
+            void IncreaseSFXVolume()
+            {
+                if (Game1.SFXVolume < 1.0f) // Überprüfen, ob die maximale Lautstärke nicht überschritten wird
+                {
+                    Game1.SFXVolume += 0.1f; // Erhöhe die SFX-Lautstärke um 0,1
+                }
+            }
+
+            void DecreaseSFXVolume()
+            {
+                // Reduzieren der Lautstärke
+                Game1.SFXVolume -= 0.1f;
+
+                // fällt nicht unter 0
+                if (Game1.SFXVolume < 0)
+                {
+                    Game1.SFXVolume = 0;
+                }
+            }
+
+            // Soundeffekt-Lautstärke erhöhen Button
+            float svolumeUpButtonX = Game1.Width * 0.65f;
+            float svolumeUpButtonY = Game1.Height * 0.233f;
+            Button svolumeUpButton = new Button(
+                new Vector2(svolumeUpButtonX, svolumeUpButtonY),
+                new Vector2(40, 40),
+                Game1.Button, Game1.ButtonHover, Game1.ButtonPressed,
+                "+", Game1.TestFont, Color.Black, Color.Black, Color.Black
+            );
+            svolumeUpButton.SetClick(IncreaseSFXVolume);
+            _settingsButtons.Add(svolumeUpButton);
+
+            // Soundeffekt-Lautstärke reduzieren Button
+            float svolumeDownButtonX = Game1.Width * 0.5f;
+            float svolumeDownButtonY = Game1.Height * 0.233f;
+            Button svolumeDownButton = new Button(
+                new Vector2(svolumeDownButtonX, svolumeDownButtonY),
+                new Vector2(40, 40),
+                Game1.Button, Game1.ButtonHover, Game1.ButtonPressed,
+                "-", Game1.TestFont, Color.Black, Color.Black, Color.Black
+            );
+            svolumeDownButton.SetClick(DecreaseSFXVolume);
+            _settingsButtons.Add(svolumeDownButton);
+
+            void IncreaseMenuSFXVolume()
+            {
+                if (Game1.MenuSFXVolume < 1.0f) // Überprüfen, ob die maximale Lautstärke nicht überschritten wird
+                {
+                    Game1.MenuSFXVolume += 0.1f; // Erhöhe die MenuSFX-Lautstärke um 0,1
+                }
+            }
+
+            void DecreaseMenuSFXVolume()
+            {
+                // Reduzieren der MenuSFX-Lautstärke
+                Game1.MenuSFXVolume -= 0.1f;
+
+                // fällt nicht unter 0
+                if (Game1.MenuSFXVolume < 0)
+                {
+                    Game1.MenuSFXVolume = 0;
+                }
+            }
+
+            // MenuSFX-Lautstärke erhöhen Button
+            float sMvolumeUpButtonX = Game1.Width * 0.65f;
+            float sMvolumeUpButtonY = Game1.Height * 0.29f;
+            Button sMvolumeUpButton = new Button(
+                new Vector2(sMvolumeUpButtonX, sMvolumeUpButtonY),
+                new Vector2(40, 40),
+                Game1.Button, Game1.ButtonHover, Game1.ButtonPressed,
+                "+", Game1.TestFont, Color.Black, Color.Black, Color.Black
+            );
+            sMvolumeUpButton.SetClick(IncreaseMenuSFXVolume);
+            _settingsButtons.Add(sMvolumeUpButton);
+
+            // MenuSFX-Lautstärke reduzieren Button
+            float sMvolumeDownButtonX = Game1.Width * 0.5f;
+            float sMvolumeDownButtonY = Game1.Height * 0.29f;
+            Button sMvolumeDownButton = new Button(
+                new Vector2(sMvolumeDownButtonX, sMvolumeDownButtonY),
+                new Vector2(40, 40),
+                Game1.Button, Game1.ButtonHover, Game1.ButtonPressed,
+                "-", Game1.TestFont, Color.Black, Color.Black, Color.Black
+            );
+            sMvolumeDownButton.SetClick(DecreaseMenuSFXVolume);
+            _settingsButtons.Add(sMvolumeDownButton);
         }
 
         private void CreateGameEndedMenu()

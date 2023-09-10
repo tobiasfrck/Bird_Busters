@@ -239,13 +239,18 @@ namespace Winged_Warfare
                     _spriteBatch.Draw(Game1.menuBoxLow, new Rectangle(516, 804, 900, 240), Color.White); //untere Menu-Box
                     _spriteBatch.Draw(Game1.menuBoxCenter, new Rectangle(600, 30, 720, 756), Color.White); //mittlere Menu-Box
                     _spriteBatch.Draw(Game1.menuBoxCenter, new Rectangle(600, 30, 720, 756), Color.White); //mittlere Menu-Box
-                    _spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 183, 234, 48), Color.White); //SoundbarMusic
-                    _spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 252, 234, 48), Color.White); //SoundbarMusicSFX
-                    _spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 314, 234, 48), Color.White); //SoundbarMusic
+                    //_spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 183, 234, 48), Color.White); //SoundbarMusic
+                    //_spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 252, 234, 48), Color.White); //SoundbarMusicSFX
+                    //_spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 314, 234, 48), Color.White); //SoundbarMusic
+                    _spriteBatch.DrawString(Game1.TestFont,Game1.MusicVolume.ToString(),new Vector2(1060, 180),Color.White);
+                    _spriteBatch.DrawString(Game1.TestFont, Game1.SFXVolume.ToString(), new Vector2(1060, 250), Color.White);
+                    _spriteBatch.DrawString(Game1.TestFont, Game1.MenuSFXVolume.ToString(), new Vector2(1060, 310), Color.White);
+
+
 
 
                     string cheatStatusText = IsCheatActivated() ? "Cheat aktiviert!" : "Cheat deaktiviert";
-                    Vector2 cheatStatusPosition = new Vector2(300, 195); // Position der Textausgabe
+                    Vector2 cheatStatusPosition = new Vector2(950, 560); // Position der Textausgabe
                     _spriteBatch.DrawString(Game1.TestFont, cheatStatusText, cheatStatusPosition, Color.White);
 
                     

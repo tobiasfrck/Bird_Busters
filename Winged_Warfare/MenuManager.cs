@@ -185,7 +185,6 @@ namespace Winged_Warfare
                         birdAnimationTimer = new Timer(1000);
                     }
                     birdAnimationTimer?.Update();
-                    birdAnimationTimer?.RestartIfTimeElapsed();
                     foreach (Button btn in _gameEndedButtons)
                     {
                         btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
@@ -339,21 +338,33 @@ namespace Winged_Warfare
                         break;
                     }
 
-                    Vector2 gameEndedDim = Game1.TestFont.MeasureString("Game Ended");
-                    _spriteBatch.DrawString(Game1.TestFont, "Game Ended", new Vector2(_horizontalCenter - gameEndedDim.X / 2, 25), Color.White);
-                    Vector2 scoreDim = Game1.TestFont.MeasureString("Score: " + Score.GetScore());
-                    _spriteBatch.DrawString(Game1.TestFont, "Score: " + Score.GetScore(), new Vector2(_horizontalCenter - scoreDim.X / 2, 100), Color.White);
-                    Vector2 highscoreDim = Game1.TestFont.MeasureString("Highscore: " + Score.GetHighscore());
-                    _spriteBatch.DrawString(Game1.TestFont, "Highscore: " + Score.GetHighscore(), new Vector2(_horizontalCenter - highscoreDim.X / 2, 150), Color.White);
+                    Vector2 gameEndedDim = Game1.HUDTimerFont.MeasureString("Game Ended");
+                    Vector2 scoreDim = Game1.HUDScoreTextFont.MeasureString("Score: " + Score.GetScore());
+                    Vector2 highscoreDim = Game1.HUDScoreTextFont.MeasureString("Highscore: " + Score.GetHighscore());
+                    _spriteBatch.DrawString(Game1.HUDTimerFont, "Game Ended", new Vector2(_horizontalCenter - gameEndedDim.X / 2, 25), Color.White);
+                    _spriteBatch.DrawString(Game1.HUDScoreTextFont, "Highscore: " + Score.GetHighscore(), new Vector2(_horizontalCenter - highscoreDim.X / 2, 130), Color.White);
+                    _spriteBatch.DrawString(Game1.HUDScoreTextFont, "Score: " + Score.GetScore(), new Vector2(_horizontalCenter - scoreDim.X / 2, 180), Color.White);
 
                     if (birdAnimationTimer != null)
                     {
                         int frame = (int)(birdAnimationTimer.GetProgress() * 60);
-                        frame = 1;
-                        _spriteBatch.Draw(Game1.GreenBirdVideo[frame], new Rectangle(30, 200, Game1.GreenBirdVideo[frame].Width / 2, Game1.GreenBirdVideo[frame].Height / 2), Color.White);
-                        _spriteBatch.Draw(Game1.RedBirdVideo[frame], new Rectangle(716, 200, Game1.RedBirdVideo[frame].Width / 2, Game1.RedBirdVideo[frame].Height / 2), Color.White);
-                        _spriteBatch.Draw(Game1.OrangeBirdVideo[frame], new Rectangle(1400, 200, Game1.OrangeBirdVideo[frame].Width / 2, Game1.OrangeBirdVideo[frame].Height / 2), Color.White);
+                        if (birdAnimationTimer.IsRunning() == false)
+                        {
+                            frame = 0;
+                        }
+                        _spriteBatch.Draw(Game1.GreenBirdVideo[frame], new Rectangle(30, 200, Game1.GreenBirdVideo[frame].Width / 2, Game1.GreenBirdVideo[frame].Height / 2 +100), Color.White);
+                        _spriteBatch.Draw(Game1.RedBirdVideo[frame], new Rectangle(716, 200, Game1.RedBirdVideo[frame].Width / 2, Game1.RedBirdVideo[frame].Height / 2 + 100), Color.White);
+                        _spriteBatch.Draw(Game1.OrangeBirdVideo[frame], new Rectangle(1400, 200, Game1.OrangeBirdVideo[frame].Width / 2, Game1.OrangeBirdVideo[frame].Height / 2 + 100), Color.White);
                     }
+
+                    float measureGX = Game1.HUDScoreNumFont.MeasureString(Score.GetBirdsHit(BirdType.Common).ToString()).X;
+                    float measureRX = Game1.HUDScoreNumFont.MeasureString(Score.GetBirdsHit(BirdType.Rare).ToString()).X;
+                    float measureLX = Game1.HUDScoreNumFont.MeasureString(Score.GetBirdsHit(BirdType.Legendary).ToString()).X;
+
+
+                    _spriteBatch.DrawString(Game1.HUDScoreNumFont, Score.GetBirdsHit(BirdType.Common).ToString(), new Vector2(30 + Game1.GreenBirdVideo[0].Width/4f - measureGX/2f, 400 + Game1.GreenBirdVideo[0].Height/4f), Color.White);
+                    _spriteBatch.DrawString(Game1.HUDScoreNumFont, Score.GetBirdsHit(BirdType.Rare).ToString(), new Vector2(716 + Game1.RedBirdVideo[0].Width / 4f - measureRX / 2, 400 + Game1.RedBirdVideo[0].Height/4f), Color.White);
+                    _spriteBatch.DrawString(Game1.HUDScoreNumFont, Score.GetBirdsHit(BirdType.Legendary).ToString(), new Vector2(1400 + Game1.OrangeBirdVideo[0].Width / 4f - measureLX / 2, 400 + Game1.OrangeBirdVideo[0].Height/4f), Color.White);
 
 
                     foreach (Button btn in _gameEndedButtons)
@@ -671,7 +682,7 @@ namespace Winged_Warfare
             MediaPlayer.Volume = Game1.MusicVolume;
             Game1._gameTimer = new Timer((int)Game1.gameScreenMusic.Duration.TotalMilliseconds, SetGameNeedsReset);
             //uncomment for testing endscreen
-            Game1._gameTimer = new Timer(1, SetGameNeedsReset);
+            //Game1._gameTimer = new Timer(10000, SetGameNeedsReset);
             Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();
             SetState(GameState.Game);

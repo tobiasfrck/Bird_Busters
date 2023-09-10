@@ -52,8 +52,8 @@ namespace Winged_Warfare
         private static float Speed { get; set; } = 0f;
         private static Vector2 _speedVector = new Vector2(0, 0);
 
-        private static float _moveGainAccel = 0.02f;
-        private static float _moveLossAccel = 0.016f;
+        private static float _moveGainAccel = 0.019f;
+        private static float _moveLossAccel = 0.014f;
 
         //Gravity, Flight & Velocity
         static bool creativeFlight = false;
@@ -381,7 +381,7 @@ namespace Winged_Warfare
             //Jumping
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && IsGrounded == true && !creativeFlight)
             {
-                Velocity = 0.040f;
+                Velocity = 0.050f;
                 IsGrounded = false;
             }
 
@@ -393,12 +393,12 @@ namespace Winged_Warfare
                 IsGrounded = false;
                 if (keyboard.IsKeyDown(Keys.Space))
                 {
-                    _change.Y += 1 * Speed;
+                    _change.Y += 1 * 0.18f;
                 }
 
                 if (keyboard.IsKeyDown(Keys.LeftControl))
                 {
-                    _change.Y -= 1 * Speed;
+                    _change.Y -= 1 * 0.18f;
                 }
             }
             else

@@ -63,6 +63,7 @@ namespace Winged_Warfare
             "Birds/Birb3"
         };
         public static SpriteFont TestFont;
+        public static SpriteFont TestFont48;
         public static SpriteFont HUDTimerFont;
         public static SpriteFont HUDScoreTextFont;
         public static SpriteFont HUDScoreNumFont;

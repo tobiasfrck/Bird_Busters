@@ -69,7 +69,7 @@ namespace Winged_Warfare
 
         private static bool _isReloading = false;
 
-        private static string cheatCode = "";
+        public static string cheatCode = "";
         private static bool cheatActivated = false; // Variable, um den Cheat-Code-Status zu verfolgen
 
 

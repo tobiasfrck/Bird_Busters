@@ -74,6 +74,15 @@ namespace Winged_Warfare
 
         public static bool IsGunRecoiled = false;
 
+        private bool IsCheatActivated()
+        {
+            // Überprüfe hier deine Cheat-Bedingungen
+            if (BulletHandler.cheatCode.Equals("KILL")) // Hier ein Beispiel, ändere dies entsprechend deinem Cheat-Code
+            {
+                return true; // Cheat ist aktiviert
+            }
+            return false; // Cheat ist nicht aktiviert
+        }
 
         //for testing purposes
         public static MenuManager Instance;
@@ -89,6 +98,7 @@ namespace Winged_Warfare
             _blankTexture = new Texture2D(_graphics.GraphicsDevice, 1, 1);
             _horizontalCenter = Game1.Width / 2f;
 
+        
             // Do NOT change the order of the buttons; This WILL break the code. lol
             CreateMainMenu();
             CreateSettingsMenu();
@@ -231,9 +241,16 @@ namespace Winged_Warfare
                     _spriteBatch.Draw(Game1.menuBoxCenter, new Rectangle(500, 30, 600, 630), Color.White); //mittlere Menu-Box
                     _spriteBatch.Draw(Game1.menuBoxCenter, new Rectangle(500, 30, 600, 630), Color.White); //mittlere Menu-Box
                     _spriteBatch.Draw(Game1.Soundbar, new Rectangle(822, 153, 195, 40), Color.White); //SoundbarMusic
-                   // Berechne die Breite der Soundleiste basierend auf der aktuellen Gesamtlautstärke
-                    int soundbarWidth = (int)(Game1.SFXVolume * 195);
+                    _spriteBatch.Draw(Game1.Soundbar, new Rectangle(822, 210, 195, 40), Color.White); //SoundbarMusicSFX
+                    _spriteBatch.Draw(Game1.Soundbar, new Rectangle(822, 262, 195, 40), Color.White); //SoundbarMusic
+
+
+                    string cheatStatusText = IsCheatActivated() ? "Cheat aktiviert!" : "Cheat deaktiviert";
+                    Vector2 cheatStatusPosition = new Vector2(300, 195); // Position der Textausgabe
+                    _spriteBatch.DrawString(Game1.TestFont, cheatStatusText, cheatStatusPosition, Color.White);
+
                     
+
 
                     foreach (Button btn in _settingsButtons)
                     {

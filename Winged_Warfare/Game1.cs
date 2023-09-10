@@ -36,7 +36,7 @@ namespace Winged_Warfare
         public bool isMusicPlaying = true;
 
 
-        public TextureItem MenuBoxTextureItem { get; private set; }
+        
 
 
 
@@ -72,7 +72,13 @@ namespace Winged_Warfare
         public static Texture2D menuBackground;
         public static Texture2D settingsBackground;
         public static Texture2D gameBackground;
-        public static Texture2D menuBoxTexture;
+        public static Texture2D menuBoxLeft;
+        public static Texture2D menuBoxRight;
+        public static Texture2D menuBoxLow;
+        public static Texture2D menuBoxCenter;
+        public static Texture2D Soundbar;
+
+
 
         public static Texture2D Button;
         public static Texture2D ButtonHover;
@@ -185,8 +191,13 @@ namespace Winged_Warfare
             // Textures
             menuBackground = Content.Load<Texture2D>("testContent/menuBackground");
             settingsBackground = Content.Load<Texture2D>("testContent/settingsBackground");
-            menuBoxTexture = Content.Load<Texture2D>("testContent/menu_box");
-            MenuBoxTextureItem = new TextureItem(menuBoxTexture, new Vector2(100, 100), new Vector2(200, 150));
+            menuBoxLeft = Content.Load<Texture2D>("testContent/TutorialBox");
+            menuBoxRight = Content.Load<Texture2D>("testContent/ControlBox");
+            menuBoxLow = Content.Load<Texture2D>("testContent/CreditBox");
+            menuBoxCenter = Content.Load<Texture2D>("testContent/OptionsBox");
+            Soundbar = Content.Load<Texture2D>("testContent/SoundAnzeige");
+
+
             //gameBackground = Content.Load<Texture2D>("testContent/gameBackground");
 
             Button = Content.Load<Texture2D>("testContent/button");

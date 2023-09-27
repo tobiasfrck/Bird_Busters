@@ -94,7 +94,7 @@ namespace Winged_Warfare
             Emitter.Position = _drawableObject.Position;
             int soundIndex = _random.Next(Game1.BirdFlaps.Length);
             FlapEffectInstance = Game1.BirdFlaps[soundIndex].CreateInstance();
-            FlapEffectInstance.Volume = Game1.SFXVolume;
+            FlapEffectInstance.Volume = Game1.SFXVolume/100f;
             FlapEffectInstance.Apply3D(Game1.Listener, Emitter);
         }
 
@@ -160,7 +160,7 @@ namespace Winged_Warfare
             Emitter.Forward = _currentDirection; //TODO: check if this is correct
             _volumeMultiplier = 1f - (_distanceToPlayer / 40f); //TODO: Fine tune this
             _volumeMultiplier = MathHelper.Clamp(_volumeMultiplier, 0, 1);
-            FlapEffectInstance.Volume = Game1.SFXVolume * _volumeMultiplier;
+            FlapEffectInstance.Volume = Game1.SFXVolume/100f * _volumeMultiplier;
             FlapEffectInstance.Apply3D(Game1.Listener, Emitter);
         }
 

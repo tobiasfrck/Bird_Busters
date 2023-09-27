@@ -134,7 +134,7 @@ namespace Winged_Warfare
                 //Spawned ein neues Netz
                 if (!cheatActivated)
                 {
-                    Game1.ShootEffect.Play(Game1.SFXVolume, 0, 0);
+                    Game1.ShootEffect.Play(Game1.SFXVolume / 100f, 0, 0);
                     MenuManager.IsGunRecoiled = true;
                 }
                 bullets.Add(new Net(FPSCamera.position, Player.CamTarget));
@@ -150,7 +150,7 @@ namespace Winged_Warfare
                     //Spielt Nachlade-Soundeffekt ab
                     if (!cheatActivated)
                     {
-                        Game1.Reload_Mag.Play(Game1.SFXVolume / 2, 0, 0);
+                        Game1.Reload_Mag.Play(Game1.SFXVolume/100f / 2f, 0, 0);
                     }
                 }
                 else
@@ -170,7 +170,7 @@ namespace Winged_Warfare
                 _reloadTimerMagazin.SetTimeNRun(reloadTimerMagazin);
                 if (!cheatActivated)
                 {
-                    Game1.Reload_Mag.Play(Game1.SFXVolume / 2, 0, 0);
+                    Game1.Reload_Mag.Play(Game1.SFXVolume/100f / 2f, 0, 0);
                 }
                 _isReloading = true;
                 canShoot = false;
@@ -213,7 +213,7 @@ namespace Winged_Warfare
                     if (Vector3.Distance(bullets[i].position, birds[j]._position) <= 1)
                     {
                         //bullets[i].Marked = true;
-                        Game1.HitMarker.Play(Game1.SFXVolume / 2, 0, 0);
+                        Game1.HitMarker.Play(Game1.SFXVolume/100f / 2, 0, 0);
                         birds[j].IsAlive = false;
                         bullets[i].HitCount++;
                         float playerDistanceToBird = birds[j].GetDistanceToPlayer();

@@ -77,7 +77,7 @@ namespace Winged_Warfare
         private bool IsCheatActivated()
         {
             // Überprüfe hier deine Cheat-Bedingungen
-            if (BulletHandler.cheatCode.Equals("KILL")) // Hier ein Beispiel, ändere dies entsprechend deinem Cheat-Code
+            if (BulletHandler.isCheatActivated()) // Hier ein Beispiel, ändere dies entsprechend deinem Cheat-Code
             {
                 return true; // Cheat ist aktiviert
             }
@@ -242,14 +242,14 @@ namespace Winged_Warfare
                     //_spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 183, 234, 48), Color.White); //SoundbarMusic
                     //_spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 252, 234, 48), Color.White); //SoundbarMusicSFX
                     //_spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 314, 234, 48), Color.White); //SoundbarMusic
-                    _spriteBatch.DrawString(Game1.TestFont,Game1.MusicVolume.ToString(),new Vector2(1060, 180),Color.White);
+                    _spriteBatch.DrawString(Game1.TestFont, Game1.MusicVolume.ToString(),new Vector2(1060, 180),Color.White);
                     _spriteBatch.DrawString(Game1.TestFont, Game1.SFXVolume.ToString(), new Vector2(1060, 250), Color.White);
                     _spriteBatch.DrawString(Game1.TestFont, Game1.MenuSFXVolume.ToString(), new Vector2(1060, 310), Color.White);
 
 
 
 
-                    string cheatStatusText = IsCheatActivated() ? "Cheat aktiviert!" : "Cheat deaktiviert";
+                    string cheatStatusText = IsCheatActivated() ? "Cheat aktiviert!" : "Cheat deaktiviert.";
                     Vector2 cheatStatusPosition = new Vector2(950, 560); // Position der Textausgabe
                     _spriteBatch.DrawString(Game1.TestFont, cheatStatusText, cheatStatusPosition, Color.White);
 
@@ -526,19 +526,25 @@ namespace Winged_Warfare
             void IncreaseVolume()
             {
                 // Erhöhung der Lautstärke
-                MediaPlayer.Volume += 0.1f;
+                Game1.MusicVolume += 10;
+                if (Game1.MusicVolume> 100)
+                {
+                    Game1.MusicVolume = 1;
+                }
+                MediaPlayer.Volume = Game1.MusicVolume / 100f;
             }
 
             void DecreaseVolume()
             {
                 // Reduzieren der Lautstärke
-                MediaPlayer.Volume -= 0.1f;
+                Game1.MusicVolume -= 10;
 
                 // fällt nicht unter 0
-                if (MediaPlayer.Volume < 0)
+                if (Game1.MusicVolume < 0)
                 {
-                    MediaPlayer.Volume = 0;
+                    Game1.MusicVolume = 0;
                 }
+                MediaPlayer.Volume = Game1.MusicVolume / 100f;
             }
           
             // Gesamt-Lautstärke erhöhen Button 
@@ -568,16 +574,16 @@ namespace Winged_Warfare
 
             void IncreaseSFXVolume()
             {
-                if (Game1.SFXVolume < 1.0f) // Überprüfen, ob die maximale Lautstärke nicht überschritten wird
+                if (Game1.SFXVolume < 100) // Überprüfen, ob die maximale Lautstärke nicht überschritten wird
                 {
-                    Game1.SFXVolume += 0.1f; // Erhöhe die SFX-Lautstärke um 0,1
+                    Game1.SFXVolume += 10; // Erhöhe die SFX-Lautstärke um 10
                 }
             }
 
             void DecreaseSFXVolume()
             {
                 // Reduzieren der Lautstärke
-                Game1.SFXVolume -= 0.1f;
+                Game1.SFXVolume -= 10;
 
                 // fällt nicht unter 0
                 if (Game1.SFXVolume < 0)
@@ -612,16 +618,16 @@ namespace Winged_Warfare
 
             void IncreaseMenuSFXVolume()
             {
-                if (Game1.MenuSFXVolume < 1.0f) // Überprüfen, ob die maximale Lautstärke nicht überschritten wird
+                if (Game1.MenuSFXVolume < 100) // Überprüfen, ob die maximale Lautstärke nicht überschritten wird
                 {
-                    Game1.MenuSFXVolume += 0.1f; // Erhöhe die MenuSFX-Lautstärke um 0,1
+                    Game1.MenuSFXVolume += 10; // Erhöhe die MenuSFX-Lautstärke um 10
                 }
             }
 
             void DecreaseMenuSFXVolume()
             {
                 // Reduzieren der MenuSFX-Lautstärke
-                Game1.MenuSFXVolume -= 0.1f;
+                Game1.MenuSFXVolume -= 10;
 
                 // fällt nicht unter 0
                 if (Game1.MenuSFXVolume < 0)
@@ -679,7 +685,7 @@ namespace Winged_Warfare
         {
             if (_state != GameState.Settings)
             {
-                MediaPlayer.Volume = Game1.MusicVolume;
+                MediaPlayer.Volume = Game1.MusicVolume/100f;
                 MediaPlayer.IsRepeating = true;
                 MediaPlayer.Play(Game1.startScreenMusic);
             }
@@ -701,7 +707,7 @@ namespace Winged_Warfare
         {
             MediaPlayer.IsRepeating = false;
             MediaPlayer.Play(Game1.gameScreenMusic);
-            MediaPlayer.Volume = Game1.MusicVolume;
+            MediaPlayer.Volume = Game1.MusicVolume/100f;
             Game1._gameTimer = new Timer((int)Game1.gameScreenMusic.Duration.TotalMilliseconds, SetGameNeedsReset);
             //uncomment for testing endscreen
             //Game1._gameTimer = new Timer(10000, SetGameNeedsReset);

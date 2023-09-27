@@ -40,7 +40,7 @@ namespace Winged_Warfare
         private Color _textHoverColor;
         private Color _textPressedColor;
         private Vector2 _textDimension;
-        private float textScale = 1.0f; 
+        private float textScale = 1.0f;
 
 
         private SoundEffect _clickSound;
@@ -68,7 +68,7 @@ namespace Winged_Warfare
             _textColor = textColor;
             _textHoverColor = textHoverColor;
             _textPressedColor = textPressedColor;
-            _rectangle = new Rectangle((int)position.X - ((int)textureDim.X / 2), (int)position.Y, (int)textureDim.X, (int)textureDim.Y);
+            _rectangle = new Rectangle((int)(position.X - (textureDim.X / 2f)), (int)position.Y, (int)textureDim.X, (int)textureDim.Y);
             _originalRectangle = _rectangle;
             _textDimension = _font.MeasureString(_text);
             _buttonID = _buttonCount;
@@ -80,7 +80,7 @@ namespace Winged_Warfare
             if (_rectangle.X < 0 || _rectangle.Y < 0 || _rectangle.X + _rectangle.Width > Game1.Width ||
                 _rectangle.Y + _rectangle.Height > Game1.Height)
             {
-                Debug.WriteLine("Button "+ _buttonID +" is outside of the screen!");
+                Debug.WriteLine("Button " + _buttonID + " is outside of the screen!");
             }
         }
 
@@ -98,15 +98,15 @@ namespace Winged_Warfare
                 {
                     _interacted = true;
                     _activeButtons++;
-                    _hoverSound.Play(Game1.MenuSFXVolume, 0, 0);
-                    _hoverTweenTimer = new Timer(150,SaveScale);
+                    _hoverSound.Play(Game1.MenuSFXVolume / 100f, 0, 0);
+                    _hoverTweenTimer = new Timer(150, SaveScale);
                 }
                 return true;
             }
             if (_interacted)
             {
                 _interacted = false;
-                if (_scale>1f)
+                if (_scale > 1f)
                 {
                     _hoverReleaseTweenTimer = new Timer(150);
                 }
@@ -144,7 +144,7 @@ namespace Winged_Warfare
             //Debug.WriteLine("Active buttons: " + _activeButtons);
             if (IsClicked(mousePosition, wasLeftButtonPressed, isLeftButtonReleased))
             {
-                _clickSound.Play(Game1.MenuSFXVolume, 0, 0);
+                _clickSound.Play(Game1.MenuSFXVolume / 100f, 0, 0);
                 Debug.WriteLine("Button " + _buttonID + " was clicked.");
                 _click?.DynamicInvoke(); // execute click action if click is not null
             }
@@ -155,7 +155,7 @@ namespace Winged_Warfare
 
             if (_hoverTweenTimer.IsRunning())
             {
-                SetRectangleScale(1 + easeOutBack(_hoverTweenTimer.GetProgress()*0.03f));
+                SetRectangleScale(1 + easeOutBack(_hoverTweenTimer.GetProgress() * 0.03f));
             }
 
             if (_hoverReleaseTweenTimer.IsRunning())
@@ -165,15 +165,28 @@ namespace Winged_Warfare
                     _hoverTweenTimer.Pause();
                     SaveScale();
                 }
-                SetRectangleScale(_savedScale - easeOutBack((_hoverTweenTimer.GetProgress()*_hoverReleaseTweenTimer.GetProgress()) * 0.03f));
+                SetRectangleScale(_savedScale - easeOutBack((_hoverTweenTimer.GetProgress() * _hoverReleaseTweenTimer.GetProgress()) * 0.03f));
+            }
+
+            if (_pressTweenTimer.IsRunning())
+            {
+                SetRectangleScale(_savedScale - ((_savedScale - 0.95f) * _pressTweenTimer.GetProgress()));
             }
 
             if (IsHovering(mousePosition) && IsPressed(wasLeftButtonPressed))
             {
-                SetRectangleScale(.95f);
-            } else if (_scale<1f)
+                _hoverReleaseTweenTimer.Pause();
+                _hoverTweenTimer.Pause();
+                if (_pressTweenTimer.IsRunning() == false)
+                {
+                    _pressTweenTimer = new Timer(34);
+                    SaveScale();
+                }
+            }
+            else if (_scale < 1f)
             {
                 SetRectangleScale(1f);
+                _pressTweenTimer.Pause();
             }
         }
 
@@ -229,7 +242,7 @@ namespace Winged_Warfare
                 _rectangle = _originalRectangle;
                 return;
             }
-            _rectangle = new Rectangle((int)(_originalRectangle.X-(_originalRectangle.Width * scale - _originalRectangle.Width)/2), (int)(_originalRectangle.Y - (_originalRectangle.Height * scale - _originalRectangle.Height) / 2), (int)(_originalRectangle.Width * scale), (int)(_originalRectangle.Height * scale));
+            _rectangle = new Rectangle((int)Math.Round(_originalRectangle.X - (_originalRectangle.Width * scale - _originalRectangle.Width) / 2f, 0), (int)Math.Round(_originalRectangle.Y - (_originalRectangle.Height * scale - _originalRectangle.Height) / 2f, 0), (int)Math.Round(_originalRectangle.Width * scale, 0), (int)Math.Round(_originalRectangle.Height * scale, 0));
         }
 
         private void SaveScale()
@@ -237,10 +250,11 @@ namespace Winged_Warfare
             _savedScale = _scale;
         }
 
-        private float easeOutBack(float x) {
+        private float easeOutBack(float x)
+        {
             float c1 = 1.70158f;
             float c3 = c1 + 1f;
-            return (float)(1 + c3* Math.Pow(x - 1, 3) + c1 * Math.Pow(x - 1, 2));
+            return (float)(1 + c3 * Math.Pow(x - 1, 3) + c1 * Math.Pow(x - 1, 2));
         }
 
         public void SetText(string text)

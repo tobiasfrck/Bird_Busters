@@ -58,6 +58,7 @@ namespace Winged_Warfare
             "Level/City_Level",
             "Shaders/skyBoxCube",
             "8Ball_Net",
+            "Net_Low_Poly",
             "Birds/Birb",
             "Birds/Birb2",
             "Birds/Birb3"

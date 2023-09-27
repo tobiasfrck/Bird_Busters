@@ -24,7 +24,7 @@ namespace Winged_Warfare
 
         public Net(Vector3 spawnPosition, Vector3 spawnTarget)
         {
-            _drawableObject = new DrawableObject(position, this.target, new Vector3(1, 1, 1), "8Ball_Net", 50);
+            _drawableObject = new DrawableObject(position, this.target, new Vector3(1, 1, 1), "Net_Low_Poly", 50);
             this.position = spawnPosition;
             this.position.Y -= 0.75f;
             this.lastPosition = spawnPosition;

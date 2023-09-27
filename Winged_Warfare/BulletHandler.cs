@@ -225,7 +225,6 @@ namespace Winged_Warfare
                         Score.IncreaseScore(score, birds[j].GetBirdType());
                         _menuManager.AddScoreIndicator(birds[j]._position, score.ToString(), birds[j].GetBirdType());
                         Debug.WriteLine("New Score:" + Score.GetScore());
-                        Debug.WriteLine("Bullets: " + bullets.Count);
                     }
                 }
             }
@@ -237,6 +236,7 @@ namespace Winged_Warfare
             {
                 net.Update();
             }
+            Debug.WriteLine("Bullets: " + bullets.Count);
 
             //TODO: optimize
             //          Removes Bullets When Marked or outside of the Game/Map

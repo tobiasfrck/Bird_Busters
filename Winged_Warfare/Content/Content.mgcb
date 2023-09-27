@@ -2693,6 +2693,25 @@
 /processorParam:TextureFormat=Compressed
 /build:Net_HUD_Texture.png
 
+#begin Net_Low_Poly.fbx
+/importer:FbxImporter
+/processor:ModelProcessor
+/processorParam:ColorKeyColor=0,0,0,0
+/processorParam:ColorKeyEnabled=True
+/processorParam:DefaultEffect=BasicEffect
+/processorParam:GenerateMipmaps=True
+/processorParam:GenerateTangentFrames=False
+/processorParam:PremultiplyTextureAlpha=True
+/processorParam:PremultiplyVertexColors=True
+/processorParam:ResizeTexturesToPowerOfTwo=False
+/processorParam:RotationX=-90
+/processorParam:RotationY=0
+/processorParam:RotationZ=0
+/processorParam:Scale=0.65
+/processorParam:SwapWindingOrder=False
+/processorParam:TextureFormat=Compressed
+/build:Net_Low_Poly.fbx
+
 #begin Shaders/skybox_cubemap.dds
 /importer:TextureImporter
 /processor:TextureProcessor

@@ -5,5 +5,4 @@
 	<s:String x:Key="/Default/RunConfigs/Config/=83701B94D2FF3143B004490C883FE539/Type/@EntryValue">project</s:String>
 	<s:String x:Key="/Default/RunConfigs/Config/=83701B94D2FF3143B004490C883FE539/Name/@EntryValue">Meilenstein2Test</s:String>
 	<s:String x:Key="/Default/RunConfigs/Config/=83701B94D2FF3143B004490C883FE539/ProjectGuid/@EntryValue">115B4355838A7F40821DC7B70D101A59</s:String>
-	<s:String x:Key="/Default/RunConfigs/Config/=83701B94D2FF3143B004490C883FE539/DefaultAction/@EntryValue">ProfilePerformance</s:String>
-	</wpf:ResourceDictionary>
+	<s:String x:Key="/Default/RunConfigs/Config/=83701B94D2FF3143B004490C883FE539/DefaultAction/@EntryValue">ProfilePerformance</s:String></wpf:ResourceDictionary>

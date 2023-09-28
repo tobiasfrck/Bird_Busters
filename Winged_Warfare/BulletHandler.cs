@@ -137,7 +137,7 @@ namespace Winged_Warfare
                     Game1.ShootEffect.Play(Game1.SFXVolume / 100f, 0, 0);
                     MenuManager.IsGunRecoiled = true;
                 }
-                bullets.Add(new Net(FPSCamera.position, Player.CamTarget));
+                bullets.Add(new Net(FPSCamera.position + new Vector3(0,.4f,0), Player.CamTarget));
                 //Schaut ob gerade die letzte Kugel verschossen wurde
                 canShoot = true;
                 _isReloading = false;

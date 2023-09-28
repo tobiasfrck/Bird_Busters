@@ -10,6 +10,7 @@ namespace Winged_Warfare
     {
         private static int _currentScore = 0;
         private static int _highscore;
+        private static bool _isNewHighscore = false;
         private static int[] _birdsHit = new int[Enum.GetNames(typeof(BirdType)).Length]; // Breakdown of how many of each bird type has been hit
 
         public static void IncreaseScore(int i, BirdType type)
@@ -19,12 +20,14 @@ namespace Winged_Warfare
             if (_currentScore > _highscore && !BulletHandler.isCheatActivated())
             {
                 SetHighscore(_currentScore);
+                _isNewHighscore = true;
             }
         }
 
         public static void ResetScore()
         {
             _currentScore = 0;
+            _isNewHighscore = false;
             _birdsHit = new int[Enum.GetNames(typeof(BirdType)).Length];
         }
 
@@ -47,6 +50,11 @@ namespace Winged_Warfare
         public static int GetBirdsHit(BirdType type)
         {
             return _birdsHit[(int)type];
+        }
+
+        public static bool IsNewHighscore()
+        {
+            return _isNewHighscore;
         }
     }
 }

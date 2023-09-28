@@ -268,7 +268,7 @@ namespace Winged_Warfare
                     {
                         if (!IsNotValidScreenPos(indicator.GetScreenPosition()) && !indicator.AnimationDone())
                         {
-                            _spriteBatch.DrawString(Game1.TestFont, indicator.GetScore(), indicator.GetScreenPosition(), indicator.GetScoreColor());
+                            _spriteBatch.DrawString(Game1.HUDScoreTextFont, indicator.GetScore(), indicator.GetScreenPosition(), indicator.GetScoreColor());
                         }
                     }
 
@@ -321,7 +321,6 @@ namespace Winged_Warfare
                     _spriteBatch.DrawString(Game1.HUDScoreTextFont, "SCORE", new Vector2(xOffset - Game1.HUDScoreBG.Width + ScoreXOffset, borderPadding + Game1.HUDScoreBG.Height - remainingScoreYSpace - scoreTextSize.Y), new Color(180, 76, 75));
                     _spriteBatch.DrawString(Game1.HUDScoreNumFont, Score.GetScore().ToString(), new Vector2(xOffset - Game1.HUDScoreBG.Width + ScoreXOffset + scoreTextSize.X / 2f - scoreNumberTextSize.X / 2f, borderPadding + remainingScoreYSpace), Color.White);
                     _spriteBatch.DrawString(Game1.HUDScoreNumFont, Score.GetHighscore().ToString(), new Vector2(xOffset - highscoreNumberTextSize.X / 2f - highscoreTextSize.X / 2f - ScoreXOffset, borderPadding + remainingScoreYSpace), Color.White);
-
 
                     // Draw Ammunition HUD
                     for (int i = 0; i < BulletHandler.GetMagazinSize(); i++)

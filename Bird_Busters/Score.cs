@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Winged_Warfare
+namespace Bird_Busters
 {
     public class Score
     {

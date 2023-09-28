@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Winged_Warfare
+namespace Bird_Busters
 {
     internal class Skybox : LevelObject
     {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 
-namespace Winged_Warfare
+namespace Bird_Busters
 {
     internal class LevelObject
     {

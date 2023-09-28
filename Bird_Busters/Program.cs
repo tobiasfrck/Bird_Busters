@@ -1,3 +1,3 @@
 ﻿
-using var game = new Winged_Warfare.Game1();
+using var game = new Bird_Busters.Game1();
 game.Run();

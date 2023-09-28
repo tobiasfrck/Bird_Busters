@@ -10,7 +10,7 @@ using System.Transactions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Winged_Warfare
+namespace Bird_Busters
 {
     internal class DrawableObject : LevelObject
     {

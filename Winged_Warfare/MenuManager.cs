@@ -45,6 +45,9 @@ namespace Winged_Warfare
         private Timer gameEndFadeTimer;
         private Timer gameEndAppearTimer;
         private Timer birdAnimationTimer;
+        private Timer scoreCountingTimer;
+        private Timer birdCountingTimer;
+        private Timer _animationAppearTimer;
 
         private List<ScoreIndicator> _scoreIndicators = new();
 
@@ -98,7 +101,7 @@ namespace Winged_Warfare
             _blankTexture = new Texture2D(_graphics.GraphicsDevice, 1, 1);
             _horizontalCenter = Game1.Width / 2f;
 
-        
+
             // Do NOT change the order of the buttons; This WILL break the code. lol
             CreateMainMenu();
             CreateSettingsMenu();
@@ -190,11 +193,31 @@ namespace Winged_Warfare
                 case GameState.GameEnded:
                     gameEndFadeTimer.Update();
                     gameEndAppearTimer.Update();
-                    if (gameEndAppearTimer.IsRunning() == false && birdAnimationTimer == null)
+                    scoreCountingTimer?.Update();
+                    birdCountingTimer?.Update();
+                    _animationAppearTimer?.Update();
+                    birdAnimationTimer?.Update();
+                    if (gameEndAppearTimer.IsRunning() == false && scoreCountingTimer == null)
+                    {
+                        scoreCountingTimer = new Timer(1000);
+                    }
+
+                    if (scoreCountingTimer != null && scoreCountingTimer.IsRunning() == false && _animationAppearTimer == null)
+                    {
+                        _animationAppearTimer = new Timer(300);
+                    }
+
+
+                    if (_animationAppearTimer != null && _animationAppearTimer.IsRunning() == false && birdAnimationTimer == null)
                     {
                         birdAnimationTimer = new Timer(1000);
                     }
-                    birdAnimationTimer?.Update();
+
+                    if (birdAnimationTimer != null && birdAnimationTimer.GetProgress() > 0.0f && birdCountingTimer == null)
+                    {
+                        birdCountingTimer = new Timer(1500);
+                    }
+
                     foreach (Button btn in _gameEndedButtons)
                     {
                         btn.Update(mousePosition, _previousMouseState.LeftButton == ButtonState.Pressed, _currentMouseState.LeftButton == ButtonState.Released);
@@ -234,15 +257,15 @@ namespace Winged_Warfare
 
                     }
 
-                    _spriteBatch.Draw(Game1.menuBoxLeft, new Rectangle(30,70,550,700),Color.White); //linke Menu-Box
+                    _spriteBatch.Draw(Game1.menuBoxLeft, new Rectangle(30, 70, 550, 700), Color.White); //linke Menu-Box
                     _spriteBatch.Draw(Game1.menuBoxRight, new Rectangle(1334, 70, 550, 700), Color.White); //rechte Menu-Box
                     _spriteBatch.Draw(Game1.menuBoxLow, new Rectangle(516, 804, 900, 240), Color.White); //untere Menu-Box
                     _spriteBatch.Draw(Game1.menuBoxCenter, new Rectangle(600, 30, 720, 756), Color.White); //mittlere Menu-Box
                     _spriteBatch.Draw(Game1.menuBoxCenter, new Rectangle(600, 30, 720, 756), Color.White); //mittlere Menu-Box
-                    //_spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 183, 234, 48), Color.White); //SoundbarMusic
-                    //_spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 252, 234, 48), Color.White); //SoundbarMusicSFX
-                    //_spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 314, 234, 48), Color.White); //SoundbarMusic
-                    _spriteBatch.DrawString(Game1.TestFont, Game1.MusicVolume.ToString(),new Vector2(1060, 180),Color.White);
+                                                                                                           //_spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 183, 234, 48), Color.White); //SoundbarMusic
+                                                                                                           //_spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 252, 234, 48), Color.White); //SoundbarMusicSFX
+                                                                                                           //_spriteBatch.Draw(Game1.Soundbar, new Rectangle(986, 314, 234, 48), Color.White); //SoundbarMusic
+                    _spriteBatch.DrawString(Game1.TestFont, Game1.MusicVolume.ToString(), new Vector2(1060, 180), Color.White);
                     _spriteBatch.DrawString(Game1.TestFont, Game1.SFXVolume.ToString(), new Vector2(1060, 250), Color.White);
                     _spriteBatch.DrawString(Game1.TestFont, Game1.MenuSFXVolume.ToString(), new Vector2(1060, 310), Color.White);
 
@@ -253,7 +276,7 @@ namespace Winged_Warfare
                     Vector2 cheatStatusPosition = new Vector2(950, 560); // Position der Textausgabe
                     _spriteBatch.DrawString(Game1.TestFont, cheatStatusText, cheatStatusPosition, Color.White);
 
-                    
+
 
 
                     foreach (Button btn in _settingsButtons)
@@ -361,10 +384,22 @@ namespace Winged_Warfare
 
                     Vector2 gameEndedDim = Game1.HUDTimerFont.MeasureString("Game Ended");
                     Vector2 scoreDim = Game1.HUDScoreTextFont.MeasureString("Score: " + Score.GetScore());
-                    Vector2 highscoreDim = Game1.HUDScoreTextFont.MeasureString("Highscore: " + Score.GetHighscore());
                     _spriteBatch.DrawString(Game1.HUDTimerFont, "Game Ended", new Vector2(_horizontalCenter - gameEndedDim.X / 2, 25), Color.White);
-                    _spriteBatch.DrawString(Game1.HUDScoreTextFont, "Highscore: " + Score.GetHighscore(), new Vector2(_horizontalCenter - highscoreDim.X / 2, 130), Color.White);
-                    _spriteBatch.DrawString(Game1.HUDScoreTextFont, "Score: " + Score.GetScore(), new Vector2(_horizontalCenter - scoreDim.X / 2, 180), Color.White);
+                    _spriteBatch.DrawString(Game1.HUDScoreTextFont, "Score: " + (int)(Score.GetScore() * scoreCountingTimer.GetProgress()), new Vector2(_horizontalCenter - scoreDim.X / 2, 130), Color.White);
+
+                    if (scoreCountingTimer != null && scoreCountingTimer.IsRunning() == false)
+                    {
+                        Vector2 highscoreDim = Game1.HUDScoreTextFont.MeasureString("Highscore: " + Score.GetHighscore());
+                        if (Score.IsNewHighscore())
+                        {
+                            highscoreDim = Game1.HUDScoreTextFont.MeasureString("New Highscore!");
+                            _spriteBatch.DrawString(Game1.HUDScoreTextFont, "New Highscore!", new Vector2(_horizontalCenter - highscoreDim.X / 2, 180), Color.White);
+                        }
+                        else
+                        {
+                            _spriteBatch.DrawString(Game1.HUDScoreTextFont, "Highscore: " + Score.GetHighscore(), new Vector2(_horizontalCenter - highscoreDim.X / 2, 180), Color.White);
+                        }
+                    }
 
                     if (birdAnimationTimer != null)
                     {
@@ -373,19 +408,23 @@ namespace Winged_Warfare
                         {
                             frame = 0;
                         }
-                        _spriteBatch.Draw(Game1.GreenBirdVideo[frame], new Rectangle(30, 200, Game1.GreenBirdVideo[frame].Width / 2, Game1.GreenBirdVideo[frame].Height / 2 +100), Color.White);
+                        _spriteBatch.Draw(Game1.GreenBirdVideo[frame], new Rectangle(30, 200, Game1.GreenBirdVideo[frame].Width / 2, Game1.GreenBirdVideo[frame].Height / 2 + 100), Color.White);
                         _spriteBatch.Draw(Game1.RedBirdVideo[frame], new Rectangle(716, 200, Game1.RedBirdVideo[frame].Width / 2, Game1.RedBirdVideo[frame].Height / 2 + 100), Color.White);
                         _spriteBatch.Draw(Game1.OrangeBirdVideo[frame], new Rectangle(1400, 200, Game1.OrangeBirdVideo[frame].Width / 2, Game1.OrangeBirdVideo[frame].Height / 2 + 100), Color.White);
+
                     }
 
-                    float measureGX = Game1.HUDScoreNumFont.MeasureString(Score.GetBirdsHit(BirdType.Common).ToString()).X;
-                    float measureRX = Game1.HUDScoreNumFont.MeasureString(Score.GetBirdsHit(BirdType.Rare).ToString()).X;
-                    float measureLX = Game1.HUDScoreNumFont.MeasureString(Score.GetBirdsHit(BirdType.Legendary).ToString()).X;
+                    if (birdCountingTimer != null)
+                    {
+                        float measureGX = Game1.HUDScoreNumFont.MeasureString(((int)(Score.GetBirdsHit(BirdType.Common) * birdCountingTimer.GetProgress())).ToString()).X;
+                        float measureRX = Game1.HUDScoreNumFont.MeasureString(((int)(Score.GetBirdsHit(BirdType.Rare) * birdCountingTimer.GetProgress())).ToString()).X;
+                        float measureLX = Game1.HUDScoreNumFont.MeasureString(((int)(Score.GetBirdsHit(BirdType.Legendary) * birdCountingTimer.GetProgress())).ToString()).X;
 
+                        _spriteBatch.DrawString(Game1.HUDScoreNumFont, ((int)(Score.GetBirdsHit(BirdType.Common) * birdCountingTimer.GetProgress())).ToString(), new Vector2(30 + Game1.GreenBirdVideo[0].Width / 4f - measureGX / 2f, 400 + Game1.GreenBirdVideo[0].Height / 4f), Color.White);
+                        _spriteBatch.DrawString(Game1.HUDScoreNumFont, ((int)(Score.GetBirdsHit(BirdType.Rare) * birdCountingTimer.GetProgress())).ToString(), new Vector2(716 + Game1.RedBirdVideo[0].Width / 4f - measureRX / 2, 400 + Game1.RedBirdVideo[0].Height / 4f), Color.White);
+                        _spriteBatch.DrawString(Game1.HUDScoreNumFont, ((int)(Score.GetBirdsHit(BirdType.Legendary) * birdCountingTimer.GetProgress())).ToString(), new Vector2(1400 + Game1.OrangeBirdVideo[0].Width / 4f - measureLX / 2, 400 + Game1.OrangeBirdVideo[0].Height / 4f), Color.White);
+                    }
 
-                    _spriteBatch.DrawString(Game1.HUDScoreNumFont, Score.GetBirdsHit(BirdType.Common).ToString(), new Vector2(30 + Game1.GreenBirdVideo[0].Width/4f - measureGX/2f, 400 + Game1.GreenBirdVideo[0].Height/4f), Color.White);
-                    _spriteBatch.DrawString(Game1.HUDScoreNumFont, Score.GetBirdsHit(BirdType.Rare).ToString(), new Vector2(716 + Game1.RedBirdVideo[0].Width / 4f - measureRX / 2, 400 + Game1.RedBirdVideo[0].Height/4f), Color.White);
-                    _spriteBatch.DrawString(Game1.HUDScoreNumFont, Score.GetBirdsHit(BirdType.Legendary).ToString(), new Vector2(1400 + Game1.OrangeBirdVideo[0].Width / 4f - measureLX / 2, 400 + Game1.OrangeBirdVideo[0].Height/4f), Color.White);
 
 
                     foreach (Button btn in _gameEndedButtons)
@@ -443,59 +482,59 @@ namespace Winged_Warfare
             _settingsButtons.Add(toMenu);
             toMenu.SetClick(SwitchToMenu);
 
-           /*
-            // Erstelle den "UHD" Button (3840x2160)
-            Button UHD = new Button(new Vector2(Game1.Width * 0.63f, Game1.Height * 0.41f), new Vector2(130, 40), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "UHD", Game1.TestFont, Color.Black, Color.White, Color.White);
+            /*
+             // Erstelle den "UHD" Button (3840x2160)
+             Button UHD = new Button(new Vector2(Game1.Width * 0.63f, Game1.Height * 0.41f), new Vector2(130, 40), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "UHD", Game1.TestFont, Color.Black, Color.White, Color.White);
 
-            _settingsButtons.Add(UHD);
-            UHD.SetClick(SetResolutionToUHD);
+             _settingsButtons.Add(UHD);
+             UHD.SetClick(SetResolutionToUHD);
 
-            void SetResolutionToUHD()
-            {
-                _graphics.PreferredBackBufferWidth = 3840;
-                _graphics.PreferredBackBufferHeight = 2160;
-                _graphics.ApplyChanges();
-            }
+             void SetResolutionToUHD()
+             {
+                 _graphics.PreferredBackBufferWidth = 3840;
+                 _graphics.PreferredBackBufferHeight = 2160;
+                 _graphics.ApplyChanges();
+             }
 
-            // Erstelle den "Full HD" Button (1920x1080)
-            Button fullHD = new Button(new Vector2(Game1.Width * 0.53f, Game1.Height * 0.41f), new Vector2(130, 40), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Full-HD", Game1.TestFont, Color.Black, Color.White, Color.White);
+             // Erstelle den "Full HD" Button (1920x1080)
+             Button fullHD = new Button(new Vector2(Game1.Width * 0.53f, Game1.Height * 0.41f), new Vector2(130, 40), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Full-HD", Game1.TestFont, Color.Black, Color.White, Color.White);
 
-            _settingsButtons.Add(fullHD);
-            fullHD.SetClick(SetResolutionToFullHD);
+             _settingsButtons.Add(fullHD);
+             fullHD.SetClick(SetResolutionToFullHD);
 
-            void SetResolutionToFullHD()
-            {
-                _graphics.PreferredBackBufferWidth = 1920;
-                _graphics.PreferredBackBufferHeight = 1080;
-                _graphics.ApplyChanges();
-            }
+             void SetResolutionToFullHD()
+             {
+                 _graphics.PreferredBackBufferWidth = 1920;
+                 _graphics.PreferredBackBufferHeight = 1080;
+                 _graphics.ApplyChanges();
+             }
 
-            // Erstelle den "HD" Button(1280x720)
-            Button HDbutton = new Button(new Vector2(Game1.Width * 0.53f, Game1.Height * 0.47f), new Vector2(130, 40), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "HD", Game1.TestFont, Color.Black, Color.White, Color.White);
+             // Erstelle den "HD" Button(1280x720)
+             Button HDbutton = new Button(new Vector2(Game1.Width * 0.53f, Game1.Height * 0.47f), new Vector2(130, 40), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "HD", Game1.TestFont, Color.Black, Color.White, Color.White);
 
-            _settingsButtons.Add(HDbutton);
-            HDbutton.SetClick(SetResolutionToHD);
+             _settingsButtons.Add(HDbutton);
+             HDbutton.SetClick(SetResolutionToHD);
 
-            void SetResolutionToHD()
-            {
-                _graphics.PreferredBackBufferWidth = 1280;
-                _graphics.PreferredBackBufferHeight = 720;
-                _graphics.ApplyChanges();
-            }
+             void SetResolutionToHD()
+             {
+                 _graphics.PreferredBackBufferWidth = 1280;
+                 _graphics.PreferredBackBufferHeight = 720;
+                 _graphics.ApplyChanges();
+             }
 
-            // Erstelle den "HD-Plus" Button (1600x900)
-            Button HDplus = new Button(new Vector2(Game1.Width * 0.63f, Game1.Height * 0.47f), new Vector2(130, 40), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "HD+", Game1.TestFont, Color.Black, Color.White, Color.White);
+             // Erstelle den "HD-Plus" Button (1600x900)
+             Button HDplus = new Button(new Vector2(Game1.Width * 0.63f, Game1.Height * 0.47f), new Vector2(130, 40), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "HD+", Game1.TestFont, Color.Black, Color.White, Color.White);
 
-            _settingsButtons.Add(HDplus);
-            HDplus.SetClick(SetResolutionToHDplus);
+             _settingsButtons.Add(HDplus);
+             HDplus.SetClick(SetResolutionToHDplus);
 
-            void SetResolutionToHDplus()
-            {
-                _graphics.PreferredBackBufferWidth = 1600;
-                _graphics.PreferredBackBufferHeight = 900;
-                _graphics.ApplyChanges();
-            }
-           */
+             void SetResolutionToHDplus()
+             {
+                 _graphics.PreferredBackBufferWidth = 1600;
+                 _graphics.PreferredBackBufferHeight = 900;
+                 _graphics.ApplyChanges();
+             }
+            */
             // Button, um in den Vollbildmodus zu wechseln
             Button fullscreenButton = new Button(new Vector2(Game1.Width * 0.544f, Game1.Height * 0.43f), new Vector2(175, 50), Game1.Button, Game1.ButtonHover, Game1.ButtonPressed, "Fullscreen", Game1.TestFont, Color.Black, Color.White, Color.White);
             fullscreenButton.SetClick(ToggleFullscreen);
@@ -526,7 +565,7 @@ namespace Winged_Warfare
             {
                 // Erhöhung der Lautstärke
                 Game1.MusicVolume += 10;
-                if (Game1.MusicVolume> 100)
+                if (Game1.MusicVolume > 100)
                 {
                     Game1.MusicVolume = 1;
                 }
@@ -545,7 +584,7 @@ namespace Winged_Warfare
                 }
                 MediaPlayer.Volume = Game1.MusicVolume / 100f;
             }
-          
+
             // Gesamt-Lautstärke erhöhen Button 
             float volumeUpButtonX = Game1.Width * 0.65f;
             float volumeUpButtonY = Game1.Height * 0.17f;
@@ -667,7 +706,7 @@ namespace Winged_Warfare
             Vector2 backPadding = new Vector2(40, 40);
             Vector2 restartPadding = new Vector2(40, 40);
 
-            Button toMenu = new Button(new Vector2(270 + backPadding.X, (Game1.Height - 100))-backPadding, backSize + backPadding, Game1.Grey80, Game1.Grey40, _blankTexture, "Return to menu", Game1.TestFont, Color.Black, Color.Black, Color.Black);
+            Button toMenu = new Button(new Vector2(270 + backPadding.X, (Game1.Height - 100)) - backPadding, backSize + backPadding, Game1.Grey80, Game1.Grey40, _blankTexture, "Return to menu", Game1.TestFont, Color.Black, Color.Black, Color.Black);
             Button restart = new Button(new Vector2(1650 + restartPadding.X, (Game1.Height - 100)) - restartPadding, restartSize + restartPadding, Game1.Grey80, Game1.Grey40, _blankTexture, "Play another round", Game1.TestFont, Color.Black, Color.Black, Color.Black);
             _gameEndedButtons.Add(toMenu);
             _gameEndedButtons.Add(restart);
@@ -684,7 +723,7 @@ namespace Winged_Warfare
         {
             if (_state != GameState.Settings)
             {
-                MediaPlayer.Volume = Game1.MusicVolume/100f;
+                MediaPlayer.Volume = Game1.MusicVolume / 100f;
                 MediaPlayer.IsRepeating = true;
                 MediaPlayer.Play(Game1.startScreenMusic);
             }
@@ -706,10 +745,10 @@ namespace Winged_Warfare
         {
             MediaPlayer.IsRepeating = false;
             MediaPlayer.Play(Game1.gameScreenMusic);
-            MediaPlayer.Volume = Game1.MusicVolume/100f;
+            MediaPlayer.Volume = Game1.MusicVolume / 100f;
             Game1._gameTimer = new Timer((int)Game1.gameScreenMusic.Duration.TotalMilliseconds, SetGameNeedsReset);
             //uncomment for testing endscreen
-            //Game1._gameTimer = new Timer(10000, SetGameNeedsReset);
+            Game1._gameTimer = new Timer(10000, SetGameNeedsReset);
             Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();
             SetState(GameState.Game);
@@ -722,6 +761,10 @@ namespace Winged_Warfare
             Game1.EndOfRoundSoundEffect.Play();
             gameEndFadeTimer = new Timer(1236);
             gameEndAppearTimer = new Timer(1660);
+            scoreCountingTimer = null;
+            _animationAppearTimer = null;
+            birdAnimationTimer = null;
+            birdCountingTimer = null;
             Game1._gameTimer?.Pause();
             Button.ResetConflicts();
             SetState(GameState.GameEnded);

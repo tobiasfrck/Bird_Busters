@@ -17,8 +17,8 @@ namespace Bird_Busters
     //States: in menu, in settings, in game, game ended
     public class Game1 : Game
     {
-
-        public static Random RandomGenerator = new Random();
+        private const int Seed = 0; // Seed for random generator; Seed 0 is for random seed; This is for testing purposes.
+        public static Random RandomGenerator;
         public static bool CloseGame = false;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -36,7 +36,7 @@ namespace Bird_Busters
         public bool isMusicPlaying = true;
 
 
-        
+
 
 
 
@@ -147,6 +147,15 @@ namespace Bird_Busters
             _graphics.PreferredBackBufferHeight = Height; // you can change this if its too big or too small for your screen
             //_graphics.ApplyChanges(); // apply changes to the graphics device manager; not needed here but if you change the screen size during runtime you need this
             Instance = this;
+
+            if (Seed == 0) // If seed is 0, use random seed
+            {
+                RandomGenerator = new Random();
+            }
+            else
+            {
+                RandomGenerator = new Random(Seed);
+            }
         }
 
 
@@ -434,6 +443,10 @@ namespace Bird_Busters
             BirdSpawnpoint.Reset();
             BulletHandler.Reset();
             RestartLevel();
+            if (Seed != 0)
+            {
+                RandomGenerator = new Random(Seed);
+            }
             _camera.Reset();
         }
     }

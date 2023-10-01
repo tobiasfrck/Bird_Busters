@@ -14,7 +14,7 @@ using static System.Formats.Asn1.AsnWriter;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 
-namespace Winged_Warfare
+namespace Bird_Busters
 {
     public enum BirdType
     {

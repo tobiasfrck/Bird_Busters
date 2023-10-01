@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace Winged_Warfare
+namespace Bird_Busters
 {
     //Does everything concerning the current run and level
     //Loads level, spawns animals, has timer, checks end conditions, ends game.

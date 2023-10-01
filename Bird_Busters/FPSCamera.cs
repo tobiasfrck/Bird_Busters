@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Winged_Warfare
+namespace Bird_Busters
 {
     public class FPSCamera
     {

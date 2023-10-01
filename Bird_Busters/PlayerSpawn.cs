@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 
-namespace Winged_Warfare
+namespace Bird_Busters
 {
 
     //Maybe not needed but I'm keeping it for now because it's different from the other spawnpoints

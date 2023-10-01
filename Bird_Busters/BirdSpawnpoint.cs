@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using static System.Formats.Asn1.AsnWriter;
 
-namespace Winged_Warfare
+namespace Bird_Busters
 {
     internal class BirdSpawnpoint : LevelObject
     {

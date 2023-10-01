@@ -748,7 +748,7 @@ namespace Bird_Busters
             MediaPlayer.Volume = Game1.MusicVolume / 100f;
             Game1._gameTimer = new Timer((int)Game1.gameScreenMusic.Duration.TotalMilliseconds, SetGameNeedsReset);
             //uncomment for testing endscreen
-            Game1._gameTimer = new Timer(10000, SetGameNeedsReset);
+            //Game1._gameTimer = new Timer(10000, SetGameNeedsReset);
             Mouse.SetPosition(Game1.Width / 2, Game1.Height / 2);
             Button.ResetConflicts();
             SetState(GameState.Game);

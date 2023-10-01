@@ -27,7 +27,7 @@ namespace Bird_Busters
         private float _tempSpawnRateMultiplier = 0.2f; // used to store multipliers of special events
         private float _spawnTank = 2f; // the "tank" is filled each frame and when it reaches >1, n>=1 birds are spawned
 
-        private Random _random;
+        private Random _random = Game1.RandomGenerator;
 
         private PathPoint _pathPoint;
         private Model _model;
@@ -51,8 +51,6 @@ namespace Bird_Busters
             {
                 Debug.WriteLine("[Spawnpoint Bird]: Model not found");
             }
-
-            _random = Game1.RandomGenerator;
         }
 
         public override void Update()

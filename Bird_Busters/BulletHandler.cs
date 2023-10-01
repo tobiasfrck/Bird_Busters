@@ -236,7 +236,7 @@ namespace Bird_Busters
             {
                 net.Update();
             }
-            Debug.WriteLine("Bullets: " + bullets.Count);
+            //Debug.WriteLine("Bullets: " + bullets.Count);
 
             //TODO: optimize
             //          Removes Bullets When Marked or outside of the Game/Map

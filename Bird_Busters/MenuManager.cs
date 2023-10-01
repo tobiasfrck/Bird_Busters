@@ -272,8 +272,8 @@ namespace Bird_Busters
 
 
 
-                    string cheatStatusText = IsCheatActivated() ? "Cheat aktiviert!" : "Cheat deaktiviert.";
-                    Vector2 cheatStatusPosition = new Vector2(950, 560); // Position der Textausgabe
+                    string cheatStatusText = IsCheatActivated() ? "Cheat activated!" : "Cheat deactivated.";
+                    Vector2 cheatStatusPosition = new Vector2(950, 555); // Position der Textausgabe
                     _spriteBatch.DrawString(Game1.TestFont, cheatStatusText, cheatStatusPosition, Color.White);
 
 

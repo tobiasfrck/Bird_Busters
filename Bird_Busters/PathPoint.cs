@@ -125,6 +125,16 @@ namespace Bird_Busters
             return _nextPoints.Count == 0;
         }
 
+        public String GetNextPointsAsString()
+        {
+            String s = "";
+            foreach (PathPoint point in _nextPoints)
+            {
+                s += point.GetPointID() + ", ";
+            }
+            return s;
+        }
+
         public bool HasNextPoint()
         {
             return _nextPoints.Count > 0;

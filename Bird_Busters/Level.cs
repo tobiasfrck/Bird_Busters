@@ -419,7 +419,7 @@ namespace Bird_Busters
             };
             string debugObjectType = "";
             string debugObjectInfo = "";
-            switch (_levelObjects[_selectedObject].GetType().ToString().Substring(15))
+            switch (_levelObjects[_selectedObject].GetType().ToString().Substring(13))
             {
                 case "DrawableObject":
                     debugObjectType += "DObj";
@@ -427,7 +427,7 @@ namespace Bird_Busters
                     break;
                 case "PathPoint":
                     debugObjectType += "PP";
-                    debugObjectInfo = ((PathPoint)_levelObjects[_selectedObject]).GetPointID().ToString();
+                    debugObjectInfo = ((PathPoint)_levelObjects[_selectedObject]).GetPointID().ToString() + " | " + ((PathPoint)_levelObjects[_selectedObject]).GetNextPointsAsString();
                     break;
                 default:
                     Debug.WriteLine(_levelObjects[_selectedObject].GetType().ToString());

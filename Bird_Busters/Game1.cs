@@ -184,7 +184,6 @@ namespace Bird_Busters
             //BirdHandler.CreateList();
             //BirdHandler._startPoints = _level.GetStartPoints();
 
-
             Debug.WriteLine("Game initialized in Game1.cs.");
         }
 

@@ -117,6 +117,13 @@ namespace Bird_Busters
                 //Debug.WriteLine("[Bird "+_birdID"]: Flapped because of speed");
             }
 
+            //if Bird is below the minimum height, it will fly up
+            if (_drawableObject.Position.Y < _minHeight)
+            {
+                //flap = true;
+            }
+
+
             //if Bird is within the tolerance of the last target, it will die
             if (_pathPoint.IsLastPoint() && Vector3.Distance(_drawableObject.Position, new Vector3(_pathPoint.GetPosition().X, _drawableObject.Position.Y, _pathPoint.GetPosition().Y)) < _targetTolerance)
             {

@@ -340,7 +340,7 @@ namespace Bird_Busters
             {
                 int soundIndex = Game1.RandomGenerator.Next(Game1.StepSounds.Length);
                 _stepTimer.SetTimeNRun((int)Math.Round(_stepSounds[soundIndex].Duration.TotalMilliseconds + StepCooldown, 0, MidpointRounding.AwayFromZero));
-                _stepSounds[soundIndex].Play(Game1.SFXVolume/100f * 0.075f, 0, 0);
+                _stepSounds[soundIndex].Play(Game1.SFXVolume/100f * 0.25f, 0, 0);
             }
 
             // Adjust vertical angle 
@@ -414,7 +414,7 @@ namespace Bird_Busters
                     {
                         int soundIndex = Game1.RandomGenerator.Next(Game1.StepSounds.Length);
                         _stepTimer.SetTimeNRun((int)Math.Round(_stepSounds[soundIndex].Duration.TotalMilliseconds + StepCooldown, 0, MidpointRounding.AwayFromZero));
-                        _stepSounds[soundIndex].Play(Game1.SFXVolume/100f * 0.075f, 0, 0);
+                        _stepSounds[soundIndex].Play(Game1.SFXVolume/100f * 0.25f, 0, 0);
                     }
 
                     position.Y = 0.2f;

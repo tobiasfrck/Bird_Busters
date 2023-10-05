@@ -73,6 +73,7 @@ namespace Bird_Busters
         private int magDisplayXPosition;
         private int magDisplayDistanceBetween; //distance between ammo icons
         private Rectangle crosshairRect;
+        private Vector2 creatorCreditsSize;
 
 
         public static bool IsGunRecoiled = false;
@@ -138,7 +139,7 @@ namespace Bird_Busters
             magDisplayDistanceBetween = -7 - Game1.HUDAmmo.Height;
             ammoX = Game1.HUDAmmoFont.MeasureString("AMMO").X;
             crosshairRect = new Rectangle((Game1.Width / 2) - (Game1.Crosshair.Width / 2), (Game1.Height / 2) - (Game1.Crosshair.Height / 2), Game1.Crosshair.Width, Game1.Crosshair.Height);
-
+            creatorCreditsSize = Game1.TestFont.MeasureString("Game Credits: Tobias Fr. | Domenik \"Steph\" B. | Roman Schmidt | Jannik Keddy");
         }
 
 
@@ -276,7 +277,7 @@ namespace Bird_Busters
                     Vector2 cheatStatusPosition = new Vector2(950, 555); // Position der Textausgabe
                     _spriteBatch.DrawString(Game1.TestFont, cheatStatusText, cheatStatusPosition, Color.White);
 
-
+                    _spriteBatch.DrawString(Game1.TestFont, "Game Credits: Tobias Fr. | Domenik \"Steph\" B. | Roman Schmidt | Jannik Keddy", new Vector2(_horizontalCenter - creatorCreditsSize.X/2f, Game1.Height- creatorCreditsSize.Y),Color.White);
 
 
                     foreach (Button btn in _settingsButtons)
@@ -567,7 +568,7 @@ namespace Bird_Busters
                 Game1.MusicVolume += 10;
                 if (Game1.MusicVolume > 100)
                 {
-                    Game1.MusicVolume = 1;
+                    Game1.MusicVolume = 100;
                 }
                 MediaPlayer.Volume = Game1.MusicVolume / 100f;
             }

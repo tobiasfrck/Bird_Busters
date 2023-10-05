@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bird_Busters
 {
@@ -38,7 +34,7 @@ namespace Bird_Busters
         public void Update()
         {
             if (!isRunning) return;
-            milliseconds -= (1000/Fps);
+            milliseconds -= (1000 / Fps);
             if (milliseconds <= 0)
             {
                 if (onTimerEnd != null)
@@ -58,7 +54,7 @@ namespace Bird_Busters
                 }
                 else
                 {
-                    isRunning=false;
+                    isRunning = false;
                 }
             }
         }
@@ -72,7 +68,7 @@ namespace Bird_Busters
         // Returns true if the timer was restarted; false if it was still running
         public bool RestartIfTimeElapsed()
         {
-            if(isRunning) return false;
+            if (isRunning) return false;
             milliseconds = initMilliseconds;
             isRunning = true;
             return true;
@@ -112,13 +108,13 @@ namespace Bird_Busters
 
         public int GetSeconds()
         {
-            return (int)Math.Round(milliseconds / 1000,0,MidpointRounding.AwayFromZero);
+            return (int)Math.Round(milliseconds / 1000, 0, MidpointRounding.AwayFromZero);
         }
 
         public float GetProgress()
         {
-            return (initMilliseconds-milliseconds) / initMilliseconds;
+            return (initMilliseconds - milliseconds) / initMilliseconds;
         }
-        
+
     }
 }

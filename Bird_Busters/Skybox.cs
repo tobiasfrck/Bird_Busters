@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Bird_Busters
 {
@@ -46,7 +46,7 @@ namespace Bird_Busters
 
                             meshPart.Effect.Parameters["World"].SetValue(
                                 Matrix.CreateScale(_size) * Matrix.CreateTranslation(Player.GetCamPosition()));
-                            meshPart.Effect.Parameters["View"].SetValue(Matrix.CreateRotationY(MathHelper.ToRadians(-35))*Player.ViewMatrix);
+                            meshPart.Effect.Parameters["View"].SetValue(Matrix.CreateRotationY(MathHelper.ToRadians(-35)) * Player.ViewMatrix);
                             meshPart.Effect.Parameters["Projection"].SetValue(Player.ProjectionMatrix);
                             meshPart.Effect.Parameters["SkyBoxTexture"].SetValue(_skyBoxTexture);
                             meshPart.Effect.Parameters["CameraPosition"].SetValue(Player.GetCamPosition());

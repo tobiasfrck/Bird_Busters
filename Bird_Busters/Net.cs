@@ -1,10 +1,5 @@
-﻿using System;
-using System.Data;
-using System.Diagnostics;
-using System.Numerics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using System;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 
 namespace Bird_Busters
@@ -38,7 +33,7 @@ namespace Bird_Busters
         public void Update()
         {
             this.lastPosition = this.position;
-            this.position = this.position - ((this.target/2)*speed);
+            this.position = this.position - ((this.target / 2) * speed);
             this.position.Y = this.position.Y + this.velocity;
             velocity -= gravity;
 
@@ -46,7 +41,7 @@ namespace Bird_Busters
             _drawableObject.Position = this.position;
             RotateNet();
             _drawableObject.Update();
-      //      Debug.WriteLine(this.position.X + "-"+this.position.Y + "-" + this.position.Z);
+            //      Debug.WriteLine(this.position.X + "-"+this.position.Y + "-" + this.position.Z);
         }
 
         private void RotateNet()
@@ -83,7 +78,7 @@ namespace Bird_Busters
 
         public float GetScoreMultiplier()
         {
-            return (float)Math.Pow(_scoreMultiplier,HitCount);
+            return (float)Math.Pow(_scoreMultiplier, HitCount);
         }
 
     }

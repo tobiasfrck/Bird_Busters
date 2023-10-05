@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Numerics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 
 
@@ -137,7 +134,7 @@ namespace Bird_Busters
                     Game1.ShootEffect.Play(Game1.SFXVolume / 100f * 0.55f, 0, 0);
                     MenuManager.IsGunRecoiled = true;
                 }
-                bullets.Add(new Net(FPSCamera.position + new Vector3(0,.4f,0), Player.CamTarget));
+                bullets.Add(new Net(FPSCamera.position + new Vector3(0, .4f, 0), Player.CamTarget));
                 //Schaut ob gerade die letzte Kugel verschossen wurde
                 canShoot = true;
                 _isReloading = false;
@@ -150,7 +147,7 @@ namespace Bird_Busters
                     //Spielt Nachlade-Soundeffekt ab
                     if (!cheatActivated)
                     {
-                        Game1.Reload_Mag.Play(Game1.SFXVolume/100f / 2f, 0, 0);
+                        Game1.Reload_Mag.Play(Game1.SFXVolume / 100f / 2f, 0, 0);
                     }
                 }
                 else
@@ -160,7 +157,7 @@ namespace Bird_Busters
                 }
             }
 
-            if (_reloadTimerShot.IsRunning() == false && IsReloading()==false)
+            if (_reloadTimerShot.IsRunning() == false && IsReloading() == false)
             {
                 MenuManager.IsGunRecoiled = false;
             }
@@ -170,7 +167,7 @@ namespace Bird_Busters
                 _reloadTimerMagazin.SetTimeNRun(reloadTimerMagazin);
                 if (!cheatActivated)
                 {
-                    Game1.Reload_Mag.Play(Game1.SFXVolume/100f / 2f, 0, 0);
+                    Game1.Reload_Mag.Play(Game1.SFXVolume / 100f / 2f, 0, 0);
                 }
                 _isReloading = true;
                 canShoot = false;
@@ -213,7 +210,7 @@ namespace Bird_Busters
                     if (Vector3.Distance(bullets[i].position, birds[j]._position) <= 1)
                     {
                         //bullets[i].Marked = true;
-                        Game1.HitMarker.Play(Game1.SFXVolume/100f / 2, 0, 0);
+                        Game1.HitMarker.Play(Game1.SFXVolume / 100f / 2, 0, 0);
                         birds[j].IsAlive = false;
                         bullets[i].HitCount++;
                         float playerDistanceToBird = birds[j].GetDistanceToPlayer();

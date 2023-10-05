@@ -1,13 +1,10 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 
 namespace Bird_Busters
 {
@@ -433,7 +430,7 @@ namespace Bird_Busters
                     Debug.WriteLine(_levelObjects[_selectedObject].GetType().ToString());
                     break;
             }
-            _debugText = "Position: " +FPSCamera.position+"\n"+"Selected Object: " + _selectedObject + " of type " + debugObjectType + " with info: " + debugObjectInfo + "\n" +
+            _debugText = "Position: " + FPSCamera.position + "\n" + "Selected Object: " + _selectedObject + " of type " + debugObjectType + " with info: " + debugObjectInfo + "\n" +
                          "Tool: " + debugText + "\n" +
                          "Resolution: " + (float)Math.Round(DebugToolMinResolution * Math.Pow(10, _debugToolResolution), 3) + "\n" +
                          "Save: Right-CTRL, Recover: -";

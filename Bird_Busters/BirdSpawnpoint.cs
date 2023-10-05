@@ -1,12 +1,8 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Timers;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace Bird_Busters
 {
@@ -36,7 +32,7 @@ namespace Bird_Busters
 
         //Spawnpoints are positioned on initialization in origin.
         //They are then moved to the position of the pathpoint they are assigned to.
-        public BirdSpawnpoint(int spawnpointId, float spawnRate, float SpawnRateMultiplier, int line) : base(new Vector3(0,0,0), new Vector3(0,0,0), new Vector3(1,1,1), line)
+        public BirdSpawnpoint(int spawnpointId, float spawnRate, float SpawnRateMultiplier, int line) : base(new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(1, 1, 1), line)
         {
             if (_firstSpawnpointSpawned == false)
             {
@@ -83,7 +79,7 @@ namespace Bird_Busters
         {
             if (_spawnTank >= 1)
             {
-                int birdsToSpawn = (int) Math.Floor(_spawnTank);
+                int birdsToSpawn = (int)Math.Floor(_spawnTank);
                 _spawnTank -= birdsToSpawn;
                 for (int i = 0; i < birdsToSpawn; i++)
                 {

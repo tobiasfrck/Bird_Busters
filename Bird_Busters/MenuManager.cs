@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Numerics;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 
@@ -277,7 +276,7 @@ namespace Bird_Busters
                     Vector2 cheatStatusPosition = new Vector2(950, 555); // Position der Textausgabe
                     _spriteBatch.DrawString(Game1.TestFont, cheatStatusText, cheatStatusPosition, Color.White);
 
-                    _spriteBatch.DrawString(Game1.TestFont, "Game Credits: Tobias Fr. | Domenik \"Steph\" B. | Roman Schmidt | Jannik Keddy", new Vector2(_horizontalCenter - creatorCreditsSize.X/2f, Game1.Height- creatorCreditsSize.Y),Color.White);
+                    _spriteBatch.DrawString(Game1.TestFont, "Game Credits: Tobias Fr. | Domenik \"Steph\" B. | Roman Schmidt | Jannik Keddy", new Vector2(_horizontalCenter - creatorCreditsSize.X / 2f, Game1.Height - creatorCreditsSize.Y), Color.White);
 
 
                     foreach (Button btn in _settingsButtons)

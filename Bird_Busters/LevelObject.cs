@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 
 namespace Bird_Busters
@@ -98,7 +91,7 @@ namespace Bird_Busters
             {
                 _rotation = value;
                 UpdateWorldMatrix();
-            } 
+            }
         }
 
         public Vector3 Scale
@@ -108,7 +101,7 @@ namespace Bird_Busters
             {
                 _scale = value;
                 UpdateWorldMatrix();
-            } 
+            }
         }
 
         public Matrix WorldMatrix

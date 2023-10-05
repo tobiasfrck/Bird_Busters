@@ -1,9 +1,4 @@
-﻿using System;
-using System.Data;
-using System.Diagnostics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
 
 namespace Bird_Busters
 {
@@ -20,7 +15,7 @@ namespace Bird_Busters
 
         public Player()
         {
-            
+
         }
 
         public static void Update()
@@ -40,4 +35,3 @@ namespace Bird_Busters
 
     }
 }
-  

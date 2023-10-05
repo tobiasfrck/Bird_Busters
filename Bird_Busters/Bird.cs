@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Graphics;
-using static System.Formats.Asn1.AsnWriter;
+using System;
+using System.Diagnostics;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using Vector3 = Microsoft.Xna.Framework.Vector3;
 
@@ -82,7 +73,7 @@ namespace Bird_Busters
             position.Z += _offset.Y;
             _position = position;
 
-            
+
 
             SetBirdType(DetermineBirdType(_random.NextDouble()));
 
@@ -90,11 +81,11 @@ namespace Bird_Busters
             GenerateCurrentTarget();
 
             Emitter = new AudioEmitter();
-            Emitter.Up = new Vector3(0,0,1); //TODO: check if this is correct
+            Emitter.Up = new Vector3(0, 0, 1); //TODO: check if this is correct
             Emitter.Position = _drawableObject.Position;
             int soundIndex = _random.Next(Game1.BirdFlaps.Length);
             FlapEffectInstance = Game1.BirdFlaps[soundIndex].CreateInstance();
-            FlapEffectInstance.Volume = Game1.SFXVolume/100f;
+            FlapEffectInstance.Volume = Game1.SFXVolume / 100f;
             FlapEffectInstance.Apply3D(Game1.Listener, Emitter);
         }
 
@@ -167,7 +158,7 @@ namespace Bird_Busters
             Emitter.Forward = _currentDirection; //TODO: check if this is correct
             _volumeMultiplier = 1f - (_distanceToPlayer / 40f); //TODO: Fine tune this
             _volumeMultiplier = MathHelper.Clamp(_volumeMultiplier, 0, 1);
-            FlapEffectInstance.Volume = Game1.SFXVolume/100f * _volumeMultiplier;
+            FlapEffectInstance.Volume = Game1.SFXVolume / 100f * _volumeMultiplier;
             FlapEffectInstance.Apply3D(Game1.Listener, Emitter);
         }
 
@@ -193,7 +184,7 @@ namespace Bird_Busters
                 float heightDifference = heightGoal - _drawableObject.Position.Y;
                 if (_yVelocity <= 0)
                 {
-                    _yVelocity = heightDifference / (100f-_speed*15f);
+                    _yVelocity = heightDifference / (100f - _speed * 15f);
                     /*
                     if (_distanceToPlayer < 20f)
                     {

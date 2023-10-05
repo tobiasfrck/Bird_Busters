@@ -397,7 +397,7 @@ namespace Bird_Busters
             //rasterizerState.CullMode = CullMode.None;
             //GraphicsDevice.RasterizerState = rasterizerState;
 
-            RasterizerState rasterizerState = new RasterizerState();
+            RasterizerState rasterizerState = new();
             rasterizerState.CullMode = CullMode.CullCounterClockwiseFace;
             GraphicsDevice.RasterizerState = rasterizerState;
 

@@ -45,7 +45,7 @@ namespace Bird_Busters
     internal class BulletHandler
     {
         //Liste mit allen Bullets
-        public static List<Net> bullets = new List<Net>();
+        public static List<Net> bullets = new();
         public static List<Bird> birds;
         //Delay-Zeit zwischen Jedem Schuss
         private static int reloadTimerShot = 500;
@@ -217,7 +217,7 @@ namespace Bird_Busters
                         float distanceMultplier = (float)Math.Pow(1.0172f, playerDistanceToBird);
                         Debug.WriteLine(birds[j].GetBirdStats());
                         Debug.WriteLine("hit from: " + playerDistanceToBird);
-                        Debug.WriteLine("volume: " + birds[j]._volumeMultiplier);
+                        Debug.WriteLine("volume: " + birds[j].VolumeMultiplier);
                         int score = (int)(birds[j].GetBirdScore() * bullets[i].GetScoreMultiplier() * distanceMultplier);
                         Score.IncreaseScore(score, birds[j].GetBirdType());
                         _menuManager.AddScoreIndicator(birds[j]._position, score.ToString(), birds[j].GetBirdType());

@@ -22,7 +22,7 @@ namespace Bird_Busters
         public bool IsAlive = true;
 
         private readonly float _rndDirection = 15f; // in degree
-        private Random _random = Game1.RandomGenerator;
+        private readonly Random _random = Game1.RandomGenerator;
         public Vector3 _position;
 
         private int _scorePoints = 10;
@@ -45,13 +45,13 @@ namespace Bird_Busters
 
         private Vector2 _currentTarget;
         private Vector3 _currentDirection;
-        private float _targetTolerance;
+        private readonly float _targetTolerance;
         private PathPoint _pathPoint;
 
         //Audio
-        private AudioEmitter Emitter;
-        private SoundEffectInstance FlapEffectInstance;
-        public float _volumeMultiplier = 1f;
+        private readonly AudioEmitter _emitter;
+        private SoundEffectInstance _flapEffectInstance;
+        public float VolumeMultiplier = 1f;
 
         public Bird(PathPoint p, float targetTolerance)
         {
@@ -80,13 +80,15 @@ namespace Bird_Busters
             _targetTolerance = targetTolerance;
             GenerateCurrentTarget();
 
-            Emitter = new AudioEmitter();
-            Emitter.Up = new Vector3(0, 0, 1); //TODO: check if this is correct
-            Emitter.Position = _drawableObject.Position;
+            _emitter = new AudioEmitter
+            {
+                Up = new Vector3(0, 0, 1), //TODO: check if this is correct
+                Position = _drawableObject.Position
+            };
             int soundIndex = _random.Next(Game1.BirdFlaps.Length);
-            FlapEffectInstance = Game1.BirdFlaps[soundIndex].CreateInstance();
-            FlapEffectInstance.Volume = Game1.SFXVolume / 100f;
-            FlapEffectInstance.Apply3D(Game1.Listener, Emitter);
+            _flapEffectInstance = Game1.BirdFlaps[soundIndex].CreateInstance();
+            _flapEffectInstance.Volume = Game1.SFXVolume / 100f;
+            _flapEffectInstance.Apply3D(Game1.Listener, _emitter);
         }
 
         public void Update()
@@ -125,11 +127,11 @@ namespace Bird_Busters
             //if Bird is alive, it will flap its wings -> change in speed, direction and height
             if (IsAlive && flap)
             {
-                if (FlapEffectInstance.State != SoundState.Playing)
+                if (_flapEffectInstance.State != SoundState.Playing)
                 {
                     int soundIndex = _random.Next(Game1.BirdFlaps.Length);
-                    FlapEffectInstance = Game1.BirdFlaps[soundIndex].CreateInstance();
-                    FlapEffectInstance.Play();
+                    _flapEffectInstance = Game1.BirdFlaps[soundIndex].CreateInstance();
+                    _flapEffectInstance.Play();
                 }
                 FlapWings();
             }
@@ -154,12 +156,12 @@ namespace Bird_Busters
 
             _distanceToPlayer = Vector3.Distance(_drawableObject.Position, Player.GetCamPosition());
 
-            Emitter.Position = _drawableObject.Position;
-            Emitter.Forward = _currentDirection; //TODO: check if this is correct
-            _volumeMultiplier = 1f - (_distanceToPlayer / 40f); //TODO: Fine tune this
-            _volumeMultiplier = MathHelper.Clamp(_volumeMultiplier, 0, 1);
-            FlapEffectInstance.Volume = Game1.SFXVolume / 100f * _volumeMultiplier;
-            FlapEffectInstance.Apply3D(Game1.Listener, Emitter);
+            _emitter.Position = _drawableObject.Position;
+            _emitter.Forward = _currentDirection; //TODO: check if this is correct
+            VolumeMultiplier = 1f - (_distanceToPlayer / 40f); //TODO: Fine tune this
+            VolumeMultiplier = MathHelper.Clamp(VolumeMultiplier, 0, 1);
+            _flapEffectInstance.Volume = Game1.SFXVolume / 100f * VolumeMultiplier;
+            _flapEffectInstance.Apply3D(Game1.Listener, _emitter);
         }
 
         private void PrintPath()

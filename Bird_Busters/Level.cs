@@ -52,7 +52,7 @@ namespace Bird_Busters
             if (IsPressed(Keys.N))
             {
                 Debug.WriteLine("Debug mode toggled");
-                Debug.WriteLine("Current Position: " + Player.GetCamPosition().ToString());
+                Debug.WriteLine("Current CameraPosition: " + Player.GetCamPosition().ToString());
                 if (_debugMode)
                 {
                     _debugMode = false;
@@ -430,7 +430,7 @@ namespace Bird_Busters
                     Debug.WriteLine(_levelObjects[_selectedObject].GetType().ToString());
                     break;
             }
-            _debugText = "Position: " + FPSCamera.position + "\n" + "Selected Object: " + _selectedObject + " of type " + debugObjectType + " with info: " + debugObjectInfo + "\n" +
+            _debugText = "CameraPosition: " + FPSCamera.CameraPosition + "\n" + "Selected Object: " + _selectedObject + " of type " + debugObjectType + " with info: " + debugObjectInfo + "\n" +
                          "Tool: " + debugText + "\n" +
                          "Resolution: " + (float)Math.Round(DebugToolMinResolution * Math.Pow(10, _debugToolResolution), 3) + "\n" +
                          "Save: Right-CTRL, Recover: -";

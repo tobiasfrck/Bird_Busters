@@ -22,7 +22,7 @@ namespace Bird_Busters
         {
             ViewMatrix = FPSCamera.View;
             CamTarget = FPSCamera.direction;
-            CamPosition = FPSCamera.position;
+            CamPosition = FPSCamera.CameraPosition;
             ProjectionMatrix = FPSCamera.Projection;
         }
 

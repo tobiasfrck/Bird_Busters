@@ -176,8 +176,8 @@ namespace Bird_Busters
 
         private void FlapWings()
         {
-            Vector2 position2D = new Vector2(_drawableObject.Position.X, _drawableObject.Position.Z);
-            Vector3 currentSubTarget = new Vector3(_currentTarget.X, _drawableObject.Position.Y, _currentTarget.Y);
+            Vector2 position2D = new(_drawableObject.Position.X, _drawableObject.Position.Z);
+            Vector3 currentSubTarget = new(_currentTarget.X, _drawableObject.Position.Y, _currentTarget.Y);
 
             //if Bird is too low, it will flap to a random height between minHeight and maxHeight
             if (_drawableObject.Position.Y < _minHeight || (_random.NextDouble() >= 0.75 && (_minHeight + _maxHeight) / 2 > _drawableObject.Position.Y))
@@ -190,7 +190,7 @@ namespace Bird_Busters
                     /*
                     if (_distanceToPlayer < 20f)
                     {
-                        MenuManager.Instance.AddScoreIndicator(_drawableObject.Position, "Height added", _birdType);
+                        MenuManager.Instance.AddScoreIndicator(_drawableObject.CameraPosition, "Height added", _birdType);
                     }
                     */
                 }
@@ -273,7 +273,7 @@ namespace Bird_Busters
 
         public String GetBirdStats()
         {
-            return "Bird " + _birdID + " MinSpeed: " + _minSpeed + " minHeight: " + _minHeight + " Position: " + _drawableObject.Position;
+            return "Bird " + _birdID + " MinSpeed: " + _minSpeed + " minHeight: " + _minHeight + " CameraPosition: " + _drawableObject.Position;
         }
 
         public int GetBirdScore()
@@ -304,8 +304,8 @@ namespace Bird_Busters
 
         private void SetBirdType(BirdType type)
         {
-            Vector3 rotation = new Vector3(0, 0, 0);
-            Vector3 scale = new Vector3(0.2f, 0.2f, 0.2f);
+            Vector3 rotation = new(0, 0, 0);
+            Vector3 scale = new(0.2f, 0.2f, 0.2f);
             switch (type)
             {
                 case BirdType.Common:

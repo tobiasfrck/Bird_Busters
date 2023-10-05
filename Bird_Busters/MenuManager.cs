@@ -273,7 +273,7 @@ namespace Bird_Busters
 
 
                     string cheatStatusText = IsCheatActivated() ? "Cheat activated!" : "Cheat deactivated.";
-                    Vector2 cheatStatusPosition = new(950, 555); // Position der Textausgabe
+                    Vector2 cheatStatusPosition = new(950, 555); // CameraPosition der Textausgabe
                     _spriteBatch.DrawString(Game1.TestFont, cheatStatusText, cheatStatusPosition, Color.White);
 
                     _spriteBatch.DrawString(Game1.TestFont, "Game Credits: Tobias Fr. | Domenik \"Steph\" B. | Roman Schmidt | Jannik Keddy", new Vector2(_horizontalCenter - _creatorCreditsSize.X / 2f, Game1.Height - _creatorCreditsSize.Y), Color.White);

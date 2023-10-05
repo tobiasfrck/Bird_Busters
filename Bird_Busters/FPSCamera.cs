@@ -11,8 +11,8 @@ namespace Bird_Busters
         private float horizontalAngle;
         // The angle of rotation about the X-axis
         float verticalAngle;
-        // The camera's position in the world 
-        public static Vector3 Position;
+        // The camera's cameraPosition in the world 
+        public static Vector3 CameraPosition;
         public static Vector3 StartPosition;
         // The state of the mouse in the prior frame
         MouseState oldMouseState;
@@ -77,12 +77,12 @@ namespace Bird_Busters
         /// Constructs a new FPS Camera
         /// </summary>
         /// <param name="game">The game this camera belongs to</param>
-        /// <param name="position">The player's initial position</param>
-        public FPSCamera(Game game, Vector3 position)
+        /// <param name="camPosition">The player's initial cameraPosition</param>
+        public FPSCamera(Game game, Vector3 camPosition)
         {
             this._game = game;
-            Position = position;
-            StartPosition = Position;
+            CameraPosition = camPosition;
+            StartPosition = CameraPosition;
             this.horizontalAngle = MathHelper.ToRadians(90f);
             this.verticalAngle = 0;
             Projection = Matrix.CreatePerspectiveFieldOfView(Pov, this._game.GraphicsDevice.DisplayMode.AspectRatio, 0.001f, 1000);
@@ -91,7 +91,7 @@ namespace Bird_Busters
             POVadjusted = Pov;
             Listener = new AudioListener
             {
-                Position = Position
+                Position = CameraPosition
             };
         }
 
@@ -311,22 +311,22 @@ namespace Bird_Busters
 
             if (_speedVector.X > 0)
             {
-                Position += facing * _speedVector.X;
+                CameraPosition += facing * _speedVector.X;
             }
 
             if (_speedVector.X < 0)
             {
-                Position -= facing * -1 * _speedVector.X;
+                CameraPosition -= facing * -1 * _speedVector.X;
             }
 
             if (_speedVector.Y > 0)
             {
-                Position += Vector3.Cross(Vector3.Up, facing) * _speedVector.Y;
+                CameraPosition += Vector3.Cross(Vector3.Up, facing) * _speedVector.Y;
             }
 
             if (_speedVector.Y < 0)
             {
-                Position -= Vector3.Cross(Vector3.Up, facing) * -1 * _speedVector.Y;
+                CameraPosition -= Vector3.Cross(Vector3.Up, facing) * -1 * _speedVector.Y;
             }
 
             // SFX: steps while on ground
@@ -398,10 +398,10 @@ namespace Bird_Busters
             else
             {
 
-                Position.Y += Velocity;
+                CameraPosition.Y += Velocity;
                 Velocity += Gravity;
 
-                if (Position.Y <= 0.2f)
+                if (CameraPosition.Y <= 0.2f)
                 {
                     // SFX: landing
                     if (!IsGrounded && _stepTimer.RestartIfTimeElapsed())
@@ -411,30 +411,30 @@ namespace Bird_Busters
                         _stepSounds[soundIndex].Play(Game1.SFXVolume / 100f * 0.25f, 0, 0);
                     }
 
-                    Position.Y = 0.2f;
+                    CameraPosition.Y = 0.2f;
                     IsGrounded = true;
                 }
             }
-            Position += _change;
+            CameraPosition += _change;
 
             //Corner Collision
             if (!creativeFlight)
             {
-                if (Position.X < _corner1.X) Position.X = _corner1.X;
-                if (Position.Z < _corner1.Y) Position.Z = _corner1.Y;
-                if (Position.X > _corner2.X) Position.X = _corner2.X;
-                if (Position.Z > _corner2.Y) Position.Z = _corner2.Y;
+                if (CameraPosition.X < _corner1.X) CameraPosition.X = _corner1.X;
+                if (CameraPosition.Z < _corner1.Y) CameraPosition.Z = _corner1.Y;
+                if (CameraPosition.X > _corner2.X) CameraPosition.X = _corner2.X;
+                if (CameraPosition.Z > _corner2.Y) CameraPosition.Z = _corner2.Y;
             }
 
             // recreate the ViewMatrix
-            View = Matrix.CreateLookAt(Position, Position + direction, Vector3.Up);
+            View = Matrix.CreateLookAt(CameraPosition, CameraPosition + direction, Vector3.Up);
             // recreate ProjectionMatrix
             Projection = Matrix.CreatePerspectiveFieldOfView(POVadjusted, _game.GraphicsDevice.Viewport.AspectRatio, 0.001f, 1000);
             // Reset mouse state 
             Mouse.SetPosition(_game.Window.ClientBounds.Width / 2, _game.Window.ClientBounds.Height / 2);
             oldMouseState = Mouse.GetState();
 
-            Listener.Position = Position;
+            Listener.Position = CameraPosition;
             Listener.Forward = direction;
         }
 
@@ -484,7 +484,7 @@ namespace Bird_Busters
         }
         public void Reset()
         {
-            Position = StartPosition;
+            CameraPosition = StartPosition;
             this.horizontalAngle = 0;
             this.verticalAngle = 0;
         }

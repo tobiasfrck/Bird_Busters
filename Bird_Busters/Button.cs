@@ -80,7 +80,7 @@ namespace Bird_Busters
 
         /// <summary>
         /// Checks if the mouse is hovering over the button. Use this before IsPressed to avoid unnecessary calls.
-        /// Check mouse position with Mouse.GetState().Position and only once before checking all buttons.
+        /// Check mouse position with Mouse.GetState().CameraPosition and only once before checking all buttons.
         /// </summary>
         /// <param name="mousePosition"></param>
         /// <returns></returns>

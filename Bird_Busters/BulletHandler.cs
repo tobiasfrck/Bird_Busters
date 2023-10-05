@@ -72,7 +72,7 @@ namespace Bird_Busters
 
         public static MenuManager _menuManager;
 
-        private static List<VectorCube> _deletionZones = new List<VectorCube>();
+        private static List<VectorCube> _deletionZones = new();
 
         public static void Update()
         {
@@ -134,7 +134,7 @@ namespace Bird_Busters
                     Game1.ShootEffect.Play(Game1.SFXVolume / 100f * 0.55f, 0, 0);
                     MenuManager.IsGunRecoiled = true;
                 }
-                bullets.Add(new Net(FPSCamera.position + new Vector3(0, .4f, 0), Player.CamTarget));
+                bullets.Add(new Net(FPSCamera.CameraPosition + new Vector3(0, .4f, 0), Player.CamTarget));
                 //Schaut ob gerade die letzte Kugel verschossen wurde
                 canShoot = true;
                 _isReloading = false;
@@ -264,8 +264,8 @@ namespace Bird_Busters
 
             for (int i = _deletionZones.Count - 1; Level.GetDebugMode() && i >= 0; i--)
             {
-                DrawableObject _zonePartA = new DrawableObject(_deletionZones[i].GetStart(), new(), new(1, 1, 1), "testContent/testCube");
-                DrawableObject _zonePartB = new DrawableObject(_deletionZones[i].GetEnd(), new(), new(1, 1, 1), "testContent/testCube");
+                DrawableObject _zonePartA = new(_deletionZones[i].GetStart(), new(), new(1, 1, 1), "testContent/testCube");
+                DrawableObject _zonePartB = new(_deletionZones[i].GetEnd(), new(), new(1, 1, 1), "testContent/testCube");
                 _zonePartA.Draw();
                 _zonePartB.Draw();
             }

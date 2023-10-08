@@ -138,7 +138,7 @@ namespace Bird_Busters
             _magDisplayDistanceBetween = -7 - Game1.HUDAmmo.Height;
             _ammoX = Game1.HUDAmmoFont.MeasureString("AMMO").X;
             _crosshairRect = new Rectangle((Game1.Width / 2) - (Game1.Crosshair.Width / 2), (Game1.Height / 2) - (Game1.Crosshair.Height / 2), Game1.Crosshair.Width, Game1.Crosshair.Height);
-            _creatorCreditsSize = Game1.TestFont.MeasureString("Game Credits: Tobias Fr. | Domenik \"Steph\" B. | Roman Schmidt | Jannik Keddy");
+            _creatorCreditsSize = Game1.TestFont.MeasureString("Made by: Tobias Fr., Domenik \"Steph\" B., Roman Schmidt, Jannik Keddy | Supervision: Acagamics");
         }
 
 
@@ -276,7 +276,7 @@ namespace Bird_Busters
                     Vector2 cheatStatusPosition = new(950, 555); // CameraPosition der Textausgabe
                     _spriteBatch.DrawString(Game1.TestFont, cheatStatusText, cheatStatusPosition, Color.White);
 
-                    _spriteBatch.DrawString(Game1.TestFont, "Game Credits: Tobias Fr. | Domenik \"Steph\" B. | Roman Schmidt | Jannik Keddy", new Vector2(_horizontalCenter - _creatorCreditsSize.X / 2f, Game1.Height - _creatorCreditsSize.Y), Color.White);
+                    _spriteBatch.DrawString(Game1.TestFont, "Made by: Tobias Fr., Domenik \"Steph\" B., Roman Schmidt, Jannik Keddy | Supervision: Acagamics", new Vector2(_horizontalCenter - _creatorCreditsSize.X / 2f, Game1.Height - _creatorCreditsSize.Y), Color.White);
 
 
                     foreach (Button btn in _settingsButtons)
